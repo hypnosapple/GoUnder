@@ -209,7 +209,7 @@ Material:
     - _Surface: 0
     - _Tess: 1
     - _WaveAmplitude: 1
-    - _WaveCount: 3
+    - _WaveCount: 1
     - _WaveEffectsBoost: 0
     - _WaveNormal: 0.49
     - _WorkflowMode: 1
@@ -221,14 +221,14 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _CausticsSpeed: {r: 1, g: 1, b: -0.2, a: -0.33}
     - _CausticsSpeed3D: {r: 1, g: 1, b: 1, a: 1}
-    - _CausticsTiling: {r: 0.2, g: 0.2, b: 0.3, a: 0.3}
+    - _CausticsTiling: {r: 0.2, g: 0.2, b: 0.1, a: 0.1}
     - _Color: {r: 0.25490195, g: 0.98039216, b: 0.6740629, a: 1}
     - _DepthColor: {r: 0, g: 0.25999996, b: 0.39999998, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FlowTiling: {r: 1, g: 1, b: 0, a: 0}
     - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
     - _FoamTiling: {r: 1, g: 1, b: 1, a: 1}
-    - _GerstnerWaveA: {r: 0.84712195, g: -0.53139853, b: 0.84, a: 16.65}
+    - _GerstnerWaveA: {r: 0.84712195, g: -0.53139853, b: 0.66, a: 6.55}
     - _GerstnerWaveB: {r: -0.00000004371139, g: 1, b: 1.78, a: 7.78}
     - _GerstnerWaveC: {r: 0.7477981, g: 0.6639262, b: 3.37, a: 7.18}
     - _GerstnerWaveD: {r: 1, g: 0, b: 0.05, a: 4}
