@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class ApplePlayerMovement : MonoBehaviour
 {
     private float yaw = 0.0f, pitch = 0.0f;
     private Rigidbody rb;
