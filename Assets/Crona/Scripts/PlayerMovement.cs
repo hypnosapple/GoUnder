@@ -23,6 +23,9 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
 
     [SerializeField] private CinemachineFreeLook flCam;
+    private CinemachineBasicMultiChannelPerlin _topPerlin;
+    private CinemachineBasicMultiChannelPerlin _midPerlin;
+    private CinemachineBasicMultiChannelPerlin _botPerlin;
 
 
     void Update()
@@ -57,19 +60,25 @@ public class PlayerMovement : MonoBehaviour
         // Camera shake while walking
         if (horizontal > 0 || vertical > 0)
         {
-            CameraShake(5f);
+            CameraShake(1);
         }
         else
         {
-            CameraShake(0f);
+            CameraShake(0);
         }
 
     }
 
-    public void CameraShake(float intensity)
+    public void CameraShake(float amplitude)
     {
-        CinemachineBasicMultiChannelPerlin BasicMCP = flCam.GetComponent<CinemachineBasicMultiChannelPerlin>();
-        BasicMCP.m_AmplitudeGain = intensity;
+        _topPerlin = flCam.GetRig(0).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        _topPerlin.m_AmplitudeGain = amplitude;
+
+        _midPerlin = flCam.GetRig(1).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        _midPerlin.m_AmplitudeGain = amplitude;
+
+        _botPerlin = flCam.GetRig(2).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        _botPerlin.m_AmplitudeGain = amplitude;
 
     }
 }
