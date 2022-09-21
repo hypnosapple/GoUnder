@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
+
+    [SerializeField] private CinemachineFreeLook flCam;
 
 
     void Update()
@@ -50,6 +53,23 @@ public class PlayerMovement : MonoBehaviour
         // Keep track of gravity
         velocity.y += gravity * Time.deltaTime;
         myController.Move(velocity * Time.deltaTime);
+
+        // Camera shake while walking
+        if (horizontal > 0 || vertical > 0)
+        {
+            CameraShake(5f);
+        }
+        else
+        {
+            CameraShake(0f);
+        }
+
+    }
+
+    public void CameraShake(float intensity)
+    {
+        CinemachineBasicMultiChannelPerlin BasicMCP = flCam.GetComponent<CinemachineBasicMultiChannelPerlin>();
+        BasicMCP.m_AmplitudeGain = intensity;
 
     }
 }
