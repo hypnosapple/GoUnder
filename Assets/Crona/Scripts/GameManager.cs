@@ -14,6 +14,12 @@ public class GameManager : MonoBehaviour
     
     void Update()
     {
+        InventoryVisibility();
+    }
+
+
+    public void InventoryVisibility()
+    {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (InventoryCanvas.activeInHierarchy)
