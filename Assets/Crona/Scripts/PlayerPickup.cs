@@ -30,7 +30,7 @@ public class PlayerPickup : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                hit.transform.gameObject.SetActive(false);
+                hit.transform.gameObject.GetComponent<ItemPickup>().Pickup();
             }
         }
         else
