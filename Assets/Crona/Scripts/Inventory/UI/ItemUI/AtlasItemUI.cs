@@ -79,6 +79,6 @@ public class AtlasItemUI : MonoBehaviour
         
         AtlasCon.GetComponent<AtlasContainerUI>().HideAll();
         FileCon.GetComponent<FileContainerUI>().HideAll();
-        //UseableCon.GetComponent<UseableContainerUI>().HideAll();
+        UseableCon.GetComponent<UseableContainerUI>().HideAll();
     }
 }
