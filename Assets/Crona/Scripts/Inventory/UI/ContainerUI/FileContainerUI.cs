@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FileContainerUI : MonoBehaviour
 {
@@ -8,12 +9,27 @@ public class FileContainerUI : MonoBehaviour
 
     public List<GameObject> FileItems = new List<GameObject>();
 
+    public Image picture = null;
+    public Text descriptionContent = null;
+    public GameObject descriptionPanel;
+
+    public GameObject AtlasCon;
+    public GameObject UseableCon;
+
     public void AddItem(ItemData_SO newItemData)
     {
-        GameObject newAtlasItem = Instantiate(FileItemPrefab, this.transform);
-        FileItems.Add(newAtlasItem);
+        GameObject newFileItem = Instantiate(FileItemPrefab, this.transform);
+        FileItems.Add(newFileItem);
 
-        newAtlasItem.GetComponent<FileItemUI>().SetupItemUI(newItemData);
+        newFileItem.GetComponent<FileItemUI>().SetupItemUI(newItemData);
+
+        newFileItem.GetComponent<FileItemUI>().picture = picture;
+        newFileItem.GetComponent<FileItemUI>().descriptionContent = descriptionContent;
+        newFileItem.GetComponent<FileItemUI>().descriptionPanel = descriptionPanel;
+
+        newFileItem.GetComponent<FileItemUI>().AtlasCon = AtlasCon;
+        newFileItem.GetComponent<FileItemUI>().FileCon = this.gameObject;
+        newFileItem.GetComponent<FileItemUI>().UseableCon = UseableCon;
     }
 
     public void HideAll()

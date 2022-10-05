@@ -10,10 +10,10 @@ public class UseableContainerUI : MonoBehaviour
 
     public void AddItem(ItemData_SO newItemData)
     {
-        GameObject newAtlasItem = Instantiate(UseableItemPrefab, this.transform);
-        UseableItems.Add(newAtlasItem);
+        GameObject newUseableItem = Instantiate(UseableItemPrefab, this.transform);
+        UseableItems.Add(newUseableItem);
 
-        newAtlasItem.GetComponent<UseableItemUI>().SetupItemUI(newItemData);
+        newUseableItem.GetComponent<UseableItemUI>().SetupItemUI(newItemData);
     }
 
     public void HideAll()
