@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject InventoryCanvas;
     public GameObject player;
+    public GameObject CrosshairCanvas;
 
     public Camera mainCam;
 
@@ -28,10 +29,12 @@ public class GameManager : MonoBehaviour
             if (InventoryCanvas.activeInHierarchy)
             {
                 InventoryCanvas.SetActive(false);
+                CrosshairCanvas.SetActive(true);
             }
             else
             {
                 InventoryCanvas.SetActive(true);
+                CrosshairCanvas.SetActive(false);
             }
         }
 

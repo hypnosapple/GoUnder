@@ -14,4 +14,6 @@ public class ItemData_SO : ScriptableObject
     public Sprite itemIcon;
 
     public string description = "";
+
+    public Transform modelPrefab;
 }
