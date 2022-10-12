@@ -19,5 +19,9 @@ public class GetCode : MonoBehaviour
             this.GetComponent<Button>().interactable = true;
             //this.GetComponent<Button>().colors = Color.white;
         }
+        else
+        {
+            this.GetComponent<Button>().interactable = false;
+        }
     }
 }
