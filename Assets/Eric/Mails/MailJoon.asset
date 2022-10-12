@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e4fe45af87b2439fa007964c962a5b7, type: 3}
+  m_Name: MailJoon
+  m_EditorClassIdentifier: 
+  PersonName: Joon
+  EmailTitle: Buuisa
+  EmailAddress: parturient montes, nascet
+  EmailContent: \dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend
+    tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
+    Aliquam lorem ante, dapibus ied consequat, leo eget bibendum sodales, augue velit
+    cursus nunc,
+  IconColor: {r: 0.37254906, g: 0.5026141, b: 0.78431374, a: 1}
+  IconSprite: {fileID: 0}
