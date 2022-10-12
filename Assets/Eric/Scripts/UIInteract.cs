@@ -52,7 +52,7 @@ public class UIInteract : MonoBehaviour
             }
             else if (IsInPos == 2)
             {
-                StartCoroutine(EndComputer());
+                StartCoroutine(LerpingPlayerBackToMain(MainCam.transform.position, MainCam.transform.rotation, 1f, ComputerCamera.transform));
             }
 
         }
@@ -78,7 +78,7 @@ public class UIInteract : MonoBehaviour
         Debug.Log("I am locked");
         IsInPos = 2;
         ComputerScreen.SetActive(true);
-        StartCoroutine(StartComputer());
+        //StartCoroutine(StartComputer());
     }
 
     IEnumerator StartComputer()
@@ -110,12 +110,11 @@ public class UIInteract : MonoBehaviour
             yield return null;
         }
         ComputerBackground.GetComponent<RawImage>().color = tempColor;
-        StartCoroutine(LerpingPlayerBackToMain(MainCam.transform.position, MainCam.transform.rotation, 1f, ComputerCamera.transform));
     }
 
     IEnumerator LerpingPlayerBackToMain(Vector3 targetPosition, Quaternion targetRotation, float duration, Transform Transformee)
     {
-        ComputerScreen.SetActive(false);
+        //ComputerScreen.SetActive(false);
         IsInPos = 1;
         float time = 0;
         Vector3 startPosition = Transformee.position;
