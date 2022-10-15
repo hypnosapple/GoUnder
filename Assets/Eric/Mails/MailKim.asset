@@ -29,5 +29,5 @@ MonoBehaviour:
     eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec
     sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit
     cursus nunc,
-  IconColor: {r: 0.37254906, g: 0.78431374, b: 0.75145173, a: 1}
-  IconSprite: {fileID: 0}
+  IconColor: {r: 1, g: 1, b: 1, a: 1}
+  IconSprite: {fileID: 2800000, guid: e0fd128c942c84dde98a121ca85532dc, type: 3}

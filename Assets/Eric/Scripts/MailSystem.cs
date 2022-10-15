@@ -54,6 +54,7 @@ public class MailSystem : MonoBehaviour
         //set the info
         tempMailContent.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text = newMail.EmailTitle; ;
         tempMailContent.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<RawImage>().color = newMail.IconColor;
+        tempMailContent.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<RawImage>().texture = newMail.IconSprite;
         tempMailContent.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Text>().text = newMail.PersonName; ;
         tempMailContent.transform.GetChild(0).GetChild(0).GetChild(3).GetComponent<Text>().text = newMail.EmailAddress;
         tempMailContent.transform.GetChild(0).GetChild(0).GetChild(4).GetChild(0).GetComponent<Text>().text = newMail.EmailContent; ;

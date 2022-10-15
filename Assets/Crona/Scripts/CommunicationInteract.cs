@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CommunicationInteract : MonoBehaviour
 {
-    public GameObject InteractiveCanvas;
+    public GameObject UseECanvas, ExitCanvas;
     public Transform ComputerUsingPosition;
     public Camera ComputerCamera;
     private int IsInPos = 0;
@@ -21,7 +21,7 @@ public class CommunicationInteract : MonoBehaviour
     {
         if (other.GetComponent<PlayerMovement>() != null)
         {
-            InteractiveCanvas.SetActive(true);
+            UseECanvas.SetActive(true);
             IsInside = true;
         }
     }
@@ -30,7 +30,7 @@ public class CommunicationInteract : MonoBehaviour
     {
         if (other.GetComponent<PlayerMovement>() != null)
         {
-            InteractiveCanvas.SetActive(false);
+            UseECanvas.SetActive(false);
             IsInside = false;
         }
     }
@@ -40,7 +40,7 @@ public class CommunicationInteract : MonoBehaviour
         if (!IsInside)
             return;
 
-        if (Input.GetKey(KeyCode.U))
+        if (Input.GetKey(KeyCode.E))
         {
 
             if (IsInPos == 0)
@@ -53,7 +53,10 @@ public class CommunicationInteract : MonoBehaviour
                 ComputerCamera.enabled = true;
                 StartCoroutine(LerpingPlayerToComputerPos(ComputerUsingPosition.position, ComputerUsingPosition.rotation, 1f, ComputerCamera.transform));
             }
-            else if (IsInPos == 2)
+        }
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            if (IsInPos == 2)
             {
                 StartCoroutine(LerpingPlayerBackToMain(MainCam.transform.position, MainCam.transform.rotation, 1f, ComputerCamera.transform));
             }
@@ -65,7 +68,7 @@ public class CommunicationInteract : MonoBehaviour
         Crosshair.SetActive(false);
         IsInPos = 1;
         float time = 0;
-        InteractiveCanvas.SetActive(false);
+        UseECanvas.SetActive(false);
         Vector3 startPosition = Transformee.position;
         Quaternion startRotation = Transformee.rotation;
         while (time < duration)
@@ -77,7 +80,7 @@ public class CommunicationInteract : MonoBehaviour
         }
         Transformee.position = targetPosition;
         Transformee.rotation = targetRotation;
-
+        ExitCanvas.SetActive(true);
         IsInPos = 2;
         //IslandCode.SetActive(true);
         //CommunicationCode.SetActive(true);
@@ -93,7 +96,7 @@ public class CommunicationInteract : MonoBehaviour
         //IslandCode.SetActive(false);
         //CommunicationCode.SetActive(false);
         //sendButton.SetActive(false);
-
+        ExitCanvas.SetActive(false);
         IsInPos = 1;
         float time = 0;
         Vector3 startPosition = Transformee.position;
@@ -109,7 +112,7 @@ public class CommunicationInteract : MonoBehaviour
         Transformee.rotation = targetRotation;
 
         IsInPos = 0;
-        InteractiveCanvas.SetActive(true);
+        UseECanvas.SetActive(true);
         Crosshair.SetActive(true);
         MainCam.enabled = true;
         ComputerCamera.enabled = false;

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class UIInteract : MonoBehaviour
 {
-    public GameObject InteractiveCanvas;
+    public GameObject UseECanvas, ExitCanvas;
     public Transform ComputerUsingPosition;
     public Camera ComputerCamera;
     private int IsInPos = 0;
@@ -13,11 +13,12 @@ public class UIInteract : MonoBehaviour
     public GameObject ComputerScreen;
     public GameObject ComputerBackground;
     public GameObject OtherpartOfComputer;
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.GetComponent<PlayerMovement>() != null)
         {
-            InteractiveCanvas.SetActive(true);
+            UseECanvas.SetActive(true);
             IsInside = true;
         }
     }
@@ -26,7 +27,7 @@ public class UIInteract : MonoBehaviour
     {
         if (other.GetComponent<PlayerMovement>() != null)
         {
-            InteractiveCanvas.SetActive(false);
+            UseECanvas.SetActive(false);
             IsInside = false;
         }
     }
@@ -36,9 +37,9 @@ public class UIInteract : MonoBehaviour
         if (!IsInside)
             return;
 
-        if (Input.GetKey(KeyCode.U))
+        if (Input.GetKey(KeyCode.E))
         {
-            Debug.Log("I am pressed");
+            //Debug.Log("I am pressed");
             if (IsInPos == 0)
             {
                 //other.GetComponent<PlayerMovement>().enabled = false;
@@ -50,11 +51,14 @@ public class UIInteract : MonoBehaviour
                 ComputerCamera.enabled = true;
                 StartCoroutine(LerpingPlayerToComputerPos(ComputerUsingPosition.position, ComputerUsingPosition.rotation, 1f, ComputerCamera.transform));
             }
-            else if (IsInPos == 2)
+        }
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            if (IsInPos == 2)
             {
                 StartCoroutine(LerpingPlayerBackToMain(MainCam.transform.position, MainCam.transform.rotation, 1f, ComputerCamera.transform));
             }
-
         }
     }
 
@@ -62,7 +66,7 @@ public class UIInteract : MonoBehaviour
     {
         IsInPos = 1;
         float time = 0;
-        InteractiveCanvas.SetActive(false);
+        UseECanvas.SetActive(false);
         Vector3 startPosition = Transformee.position;
         Quaternion startRotation = Transformee.rotation;
         while (time < duration)
@@ -78,6 +82,7 @@ public class UIInteract : MonoBehaviour
         Debug.Log("I am locked");
         IsInPos = 2;
         ComputerScreen.SetActive(true);
+        ExitCanvas.SetActive(true);
         //StartCoroutine(StartComputer());
     }
 
@@ -114,6 +119,7 @@ public class UIInteract : MonoBehaviour
 
     IEnumerator LerpingPlayerBackToMain(Vector3 targetPosition, Quaternion targetRotation, float duration, Transform Transformee)
     {
+        ExitCanvas.SetActive(false);
         //ComputerScreen.SetActive(false);
         IsInPos = 1;
         float time = 0;
@@ -131,7 +137,7 @@ public class UIInteract : MonoBehaviour
         //targetTransform.gameObject.SetActive(false);
         Debug.Log("I am free");
         IsInPos = 0;
-        InteractiveCanvas.SetActive(true);
+        UseECanvas.SetActive(true);
         MainCam.enabled = true;
         ComputerCamera.enabled = false;
     }
