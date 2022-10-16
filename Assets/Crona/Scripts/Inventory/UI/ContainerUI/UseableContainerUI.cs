@@ -9,6 +9,7 @@ public class UseableContainerUI : MonoBehaviour
 
     public List<GameObject> UseableItems = new List<GameObject>();
 
+    public GameObject InfoPanel;
     public Text descriptionContent = null;
     public GameObject descriptionPanel;
     public GameObject item3DViewer;
@@ -26,6 +27,7 @@ public class UseableContainerUI : MonoBehaviour
         newUseableItem.GetComponent<UseableItemUI>().descriptionContent = descriptionContent;
         newUseableItem.GetComponent<UseableItemUI>().descriptionPanel = descriptionPanel;
         newUseableItem.GetComponent<UseableItemUI>().item3DViewer = item3DViewer;
+        newUseableItem.GetComponent<UseableItemUI>().InfoPanel = InfoPanel;
 
         newUseableItem.GetComponent<UseableItemUI>().AtlasCon = AtlasCon;
         newUseableItem.GetComponent<UseableItemUI>().FileCon = FileCon;

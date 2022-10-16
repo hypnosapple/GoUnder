@@ -10,6 +10,7 @@ public class AtlasItemUI : MonoBehaviour
     public Text descriptionContent = null;
 
     public GameObject descriptionPanel;
+    public GameObject InfoPanel;
 
     public ItemData_SO itemData;
 
@@ -53,6 +54,7 @@ public class AtlasItemUI : MonoBehaviour
     {
         HideAllInParents();
 
+        InfoPanel.SetActive(true);
         picture.gameObject.SetActive(true);
         picture.sprite = itemData.itemIcon;
         thisItemIsShowing = true;
@@ -60,6 +62,7 @@ public class AtlasItemUI : MonoBehaviour
 
     public void HideItem()
     {
+        title.color = new Color(87f, 111f, 132f);
 
         if (thisItemIsShowing)
         {
@@ -67,6 +70,7 @@ public class AtlasItemUI : MonoBehaviour
             descriptionContent.text = null;
             picture.gameObject.SetActive(false);
             descriptionPanel.SetActive(false);
+            InfoPanel.SetActive(false);
 
             thisItemIsShowing = false;
         }
@@ -80,5 +84,13 @@ public class AtlasItemUI : MonoBehaviour
         AtlasCon.GetComponent<AtlasContainerUI>().HideAll();
         FileCon.GetComponent<FileContainerUI>().HideAll();
         UseableCon.GetComponent<UseableContainerUI>().HideAll();
+    }
+
+    public void ChangeColor()
+    {
+        if (title.color == new Color(87f, 111f, 132f))
+        {
+            title.color = new Color(205f, 236f, 251f);
+        }
     }
 }

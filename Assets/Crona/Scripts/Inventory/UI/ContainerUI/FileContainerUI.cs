@@ -9,6 +9,7 @@ public class FileContainerUI : MonoBehaviour
 
     public List<GameObject> FileItems = new List<GameObject>();
 
+    public GameObject InfoPanel; 
     public Image picture = null;
     public Text descriptionContent = null;
     public GameObject descriptionPanel;
@@ -26,6 +27,7 @@ public class FileContainerUI : MonoBehaviour
         newFileItem.GetComponent<FileItemUI>().picture = picture;
         newFileItem.GetComponent<FileItemUI>().descriptionContent = descriptionContent;
         newFileItem.GetComponent<FileItemUI>().descriptionPanel = descriptionPanel;
+        newFileItem.GetComponent<FileItemUI>().InfoPanel = InfoPanel;
 
         newFileItem.GetComponent<FileItemUI>().AtlasCon = AtlasCon;
         newFileItem.GetComponent<FileItemUI>().FileCon = this.gameObject;

@@ -7,6 +7,7 @@ public class UseableItemUI : MonoBehaviour
 {
     public Text title = null;
     public Text descriptionContent = null;
+    public GameObject InfoPanel;
     public GameObject descriptionPanel;
     public Transform itemModel;
     public GameObject item3DViewer;
@@ -52,6 +53,7 @@ public class UseableItemUI : MonoBehaviour
     {
         HideAllInParents();
 
+        InfoPanel.SetActive(true);
         item3DViewer.SetActive(true);
         if (itemModel != null)
         {
@@ -66,6 +68,8 @@ public class UseableItemUI : MonoBehaviour
 
     public void HideItem()
     {
+        title.color = new Color(87f, 111f, 132f);
+
         if (itemModel != null)
         {
             Destroy(itemModel.gameObject);
@@ -75,6 +79,7 @@ public class UseableItemUI : MonoBehaviour
         descriptionContent.text = null;
         descriptionPanel.SetActive(false);
         item3DViewer.SetActive(false);
+        InfoPanel.SetActive(false);
 
         thisItemIsShowing = false;
     }
@@ -85,5 +90,13 @@ public class UseableItemUI : MonoBehaviour
         AtlasCon.GetComponent<AtlasContainerUI>().HideAll();
         FileCon.GetComponent<FileContainerUI>().HideAll();
         UseableCon.GetComponent<UseableContainerUI>().HideAll();
+    }
+
+    public void ChangeColor()
+    {
+        if (title.color == new Color(87f, 111f, 132f))
+        {
+            title.color = new Color(205f, 236f, 251f);
+        }
     }
 }
