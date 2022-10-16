@@ -68,7 +68,7 @@ public class UseableItemUI : MonoBehaviour
 
     public void HideItem()
     {
-        title.color = new Color(87f, 111f, 132f);
+        title.color = new Color32(87, 111, 132, 255);
 
         if (itemModel != null)
         {
@@ -94,9 +94,9 @@ public class UseableItemUI : MonoBehaviour
 
     public void ChangeColor()
     {
-        if (title.color == new Color(87f, 111f, 132f))
+        if (title.color == new Color32(87, 111, 132, 255))
         {
-            title.color = new Color(205f, 236f, 251f);
+            title.color = new Color32(205, 236, 251, 255);
         }
     }
 }
