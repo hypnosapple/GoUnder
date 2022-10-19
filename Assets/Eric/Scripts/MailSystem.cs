@@ -32,9 +32,9 @@ public class MailSystem : MonoBehaviour
         ScrollContent.GetComponent<RectTransform>().sizeDelta = new Vector2(144, EmialTotal * 50 + (EmialTotal - 1) * 10);
         for (int i = 0; i < RightColumnParent.transform.childCount; i++)
         {
-            float tempHeight = RightColumnParent.transform.GetChild(i).
-                transform.GetChild(0).GetChild(0).GetChild(4).GetComponent<RectTransform>().rect.height + 95;
-            RightColumnParent.transform.GetChild(i).transform.GetChild(0).GetChild(0).GetComponent<RectTransform>().sizeDelta = new Vector2(355, tempHeight);
+            //float tempHeight = RightColumnParent.transform.GetChild(i).
+                //transform.GetChild(0).GetChild(0).GetChild(4).GetComponent<RectTransform>().rect.height + 95;
+            //RightColumnParent.transform.GetChild(i).transform.GetChild(0).GetChild(0).GetComponent<RectTransform>().sizeDelta = new Vector2(355, tempHeight);
             RightColumnParent.transform.GetChild(i).gameObject.SetActive(false);
         }
     }
@@ -53,11 +53,11 @@ public class MailSystem : MonoBehaviour
         GameObject tempMailContent = Instantiate(PrefabEmailRight, RightColumnParent.transform);
         //set the info
         tempMailContent.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text = newMail.EmailTitle; ;
-        tempMailContent.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<RawImage>().color = newMail.IconColor;
-        tempMailContent.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<RawImage>().texture = newMail.IconSprite;
-        tempMailContent.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Text>().text = newMail.PersonName; ;
-        tempMailContent.transform.GetChild(0).GetChild(0).GetChild(3).GetComponent<Text>().text = newMail.EmailAddress;
-        tempMailContent.transform.GetChild(0).GetChild(0).GetChild(4).GetChild(0).GetComponent<Text>().text = newMail.EmailContent; ;
+        tempMailContent.transform.GetChild(0).GetChild(0).GetChild(1).GetChild(0).GetComponent<RawImage>().color = newMail.IconColor;
+        tempMailContent.transform.GetChild(0).GetChild(0).GetChild(1).GetChild(0).GetComponent<RawImage>().texture = newMail.IconSprite;
+        tempMailContent.transform.GetChild(0).GetChild(0).GetChild(1).GetChild(1).GetChild(0).GetComponent<Text>().text = newMail.PersonName; ;
+        tempMailContent.transform.GetChild(0).GetChild(0).GetChild(1).GetChild(1).GetChild(1).GetComponent<Text>().text = newMail.EmailAddress;
+        tempMailContent.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Text>().text = newMail.EmailContent;
         //plus the length of the scroll
         //float tempHeight = tempMailContent.transform.GetChild(0).GetChild(0).GetChild(4).GetComponent<RectTransform>().rect.height + 95;
         //tempMailContent.transform.GetChild(0).GetChild(0).GetComponent<RectTransform>().sizeDelta = new Vector2(355, tempHeight);

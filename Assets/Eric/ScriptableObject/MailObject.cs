@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MailObject : ScriptableObject
 {
     public string PersonName, EmailTitle, EmailAddress;
-    [TextArea(15, 20)]
+    [TextArea(15, 100)]
     public string EmailContent;
     public Color IconColor;
     public Texture IconSprite;
