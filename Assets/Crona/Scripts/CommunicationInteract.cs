@@ -121,5 +121,7 @@ public class CommunicationInteract : MonoBehaviour
         MainCam.enabled = true;
         EricScreen.SetActive(true);
         ComputerCamera.enabled = false;
+        //eric added
+        ComputerCamera.transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0));
     }
 }

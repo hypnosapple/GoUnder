@@ -7,12 +7,14 @@ public class UIInteract : MonoBehaviour
     public GameObject UseECanvas, ExitCanvas;
     public Transform ComputerUsingPosition;
     public Camera ComputerCamera;
+    public GameObject ComputerCamGameObject;
     private int IsInPos = 0;
     private Camera MainCam;
     private bool IsInside;
     public GameObject ComputerScreen;
     public GameObject ComputerBackground;
     public GameObject OtherpartOfComputer;
+    public GameObject Crosshair;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -59,6 +61,7 @@ public class UIInteract : MonoBehaviour
         {
             //Alexis added
             Cursor.visible = false;
+            //eric added
             if (IsInPos == 2)
             {
                 StartCoroutine(LerpingPlayerBackToMain(MainCam.transform.position, MainCam.transform.rotation, 1f, ComputerCamera.transform));
@@ -69,6 +72,7 @@ public class UIInteract : MonoBehaviour
     IEnumerator LerpingPlayerToComputerPos(Vector3 targetPosition, Quaternion targetRotation, float duration, Transform Transformee)
     {
         IsInPos = 1;
+        Crosshair.SetActive(false);
         float time = 0;
         UseECanvas.SetActive(false);
         Vector3 startPosition = Transformee.position;
@@ -89,6 +93,7 @@ public class UIInteract : MonoBehaviour
         ExitCanvas.SetActive(true);
         //StartCoroutine(StartComputer());
     }
+
 
     IEnumerator StartComputer()
     {
@@ -144,6 +149,8 @@ public class UIInteract : MonoBehaviour
         UseECanvas.SetActive(true);
         MainCam.enabled = true;
         ComputerCamera.enabled = false;
+        Crosshair.SetActive(true);
+        ComputerCamera.transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0));
     }
 
 }
