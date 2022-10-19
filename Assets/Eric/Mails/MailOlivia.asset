@@ -12,17 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e4fe45af87b2439fa007964c962a5b7, type: 3}
   m_Name: MailOlivia
   m_EditorClassIdentifier: 
-  PersonName: Olivia
-  EmailTitle: XKSdw
-  EmailAddress: parturient montes, nascet
-  EmailContent: ' nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.
-    Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget
-    dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam
-    semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit
-    vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt
-    tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam
-    sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit
-    amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales,
-    augue velit cursus nunc,'
+  PersonName: Naomi
+  EmailTitle: IMPORTANT
+  EmailAddress: naomiC4071@uma.com
+  EmailContent: "Greeting, \r\n\r\nThe commander of Departent F, Alenky Shiro, were
+    missing during a mission while they were sailing in area 7 to an island in South.
+    Currently, we developed an Information System for all your investigators to use
+    in order to check more detailed informations. Also, it will give you a single-use
+    communication access code, which can be used for Communication System. The good
+    thing of this new coding system is that your signals can be sent to all the islands
+    in all areas in a short time. Please have a try on it. \r\n\r\nPlus, remember
+    the new Missing People Files I shipped to you several days ago? They contained
+    all the information you need to enter for the Information System. Don\u2019t
+    forget to read them carefully. Some information on the file might not be fully
+    updated, which you need to interpret by yourself. \r\n\r\nGood luck,\r\nNoami
+    Clark \r\n"
   IconColor: {r: 1, g: 1, b: 1, a: 1}
   IconSprite: {fileID: 2800000, guid: 803f3af1c546c4001adc7c2bb7c4d27e, type: 3}
