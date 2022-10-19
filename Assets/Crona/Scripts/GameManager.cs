@@ -28,11 +28,13 @@ public class GameManager : MonoBehaviour
         {
             if (InventoryCanvas.activeInHierarchy)
             {
+                Cursor.visible = false;
                 InventoryCanvas.SetActive(false);
                 CrosshairCanvas.SetActive(true);
             }
             else
             {
+                Cursor.visible = true;
                 InventoryCanvas.SetActive(true);
                 CrosshairCanvas.SetActive(false);
             }

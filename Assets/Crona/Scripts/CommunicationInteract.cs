@@ -44,6 +44,7 @@ public class CommunicationInteract : MonoBehaviour
 
         if (Input.GetKey(KeyCode.E))
         {
+            Cursor.visible = true;
             CommunicationCode.interactable = true;
             IslandCode.interactable = true;
             if (IsInPos == 0)
@@ -61,6 +62,7 @@ public class CommunicationInteract : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Escape))
         {
+            Cursor.visible = false;
             if (IsInPos == 2)
             {
                 CommunicationCode.interactable = false;

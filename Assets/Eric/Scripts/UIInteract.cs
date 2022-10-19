@@ -40,6 +40,8 @@ public class UIInteract : MonoBehaviour
         if (Input.GetKey(KeyCode.E))
         {
             //Debug.Log("I am pressed");
+            //Alexis added
+            Cursor.visible = true;
             if (IsInPos == 0)
             {
                 //other.GetComponent<PlayerMovement>().enabled = false;
@@ -55,6 +57,8 @@ public class UIInteract : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Escape))
         {
+            //Alexis added
+            Cursor.visible = false;
             if (IsInPos == 2)
             {
                 StartCoroutine(LerpingPlayerBackToMain(MainCam.transform.position, MainCam.transform.rotation, 1f, ComputerCamera.transform));
