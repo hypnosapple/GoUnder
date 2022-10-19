@@ -11,6 +11,11 @@ public class PlayerPickup : MonoBehaviour
 
     [SerializeField] private Camera cam;
 
+    public GameObject InventoryCanvas;
+    public ItemData_SO Code1Data;
+    public GameObject Code1Page;
+    private bool hasCode1 = false;
+
     void Start()
     {
         pickupLayerMask = LayerMask.GetMask("Pickup");
@@ -39,6 +44,13 @@ public class PlayerPickup : MonoBehaviour
             {
                 onTarget.SetActive(false);
             }
+        }
+
+
+        if (!hasCode1 && Code1Page.activeInHierarchy)
+        {
+            InventoryCanvas.GetComponent<InventoryManager>().AddItem(Code1Data);
+            hasCode1 = true;
         }
     }
 }

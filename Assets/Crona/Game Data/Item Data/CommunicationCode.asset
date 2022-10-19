@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca2c350add0de446fbe4ee3bd2f91b5a, type: 3}
   m_Name: CommunicationCode
   m_EditorClassIdentifier: 
-  itemType: 0
+  itemType: 1
   itemName: Code1
   itemIcon: {fileID: 0}
   description: Communication Code
