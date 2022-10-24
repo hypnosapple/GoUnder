@@ -15,6 +15,7 @@ public class UIInteract : MonoBehaviour
     public GameObject ComputerBackground;
     public GameObject OtherpartOfComputer;
     public GameObject Crosshair;
+    public bool FocusOnScreen = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -43,6 +44,7 @@ public class UIInteract : MonoBehaviour
         {
             //Debug.Log("I am pressed");
             //Alexis added
+            FocusOnScreen = true;
             Cursor.visible = true;
             if (IsInPos == 0)
             {
@@ -60,6 +62,7 @@ public class UIInteract : MonoBehaviour
         if (Input.GetKey(KeyCode.Escape))
         {
             //Alexis added
+            FocusOnScreen = false;
             Cursor.visible = false;
             //eric added
             if (IsInPos == 2)

@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     public GameObject InventoryCanvas;
     public GameObject player;
     public GameObject CrosshairCanvas;
+    public CommunicationInteract CommunicationSystem;
+    public UIInteract ComputerSystem;
 
     public Camera mainCam;
 
@@ -28,9 +30,18 @@ public class GameManager : MonoBehaviour
         {
             if (InventoryCanvas.activeInHierarchy)
             {
-                Cursor.visible = false;
-                InventoryCanvas.SetActive(false);
-                CrosshairCanvas.SetActive(true);
+                if (CommunicationSystem.FocusOnScreen == false && ComputerSystem.FocusOnScreen == false)
+                {
+                    Cursor.visible = false;
+                    InventoryCanvas.SetActive(false);
+                    CrosshairCanvas.SetActive(true);
+                }
+                else
+                {
+                    Cursor.visible = true;
+                    InventoryCanvas.SetActive(false);
+                    CrosshairCanvas.SetActive(true);
+                }
             }
             else
             {

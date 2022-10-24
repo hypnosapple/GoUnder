@@ -13,6 +13,7 @@ public class CommunicationInteract : MonoBehaviour
     private int IsInPos = 0;
     private Camera MainCam;
     private bool IsInside;
+    public bool FocusOnScreen = false;
 
     public TMP_InputField IslandCode;
     public TMP_InputField CommunicationCode;
@@ -44,6 +45,7 @@ public class CommunicationInteract : MonoBehaviour
 
         if (Input.GetKey(KeyCode.E))
         {
+            FocusOnScreen = true;
             Cursor.visible = true;
             CommunicationCode.interactable = true;
             IslandCode.interactable = true;
@@ -62,6 +64,7 @@ public class CommunicationInteract : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Escape))
         {
+            FocusOnScreen = false;
             Cursor.visible = false;
             if (IsInPos == 2)
             {
