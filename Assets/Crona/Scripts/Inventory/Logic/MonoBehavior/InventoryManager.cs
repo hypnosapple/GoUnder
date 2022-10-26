@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -14,6 +15,63 @@ public class InventoryManager : MonoBehaviour
     public GameObject FileContainer;
     public GameObject UseableContainer;
 
+    public Image ReminderInfo;
+    public Text ReminderName;
+    public Text ReminderType;
+    public int timer = 0;
+    public float t = 1f;
+
+
+    void Update()
+    {
+        if (timer > 0)
+        {
+            timer--;
+        }
+
+        if (timer > 60)
+        {
+            
+            if (t < 1f)
+            {
+                ReminderInfo.color = Color.Lerp(new Color(ReminderInfo.color.r, ReminderInfo.color.g, ReminderInfo.color.b, 0f), new Color(ReminderInfo.color.r, ReminderInfo.color.g, ReminderInfo.color.b, 1f), t);
+                ReminderName.color = Color.Lerp(new Color(ReminderName.color.r, ReminderName.color.g, ReminderName.color.b, 0f), new Color(ReminderName.color.r, ReminderName.color.g, ReminderName.color.b, 1f), t);
+                ReminderType.color = Color.Lerp(new Color(ReminderType.color.r, ReminderType.color.g, ReminderType.color.b, 0f), new Color(ReminderType.color.r, ReminderType.color.g, ReminderType.color.b, 1f), t);
+
+                t += Time.deltaTime;
+            }
+            else
+            {
+                ReminderInfo.color = new Color(ReminderInfo.color.r, ReminderInfo.color.g, ReminderInfo.color.b, 1f);
+                ReminderName.color = new Color(ReminderName.color.r, ReminderName.color.g, ReminderName.color.b, 1f);
+                ReminderType.color = new Color(ReminderType.color.r, ReminderType.color.g, ReminderType.color.b, 1f);
+            }
+        }
+
+        else if (timer == 60)
+        {
+            t = 0f;
+        }
+
+        else if (timer < 60)
+        {
+
+            if (t < 1f)
+            {
+                ReminderInfo.color = Color.Lerp(new Color(ReminderInfo.color.r, ReminderInfo.color.g, ReminderInfo.color.b, 1f), new Color(ReminderInfo.color.r, ReminderInfo.color.g, ReminderInfo.color.b, 0f), t);
+                ReminderName.color = Color.Lerp(new Color(ReminderName.color.r, ReminderName.color.g, ReminderName.color.b, 1f), new Color(ReminderName.color.r, ReminderName.color.g, ReminderName.color.b, 0f), t);
+                ReminderType.color = Color.Lerp(new Color(ReminderType.color.r, ReminderType.color.g, ReminderType.color.b, 1f), new Color(ReminderType.color.r, ReminderType.color.g, ReminderType.color.b, 0f), t);
+
+                t += Time.deltaTime;
+            }
+            else
+            {
+                ReminderInfo.color = new Color(ReminderInfo.color.r, ReminderInfo.color.g, ReminderInfo.color.b, 0f);
+                ReminderName.color = new Color(ReminderName.color.r, ReminderName.color.g, ReminderName.color.b, 0f);
+                ReminderType.color = new Color(ReminderType.color.r, ReminderType.color.g, ReminderType.color.b, 0f);
+            }
+        }
+    }
 
     public void AddItem(ItemData_SO newItemData)
     {
@@ -26,6 +84,8 @@ public class InventoryManager : MonoBehaviour
                 {
                     AtlasItems[i].itemData = newItemData;
                     AtlasContainer.GetComponent<AtlasContainerUI>().AddItem(newItemData);
+
+                    ShowReminder(newItemData.name, "Info Added");
                     break;
                 }
             }
@@ -39,6 +99,8 @@ public class InventoryManager : MonoBehaviour
                 {
                     FileItems[i].itemData = newItemData;
                     FileContainer.GetComponent<FileContainerUI>().AddItem(newItemData);
+
+                    ShowReminder(newItemData.name, "File Added");
                     break;
                 }
             }
@@ -52,11 +114,26 @@ public class InventoryManager : MonoBehaviour
                 {
                     UseableItems[i].itemData = newItemData;
                     UseableContainer.GetComponent<UseableContainerUI>().AddItem(newItemData);
+
+                    ShowReminder(newItemData.name, "Item Added");
                     break;
                 }
             }
         }
     }
+
+
+    public void ShowReminder(string title, string type)
+    {
+        ReminderName.text = title;
+        ReminderType.text = type;
+
+        timer = 420;
+        t = 0f;
+        
+    }
+
+    
 }
 
 
