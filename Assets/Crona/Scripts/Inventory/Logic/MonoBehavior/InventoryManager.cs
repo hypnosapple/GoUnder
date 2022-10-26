@@ -15,15 +15,18 @@ public class InventoryManager : MonoBehaviour
     public GameObject FileContainer;
     public GameObject UseableContainer;
 
+    public GameObject PopupPanel;
     public Image ReminderInfo;
     public Text ReminderName;
     public Text ReminderType;
     public int timer = 0;
     public float t = 1f;
+    public float posT = 1f;
 
 
     void Update()
     {
+        
         if (timer > 0)
         {
             timer--;
@@ -31,6 +34,17 @@ public class InventoryManager : MonoBehaviour
 
         if (timer > 60)
         {
+            if (posT < 1f)
+            {
+                PopupPanel.GetComponent<RectTransform>().position = Vector3.Lerp(new Vector3(2300, 520, 0), new Vector3(1920, 520, 0), posT);
+
+                posT += 4 * Time.deltaTime;
+            }
+            else
+            {
+                PopupPanel.GetComponent<RectTransform>().position = new Vector3(1920, 520, 0);
+            }
+            
             
             if (t < 1f)
             {
@@ -38,7 +52,7 @@ public class InventoryManager : MonoBehaviour
                 ReminderName.color = Color.Lerp(new Color(ReminderName.color.r, ReminderName.color.g, ReminderName.color.b, 0f), new Color(ReminderName.color.r, ReminderName.color.g, ReminderName.color.b, 1f), t);
                 ReminderType.color = Color.Lerp(new Color(ReminderType.color.r, ReminderType.color.g, ReminderType.color.b, 0f), new Color(ReminderType.color.r, ReminderType.color.g, ReminderType.color.b, 1f), t);
 
-                t += Time.deltaTime;
+                t += 3f * Time.deltaTime;
             }
             else
             {
@@ -51,6 +65,7 @@ public class InventoryManager : MonoBehaviour
         else if (timer == 60)
         {
             t = 0f;
+            posT = 0f;
         }
 
         else if (timer < 60)
@@ -62,13 +77,24 @@ public class InventoryManager : MonoBehaviour
                 ReminderName.color = Color.Lerp(new Color(ReminderName.color.r, ReminderName.color.g, ReminderName.color.b, 1f), new Color(ReminderName.color.r, ReminderName.color.g, ReminderName.color.b, 0f), t);
                 ReminderType.color = Color.Lerp(new Color(ReminderType.color.r, ReminderType.color.g, ReminderType.color.b, 1f), new Color(ReminderType.color.r, ReminderType.color.g, ReminderType.color.b, 0f), t);
 
-                t += Time.deltaTime;
+                t += 4f * Time.deltaTime;
             }
             else
             {
                 ReminderInfo.color = new Color(ReminderInfo.color.r, ReminderInfo.color.g, ReminderInfo.color.b, 0f);
                 ReminderName.color = new Color(ReminderName.color.r, ReminderName.color.g, ReminderName.color.b, 0f);
                 ReminderType.color = new Color(ReminderType.color.r, ReminderType.color.g, ReminderType.color.b, 0f);
+            }
+
+            if (posT < 1f)
+            {
+                PopupPanel.GetComponent<RectTransform>().position = Vector3.Lerp(new Vector3(1920, 520, 0), new Vector3(2300, 520, 0), posT);
+
+                posT += 4 * Time.deltaTime;
+            }
+            else
+            {
+                PopupPanel.GetComponent<RectTransform>().position = new Vector3(2300, 520, 0);
             }
         }
     }
@@ -130,6 +156,7 @@ public class InventoryManager : MonoBehaviour
 
         timer = 420;
         t = 0f;
+        posT = 0f;
         
     }
 
