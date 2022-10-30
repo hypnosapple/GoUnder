@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e4fe45af87b2439fa007964c962a5b7, type: 3}
+  m_Name: Mail Naomi1
+  m_EditorClassIdentifier: 
+  PersonName: Naomi
+  EmailTitle: People Missing
+  EmailAddress: naomiC4071@uma.com
+  EmailContent: "Good morning Atlas, \r\n\r\nRemember the person called TED PARKER
+    that we were investigating for the last two months? We developed an Information
+    System for all your investigators to use in order to check more detailed information
+    to help improve your process of investigation. Currently, we have uploaded as
+    much missing people\u2019s information as we could, and we will keep uploading
+    when new cases come up. \r\n\r\nWe want you to have a try on the Information
+    System and get detailed information about TED PARKER. Plus, remember the new
+    Missing People Files I shipped to you several days ago? They contained all the
+    information you need to enter for the Information System. Don\u2019t forget to
+    read them carefully. Some information on the file might not be fully updated,
+    which you need to interpret by yourself. \r\n\r\nGood luck,\r\nNoami Clark \r\n"
+  IconColor: {r: 1, g: 1, b: 1, a: 1}
+  IconSprite: {fileID: 0}
