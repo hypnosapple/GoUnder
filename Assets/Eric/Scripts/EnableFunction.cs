@@ -11,6 +11,7 @@ public class EnableFunction : MonoBehaviour
     public RawImage Sent, Inbox, Draft;
     public Color Red;
     public GameObject TheOtherIcon;
+    
     public void EnableFunctionMulti()
     {
         ObjectToOpen.SetActive(true);
@@ -28,10 +29,40 @@ public class EnableFunction : MonoBehaviour
         this.GetComponent<RawImage>().color = Red;
     }
 
-    public void TurnMeRed()
+    public void TurnMeRed(bool temp)
     {
-        this.GetComponent<RawImage>().color = Red;
-        TheOtherIcon.GetComponent<RawImage>().color = Color.white;
+        if (temp)
+        {
+            this.GetComponent<RawImage>().color = Red;
+            TheOtherIcon.GetComponent<RawImage>().color = Color.white;
+        }
+        else
+        {
+            this.GetComponent<RawImage>().color = Color.white;
+        }
+    }
+
+    public void MailAndInfoButton()
+    {
+        bool temp = ObjectToOpen.activeSelf;
+        ObjectToOpen.SetActive(!temp);
+        TurnMeRed(!temp);
+        if (TheOtherIcon.GetComponent<EnableFunction>().ObjectToOpen.activeSelf)
+        {
+            TheOtherIcon.GetComponent<EnableFunction>().TurnMeOff();
+        }
+    }
+
+    public void TurnMeWhite()
+    {
+            this.GetComponent<RawImage>().color = Color.white;
+    }
+
+    public void TurnMeOff()
+    {
+        bool temp = ObjectToOpen.activeSelf;
+        ObjectToOpen.SetActive(!temp);
+        TurnMeRed(!temp);
     }
 
 }

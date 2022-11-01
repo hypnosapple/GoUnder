@@ -6,27 +6,57 @@ using UnityEngine.UI;
 public class StartDataBase : MonoBehaviour
 {
     public Text TextToCheck1, TextToCheck2, TextToCheck3, TextToCheck4;
-    public string TextAnswer1, TextAnswer2, TextAnswer3, TextAnswer4;
+    public string FirstAnswer1, FirstAnswer2, FirstAnswer3, FirstAnswer4;
+    public string SecondAnswer1, SecondAnswer2, SecondAnswer3, SecondAnswer4;
     public GameObject nextPage, wrongPage;
-    public GameObject LoadingBar;
+    public GameObject LoadingBar, InfoNotUpdate, NewMail;
+    public int AnswerStage;
+
+    public MailSystem InboxMail;
     public void StartButton(GameObject nextPage)
     {
-        if (TextToCheck1.text == TextAnswer1 &&
-            TextToCheck2.text == TextAnswer2 &&
-            TextToCheck3.text == TextAnswer3 &&
-            TextToCheck4.text == TextAnswer4)
+        if (AnswerStage == 0)
         {
-            //nextPage.SetActive(true);
-            LoadingBar.SetActive(true);
+            if (TextToCheck1.text == FirstAnswer1 &&
+TextToCheck2.text == FirstAnswer2 &&
+TextToCheck3.text == FirstAnswer3 &&
+TextToCheck4.text == FirstAnswer4)
+            {
+                AnswerStage++;
+                FirstAnswerCorrect();
+            }
+            else
+            {
+                wrongPage.SetActive(true);
+            }
         }
-        else
+        else if (AnswerStage == 1)
         {
-            wrongPage.SetActive(true);
+            if (TextToCheck1.text == SecondAnswer1 &&
+    TextToCheck2.text == SecondAnswer2 &&
+    TextToCheck3.text == SecondAnswer3 &&
+    TextToCheck4.text == SecondAnswer4)
+            {
+                //nextPage.SetActive(true);
+                LoadingBar.SetActive(true);
+            }
+            else
+            {
+                wrongPage.SetActive(true);
+            }
         }
-
     }
 
     public void EnableLoadingBar()
     {
+    }
+
+    public void FirstAnswerCorrect()
+    {
+        InfoNotUpdate.SetActive(true);
+        //set active the ui
+        NewMail.SetActive(true);
+        //add new mail
+        InboxMail.AddNewMail();
     }
 }

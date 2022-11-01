@@ -10,15 +10,19 @@ public class MailSystem : MonoBehaviour
     public GameObject PrefabEmailMiddle, PrefabEmailRight;
     public GameObject ScrollContent;
 
+    public MailObject newMail1, newMail2;
+
     public MailObject[] InBoxMails;
 
     private void Awake()
     {
         for (int i = 0; i < InBoxMails.Length; i++)
         {
+            if(InBoxMails[i] != null)
             AddAnotherMailAtTheEnd(InBoxMails[i]);
         }
         Invoke("SetupTheFormate", 0.01f);
+        this.transform.parent.gameObject.SetActive(false);
     }
     private void Start()
     {
@@ -65,6 +69,7 @@ public class MailSystem : MonoBehaviour
         tempMail.GetComponent<EmailOpen>().MyEmailContent = tempMailContent;
         tempMail.GetComponent<EmailOpen>().EmailContentParent = RightColumnParent;
         //tempMailContent.SetActive(false);
+        Debug.Log(newMail.PersonName);
     }
 
     public void SetAllMailToRightSize()
@@ -78,5 +83,19 @@ public class MailSystem : MonoBehaviour
                 transform.GetChild(0).GetChild(0).GetChild(4).GetComponent<RectTransform>().rect.height + 95;
             RightColumnParent.transform.GetChild(i).transform.GetChild(0).GetChild(0).GetComponent<RectTransform>().sizeDelta = new Vector2(355, tempHeight);
         }
+    }
+
+    public void AddNewMail()
+    {
+        //for (int i = 0; i < MidColumnParent.transform.childCount; i++)
+        //{
+        //    Destroy(MidColumnParent.transform.GetChild(0).gameObject);
+        //}
+
+        InBoxMails[1] = newMail1;
+        InBoxMails[2] = newMail2;
+        AddAnotherMailAtTheEnd(InBoxMails[1]);
+        AddAnotherMailAtTheEnd(InBoxMails[2]);
+        Invoke("SetupTheFormate", 0.01f);
     }
 }
