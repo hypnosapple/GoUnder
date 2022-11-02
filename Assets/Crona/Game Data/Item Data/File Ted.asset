@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca2c350add0de446fbe4ee3bd2f91b5a, type: 3}
+  m_Name: File Ted
+  m_EditorClassIdentifier: 
+  itemType: 1
+  itemName: Missing People
+  itemIcon: {fileID: 21300000, guid: 1593e94f810dbb44a8d8f901fb58180e, type: 3}
+  description: "MISSING PEOPLE FILE\n\n-INFORMATION\nName: Ted Parker\n\rBirth date:
+    June 18, 2395\n\rFamily: Rachel Parker\n\rJob: Commander, UMA Department of F 
+    \n\rCurrent Address: \r2 NorthWest 6 Area, Twilight Marine, UMA \nStatus: Single\n\rMental
+    Health: Normal\n\rMissing Date: January 10 2423\n\rMissing Location: Laton Island\r\n\n-DESCRIPTION\nOriginally
+    from United States in the Earth era. Shawn is the captain of the Department of
+    Fishing, in charged of the supply chain of sea related products. On the date
+    of May 07, Shawn traveled to area 7 with Alenky, Jessica and Matt. Three days
+    later, Shawn continuted sailing to South with Alenky. According to the statement
+    of the last witness, there were three islands near the location of where Shawn
+    last appeared. \n      \n\nDirector\u2019s Signature:\t\t\t\t\tDocument Signed
+    Date:\n\nNaomi Clark\t\t\t\t\t\t\t\t\tMarch.09.2424\n"
+  modelPrefab: {fileID: 0}
