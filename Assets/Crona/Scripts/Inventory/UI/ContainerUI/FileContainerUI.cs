@@ -13,6 +13,7 @@ public class FileContainerUI : MonoBehaviour
     public Image picture = null;
     public Text descriptionContent = null;
     public GameObject descriptionPanel;
+    public GameObject scrollBar;
 
     public GameObject AtlasCon;
     public GameObject UseableCon;
@@ -27,6 +28,7 @@ public class FileContainerUI : MonoBehaviour
         newFileItem.GetComponent<FileItemUI>().picture = picture;
         newFileItem.GetComponent<FileItemUI>().descriptionContent = descriptionContent;
         newFileItem.GetComponent<FileItemUI>().descriptionPanel = descriptionPanel;
+        newFileItem.GetComponent<FileItemUI>().scrollBar = scrollBar;
         newFileItem.GetComponent<FileItemUI>().InfoPanel = InfoPanel;
 
         newFileItem.GetComponent<FileItemUI>().AtlasCon = AtlasCon;

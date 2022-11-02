@@ -11,6 +11,7 @@ public class AtlasItemUI : MonoBehaviour
 
     public GameObject descriptionPanel;
     public GameObject InfoPanel;
+    public GameObject scrollBar;
 
     public ItemData_SO itemData;
 
@@ -34,6 +35,7 @@ public class AtlasItemUI : MonoBehaviour
                 {
                     descriptionPanel.SetActive(true);
                     descriptionContent.text = itemData.description;
+                    scrollBar.GetComponent<Scrollbar>().value = 1;
                 }
             }
         }

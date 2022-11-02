@@ -9,6 +9,7 @@ public class UseableItemUI : MonoBehaviour
     public Text descriptionContent = null;
     public GameObject InfoPanel;
     public GameObject descriptionPanel;
+    public GameObject scrollBar;
     public Transform itemModel;
     public GameObject item3DViewer;
 
@@ -34,6 +35,7 @@ public class UseableItemUI : MonoBehaviour
                 {
                     descriptionPanel.SetActive(true);
                     descriptionContent.text = itemData.description;
+                    scrollBar.GetComponent<Scrollbar>().value = 1;
                 }
             }
         }

@@ -20,8 +20,8 @@ public class InventoryManager : MonoBehaviour
     public Text ReminderName;
     public Text ReminderType;
     public int timer = 0;
-    public float t = 1f;
-    public float posT = 1f;
+    private float t = 1f;
+    private float posT = 1f;
 
 
     void Update()
@@ -154,7 +154,7 @@ public class InventoryManager : MonoBehaviour
         ReminderName.text = title;
         ReminderType.text = type;
 
-        timer = 420;
+        timer = 540;
         t = 0f;
         posT = 0f;
         

@@ -13,6 +13,7 @@ public class AtlasContainerUI : MonoBehaviour
     public Image picture = null;
     public Text descriptionContent = null;
     public GameObject descriptionPanel;
+    public GameObject scrollBar;
 
     public GameObject FileCon;
     public GameObject UseableCon;
@@ -27,6 +28,7 @@ public class AtlasContainerUI : MonoBehaviour
         newAtlasItem.GetComponent<AtlasItemUI>().picture = picture;
         newAtlasItem.GetComponent<AtlasItemUI>().descriptionContent = descriptionContent;
         newAtlasItem.GetComponent<AtlasItemUI>().descriptionPanel = descriptionPanel;
+        newAtlasItem.GetComponent<AtlasItemUI>().scrollBar = scrollBar;
         newAtlasItem.GetComponent<AtlasItemUI>().InfoPanel = InfoPanel;
 
         newAtlasItem.GetComponent<AtlasItemUI>().AtlasCon = this.gameObject;
