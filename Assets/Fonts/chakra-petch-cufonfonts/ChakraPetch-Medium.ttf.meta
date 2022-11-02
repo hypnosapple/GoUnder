@@ -10,7 +10,8 @@ TrueTypeFontImporter:
   includeFontData: 1
   fontNames:
   - Chakra Petch Medium
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: dbb168bc51cd740688ccc7a38c92f769, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
