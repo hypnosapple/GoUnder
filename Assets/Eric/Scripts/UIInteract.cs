@@ -17,7 +17,7 @@ public class UIInteract : MonoBehaviour
     public GameObject Crosshair;
     public bool FocusOnScreen = false;
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         if(other.GetComponent<PlayerMovement>() != null)
         {
@@ -33,15 +33,29 @@ public class UIInteract : MonoBehaviour
             UseECanvas.SetActive(false);
             IsInside = false;
         }
+    }*/
+
+    private void Update()
+    {
+        if (FocusOnScreen && Input.GetKey(KeyCode.Escape))
+        {
+            //Alexis added
+            FocusOnScreen = false;
+            Cursor.visible = false;
+            //eric added
+            if (IsInPos == 2)
+            {
+                StartCoroutine(LerpingPlayerBackToMain(MainCam.transform.position, MainCam.transform.rotation, 1f, ComputerCamera.transform));
+            }
+        }
     }
 
-    private void OnTriggerStay(Collider other)
+    public void ToComputer()
     {
-        if (!IsInside)
-            return;
+        /*if (!IsInside)
+            return;*/
 
-        if (Input.GetKey(KeyCode.E))
-        {
+        
             //Debug.Log("I am pressed");
             //Alexis added
             FocusOnScreen = true;
@@ -57,19 +71,9 @@ public class UIInteract : MonoBehaviour
                 ComputerCamera.enabled = true;
                 StartCoroutine(LerpingPlayerToComputerPos(ComputerUsingPosition.position, ComputerUsingPosition.rotation, 1f, ComputerCamera.transform));
             }
-        }
+        
 
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            //Alexis added
-            FocusOnScreen = false;
-            Cursor.visible = false;
-            //eric added
-            if (IsInPos == 2)
-            {
-                StartCoroutine(LerpingPlayerBackToMain(MainCam.transform.position, MainCam.transform.rotation, 1f, ComputerCamera.transform));
-            }
-        }
+        
     }
 
     IEnumerator LerpingPlayerToComputerPos(Vector3 targetPosition, Quaternion targetRotation, float duration, Transform Transformee)
@@ -149,7 +153,7 @@ public class UIInteract : MonoBehaviour
         //targetTransform.gameObject.SetActive(false);
         Debug.Log("I am free");
         IsInPos = 0;
-        UseECanvas.SetActive(true);
+        //UseECanvas.SetActive(true);
         MainCam.enabled = true;
         ComputerCamera.enabled = false;
         Crosshair.SetActive(true);

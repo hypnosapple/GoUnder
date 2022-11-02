@@ -5,7 +5,10 @@ using UnityEngine;
 public class PlayerPickup : MonoBehaviour
 {
     public float pickupRange;
+    public float screenRange;
     int pickupLayerMask;
+    int screen1LayerMask;
+    int screen2LayerMask;
 
     public GameObject onTarget;
 
@@ -19,6 +22,8 @@ public class PlayerPickup : MonoBehaviour
     void Start()
     {
         pickupLayerMask = LayerMask.GetMask("Pickup");
+        screen1LayerMask = LayerMask.GetMask("Screen1");
+        screen2LayerMask = LayerMask.GetMask("Screen2");
     }
 
     void Update()
@@ -38,6 +43,33 @@ public class PlayerPickup : MonoBehaviour
                 hit.transform.gameObject.GetComponent<ItemPickup>().Pickup();
             }
         }
+
+        else if (Physics.Raycast(ray, out hit, screenRange, screen1LayerMask))
+        {
+            if (!onTarget.activeInHierarchy)
+            {
+                onTarget.SetActive(true);
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                hit.transform.gameObject.GetComponent<UIInteract>().ToComputer();
+            }
+        }
+
+        else if (Physics.Raycast(ray, out hit, screenRange, screen2LayerMask))
+        {
+            if (!onTarget.activeInHierarchy)
+            {
+                onTarget.SetActive(true);
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                hit.transform.gameObject.GetComponent<CommunicationInteract>().ToScreen();
+            }
+        }
+
         else
         {
             if (onTarget.activeInHierarchy)

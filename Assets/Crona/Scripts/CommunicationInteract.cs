@@ -20,6 +20,7 @@ public class CommunicationInteract : MonoBehaviour
     public GameObject sendButton;
     public GameObject Crosshair;
 
+    /*
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<PlayerMovement>() != null)
@@ -37,14 +38,32 @@ public class CommunicationInteract : MonoBehaviour
             IsInside = false;
         }
     }
+    */
 
-    private void OnTriggerStay(Collider other)
+    private void Update()
     {
+        if (FocusOnScreen && Input.GetKey(KeyCode.Escape))
+        {
+            FocusOnScreen = false;
+            Cursor.visible = false;
+            if (IsInPos == 2)
+            {
+                CommunicationCode.interactable = false;
+                IslandCode.interactable = false;
+                Debug.Log("InputField deactivated");
+                StartCoroutine(LerpingPlayerBackToMain(MainCam.transform.position, MainCam.transform.rotation, 1f, ComputerCamera.transform));
+                IslandCode.DeactivateInputField();
+            }
+        }
+    }
+
+    public void ToScreen()
+    {
+        /*
         if (!IsInside)
             return;
+        */
 
-        if (Input.GetKey(KeyCode.E))
-        {
             FocusOnScreen = true;
             Cursor.visible = true;
             CommunicationCode.interactable = true;
@@ -61,20 +80,8 @@ public class CommunicationInteract : MonoBehaviour
                 StartCoroutine(LerpingPlayerToComputerPos(ComputerUsingPosition.position, ComputerUsingPosition.rotation, 1f, ComputerCamera.transform));
                 IslandCode.ActivateInputField();
             }
-        }
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            FocusOnScreen = false;
-            Cursor.visible = false;
-            if (IsInPos == 2)
-            {
-                CommunicationCode.interactable = false;
-                IslandCode.interactable = false;
-                Debug.Log("InputField deactivated");
-                StartCoroutine(LerpingPlayerBackToMain(MainCam.transform.position, MainCam.transform.rotation, 1f, ComputerCamera.transform));
-                IslandCode.DeactivateInputField();
-            }
-        }
+        
+        
     }
 
     IEnumerator LerpingPlayerToComputerPos(Vector3 targetPosition, Quaternion targetRotation, float duration, Transform Transformee)
@@ -119,7 +126,7 @@ public class CommunicationInteract : MonoBehaviour
         Transformee.rotation = targetRotation;
 
         IsInPos = 0;
-        UseECanvas.SetActive(true);
+        //UseECanvas.SetActive(true);
         Crosshair.SetActive(true);
         MainCam.enabled = true;
         EricScreen.SetActive(true);
