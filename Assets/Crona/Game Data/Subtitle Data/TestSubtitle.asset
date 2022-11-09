@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55190e3b979d47518fd7aabf9a89f92, type: 3}
   m_Name: TestSubtitle
   m_EditorClassIdentifier: 
-  content: []
-  visibleTime: []
+  content:
+  - abcabcabc
+  - defdef
+  visibleTime:
+  - 12
+  - 6
