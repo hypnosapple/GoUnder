@@ -20,6 +20,10 @@ public class CommunicationInteract : MonoBehaviour
     public GameObject sendButton;
     public GameObject Crosshair;
 
+    public bool pauseMenuEnable = true;
+    public PauseMenu pauseMenu;
+
+    public UIInteract computerSystem;
     /*
     private void OnTriggerEnter(Collider other)
     {
@@ -44,6 +48,8 @@ public class CommunicationInteract : MonoBehaviour
     {
         if (FocusOnScreen && Input.GetKey(KeyCode.Escape))
         {
+            pauseMenuEnable = false;
+            EnablePauseMenu();
             FocusOnScreen = false;
             Cursor.visible = false;
             if (IsInPos == 2)
@@ -55,6 +61,23 @@ public class CommunicationInteract : MonoBehaviour
                 IslandCode.DeactivateInputField();
             }
         }
+        if (pauseMenuEnable && computerSystem.pauseMenuEnable && Input.GetKey(KeyCode.Escape))
+        {
+            pauseMenu.Pause();
+        }
+    }
+
+    public void EnablePauseMenu()
+    {
+        Invoke("EnablePauseAfter", 2f);
+    }
+
+    public void EnablePauseAfter()
+    {
+        if (!pauseMenuEnable)
+        {
+            pauseMenuEnable = true;
+        }
     }
 
     public void ToScreen()
@@ -63,7 +86,6 @@ public class CommunicationInteract : MonoBehaviour
         if (!IsInside)
             return;
         */
-
             FocusOnScreen = true;
             Cursor.visible = true;
             CommunicationCode.interactable = true;

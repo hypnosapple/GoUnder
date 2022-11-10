@@ -17,6 +17,11 @@ public class UIInteract : MonoBehaviour
     public GameObject Crosshair;
     public bool FocusOnScreen = false;
 
+    //Alexis added
+    public bool pauseMenuEnable = true;
+    public PauseMenu pauseMenu;
+    public CommunicationInteract communicationSystem;
+
     /*private void OnTriggerEnter(Collider other)
     {
         if(other.GetComponent<PlayerMovement>() != null)
@@ -40,6 +45,8 @@ public class UIInteract : MonoBehaviour
         if (FocusOnScreen && Input.GetKey(KeyCode.Escape))
         {
             //Alexis added
+            pauseMenuEnable = false;
+            EnablePauseMenu();
             FocusOnScreen = false;
             Cursor.visible = false;
             //eric added
@@ -47,6 +54,26 @@ public class UIInteract : MonoBehaviour
             {
                 StartCoroutine(LerpingPlayerBackToMain(MainCam.transform.position, MainCam.transform.rotation, 1f, ComputerCamera.transform));
             }
+        }
+        //Alexis added
+        if (pauseMenuEnable && communicationSystem.pauseMenuEnable && Input.GetKey(KeyCode.Escape))
+        {
+            pauseMenu.Pause();
+        }
+    }
+
+    //Alexis added
+    public void EnablePauseMenu()
+    {
+        Invoke("EnablePauseAfter", 2f);
+    }
+
+    //Alexis added
+    public void EnablePauseAfter()
+    {
+        if (!pauseMenuEnable)
+        {
+            pauseMenuEnable = true;
         }
     }
 

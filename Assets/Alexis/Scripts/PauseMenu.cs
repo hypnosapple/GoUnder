@@ -40,18 +40,8 @@ public class PauseMenu : MonoBehaviour
         btnControl.SetActive(false);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Pause();
-        }
-    }
-
-
     public void Pause()
     {
-        pauseMenu.SetActive(true);
         pauseMenu.SetActive(true);
         btnSettings.SetActive(true);
         btnSaveGame.SetActive(true);
