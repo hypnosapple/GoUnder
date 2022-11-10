@@ -5,39 +5,59 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
+    public bool GameIsPaused = false;
+
+    public UIInteract inventorySystem;
+    public CommunicationInteract communicationSystem;
+
     public GameObject pauseMenu;
     public GameObject settingsControl;
     public GameObject settingsSound;
+    public GameObject settingsDisplay;
     public GameObject saveGame;
-    public GameObject continuePanel;
+    public GameObject gameSaved;
+    public GameObject gameCannot;
     public GameObject viewControl;
-    public GameObject mainMenu;
 
     GameObject btnSettings;
     GameObject btnSaveGame;
-    GameObject btnContinue;
     GameObject btnViewControl;
     GameObject btnMainMenu;
     GameObject btnSound;
     GameObject btnControl;
+    GameObject btnDisplay;
 
     private void Start()
     {
         btnSettings = transform.Find("btn_settings").gameObject;
         btnSaveGame = transform.Find("btn_saveGame").gameObject;
-        btnContinue = transform.Find("btn_continue").gameObject;
         btnViewControl = transform.Find("btn_viewControl").gameObject;
         btnMainMenu = transform.Find("btn_mainMenu").gameObject;
         btnSound = transform.Find("btn_sound").gameObject;
         btnControl = transform.Find("btn_control").gameObject;
-        pauseMenu.SetActive(false);
+        btnDisplay = transform.Find("btn_display").gameObject;
         btnSettings.SetActive(false);
         btnSaveGame.SetActive(false);
-        btnContinue.SetActive(false);
         btnViewControl.SetActive(false);
         btnMainMenu.SetActive(false);
         btnSound.SetActive(false);
         btnControl.SetActive(false);
+        btnDisplay.SetActive(false);
+    }
+
+    void Update()
+    {
+        if (communicationSystem.pauseMenuEnable && inventorySystem.pauseMenuEnable && Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (GameIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
     }
 
     public void Pause()
@@ -45,10 +65,10 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(true);
         btnSettings.SetActive(true);
         btnSaveGame.SetActive(true);
-        btnContinue.SetActive(true);
         btnViewControl.SetActive(true);
         btnMainMenu.SetActive(true);
         Time.timeScale = 0f;
+        GameIsPaused = true;
     }
 
     public void openSettingsControl()
@@ -56,12 +76,14 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         settingsControl.SetActive(true);
         settingsSound.SetActive(false);
+        settingsDisplay.SetActive(false);
         saveGame.SetActive(false);
-        continuePanel.SetActive(false);
+        gameSaved.SetActive(false);
+        gameCannot.SetActive(false);
         viewControl.SetActive(false);
-        mainMenu.SetActive(false);
         btnSound.SetActive(true);
         btnControl.SetActive(true);
+        btnDisplay.SetActive(true);
     }
 
     public void openSettingSound()
@@ -69,40 +91,94 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         settingsControl.SetActive(false);
         settingsSound.SetActive(true);
+        settingsDisplay.SetActive(false);
         saveGame.SetActive(false);
-        continuePanel.SetActive(false);
+        gameSaved.SetActive(false);
+        gameCannot.SetActive(false);
         viewControl.SetActive(false);
-        mainMenu.SetActive(false);
         btnSound.SetActive(true);
         btnControl.SetActive(true);
+        btnDisplay.SetActive(true);
     }
 
+    public void openDisplay()
+    {
+        pauseMenu.SetActive(false);
+        settingsControl.SetActive(false);
+        settingsSound.SetActive(false);
+        settingsDisplay.SetActive(true);
+        saveGame.SetActive(false);
+        gameSaved.SetActive(false);
+        gameCannot.SetActive(false);
+        viewControl.SetActive(false);
+        btnSound.SetActive(true);
+        btnControl.SetActive(true);
+        btnDisplay.SetActive(true);
+    }
     public void openSaveGame()
     {
         pauseMenu.SetActive(false);
         settingsControl.SetActive(false);
         settingsSound.SetActive(false);
+        settingsDisplay.SetActive(true);
         saveGame.SetActive(true);
-        continuePanel.SetActive(false);
+        gameSaved.SetActive(false);
+        gameCannot.SetActive(false);
         viewControl.SetActive(false);
-        mainMenu.SetActive(false);
         btnSound.SetActive(false);
         btnControl.SetActive(false);
+        btnDisplay.SetActive(false);
     }
 
+    public void openSavedGame()
+    {
+        pauseMenu.SetActive(false);
+        settingsControl.SetActive(false);
+        settingsSound.SetActive(false);
+        settingsDisplay.SetActive(false);
+        saveGame.SetActive(false);
+        gameSaved.SetActive(true);
+        gameCannot.SetActive(false);
+        viewControl.SetActive(false);
+        btnSound.SetActive(true);
+        btnControl.SetActive(true);
+        btnDisplay.SetActive(true);
+    }
+
+    public void openCannotSave()
+    {
+        pauseMenu.SetActive(false);
+        settingsControl.SetActive(false);
+        settingsSound.SetActive(false);
+        settingsDisplay.SetActive(false);
+        saveGame.SetActive(false);
+        gameSaved.SetActive(false);
+        gameCannot.SetActive(true);
+        viewControl.SetActive(false);
+        btnSound.SetActive(true);
+        btnControl.SetActive(true);
+        btnDisplay.SetActive(true);
+    }
 
     public void Resume()
     {
         pauseMenu.SetActive(false);
-        continuePanel.SetActive(false);
         settingsControl.SetActive(false);
         settingsSound.SetActive(false);
+        settingsDisplay.SetActive(false);
         saveGame.SetActive(false);
+        gameSaved.SetActive(false);
+        gameCannot.SetActive(false);
         viewControl.SetActive(false);
-        mainMenu.SetActive(false);
+        btnSettings.SetActive(false);
+        btnSaveGame.SetActive(false);
+        btnViewControl.SetActive(false);
+        btnMainMenu.SetActive(false);
         btnSound.SetActive(false);
         btnControl.SetActive(false);
+        btnDisplay.SetActive(false);
         Time.timeScale = 1f;
+        GameIsPaused = false;
     }
 
     public void openViewControl()
@@ -110,12 +186,14 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         settingsControl.SetActive(false);
         settingsSound.SetActive(false);
+        settingsDisplay.SetActive(false);
         saveGame.SetActive(false);
-        continuePanel.SetActive(false);
+        gameSaved.SetActive(false);
+        gameCannot.SetActive(false);
         viewControl.SetActive(true);
-        mainMenu.SetActive(false);
         btnSound.SetActive(false);
         btnControl.SetActive(false);
+        btnDisplay.SetActive(false);
     }
 
     public void openMainMenu()
@@ -123,13 +201,23 @@ public class PauseMenu : MonoBehaviour
         //???
     }
 
-    public void saveGameYes()
+    public void GoBackToPause()
     {
-        Debug.Log("button_yes");
+        pauseMenu.SetActive(true);
+        settingsControl.SetActive(false);
+        settingsSound.SetActive(false);
+        settingsDisplay.SetActive(false);
+        saveGame.SetActive(false);
+        gameSaved.SetActive(false);
+        gameCannot.SetActive(false);
+        viewControl.SetActive(false);
+        btnSound.SetActive(false);
+        btnControl.SetActive(false);
+        btnDisplay.SetActive(false);
+        btnSettings.SetActive(true);
+        btnSaveGame.SetActive(true);
+        btnViewControl.SetActive(true);
+        btnMainMenu.SetActive(true);
     }
 
-    public void saveGameNo()
-    {
-        Debug.Log("button_no");
-    }
 }

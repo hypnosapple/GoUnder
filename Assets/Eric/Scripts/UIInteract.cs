@@ -55,11 +55,6 @@ public class UIInteract : MonoBehaviour
                 StartCoroutine(LerpingPlayerBackToMain(MainCam.transform.position, MainCam.transform.rotation, 1f, ComputerCamera.transform));
             }
         }
-        //Alexis added
-        if (pauseMenuEnable && communicationSystem.pauseMenuEnable && Input.GetKey(KeyCode.Escape))
-        {
-            pauseMenu.Pause();
-        }
     }
 
     //Alexis added

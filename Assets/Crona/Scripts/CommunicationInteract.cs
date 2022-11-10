@@ -61,10 +61,6 @@ public class CommunicationInteract : MonoBehaviour
                 IslandCode.DeactivateInputField();
             }
         }
-        if (pauseMenuEnable && computerSystem.pauseMenuEnable && Input.GetKey(KeyCode.Escape))
-        {
-            pauseMenu.Pause();
-        }
     }
 
     public void EnablePauseMenu()
