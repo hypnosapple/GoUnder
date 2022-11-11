@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Brightness : MonoBehaviour
 {
     public Slider slider;
+    public Light directionalLight;
     private static readonly string FirstPlay = "FirstPlay";
     private static readonly string BrightnessPref = "BrightnessPref";
     private int firstPlayInt;
@@ -21,13 +22,13 @@ public class Brightness : MonoBehaviour
             PlayerPrefs.SetFloat(BrightnessPref, brightnessFloat);
             PlayerPrefs.SetInt(FirstPlay, -1);
             slider.value = brightnessFloat;
-            Screen.brightness = slider.value;
+            directionalLight.intensity = slider.value;
         }
         else
         {
             brightnessFloat = PlayerPrefs.GetFloat(BrightnessPref);
             slider.value = brightnessFloat;
-            Screen.brightness = slider.value;
+            directionalLight.intensity = slider.value;
         }
     }
 
@@ -46,6 +47,6 @@ public class Brightness : MonoBehaviour
 
     public void UpdateBrightness()
     {
-        Screen.brightness = slider.value;
+        directionalLight.intensity = slider.value;
     }
 }
