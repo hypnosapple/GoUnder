@@ -120,7 +120,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         settingsControl.SetActive(false);
         settingsSound.SetActive(false);
-        settingsDisplay.SetActive(true);
+        settingsDisplay.SetActive(false);
         saveGame.SetActive(true);
         gameSaved.SetActive(false);
         gameCannot.SetActive(false);
