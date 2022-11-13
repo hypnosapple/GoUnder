@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class SubtitleManager : MonoBehaviour
 {
@@ -27,7 +28,8 @@ public class SubtitleManager : MonoBehaviour
     {
         if (i < amount)
         {
-            subtitleText.text = currentContent[i];
+            subtitleText.text = "";
+            subtitleText.DOText(currentContent[i], 1f);
             Debug.Log(currentContent[i]);
             yield return new WaitForSeconds(visibleTimeList[i]);
             StartCoroutine(Display(i + 1));
