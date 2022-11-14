@@ -11,12 +11,19 @@ public class SubtitleManager : MonoBehaviour
     public int amount;
 
     public Text subtitleText;
+    public AudioSource playerAudio;
 
     public void ShowSubtitle(SubtitleData_SO subtitleData)
     {
-        currentContent = subtitleData.content;
-        visibleTimeList = subtitleData.visibleTime;
+        currentContent = subtitleData.Contents;
+        visibleTimeList = subtitleData.VisibleTime;
         amount = currentContent.Count;
+
+        if (subtitleData.AudioFile != null)
+        {
+            playerAudio.clip = subtitleData.AudioFile;
+            playerAudio.Play();
+        }
 
         StartCoroutine(Display(0));
 

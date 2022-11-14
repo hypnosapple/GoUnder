@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public UIInteract ComputerSystem;
 
     public SubtitleData_SO testSub;
+    
 
     public Camera mainCam;
 

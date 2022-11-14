@@ -7,7 +7,9 @@ using UnityEngine;
 public class SubtitleData_SO : ScriptableObject
 {
     [TextArea(5, 200)]
-    public List<string> content;
+    public List<string> Contents;
 
-    public List<float> visibleTime;
+    public List<float> VisibleTime;
+
+    public AudioClip AudioFile;
 }
