@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: TestSubtitle
   m_EditorClassIdentifier: 
   content:
-  - abcabcabc
-  - defdef
+  - abcabcabcabcabcabcabcabcabcabcabcabcabcabcabc
+  - defdefdefdefdefdefdefdefdefdefdefdefdefdef
   visibleTime:
   - 6
   - 6
