@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        gameObject.GetComponent<SubtitleManager>().ShowSubtitle(testSub);
+        //gameObject.GetComponent<SubtitleManager>().ShowSubtitle(testSub);
     }
 
     
