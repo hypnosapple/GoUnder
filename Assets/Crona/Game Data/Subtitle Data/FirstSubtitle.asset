@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c55190e3b979d47518fd7aabf9a89f92, type: 3}
+  m_Name: FirstSubtitle
+  m_EditorClassIdentifier: 
+  Contents:
+  - You finally picked up the phone my friend.
+  - "I\u2019ve heard the thing happened to you. I\u2019m sorry for the loss of your
+    family. Same as your wife and daughter, more and more people were reported missing
+    on the sea for unknown reasons.\n"
+  - We really need your help at this point, Atlas.
+  - "Remember the case of a missing person called Ted? UMA recently found Ted\u2019s
+    disappearance might be related to your family\u2019s and other people\u2019s
+    as well. People from UMA are developing some new systems which can help you investigators
+    with inquiries."
+  - You should check your email for updated information. Everything related will
+    be there.
+  - To be honest, we know everything is hard at this point. People are panicking
+    due to more people missing and never being found. Our investigation might be
+    the last hope. Let me know if you got anything. See you.
+  VisibleTime:
+  - 5
+  - 10
+  - 5
+  - 10
+  - 5
+  - 10
+  AudioFile: {fileID: 0}

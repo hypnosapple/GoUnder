@@ -10,14 +10,14 @@ public class GameManager : MonoBehaviour
     public CommunicationInteract CommunicationSystem;
     public UIInteract ComputerSystem;
 
-    public SubtitleData_SO testSub;
+    public SubtitleData_SO firstSub;
     
 
     public Camera mainCam;
 
     void Start()
     {
-        //gameObject.GetComponent<SubtitleManager>().ShowSubtitle(testSub);
+        gameObject.GetComponent<SubtitleManager>().ShowSubtitle(firstSub);
     }
 
     
