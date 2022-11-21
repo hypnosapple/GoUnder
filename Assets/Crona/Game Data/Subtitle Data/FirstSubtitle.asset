@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55190e3b979d47518fd7aabf9a89f92, type: 3}
   m_Name: FirstSubtitle
   m_EditorClassIdentifier: 
+  ClipName: Beginning
   Contents:
   - You finally wake up my friend.
   - "I\u2019ve called you several times this morning but your phone was off. You

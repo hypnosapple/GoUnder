@@ -14,10 +14,16 @@ public class GameManager : MonoBehaviour
     
 
     public Camera mainCam;
+    public GameObject CMStart;
+    public GameObject CMStart2;
+    public GameObject CMStart3;
 
     void Start()
     {
+        player.GetComponent<CharacterController>().enabled = false;
         gameObject.GetComponent<SubtitleManager>().ShowSubtitle(firstSub);
+        //EnableMove();
+        
     }
 
     
@@ -78,5 +84,20 @@ public class GameManager : MonoBehaviour
                 player.GetComponent<PlayerMovement>().enabled = true;
             }
         }
+    }
+
+    public void EnableMove()
+    {
+        player.GetComponent<CharacterController>().enabled = true;
+        StartCoroutine(SwitchCam());
+    }
+
+    IEnumerator SwitchCam()
+    {
+        CMStart.SetActive(false);
+        yield return new WaitForSeconds(6f);
+        CMStart2.SetActive(false);
+        yield return new WaitForSeconds(5f);
+        CMStart3.SetActive(false);
     }
 }

@@ -12,11 +12,14 @@ public class SubtitleManager : MonoBehaviour
 
     public Text subtitleText;
     public AudioSource playerAudio;
+    public string clipName = "";
+
 
     public void ShowSubtitle(SubtitleData_SO subtitleData)
     {
         currentContent = subtitleData.Contents;
         visibleTimeList = subtitleData.VisibleTime;
+        clipName = subtitleData.ClipName;
         amount = currentContent.Count;
 
         if (subtitleData.AudioFile != null)
@@ -37,7 +40,7 @@ public class SubtitleManager : MonoBehaviour
         {
             subtitleText.text = "";
             subtitleText.DOText(currentContent[i], 2f);
-            Debug.Log(currentContent[i]);
+            //Debug.Log(currentContent[i]);
             yield return new WaitForSeconds(visibleTimeList[i]);
             StartCoroutine(Display(i + 1));
         }
@@ -47,6 +50,14 @@ public class SubtitleManager : MonoBehaviour
             currentContent = null;
             visibleTimeList = null;
             amount = 0;
+
+            if (clipName == "Beginning")
+            {
+                gameObject.GetComponent<GameManager>().EnableMove();
+            }
+
+            clipName = "";
+
             yield break;
         }
         
