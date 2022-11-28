@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -17,12 +18,14 @@ public class InventoryManager : MonoBehaviour
 
     public GameObject PopupPanel;
     public Image ReminderInfo;
-    public Text ReminderName;
-    public Text ReminderType;
+    public TMP_Text ReminderName;
+    public TMP_Text ReminderType;
     public int timer = 0;
     private float t = 1f;
     private float posT = 1f;
 
+
+    
 
     void Update()
     {
