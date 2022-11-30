@@ -8,10 +8,18 @@ public class SubtitleData_SO : ScriptableObject
 {
     public string ClipName;
 
+    public bool isPhoneCall;
+
+    public string callerName;
+
+    public Sprite callerSprite;
+
     [TextArea(5, 200)]
     public List<string> Contents;
 
     public List<float> VisibleTime;
 
     public AudioClip AudioFile;
+
+    
 }

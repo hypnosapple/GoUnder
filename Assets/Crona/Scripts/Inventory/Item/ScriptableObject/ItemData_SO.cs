@@ -11,10 +11,12 @@ public class ItemData_SO : ScriptableObject
 
     public string itemName;
 
-    public Sprite itemIcon;
+    public Sprite itemIcon_1100_700;
 
     [TextArea(10, 200)]
     public string description = "";
 
     public Transform modelPrefab;
+
+    
 }

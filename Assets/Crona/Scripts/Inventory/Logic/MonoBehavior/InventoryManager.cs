@@ -29,77 +29,8 @@ public class InventoryManager : MonoBehaviour
 
     void Update()
     {
+        ReminderSlide();
         
-        if (timer > 0)
-        {
-            timer--;
-        }
-
-        if (timer > 60)
-        {
-            if (posT < 1f)
-            {
-                PopupPanel.GetComponent<RectTransform>().position = Vector3.Lerp(new Vector3(2300, 520, 0), new Vector3(1920, 520, 0), posT);
-
-                posT += 4 * Time.deltaTime;
-            }
-            else
-            {
-                PopupPanel.GetComponent<RectTransform>().position = new Vector3(1920, 520, 0);
-            }
-            
-            
-            if (t < 1f)
-            {
-                ReminderInfo.color = Color.Lerp(new Color(ReminderInfo.color.r, ReminderInfo.color.g, ReminderInfo.color.b, 0f), new Color(ReminderInfo.color.r, ReminderInfo.color.g, ReminderInfo.color.b, 1f), t);
-                ReminderName.color = Color.Lerp(new Color(ReminderName.color.r, ReminderName.color.g, ReminderName.color.b, 0f), new Color(ReminderName.color.r, ReminderName.color.g, ReminderName.color.b, 1f), t);
-                ReminderType.color = Color.Lerp(new Color(ReminderType.color.r, ReminderType.color.g, ReminderType.color.b, 0f), new Color(ReminderType.color.r, ReminderType.color.g, ReminderType.color.b, 1f), t);
-
-                t += 3f * Time.deltaTime;
-            }
-            else
-            {
-                ReminderInfo.color = new Color(ReminderInfo.color.r, ReminderInfo.color.g, ReminderInfo.color.b, 1f);
-                ReminderName.color = new Color(ReminderName.color.r, ReminderName.color.g, ReminderName.color.b, 1f);
-                ReminderType.color = new Color(ReminderType.color.r, ReminderType.color.g, ReminderType.color.b, 1f);
-            }
-        }
-
-        else if (timer == 60)
-        {
-            t = 0f;
-            posT = 0f;
-        }
-
-        else if (timer < 60)
-        {
-
-            if (t < 1f)
-            {
-                ReminderInfo.color = Color.Lerp(new Color(ReminderInfo.color.r, ReminderInfo.color.g, ReminderInfo.color.b, 1f), new Color(ReminderInfo.color.r, ReminderInfo.color.g, ReminderInfo.color.b, 0f), t);
-                ReminderName.color = Color.Lerp(new Color(ReminderName.color.r, ReminderName.color.g, ReminderName.color.b, 1f), new Color(ReminderName.color.r, ReminderName.color.g, ReminderName.color.b, 0f), t);
-                ReminderType.color = Color.Lerp(new Color(ReminderType.color.r, ReminderType.color.g, ReminderType.color.b, 1f), new Color(ReminderType.color.r, ReminderType.color.g, ReminderType.color.b, 0f), t);
-
-                t += 4f * Time.deltaTime;
-            }
-            else
-            {
-                ReminderInfo.color = new Color(ReminderInfo.color.r, ReminderInfo.color.g, ReminderInfo.color.b, 0f);
-                ReminderName.color = new Color(ReminderName.color.r, ReminderName.color.g, ReminderName.color.b, 0f);
-                ReminderType.color = new Color(ReminderType.color.r, ReminderType.color.g, ReminderType.color.b, 0f);
-            }
-
-            if (posT < 1f)
-            {
-                PopupPanel.GetComponent<RectTransform>().position = Vector3.Lerp(new Vector3(1920, 520, 0), new Vector3(2300, 520, 0), posT);
-
-                posT += 4 * Time.deltaTime;
-            }
-            else
-            {
-                PopupPanel.GetComponent<RectTransform>().position = new Vector3(2300, 520, 0);
-            }
-        }
     }
 
     public void AddItem(ItemData_SO newItemData)
@@ -161,6 +92,80 @@ public class InventoryManager : MonoBehaviour
         t = 0f;
         posT = 0f;
         
+    }
+
+    public void ReminderSlide()
+    {
+        if (timer > 0)
+        {
+            timer--;
+        }
+
+        if (timer > 60)
+        {
+            if (posT < 1f)
+            {
+                PopupPanel.GetComponent<RectTransform>().position = Vector3.Lerp(new Vector3(2300, 520, 0), new Vector3(1920, 520, 0), posT);
+
+                posT += 4 * Time.deltaTime;
+            }
+            else
+            {
+                PopupPanel.GetComponent<RectTransform>().position = new Vector3(1920, 520, 0);
+            }
+
+
+            if (t < 1f)
+            {
+                ReminderInfo.color = Color.Lerp(new Color(ReminderInfo.color.r, ReminderInfo.color.g, ReminderInfo.color.b, 0f), new Color(ReminderInfo.color.r, ReminderInfo.color.g, ReminderInfo.color.b, 1f), t);
+                ReminderName.color = Color.Lerp(new Color(ReminderName.color.r, ReminderName.color.g, ReminderName.color.b, 0f), new Color(ReminderName.color.r, ReminderName.color.g, ReminderName.color.b, 1f), t);
+                ReminderType.color = Color.Lerp(new Color(ReminderType.color.r, ReminderType.color.g, ReminderType.color.b, 0f), new Color(ReminderType.color.r, ReminderType.color.g, ReminderType.color.b, 1f), t);
+
+                t += 3f * Time.deltaTime;
+            }
+            else
+            {
+                ReminderInfo.color = new Color(ReminderInfo.color.r, ReminderInfo.color.g, ReminderInfo.color.b, 1f);
+                ReminderName.color = new Color(ReminderName.color.r, ReminderName.color.g, ReminderName.color.b, 1f);
+                ReminderType.color = new Color(ReminderType.color.r, ReminderType.color.g, ReminderType.color.b, 1f);
+            }
+        }
+
+        else if (timer == 60)
+        {
+            t = 0f;
+            posT = 0f;
+        }
+
+        else if (timer < 60)
+        {
+
+            if (t < 1f)
+            {
+                ReminderInfo.color = Color.Lerp(new Color(ReminderInfo.color.r, ReminderInfo.color.g, ReminderInfo.color.b, 1f), new Color(ReminderInfo.color.r, ReminderInfo.color.g, ReminderInfo.color.b, 0f), t);
+                ReminderName.color = Color.Lerp(new Color(ReminderName.color.r, ReminderName.color.g, ReminderName.color.b, 1f), new Color(ReminderName.color.r, ReminderName.color.g, ReminderName.color.b, 0f), t);
+                ReminderType.color = Color.Lerp(new Color(ReminderType.color.r, ReminderType.color.g, ReminderType.color.b, 1f), new Color(ReminderType.color.r, ReminderType.color.g, ReminderType.color.b, 0f), t);
+
+                t += 4f * Time.deltaTime;
+            }
+            else
+            {
+                ReminderInfo.color = new Color(ReminderInfo.color.r, ReminderInfo.color.g, ReminderInfo.color.b, 0f);
+                ReminderName.color = new Color(ReminderName.color.r, ReminderName.color.g, ReminderName.color.b, 0f);
+                ReminderType.color = new Color(ReminderType.color.r, ReminderType.color.g, ReminderType.color.b, 0f);
+            }
+
+            if (posT < 1f)
+            {
+                PopupPanel.GetComponent<RectTransform>().position = Vector3.Lerp(new Vector3(1920, 520, 0), new Vector3(2300, 520, 0), posT);
+
+                posT += 4 * Time.deltaTime;
+            }
+            else
+            {
+                PopupPanel.GetComponent<RectTransform>().position = new Vector3(2300, 520, 0);
+            }
+        }
     }
 
     

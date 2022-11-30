@@ -58,7 +58,7 @@ public class FileItemUI : MonoBehaviour
 
         InfoPanel.SetActive(true);
         picture.gameObject.SetActive(true);
-        picture.sprite = itemData.itemIcon;
+        picture.sprite = itemData.itemIcon_1100_700;
         thisItemIsShowing = true;
     }
 
