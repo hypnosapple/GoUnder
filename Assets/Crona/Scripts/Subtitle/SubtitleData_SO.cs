@@ -12,7 +12,7 @@ public class SubtitleData_SO : ScriptableObject
 
     public string callerName;
 
-    public Sprite callerSprite;
+    public Sprite callerSprite_136_177;
 
     [TextArea(5, 200)]
     public List<string> Contents;

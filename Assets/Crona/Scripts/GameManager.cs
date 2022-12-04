@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         player.GetComponent<CharacterController>().enabled = false;
         gameObject.GetComponent<SubtitleManager>().ShowSubtitle(firstSub);
         //EnableMove();
-        StartFadeIn();
+        //StartFadeIn();
     }
 
     
