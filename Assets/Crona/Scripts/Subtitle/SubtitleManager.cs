@@ -136,7 +136,7 @@ public class SubtitleManager : MonoBehaviour
             if (TIn < 1f)
             {
                 inCallPanel.GetComponent<RectTransform>().position = Vector3.Lerp(new Vector3(0, 540, 0), new Vector3(263.5f, 540, 0), TIn);
-                TIn += 2 * Time.deltaTime;
+                TIn += 3 * Time.deltaTime;
             }
             else
             {
