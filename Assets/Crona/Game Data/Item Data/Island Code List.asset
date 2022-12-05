@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   itemName: Island Code List
-  itemIcon: {fileID: 21300000, guid: 43904f8c42434e3419defee9a78f7356, type: 3}
+  itemIcon_1100_700: {fileID: 21300000, guid: 43904f8c42434e3419defee9a78f7356, type: 3}
   description: 'Island Code List
 
 

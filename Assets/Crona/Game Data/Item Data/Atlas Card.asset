@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 0
   itemName: Atlas Card
-  itemIcon: {fileID: 21300000, guid: 400eb4f96ecbd024791d42f7db2c8fa5, type: 3}
+  itemIcon_1100_700: {fileID: 21300000, guid: 400eb4f96ecbd024791d42f7db2c8fa5, type: 3}
   description: 'Atlas Driscoll
 
 

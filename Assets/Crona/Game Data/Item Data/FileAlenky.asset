@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   itemName: Missing People1
-  itemIcon: {fileID: 21300000, guid: b53978052d5a249ed81297a7a342fd70, type: 3}
+  itemIcon_1100_700: {fileID: 21300000, guid: b53978052d5a249ed81297a7a342fd70, type: 3}
   description: "MISSING PEOPLE FILE\n\n-INFORMATION\nName: Alenky Shiro\nBirth date:
     April 29, 2401\nFamily: Ringo Shiro\nJob: Commander, UMA Department of F  \nCurrent
     Address: \n2 NorthWest 6 Area, Twilight Marine, UMA \nStatus: Single\nMental
