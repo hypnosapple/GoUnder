@@ -82,6 +82,54 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    public void AddItemWithoutReminder(ItemData_SO newItemData)
+    {
+        if (newItemData.itemType == ItemType.Atlas)
+        {
+            for (int i = 0; i < AtlasItems.Count; i++)
+            {
+                if (AtlasItems[i].itemData == null)
+                {
+                    AtlasItems[i].itemData = newItemData;
+                    AtlasContainer.GetComponent<AtlasContainerUI>().AddItem(newItemData);
+
+                    
+                    break;
+                }
+            }
+        }
+
+        if (newItemData.itemType == ItemType.File)
+        {
+            for (int i = 0; i < FileItems.Count; i++)
+            {
+                if (FileItems[i].itemData == null)
+                {
+                    FileItems[i].itemData = newItemData;
+                    FileContainer.GetComponent<FileContainerUI>().AddItem(newItemData);
+
+                    
+                    break;
+                }
+            }
+        }
+
+        if (newItemData.itemType == ItemType.Useable)
+        {
+            for (int i = 0; i < UseableItems.Count; i++)
+            {
+                if (UseableItems[i].itemData == null)
+                {
+                    UseableItems[i].itemData = newItemData;
+                    UseableContainer.GetComponent<UseableContainerUI>().AddItem(newItemData);
+
+                    
+                    break;
+                }
+            }
+        }
+    }
+
 
     public void ShowReminder(string title, string type)
     {

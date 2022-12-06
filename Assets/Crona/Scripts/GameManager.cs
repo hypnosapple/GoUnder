@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,7 +14,6 @@ public class GameManager : MonoBehaviour
 
     public SubtitleData_SO firstSub;
     
-
     public Camera mainCam;
     public GameObject CMStart;
     public GameObject CMStart2;
@@ -25,11 +25,30 @@ public class GameManager : MonoBehaviour
     private float fadeOutT = 0f;
     private bool fadeOut = false;
 
+    public string SceneName;
+
+    public List<ItemData_SO> ItemsCollectedFromAbove;
+
 
     void Start()
     {
-        player.GetComponent<CharacterController>().enabled = false;
-        gameObject.GetComponent<SubtitleManager>().ShowSubtitle(firstSub);
+        SceneName = SceneManager.GetActiveScene().name;
+
+        if (SceneName == "MainScene")
+        {
+            player.GetComponent<CharacterController>().enabled = false;
+            gameObject.GetComponent<SubtitleManager>().ShowSubtitle(firstSub);
+        }
+        else if (SceneName == "UnderScene")
+        {
+            for (int i = 0; i < ItemsCollectedFromAbove.Count; i ++)
+            {
+                InventoryCanvas.GetComponentInParent<InventoryManager>().AddItemWithoutReminder(ItemsCollectedFromAbove[i]);
+            }
+            
+        }
+
+        
         //EnableMove();
         //StartFadeIn();
     }
@@ -123,13 +142,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void EnableMove()
+    public void EnableOpeningMove()
     {
         player.GetComponent<CharacterController>().enabled = true;
-        StartCoroutine(SwitchCam());
+        StartCoroutine(SwitchOpeningCam());
     }
 
-    IEnumerator SwitchCam()
+    IEnumerator SwitchOpeningCam()
     {
         CMStart.SetActive(false);
         yield return new WaitForSeconds(6f);

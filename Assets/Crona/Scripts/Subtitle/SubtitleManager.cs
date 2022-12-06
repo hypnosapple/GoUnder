@@ -111,7 +111,7 @@ public class SubtitleManager : MonoBehaviour
 
             if (clipName == "Beginning")
             {
-                gameObject.GetComponent<GameManager>().EnableMove();
+                gameObject.GetComponent<GameManager>().EnableOpeningMove();
             }
 
             if (isPhone)
