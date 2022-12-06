@@ -28,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
     public NoiseSettings walkNoise;
     public NoiseSettings runNoise;
 
+    public bool moveDisabled;
+
 
     void Start()
     {
@@ -75,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
         myController.Move(velocity * Time.deltaTime);
 
         // Camera shake while walking
-        if (horizontal != 0 || vertical != 0)
+        if ((horizontal != 0 || vertical != 0) && !moveDisabled)
         {
             CameraShake(1);
         }

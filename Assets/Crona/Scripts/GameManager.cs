@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class GameManager : MonoBehaviour
 {
@@ -29,6 +30,12 @@ public class GameManager : MonoBehaviour
 
     public List<ItemData_SO> ItemsCollectedFromAbove;
 
+    private float blackT = 0f;
+    public bool GroundLevelEnd;
+    public GameObject blackCube;
+    private bool GroundLevelFadedOut = false;
+
+
 
     void Start()
     {
@@ -45,6 +52,8 @@ public class GameManager : MonoBehaviour
             {
                 InventoryCanvas.GetComponentInParent<InventoryManager>().AddItemWithoutReminder(ItemsCollectedFromAbove[i]);
             }
+
+            StartFadeIn();
             
         }
 
@@ -57,6 +66,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         InventoryVisibility();
+        TransitionToUnderworldInProgress();
 
         if (fadeIn)
         {
@@ -78,12 +88,13 @@ public class GameManager : MonoBehaviour
             if (fadeOutT < 1f)
             {
                 fadeOutT += 0.3f * Time.deltaTime;
-                blackPanel.GetComponent<Image>().color = Color.Lerp(new Color(blackPanel.GetComponent<Image>().color.r, blackPanel.GetComponent<Image>().color.g, blackPanel.GetComponent<Image>().color.b, 0f), new Color(blackPanel.GetComponent<Image>().color.r, blackPanel.GetComponent<Image>().color.g, blackPanel.GetComponent<Image>().color.b, 1f), fadeInT);
+                blackPanel.GetComponent<Image>().color = Color.Lerp(new Color(blackPanel.GetComponent<Image>().color.r, blackPanel.GetComponent<Image>().color.g, blackPanel.GetComponent<Image>().color.b, 0f), new Color(blackPanel.GetComponent<Image>().color.r, blackPanel.GetComponent<Image>().color.g, blackPanel.GetComponent<Image>().color.b, 1f), fadeOutT);
 
             }
             else
             {
                 fadeOut = false;
+                
             }
         }
     }
@@ -177,6 +188,38 @@ public class GameManager : MonoBehaviour
             fadeOutT = 0f;
 
             fadeOut = true;
+        }
+    }
+
+
+    public void TransitionToUnderworld()
+    {
+        player.GetComponent<CharacterController>().enabled = false;
+        player.GetComponent<PlayerMovement>().moveDisabled = true;
+        blackCube.SetActive(true);
+        GroundLevelEnd = true;
+    }
+
+    public void TransitionToUnderworldInProgress()
+    {
+        if (GroundLevelEnd)
+        {
+            if (blackT < 1f)
+            {
+                blackCube.transform.position = Vector3.Lerp(new Vector3(0, -160, 0), new Vector3(0, 0, 0), blackT);
+                blackT += 0.007f * Time.deltaTime;
+            }
+
+            if (blackT > 0.1f && !GroundLevelFadedOut)
+            {
+                StartFadeOut();
+                GroundLevelFadedOut = true;
+            }
+
+            if (blackT > 0.15f)
+            {
+                SceneManager.LoadScene("UnderScene");
+            }
         }
     }
 }

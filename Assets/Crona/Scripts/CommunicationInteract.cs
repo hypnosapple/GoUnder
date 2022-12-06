@@ -28,6 +28,8 @@ public class CommunicationInteract : MonoBehaviour
     public GameObject passwordManager;
     public GameObject gameManager;
     public SubtitleData_SO GLEnd1;
+
+    public GameObject blockUpstairs;
     /*
     private void OnTriggerEnter(Collider other)
     {
@@ -159,6 +161,7 @@ public class CommunicationInteract : MonoBehaviour
         if (passwordManager.GetComponent<CheckInput>().allCorrect)
         {
             gameManager.GetComponent<SubtitleManager>().ShowSubtitle(GLEnd1);
+            blockUpstairs.SetActive(true);
         }
     }
 }

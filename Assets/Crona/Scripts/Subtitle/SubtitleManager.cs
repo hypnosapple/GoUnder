@@ -132,6 +132,11 @@ public class SubtitleManager : MonoBehaviour
                 clipName = "";
                 ShowSubtitle(GLEnd2);
             }
+            else if (clipName == "GLEnd2")
+            {
+                clipName = "";
+                gameObject.GetComponent<GameManager>().TransitionToUnderworld();
+            }
             else
             {
                 clipName = "";
