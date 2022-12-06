@@ -15,6 +15,7 @@ public class CheckInput : MonoBehaviour
     public TMP_InputField CommunicationCode;
     public string correctIsland;
     public string correctCommunication;
+    public bool allCorrect;
 
     public void CheckPassword()
     {
@@ -27,6 +28,7 @@ public class CheckInput : MonoBehaviour
             CommunicationCode.text = string.Empty;
             Open.SetActive(false);
             SignalSending.SetActive(true);
+            allCorrect = true;
         }
         else
         {

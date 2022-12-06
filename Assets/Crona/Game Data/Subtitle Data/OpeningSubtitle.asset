@@ -12,29 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55190e3b979d47518fd7aabf9a89f92, type: 3}
   m_Name: OpeningSubtitle
   m_EditorClassIdentifier: 
-  ClipName: Beginning
+  ClipName: Opening
   isPhoneCall: 1
   callerName: Eric Michaelson
   callerSprite_136_177: {fileID: 21300000, guid: f3fd3b6a62a8a44adb2e64150ebe3c8a, type: 3}
   Contents:
-  - You finally wake up my friend.
-  - "I\u2019ve called you several times this morning but your phone was off. You
-    were doing the research last night right? Just make sure to take some rest friend.I
-    don\u2019t want to see you down."
-  - But anyway. I need your help.
-  - Several days ago, we received a missing person report, Alenky Shiro, one of our
-    commanders. She lives in your area and is fairly close to your place, however,
-    she was missing suddenly while doing a mission in area 7.
-  - I want you to do me a favor. Can you please help us find out the reason for her
-    missing?
-  - "You should check it in your terminal. Everything related will be there. It\u2019s
-    not far away and\u2026to be honest we didn\u2019t expect much to be found. So
-    don\u2019t be nervous."
+  - You finally picked up the phone my friend.
+  - "I\u2019ve heard the thing happened to you. I\u2019m sorry for the loss of your
+    family. Same as your wife and daughter, more and more people were reported missing
+    on the sea for unknown reasons."
+  - We really need your help at this point, Atlas.
+  - "Remember the case of a missing person called Ted? UMA recently found Ted\u2019s
+    disappearance might be related to your family\u2019s and other people\u2019s
+    as well. People from UMA are developing some new systems which can help you investigators
+    with inquiries."
+  - You should check your email for updated information. Everything related will
+    be there.
+  - To be honest, we know everything is hard at this point. People are panicking
+    due to more people missing and never being found. Our investigation might be
+    the last hope. Let me know if you got anything. See you.
   VisibleTime:
   - 2.5
-  - 12
+  - 14
   - 4
-  - 13.5
-  - 6
-  - 12
-  AudioFile: {fileID: 8300000, guid: a8435bf44dce944759c55af62d24eda9, type: 3}
+  - 17.5
+  - 5.5
+  - 16
+  AudioFile: {fileID: 8300000, guid: f09be149b6c1f451ab9eaf1a02bb9a9f, type: 3}

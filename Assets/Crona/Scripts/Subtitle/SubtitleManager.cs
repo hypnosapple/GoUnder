@@ -25,13 +25,15 @@ public class SubtitleManager : MonoBehaviour
 
     public GameObject blackPanel;
 
-    private bool isPhone = false;
+    public bool isPhone = false;
     private bool toBePicked = false;
     private bool isSlidingIn = false;
     private bool isSlidingOut = false;
 
     private float TIn;
     private float TOut;
+
+    public SubtitleData_SO GLEnd2;
 
 
     void Update()
@@ -58,6 +60,7 @@ public class SubtitleManager : MonoBehaviour
         CallSlideIn();
         CallSlideOut();
     }
+
 
     public void ShowSubtitle(SubtitleData_SO subtitleData)
     {
@@ -92,6 +95,7 @@ public class SubtitleManager : MonoBehaviour
 
     }
 
+
     IEnumerator Display(int i)
     {
         if (i < amount)
@@ -109,10 +113,7 @@ public class SubtitleManager : MonoBehaviour
             visibleTimeList = null;
             amount = 0;
 
-            if (clipName == "Beginning")
-            {
-                gameObject.GetComponent<GameManager>().EnableOpeningMove();
-            }
+            
 
             if (isPhone)
             {
@@ -121,7 +122,22 @@ public class SubtitleManager : MonoBehaviour
                 isPhone = false;
             }
 
-            clipName = "";
+            if (clipName == "Opening")
+            {
+                clipName = "";
+                gameObject.GetComponent<GameManager>().EnableOpeningMove();
+            }
+            else if (clipName == "GLEnd1")
+            {
+                clipName = "";
+                ShowSubtitle(GLEnd2);
+            }
+            else
+            {
+                clipName = "";
+            }
+
+            
 
             yield break;
         }

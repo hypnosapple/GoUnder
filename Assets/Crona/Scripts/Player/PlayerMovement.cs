@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform cam;
 
     // Jump and walk speed
-    public float speed = 12f;
+    public float speed;
 
     // Simulate gravity
     private Vector3 velocity;
@@ -25,6 +25,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera vCam;
     private CinemachineBasicMultiChannelPerlin noise;
 
+    public NoiseSettings walkNoise;
+    public NoiseSettings runNoise;
+
+
+    void Start()
+    {
+        noise = vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+    }
 
     void Update()
     {
@@ -34,6 +42,17 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            speed = 25f;
+            noise.m_NoiseProfile = runNoise;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            speed = 15f;
+            noise.m_NoiseProfile = walkNoise;
         }
 
         // Player Input
@@ -69,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void CameraShake(float amplitude)
     {
-        noise = vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        
         noise.m_AmplitudeGain = amplitude;
 
 

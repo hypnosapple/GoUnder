@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c55190e3b979d47518fd7aabf9a89f92, type: 3}
+  m_Name: GroundLevelEnd2
+  m_EditorClassIdentifier: 
+  ClipName: GLEnd2
+  isPhoneCall: 1
+  callerName: Eric Michaelson
+  callerSprite_136_177: {fileID: 21300000, guid: f3fd3b6a62a8a44adb2e64150ebe3c8a, type: 3}
+  Contents:
+  - 
+  VisibleTime:
+  - 18
+  AudioFile: {fileID: 8300000, guid: 50b0149286f644484835daea1b62629e, type: 3}

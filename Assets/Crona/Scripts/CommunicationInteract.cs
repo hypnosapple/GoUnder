@@ -24,6 +24,10 @@ public class CommunicationInteract : MonoBehaviour
     public PauseMenu pauseMenu;
 
     public UIInteract computerSystem;
+
+    public GameObject passwordManager;
+    public GameObject gameManager;
+    public SubtitleData_SO GLEnd1;
     /*
     private void OnTriggerEnter(Collider other)
     {
@@ -151,5 +155,10 @@ public class CommunicationInteract : MonoBehaviour
         ComputerCamera.enabled = false;
         //eric added
         ComputerCamera.transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0));
+
+        if (passwordManager.GetComponent<CheckInput>().allCorrect)
+        {
+            gameManager.GetComponent<SubtitleManager>().ShowSubtitle(GLEnd1);
+        }
     }
 }
