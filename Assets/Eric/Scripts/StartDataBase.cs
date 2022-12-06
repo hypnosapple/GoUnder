@@ -24,6 +24,12 @@ TextToCheck4.text == FirstAnswer4)
             {
                 AnswerStage++;
                 FirstAnswerCorrect();
+                //clear out the answers
+                TextToCheck1.text = "";
+                TextToCheck2.text = "";
+                TextToCheck3.text = "";
+                TextToCheck4.text = "";
+
             }
             else
             {
@@ -39,6 +45,12 @@ TextToCheck4.text == FirstAnswer4)
             {
                 //nextPage.SetActive(true);
                 LoadingBar.SetActive(true);
+                StartCoroutine(NextpageCo());
+                //clear out the answers
+                TextToCheck1.text = "";
+                TextToCheck2.text = "";
+                TextToCheck3.text = "";
+                TextToCheck4.text = "";
             }
             else
             {
@@ -47,9 +59,6 @@ TextToCheck4.text == FirstAnswer4)
         }
     }
 
-    public void EnableLoadingBar()
-    {
-    }
 
     public void FirstAnswerCorrect()
     {
@@ -58,5 +67,11 @@ TextToCheck4.text == FirstAnswer4)
         NewMail.SetActive(true);
         //add new mail
         InboxMail.AddNewMail();
+    }
+
+    IEnumerator NextpageCo()
+    {
+        yield return new WaitForSeconds(2) ;
+        nextPage.SetActive(true);
     }
 }
