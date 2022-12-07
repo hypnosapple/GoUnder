@@ -17,13 +17,10 @@ MonoBehaviour:
   itemIcon_1100_700: {fileID: 21300000, guid: 1593e94f810dbb44a8d8f901fb58180e, type: 3}
   description: "MISSING PEOPLE FILE\n\n-INFORMATION\nName: Ted Parker\n\rBirth date:
     June 18, 2395\n\rFamily: Rachel Parker\n\rJob: Commander, UMA Department of F 
-    \n\rCurrent Address: \r2 NorthWest 6 Area, Twilight Marine, UMA \nStatus: Single\n\rMental
-    Health: Normal\n\rMissing Date: January 10 2423\n\rMissing Location: Laton Island\r\n\n-DESCRIPTION\nOriginally
-    from United States in the Earth era. Shawn is the captain of the Department of
-    Fishing, in charged of the supply chain of sea related products. On the date
-    of May 07, Shawn traveled to area 7 with Alenky, Jessica and Matt. Three days
-    later, Shawn continuted sailing to South with Alenky. According to the statement
-    of the last witness, there were three islands near the location of where Shawn
-    last appeared. \n      \n\nDirector\u2019s Signature:\t\t\t\t\tDocument Signed
-    Date:\n\nNaomi Clark\t\t\t\t\t\t\t\t\tMarch.09.2424\n"
+    \n\rCurrent Address: \r2 NorthWest 6 Area, Twilight Marine, UMA \n\rMissing Date:
+    January 10 2423\n\rMissing Location: Laton Island\r\n\n-DESCRIPTION\nTed Parker
+    is the first person who found missing in UMA. Due to various reasons, including
+    technological underdevelopment and missing informations, people are still unable
+    to find any useful clues of the disappearance of Ted.\n      \n\nDirector\u2019s
+    Signature:\t\t\t\t\tDocument Signed Date:\n\nNaomi Clark\t\t\t\t\t\t\t\t\tMarch.09.2424\n"
   modelPrefab: {fileID: 0}

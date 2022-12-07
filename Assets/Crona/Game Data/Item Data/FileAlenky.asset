@@ -16,15 +16,13 @@ MonoBehaviour:
   itemName: Alenky Shiro
   itemIcon_1100_700: {fileID: 21300000, guid: b53978052d5a249ed81297a7a342fd70, type: 3}
   description: "MISSING PEOPLE FILE\n\n-INFORMATION\nName: Alenky Shiro\nBirth date:
-    April 29, 2401\nFamily: Ringo Shiro\nJob: Commander, UMA Department of F  \nCurrent
-    Address: \n2 NorthWest 6 Area, Twilight Marine, UMA \nStatus: Single\nMental
-    Health: Normal\nMissing Date: May 10 2425\nMissing Location: Unkown\n\n-DESCRIPTION\nOriginally
-    from United States in the Earth era. Alenky joined UMA with an invitation (Invitor:
-    Frank) in 2422 and worked as the youngest commander in Department of F. Due to
-    an emergency mission, Alenky left Area 6 and traveled to Area 7 with her colleague
-    Shawn, Jessica, and Matt. On the date of May 10th, Alenky went on the mission
-    with Shawn by aboarding the ship, White Star, and heading to south. After that
-    day, Alenky was never seen again by people. \n   \n-POSSIBLE MISSING LOCATIONS\n*
+    April 29, 2401\nFamily: Ringo Shiro\nJob: Commander, UMA Department of Fishing 
+    \nCurrent Address: \n2 NorthWest 6 Area, Twilight Marine, UMA \nMissing Date:
+    May 10 2425\nMissing Location: Unkown\n\n-DESCRIPTION\nAlenky joined UMA with
+    an invitation (Invitor: Frank) in 2422 and worked as the youngest commander in
+    Department of Fishing. On the date of May 10th, Alenky went on the mission with
+    Shawn by aboarding the ship, White Star, and heading to south. After that day,
+    Alenky was never seen again by people. \n   \n-POSSIBLE MISSING LOCATIONS\n*
     Dominion Cay\n* Outer Heaven\n* Dead Isle\n* Everlasting Peninsula\n\nDirector\u2019s
     Signature:\t\t\t\t\tDocument Signed Date:\n\nNaomi Clark\t\t\t\t\t\t\t    \tJune.18.2425\n"
   modelPrefab: {fileID: 0}
