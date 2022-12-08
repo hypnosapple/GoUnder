@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
     public GameObject CMStart2;
     public GameObject CMStart3;
 
+    public GameObject CMUnderStart1;
+    public GameObject CMUnderStart2;
+
     public GameObject blackPanel;
     private float fadeInT = 0f;
     private bool fadeIn = false;
@@ -51,9 +54,9 @@ public class GameManager : MonoBehaviour
             for (int i = 0; i < ItemsCollectedFromAbove.Count; i ++)
             {
                 InventoryCanvas.GetComponentInParent<InventoryManager>().AddItemWithoutReminder(ItemsCollectedFromAbove[i]);
+                player.GetComponent<CharacterController>().enabled = false;
+                StartCoroutine(UnderWorldOpening());
             }
-
-            StartFadeIn();
             
         }
 
@@ -221,5 +224,18 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene("UnderScene");
             }
         }
+    }
+
+    IEnumerator UnderWorldOpening()
+    {
+        yield return new WaitForSeconds(3f);
+        StartFadeIn();
+        yield return new WaitForSeconds(3f);
+        CMUnderStart1.SetActive(false);
+        yield return new WaitForSeconds(4f);
+        CMUnderStart2.SetActive(false);
+        yield return new WaitForSeconds(4f);
+        player.GetComponent<CharacterController>().enabled = true;
+
     }
 }

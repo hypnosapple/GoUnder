@@ -13,7 +13,7 @@ public class StartDataBase : MonoBehaviour
     public int AnswerStage;
 
     public MailSystem InboxMail;
-    public void StartButton(GameObject nextPage)
+    public void StartButton()
     {
         if (AnswerStage == 0)
         {
@@ -29,6 +29,11 @@ TextToCheck4.text == FirstAnswer4)
                 TextToCheck2.text = "";
                 TextToCheck3.text = "";
                 TextToCheck4.text = "";
+                TextToCheck1.transform.parent.GetComponent<InputField>().text = "";
+                TextToCheck2.transform.parent.GetComponent<InputField>().text = "";
+                TextToCheck3.transform.parent.GetComponent<InputField>().text = "";
+                TextToCheck4.transform.parent.GetComponent<InputField>().text = "";
+                Debug.Log("code1");
 
             }
             else
@@ -51,6 +56,11 @@ TextToCheck4.text == FirstAnswer4)
                 TextToCheck2.text = "";
                 TextToCheck3.text = "";
                 TextToCheck4.text = "";
+                TextToCheck1.transform.parent.GetComponent<InputField>().text = "";
+                TextToCheck2.transform.parent.GetComponent<InputField>().text = "";
+                TextToCheck3.transform.parent.GetComponent<InputField>().text = "";
+                TextToCheck4.transform.parent.GetComponent<InputField>().text = "";
+                Debug.Log("code2");
             }
             else
             {
