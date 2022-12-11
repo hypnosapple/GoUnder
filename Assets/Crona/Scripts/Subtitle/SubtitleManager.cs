@@ -24,6 +24,7 @@ public class SubtitleManager : MonoBehaviour
     public TMP_Text inCallName;
 
     public GameObject blackPanel;
+    public GameObject subtitlePanel;
 
     public bool isPhone = false;
     private bool toBePicked = false;
@@ -53,6 +54,7 @@ public class SubtitleManager : MonoBehaviour
 
                 isSlidingIn = true;
                 TIn = 0f;
+                subtitlePanel.SetActive(true);
                 StartCoroutine(Display(0));
             }
         }
@@ -89,6 +91,7 @@ public class SubtitleManager : MonoBehaviour
         else
         {
             playerAudio.Play();
+            subtitlePanel.SetActive(true);
             StartCoroutine(Display(0));
         }
 
@@ -108,6 +111,8 @@ public class SubtitleManager : MonoBehaviour
         }
         else
         {
+            subtitlePanel.SetActive(false);
+
             subtitleText.text = "";
             currentContent = null;
             visibleTimeList = null;
