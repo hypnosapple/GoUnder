@@ -104,7 +104,7 @@ public class SubtitleManager : MonoBehaviour
         if (i < amount)
         {
             subtitleText.text = "";
-            subtitleText.DOText(currentContent[i], 2f);
+            subtitleText.DOText(currentContent[i], 1f);
             //Debug.Log(currentContent[i]);
             yield return new WaitForSeconds(visibleTimeList[i]);
             StartCoroutine(Display(i + 1));

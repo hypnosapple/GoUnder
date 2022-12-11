@@ -17,7 +17,9 @@ MonoBehaviour:
   callerName: 
   callerSprite_136_177: {fileID: 0}
   Contents:
-  - 
+  - ..This should be it. All the information is correct.
+  - "\u2026Hope they can find you, Alenky. Just hold on for a little longer."
   VisibleTime:
-  - 9
+  - 3
+  - 6
   AudioFile: {fileID: 8300000, guid: 6b147babe45a94fa7bf325fcc2a45540, type: 3}
