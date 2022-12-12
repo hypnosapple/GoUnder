@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: MailUnknownUnderworld
   m_EditorClassIdentifier: 
   PersonName: "O%&u#C@com\u2026"
-  EmailTitle: 
+  EmailTitle: "?Hello#@%\uFF01"
   EmailAddress: 
   EmailContent: "Hello, #$% Atlas.\n    A long time\nI have been #%@# watching you
-    for.\nYou are &#&\n@!curious about me #@%#@ I found\n Very\n@^&#\nSO\nDo $^^#
-    you want to play a %(%@!% a game?\nLet\u2019s play. #%@#V\n\nO%&u#C\nbest."
+    for.\nYou are &#&\n@!curious about #@%#@ I found\n Very^&**curious\n@^&#\nSO\nDo
+    $^^# you want to play a %(%@!% a game?\nLet\u2019s play. #%@#V\n\nO%&u#C\nbest."
   IconColor: {r: 0.12726949, g: 0.16838731, b: 0.41509432, a: 0}
   IconSprite: {fileID: 0}
