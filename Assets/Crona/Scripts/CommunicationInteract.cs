@@ -54,18 +54,23 @@ public class CommunicationInteract : MonoBehaviour
     {
         if (FocusOnScreen && Input.GetKey(KeyCode.Escape))
         {
-            pauseMenuEnable = false;
-            EnablePauseMenu();
-            FocusOnScreen = false;
-            Cursor.visible = false;
-            if (IsInPos == 2)
-            {
-                CommunicationCode.interactable = false;
-                IslandCode.interactable = false;
-                Debug.Log("InputField deactivated");
-                StartCoroutine(LerpingPlayerBackToMain(MainCam.transform.position, MainCam.transform.rotation, 1f, ComputerCamera.transform));
-                IslandCode.DeactivateInputField();
-            }
+            ExitCommunicationSystem();
+        }
+    }
+
+    public void ExitCommunicationSystem()
+    {
+        pauseMenuEnable = false;
+        EnablePauseMenu();
+        FocusOnScreen = false;
+        Cursor.visible = false;
+        if (IsInPos == 2)
+        {
+            CommunicationCode.interactable = false;
+            IslandCode.interactable = false;
+            Debug.Log("InputField deactivated");
+            StartCoroutine(LerpingPlayerBackToMain(MainCam.transform.position, MainCam.transform.rotation, 1f, ComputerCamera.transform));
+            IslandCode.DeactivateInputField();
         }
     }
 
