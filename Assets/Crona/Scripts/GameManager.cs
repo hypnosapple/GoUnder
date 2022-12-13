@@ -39,20 +39,10 @@ public class GameManager : MonoBehaviour
     private bool GroundLevelFadedOut = false;
 
 
-    [SerializeField] private CinemachineVirtualCamera vCam;
-    private CinemachineBasicMultiChannelPerlin noise;
-
-    public NoiseSettings screenShakeNoise;
-
-    public AudioSource playerAudio;
-    public AudioClip GroundEndPanic;
-    public AudioClip UnderworldWake;
-
 
     void Start()
     {
         SceneName = SceneManager.GetActiveScene().name;
-        noise = vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
         if (SceneName == "MainScene")
         {
@@ -80,7 +70,6 @@ public class GameManager : MonoBehaviour
     {
         InventoryVisibility();
         TransitionToUnderworldInProgress();
-        
 
         if (fadeIn)
         {
@@ -208,7 +197,10 @@ public class GameManager : MonoBehaviour
 
     public void TransitionToUnderworld()
     {
-        StartCoroutine(TransitionToUnderworldCoroutine());
+        player.GetComponent<CharacterController>().enabled = false;
+        player.GetComponent<PlayerMovement>().moveDisabled = true;
+        blackCube.SetActive(true);
+        GroundLevelEnd = true;
     }
 
     public void TransitionToUnderworldInProgress()
@@ -236,34 +228,14 @@ public class GameManager : MonoBehaviour
 
     IEnumerator UnderWorldOpening()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         StartFadeIn();
-        playerAudio.clip = UnderworldWake;
-        playerAudio.Play();
-
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         CMUnderStart1.SetActive(false);
         yield return new WaitForSeconds(4f);
         CMUnderStart2.SetActive(false);
         yield return new WaitForSeconds(4f);
         player.GetComponent<CharacterController>().enabled = true;
 
-    }
-
-    IEnumerator TransitionToUnderworldCoroutine()
-    {
-        yield return new WaitForSeconds(3f);
-        player.GetComponent<CharacterController>().enabled = false;
-        player.GetComponent<PlayerMovement>().moveDisabled = true;
-        player.GetComponent<PlayerMovement>().cam6DShakeOn = true;
-
-        noise.m_NoiseProfile = screenShakeNoise;
-        noise.m_AmplitudeGain = 6f;
-        noise.m_FrequencyGain = 2.5f;
-
-        blackCube.SetActive(true);
-        GroundLevelEnd = true;
-        playerAudio.clip = GroundEndPanic;
-        playerAudio.Play();
     }
 }

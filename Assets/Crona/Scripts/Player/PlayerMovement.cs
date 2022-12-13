@@ -29,13 +29,11 @@ public class PlayerMovement : MonoBehaviour
     public NoiseSettings runNoise;
 
     public bool moveDisabled;
-    public bool cam6DShakeOn;
 
 
     void Start()
     {
         noise = vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-        cam6DShakeOn = false;
     }
 
     void Update()
@@ -48,12 +46,12 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !moveDisabled)
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             speed = 25f;
             noise.m_NoiseProfile = runNoise;
         }
-        else if (Input.GetKeyUp(KeyCode.LeftShift) && !moveDisabled)
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             speed = 15f;
             noise.m_NoiseProfile = walkNoise;
@@ -79,13 +77,9 @@ public class PlayerMovement : MonoBehaviour
         myController.Move(velocity * Time.deltaTime);
 
         // Camera shake while walking
-        if ((horizontal != 0 || vertical != 0) && !moveDisabled && !cam6DShakeOn)
+        if ((horizontal != 0 || vertical != 0) && !moveDisabled)
         {
             CameraShake(1);
-        }
-        else if (cam6DShakeOn)
-        {
-            CameraShake(6f);
         }
         else
         {

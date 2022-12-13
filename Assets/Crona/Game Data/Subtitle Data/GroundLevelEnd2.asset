@@ -17,15 +17,7 @@ MonoBehaviour:
   callerName: Eric Michaelson
   callerSprite_136_177: {fileID: 21300000, guid: f3fd3b6a62a8a44adb2e64150ebe3c8a, type: 3}
   Contents:
-  - Hello?
-  - "Yeah Atlas it\u2019s me Eric. I just received additional information about Alenky
-    and others."
-  - We found what appears to be the last boat they were on.
-  - "And\u2026Something is strange, I just sent them to your email. Check them. I\u2019ll
-    call you later."
+  - 
   VisibleTime:
-  - 1.4
-  - 5.6
-  - 3.5
-  - 8
+  - 18
   AudioFile: {fileID: 8300000, guid: 50b0149286f644484835daea1b62629e, type: 3}

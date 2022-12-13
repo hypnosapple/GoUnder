@@ -18,12 +18,12 @@ MonoBehaviour:
   EmailContent: "Greeting, \r\n\r\nDid you see the email that Ringo sent you about
     the Communication System? Now due to the unknown reason, the system in our headquarters
     is not working properly. We want you to put your other cases on hold and start
-    to work on the information of ALENKY WHITE, she was missing during a mission
-    while she was sailing in area 7 to an island in the South. Since the missing
-    cases start to occur inside our departments, we want you to start your investigation
-    as soon as possible. \r\n\r\nWhen you complete the Information Page, get the
-    communication code, and send a signal to Alenky\u2019s missing island to see
-    if any one responds and give you more clues on this missing event. \r\n\r\nCounting
-    on you,\r\nNoami Clark \r\n"
+    to work on the information of Alenky White, The commander of Department F, she
+    was missing during a mission while she was sailing in area 7 to an island in
+    the South. Since the missing cases start to occur inside our departments, we
+    want you to start your investigation as soon as possible. \r\n\r\nWhen you complete
+    the Information Page, get the communication code, and send a signal to Alenky\u2019s
+    missing island to see if any one responds and give you more clues on this missing
+    event. \r\n\r\nCounting on you,\r\nNoami Clark \r\n"
   IconColor: {r: 1, g: 1, b: 1, a: 1}
   IconSprite: {fileID: 2800000, guid: 803f3af1c546c4001adc7c2bb7c4d27e, type: 3}
