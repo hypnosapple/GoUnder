@@ -17,13 +17,9 @@ MonoBehaviour:
   EmailAddress: ringoL57@uma.com
   EmailContent: "Hi Atlas, \r\n\r\nWe now developed a new system called, Communication
     System, ready for all investigators to send signals to all islands in all areas
-    now. We recommend you to keep the system OUTSIDE to gather the best signal at
-    all times. You can gain the communication code after you complete the form in
-    the Information System. The good thing about this system is that your signals
-    can be sent to all the islands in all areas in a short time. Once you know which
-    Island you want to reach out to, you can check the Island code on the ISLAND-CODE-LIST.
-    After you gather both codes, you can send a signal to the certain Island and
-    reach out to people over there in order to gather more information about the
-    missing people. \r\n\n\nHave a great day,\r\nRingo White \r\n"
+    now. You can gain the communication code after you complete the form in the Information
+    System. Once you know which Island you want to reach out to, you can check the
+    Island code on the ISLAND-CODE-LIST. After you gather both codes, you are good
+    to go. \r\n\n\nHave a great day,\r\nRingo White \r\n"
   IconColor: {r: 1, g: 1, b: 1, a: 1}
   IconSprite: {fileID: 2800000, guid: e0fd128c942c84dde98a121ca85532dc, type: 3}
