@@ -11,12 +11,14 @@ public class StartDataBase : MonoBehaviour
     public GameObject nextPage, wrongPage;
     public GameObject LoadingBar, InfoNotUpdate, NewMail;
     public int AnswerStage;
-
+    public GameObject ErrorMom;
     public MailSystem InboxMail;
     public void StartButton()
     {
         if (AnswerStage == 0)
         {
+            ErrorCheck();
+
             if (TextToCheck1.text == FirstAnswer1 &&
 TextToCheck2.text == FirstAnswer2 &&
 TextToCheck3.text == FirstAnswer3 &&
@@ -43,6 +45,7 @@ TextToCheck4.text == FirstAnswer4)
         }
         else if (AnswerStage == 1)
         {
+            ErrorCheck();
             if (TextToCheck1.text == SecondAnswer1 &&
     TextToCheck2.text == SecondAnswer2 &&
     TextToCheck3.text == SecondAnswer3 &&
@@ -69,6 +72,44 @@ TextToCheck4.text == FirstAnswer4)
         }
     }
 
+    private void ErrorCheck()
+    {
+        if (TextToCheck1.text == FirstAnswer1)
+        {
+            ErrorMom.transform.GetChild(0).gameObject.SetActive(false);
+        }
+        else
+        {
+            ErrorMom.transform.GetChild(0).gameObject.SetActive(true);
+        }
+
+        if (TextToCheck2.text == FirstAnswer2)
+        {
+            ErrorMom.transform.GetChild(1).gameObject.SetActive(false);
+        }
+        else
+        {
+            ErrorMom.transform.GetChild(1).gameObject.SetActive(true);
+        }
+
+        if (TextToCheck3.text == FirstAnswer3)
+        {
+            ErrorMom.transform.GetChild(2).gameObject.SetActive(false);
+        }
+        else
+        {
+            ErrorMom.transform.GetChild(2).gameObject.SetActive(true);
+        }
+
+        if (TextToCheck4.text == FirstAnswer4)
+        {
+            ErrorMom.transform.GetChild(3).gameObject.SetActive(false);
+        }
+        else
+        {
+            ErrorMom.transform.GetChild(3).gameObject.SetActive(true);
+        }
+    }
 
     public void FirstAnswerCorrect()
     {

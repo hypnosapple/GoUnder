@@ -11,7 +11,9 @@ public class EnableFunction : MonoBehaviour
     public RawImage Sent, Inbox, Draft;
     public Color Red;
     public GameObject TheOtherIcon;
-    
+
+    public GameObject Sent2, Inbox2, Draft2;
+
     public void EnableFunctionMulti()
     {
         ObjectToOpen.SetActive(true);
@@ -63,6 +65,25 @@ public class EnableFunction : MonoBehaviour
         bool temp = ObjectToOpen.activeSelf;
         ObjectToOpen.SetActive(!temp);
         TurnMeRed(!temp);
+    }
+
+    public void DraftEnable()
+    {
+        Sent2.gameObject.SetActive(false);
+        Inbox2.gameObject.SetActive(false);
+        Draft2.gameObject.SetActive(true);
+    }
+
+    public void SentEnable()
+    {
+        Sent2.gameObject.SetActive(true);
+        Inbox2.gameObject.SetActive(false);
+        Draft2.gameObject.SetActive(false);
+    }
+
+    public void Empty()
+    {
+        Draft2.gameObject.SetActive(true);
     }
 
 }
