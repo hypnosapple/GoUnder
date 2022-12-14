@@ -13,7 +13,8 @@ public class MailSystem : MonoBehaviour
     public MailObject newMail1, newMail2;
 
     public MailObject[] InBoxMails;
-
+    public GameObject Draft, Sent;
+    public bool CanSetup;
     private void Awake()
     {
         for (int i = 0; i < InBoxMails.Length; i++)
@@ -22,7 +23,11 @@ public class MailSystem : MonoBehaviour
             AddAnotherMailAtTheEnd(InBoxMails[i]);
         }
         Invoke("SetupTheFormate", 0.01f);
-        this.transform.parent.gameObject.SetActive(false);
+        if (CanSetup)
+        {
+            //StartCoroutine(SetUp());
+        }
+            this.transform.parent.gameObject.SetActive(false);
     }
     private void Start()
     {
@@ -70,6 +75,13 @@ public class MailSystem : MonoBehaviour
         tempMail.GetComponent<EmailOpen>().EmailContentParent = RightColumnParent;
         //tempMailContent.SetActive(false);
         Debug.Log(newMail.PersonName);
+    }
+
+    IEnumerator SetUp()
+    {
+        Draft.SetActive(false);
+        Sent.SetActive(false);
+        yield return null;
     }
 
     public void SetAllMailToRightSize()
