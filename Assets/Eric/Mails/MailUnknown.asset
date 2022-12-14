@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e4fe45af87b2439fa007964c962a5b7, type: 3}
   m_Name: MailUnknown
   m_EditorClassIdentifier: 
-  PersonName: 
-  EmailTitle: 
+  PersonName: "O%&u#C@com\u2026"
+  EmailTitle: "Hello#@%\uFF01"
   EmailAddress: 
-  EmailContent: 
-  IconColor: {r: 0, g: 0, b: 0, a: 0}
+  EmailContent: "Hello, #$% Atlas.\n    A long time\nI have been #%@# watching you
+    for.\nYou are &#&@!curious about me #@%#@ I found\n Very\n@^&#\nSO\nDo $^^# you
+    want to play a %(%@!% a game?\nLet\u2019s play. #%@#V\n\nO%&u#C\nbest."
+  IconColor: {r: 1, g: 1, b: 1, a: 1}
   IconSprite: {fileID: 0}
