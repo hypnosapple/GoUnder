@@ -22,6 +22,8 @@ public class UIInteract : MonoBehaviour
     public PauseMenu pauseMenu;
     public CommunicationInteract communicationSystem;
 
+    public AudioSource UIClick;
+
     /*private void OnTriggerEnter(Collider other)
     {
         if(other.GetComponent<PlayerMovement>() != null)
@@ -119,6 +121,14 @@ public class UIInteract : MonoBehaviour
         Debug.Log("I am locked");
         IsInPos = 2;
         ComputerScreen.SetActive(true);
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            UIClick.enabled = true;
+        }
+        else
+        {
+            UIClick.enabled = false;
+        }
         ExitCanvas.SetActive(true);
         //StartCoroutine(StartComputer());
     }
@@ -157,6 +167,7 @@ public class UIInteract : MonoBehaviour
 
     IEnumerator LerpingPlayerBackToMain(Vector3 targetPosition, Quaternion targetRotation, float duration, Transform Transformee)
     {
+        UIClick.enabled = false;
         ExitCanvas.SetActive(false);
         //ComputerScreen.SetActive(false);
         IsInPos = 1;

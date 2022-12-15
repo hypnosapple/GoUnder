@@ -30,6 +30,8 @@ public class CommunicationInteract : MonoBehaviour
     public SubtitleData_SO GLEnd1;
 
     public GameObject blockUpstairs;
+
+    public AudioSource UIClick;
     /*
     private void OnTriggerEnter(Collider other)
     {
@@ -131,6 +133,14 @@ public class CommunicationInteract : MonoBehaviour
         Transformee.position = targetPosition;
         Transformee.rotation = targetRotation;
         ExitCanvas.SetActive(true);
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            UIClick.enabled = true;
+        }
+        else
+        {
+            UIClick.enabled = false;
+        }
         IsInPos = 2;
 
     }
@@ -139,6 +149,7 @@ public class CommunicationInteract : MonoBehaviour
 
     IEnumerator LerpingPlayerBackToMain(Vector3 targetPosition, Quaternion targetRotation, float duration, Transform Transformee)
     {
+        UIClick.enabled = false;
         ExitCanvas.SetActive(false);
         IsInPos = 1;
         float time = 0;

@@ -16,6 +16,7 @@ public class CheckInput : MonoBehaviour
     public string correctIsland;
     public string correctCommunication;
     public bool allCorrect;
+    public AudioSource loading;
 
     public void CheckPassword()
     {
@@ -28,6 +29,7 @@ public class CheckInput : MonoBehaviour
             CommunicationCode.text = string.Empty;
             Open.SetActive(false);
             SignalSending.SetActive(true);
+            loading.enabled = true;
             allCorrect = true;
         }
         else
@@ -41,6 +43,7 @@ public class CheckInput : MonoBehaviour
     public void ShowNoResponse()
     {
         SignalSending.SetActive(false);
+        loading.enabled = false;
         IslandCode.text = string.Empty;
         CommunicationCode.text = string.Empty;
         NoResponse.SetActive(true);
