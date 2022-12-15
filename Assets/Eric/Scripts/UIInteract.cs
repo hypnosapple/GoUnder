@@ -57,6 +57,16 @@ public class UIInteract : MonoBehaviour
                 StartCoroutine(LerpingPlayerBackToMain(MainCam.transform.position, MainCam.transform.rotation, 1f, ComputerCamera.transform));
             }
         }
+        if(FocusOnScreen && Input.GetKey(KeyCode.Mouse0))
+        {
+            communicationSystem.enabled = false;
+            Debug.Log("clicked");
+            UIClick.enabled = true;
+        }
+        else
+        {
+            communicationSystem.enabled = true;
+        }
     }
 
     //Alexis added
@@ -121,14 +131,6 @@ public class UIInteract : MonoBehaviour
         Debug.Log("I am locked");
         IsInPos = 2;
         ComputerScreen.SetActive(true);
-        if (Input.GetKey(KeyCode.Mouse0))
-        {
-            UIClick.enabled = true;
-        }
-        else
-        {
-            UIClick.enabled = false;
-        }
         ExitCanvas.SetActive(true);
         //StartCoroutine(StartComputer());
     }
@@ -167,7 +169,6 @@ public class UIInteract : MonoBehaviour
 
     IEnumerator LerpingPlayerBackToMain(Vector3 targetPosition, Quaternion targetRotation, float duration, Transform Transformee)
     {
-        UIClick.enabled = false;
         ExitCanvas.SetActive(false);
         //ComputerScreen.SetActive(false);
         IsInPos = 1;
