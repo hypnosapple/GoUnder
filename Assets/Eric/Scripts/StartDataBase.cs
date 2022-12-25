@@ -13,6 +13,11 @@ public class StartDataBase : MonoBehaviour
     public int AnswerStage;
 
     public MailSystem InboxMail;
+
+    public Animator F1DoorAnimator;
+
+    
+
     public void StartButton()
     {
         if (AnswerStage == 0)
@@ -51,6 +56,8 @@ TextToCheck4.text == FirstAnswer4)
                 //nextPage.SetActive(true);
                 LoadingBar.SetActive(true);
                 StartCoroutine(NextpageCo());
+
+                F1DoorAnimator.SetBool("F1DoorOpen", true);
                 //clear out the answers
                 TextToCheck1.text = "";
                 TextToCheck2.text = "";
