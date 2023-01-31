@@ -7,6 +7,8 @@ using Cinemachine;
 
 public class GameManager : MonoBehaviour
 {
+    public bool enableCutscenes;
+
     public GameObject InventoryCanvas;
     public GameObject player;
     public GameObject CrosshairCanvas;
@@ -54,22 +56,41 @@ public class GameManager : MonoBehaviour
         SceneName = SceneManager.GetActiveScene().name;
         noise = vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
-        if (SceneName == "MainScene")
-        {
-            player.GetComponent<CharacterController>().enabled = false;
-            gameObject.GetComponent<SubtitleManager>().ShowSubtitle(firstSub);
-        }
-        else if (SceneName == "UnderScene")
-        {
-            for (int i = 0; i < ItemsCollectedFromAbove.Count; i ++)
-            {
-                InventoryCanvas.GetComponentInParent<InventoryManager>().AddItemWithoutReminder(ItemsCollectedFromAbove[i]);
-                player.GetComponent<CharacterController>().enabled = false;
-                StartCoroutine(UnderWorldOpening());
-            }
-            
-        }
+        // Opening cutscenes
 
+        if (enableCutscenes)
+        {
+            blackPanel.SetActive(true);
+
+            if (SceneName == "MainScene")
+            {
+                CMStart.SetActive(true);
+                CMStart2.SetActive(true);
+                CMStart3.SetActive(true);
+
+                player.GetComponent<CharacterController>().enabled = false;
+                gameObject.GetComponent<SubtitleManager>().ShowSubtitle(firstSub);
+            }
+            else if (SceneName == "UnderScene")
+            {
+                for (int i = 0; i < ItemsCollectedFromAbove.Count; i++)
+                {
+                    InventoryCanvas.GetComponentInParent<InventoryManager>().AddItemWithoutReminder(ItemsCollectedFromAbove[i]);
+                    player.GetComponent<CharacterController>().enabled = false;
+                    StartCoroutine(UnderWorldOpening());
+                }
+
+            }
+        }
+        else
+        {
+            blackPanel.SetActive(false);
+            CMStart.SetActive(false);
+            CMStart2.SetActive(false);
+            CMStart3.SetActive(false);
+        }
+        
+        
         
         //EnableMove();
         //StartFadeIn();
