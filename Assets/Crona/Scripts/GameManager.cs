@@ -7,7 +7,7 @@ using Cinemachine;
 
 public class GameManager : MonoBehaviour
 {
-    public bool enableCutscenes;
+    public bool enableOldCutscenes;
 
     public GameObject InventoryCanvas;
     public GameObject player;
@@ -26,10 +26,16 @@ public class GameManager : MonoBehaviour
     public GameObject CMUnderStart2;
 
     public GameObject blackPanel;
+    public GameObject whitePanel;
     private float fadeInT = 0f;
     private bool fadeIn = false;
     private float fadeOutT = 0f;
     private bool fadeOut = false;
+
+    private float WfadeInT = 0f;
+    private bool WfadeIn = false;
+    private float WfadeOutT = 0f;
+    private bool WfadeOut = false;
 
     public string SceneName;
 
@@ -49,6 +55,7 @@ public class GameManager : MonoBehaviour
     public AudioSource playerAudio;
     public AudioClip GroundEndPanic;
     public AudioClip UnderworldWake;
+    public AudioClip OpeningTinnitus;
 
 
     void Start()
@@ -58,9 +65,10 @@ public class GameManager : MonoBehaviour
 
         // Opening cutscenes
 
-        if (enableCutscenes)
+        if (enableOldCutscenes)
         {
             blackPanel.SetActive(true);
+            whitePanel.SetActive(false);
 
             if (SceneName == "MainScene")
             {
@@ -84,10 +92,14 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            whitePanel.SetActive(true);
             blackPanel.SetActive(false);
-            CMStart.SetActive(false);
-            CMStart2.SetActive(false);
-            CMStart3.SetActive(false);
+            CMStart.SetActive(true);
+            CMStart2.SetActive(true);
+            CMStart3.SetActive(true);
+
+            player.GetComponent<CharacterController>().enabled = false;
+            StartCoroutine(NewOpening());
         }
         
         
@@ -101,37 +113,10 @@ public class GameManager : MonoBehaviour
     {
         InventoryVisibility();
         TransitionToUnderworldInProgress();
+
+        BlackFadeProcess();
+        WhiteFadeProcess();
         
-
-        if (fadeIn)
-        {
-            if (fadeInT < 1f)
-            {
-                fadeInT += 0.3f * Time.deltaTime;
-                blackPanel.GetComponent<Image>().color = Color.Lerp(new Color(blackPanel.GetComponent<Image>().color.r, blackPanel.GetComponent<Image>().color.g, blackPanel.GetComponent<Image>().color.b, 1f), new Color(blackPanel.GetComponent<Image>().color.r, blackPanel.GetComponent<Image>().color.g, blackPanel.GetComponent<Image>().color.b, 0f), fadeInT);
-
-            }
-            else
-            {
-                fadeIn = false;
-            }
-        }
-
-
-        if (fadeOut)
-        {
-            if (fadeOutT < 1f)
-            {
-                fadeOutT += 0.3f * Time.deltaTime;
-                blackPanel.GetComponent<Image>().color = Color.Lerp(new Color(blackPanel.GetComponent<Image>().color.r, blackPanel.GetComponent<Image>().color.g, blackPanel.GetComponent<Image>().color.b, 0f), new Color(blackPanel.GetComponent<Image>().color.r, blackPanel.GetComponent<Image>().color.g, blackPanel.GetComponent<Image>().color.b, 1f), fadeOutT);
-
-            }
-            else
-            {
-                fadeOut = false;
-                
-            }
-        }
     }
 
 
@@ -190,7 +175,7 @@ public class GameManager : MonoBehaviour
 
     public void EnableOpeningMove()
     {
-        player.GetComponent<CharacterController>().enabled = true;
+        
         StartCoroutine(SwitchOpeningCam());
     }
 
@@ -201,6 +186,8 @@ public class GameManager : MonoBehaviour
         CMStart2.SetActive(false);
         yield return new WaitForSeconds(5f);
         CMStart3.SetActive(false);
+        yield return new WaitForSeconds(3.5f);
+        player.GetComponent<CharacterController>().enabled = true;
     }
 
 
@@ -223,6 +210,96 @@ public class GameManager : MonoBehaviour
             fadeOutT = 0f;
 
             fadeOut = true;
+        }
+    }
+
+
+    public void StartFadeInWhite()
+    {
+        if (whitePanel.GetComponent<Image>().color.a == 1)
+        {
+            WfadeInT = 0f;
+
+            WfadeIn = true;
+        }
+    }
+
+
+    public void StartFadeOutWhite()
+    {
+        if (whitePanel.GetComponent<Image>().color.a == 0)
+        {
+            WfadeOutT = 0f;
+
+            WfadeOut = true;
+        }
+    }
+
+
+    public void BlackFadeProcess()
+    {
+        if (fadeIn)
+        {
+            if (fadeInT < 1f)
+            {
+                fadeInT += 0.3f * Time.deltaTime;
+                blackPanel.GetComponent<Image>().color = Color.Lerp(new Color(blackPanel.GetComponent<Image>().color.r, blackPanel.GetComponent<Image>().color.g, blackPanel.GetComponent<Image>().color.b, 1f), new Color(blackPanel.GetComponent<Image>().color.r, blackPanel.GetComponent<Image>().color.g, blackPanel.GetComponent<Image>().color.b, 0f), fadeInT);
+
+            }
+            else
+            {
+                fadeIn = false;
+            }
+        }
+
+
+        if (fadeOut)
+        {
+            if (fadeOutT < 1f)
+            {
+                fadeOutT += 0.3f * Time.deltaTime;
+                blackPanel.GetComponent<Image>().color = Color.Lerp(new Color(blackPanel.GetComponent<Image>().color.r, blackPanel.GetComponent<Image>().color.g, blackPanel.GetComponent<Image>().color.b, 0f), new Color(blackPanel.GetComponent<Image>().color.r, blackPanel.GetComponent<Image>().color.g, blackPanel.GetComponent<Image>().color.b, 1f), fadeOutT);
+
+            }
+            else
+            {
+                fadeOut = false;
+
+            }
+        }
+    }
+
+
+    public void WhiteFadeProcess()
+    {
+        if (WfadeIn)
+        {
+            if (WfadeInT < 1f)
+            {
+                WfadeInT += 0.3f * Time.deltaTime;
+                whitePanel.GetComponent<Image>().color = Color.Lerp(new Color(whitePanel.GetComponent<Image>().color.r, whitePanel.GetComponent<Image>().color.g, whitePanel.GetComponent<Image>().color.b, 1f), new Color(whitePanel.GetComponent<Image>().color.r, whitePanel.GetComponent<Image>().color.g, whitePanel.GetComponent<Image>().color.b, 0f), WfadeInT);
+
+            }
+            else
+            {
+                WfadeIn = false;
+            }
+        }
+
+
+        if (WfadeOut)
+        {
+            if (WfadeOutT < 1f)
+            {
+                WfadeOutT += 0.3f * Time.deltaTime;
+                whitePanel.GetComponent<Image>().color = Color.Lerp(new Color(whitePanel.GetComponent<Image>().color.r, whitePanel.GetComponent<Image>().color.g, whitePanel.GetComponent<Image>().color.b, 0f), new Color(whitePanel.GetComponent<Image>().color.r, whitePanel.GetComponent<Image>().color.g, whitePanel.GetComponent<Image>().color.b, 1f), WfadeOutT);
+
+            }
+            else
+            {
+                WfadeOut = false;
+
+            }
         }
     }
 
@@ -286,5 +363,15 @@ public class GameManager : MonoBehaviour
         GroundLevelEnd = true;
         playerAudio.clip = GroundEndPanic;
         playerAudio.Play();
+    }
+
+    IEnumerator NewOpening()
+    {
+        playerAudio.clip = OpeningTinnitus;
+        playerAudio.Play();
+        yield return new WaitForSeconds(3f);
+        StartFadeInWhite();
+        yield return new WaitForSeconds(5f);
+        EnableOpeningMove();
     }
 }
