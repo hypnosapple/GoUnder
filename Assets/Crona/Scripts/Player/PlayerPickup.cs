@@ -6,9 +6,11 @@ public class PlayerPickup : MonoBehaviour
 {
     public float pickupRange;
     public float screenRange;
+    public float interactionRange;
     int pickupLayerMask;
     int screen1LayerMask;
     int screen2LayerMask;
+    int doorLayerMask;
 
     public GameObject onTarget;
 
@@ -19,11 +21,18 @@ public class PlayerPickup : MonoBehaviour
     public GameObject Code1Page;
     private bool hasCode1 = false;
 
+    public Animator door31Animator;
+
+    public AudioSource playerAudio;
+    public AudioClip doorLockSFX;
+    public AudioClip doorOpenSFX;
+
     void Start()
     {
         pickupLayerMask = LayerMask.GetMask("Pickup");
         screen1LayerMask = LayerMask.GetMask("Screen1");
         screen2LayerMask = LayerMask.GetMask("Screen2");
+        doorLayerMask = LayerMask.GetMask("Door");
     }
 
     void Update()
@@ -68,6 +77,35 @@ public class PlayerPickup : MonoBehaviour
             {
                 hit.transform.gameObject.GetComponent<CommunicationInteract>().ToScreen();
             }
+        }
+
+        else if (Physics.Raycast(ray, out hit, interactionRange, doorLayerMask))
+        {
+            if (hit.transform.gameObject.GetComponent<DoorInteract>().opened == false)
+            {
+                if (!onTarget.activeInHierarchy)
+                {
+                    onTarget.SetActive(true);
+                }
+
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    if (hit.transform.gameObject.GetComponent<DoorInteract>().unlocked)
+                    {
+                        door31Animator.SetBool("Door3.1Open", true);
+                        playerAudio.clip = doorOpenSFX;
+                        playerAudio.Play();
+                        hit.transform.gameObject.GetComponent<DoorInteract>().opened = true;
+                    }
+                    else
+                    {
+                        playerAudio.clip = doorLockSFX;
+                        playerAudio.Play();
+                    }
+
+                }
+            }
+            
         }
 
         else
