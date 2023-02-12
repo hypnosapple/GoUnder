@@ -22,6 +22,8 @@ public class PlayerPickup : MonoBehaviour
     private bool hasCode1 = false;
 
     public Animator door31Animator;
+    public Animator door32Animator;
+    public Animator door33Animator;
 
     public AudioSource playerAudio;
     public AudioClip doorLockSFX;
@@ -92,7 +94,20 @@ public class PlayerPickup : MonoBehaviour
                 {
                     if (hit.transform.gameObject.GetComponent<DoorInteract>().unlocked)
                     {
-                        door31Animator.SetBool("Door3.1Open", true);
+                        if (hit.transform.gameObject.name == "Door3.1Pivot")
+                        {
+                            door31Animator.SetBool("Door3.1Open", true);
+                        }
+                        else if (hit.transform.gameObject.name == "Door3.2Pivot")
+                        {
+                            door32Animator.SetBool("Door3.2Open", true);
+                        }
+                        else if (hit.transform.gameObject.name == "Door3.3Pivot")
+                        {
+                            door33Animator.SetBool("Door3.3Open", true);
+                        }
+
+
                         playerAudio.clip = doorOpenSFX;
                         playerAudio.Play();
                         hit.transform.gameObject.GetComponent<DoorInteract>().opened = true;
