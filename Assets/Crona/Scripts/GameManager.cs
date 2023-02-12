@@ -57,6 +57,14 @@ public class GameManager : MonoBehaviour
     public AudioClip UnderworldWake;
     public AudioClip OpeningTinnitus;
 
+    public GameObject AtlasItemList;
+    public GameObject FileItemList;
+    public GameObject UseableItemList;
+
+    public GameObject AtlasExpandButton;
+    public GameObject FileExpandButton;
+    public GameObject UseableExpandButton;
+
 
     void Start()
     {
@@ -116,7 +124,39 @@ public class GameManager : MonoBehaviour
 
         BlackFadeProcess();
         WhiteFadeProcess();
-        
+
+        CheckButtonAvailablity();
+    }
+
+
+    public void CheckButtonAvailablity()
+    {
+        if (AtlasItemList.GetComponent<AtlasContainerUI>().AtlasItems.Count == 0)
+        {
+            AtlasExpandButton.GetComponent<Button>().interactable = false;
+        }
+        else
+        {
+            AtlasExpandButton.GetComponent<Button>().interactable = true;
+        }
+
+        if (FileItemList.GetComponent<FileContainerUI>().FileItems.Count == 0)
+        {
+            FileExpandButton.GetComponent<Button>().interactable = false;
+        }
+        else
+        {
+            FileExpandButton.GetComponent<Button>().interactable = true;
+        }
+
+        if (UseableItemList.GetComponent<UseableContainerUI>().UseableItems.Count == 0)
+        {
+            UseableExpandButton.GetComponent<Button>().interactable = false;
+        }
+        else
+        {
+            UseableExpandButton.GetComponent<Button>().interactable = true;
+        }
     }
 
 
