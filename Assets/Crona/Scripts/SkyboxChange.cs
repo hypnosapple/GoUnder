@@ -10,6 +10,11 @@ public class SkyboxChange : MonoBehaviour
     public Material afternoonSkybox;
     public Material nightSkybox;
 
+    public Material afternoonWater;
+    public Material nightWater;
+
+    public GameObject sea;
+
     void Start()
     {
         afternoonChanged = false;
@@ -27,11 +32,12 @@ public class SkyboxChange : MonoBehaviour
     {
         if (other.gameObject.tag == "ToAfternoon")
         {
-            Debug.Log("layer");
+            
             if (!afternoonChanged)
             {
-                Debug.Log("afternoon");
+                
                 RenderSettings.skybox = afternoonSkybox;
+                sea.GetComponent<MeshRenderer>().material = afternoonWater;
                 afternoonChanged = true;
             }
         }
