@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca2c350add0de446fbe4ee3bd2f91b5a, type: 3}
-  m_Name: Test_TeddyBear
+  m_Name: Family Portrait
   m_EditorClassIdentifier: 
   itemType: 2
-  itemName: Teddy Bear
+  itemName: Family Portrait
   itemIcon_1100_700: {fileID: 0}
-  description: "Lily\u2019s favorite toy."
-  modelPrefab: {fileID: 8898275735175916459, guid: 8cfb15d3846d3584e934cd1583c396ec, type: 3}
+  description: A photo portrait of a child and mother with a broken piece of it hiding
+    the other parent.
+  modelPrefab: {fileID: 199627545563177539, guid: a9b7c53aca465e54b8acdbad7ed1680a, type: 3}

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca2c350add0de446fbe4ee3bd2f91b5a, type: 3}
-  m_Name: Test_Wedding Ring
+  m_Name: Wedding Ring
   m_EditorClassIdentifier: 
   itemType: 2
   itemName: Wedding Ring
