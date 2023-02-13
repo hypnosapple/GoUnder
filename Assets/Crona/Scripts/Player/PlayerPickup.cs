@@ -13,6 +13,7 @@ public class PlayerPickup : MonoBehaviour
     int doorLayerMask;
 
     public GameObject onTarget;
+    public GameManager gameManager;
 
     [SerializeField] private Camera cam;
 
@@ -28,6 +29,10 @@ public class PlayerPickup : MonoBehaviour
     public AudioSource playerAudio;
     public AudioClip doorLockSFX;
     public AudioClip doorOpenSFX;
+
+    public SubtitleData_SO Call301;
+    public SubtitleData_SO Call302;
+    public SubtitleData_SO Call303;
 
     void Start()
     {
@@ -97,27 +102,25 @@ public class PlayerPickup : MonoBehaviour
                         if (hit.transform.gameObject.name == "Door3.1Pivot")
                         {
                             door31Animator.SetBool("Door3.1Open", true);
+                            StartCoroutine(WaitForPhoneCall(Call301));
                         }
                         else if (hit.transform.gameObject.name == "Door3.2Pivot")
                         {
                             door32Animator.SetBool("Door3.2Open", true);
+                            StartCoroutine(WaitForPhoneCall(Call302));
                         }
                         else if (hit.transform.gameObject.name == "Door3.3Pivot")
                         {
                             door33Animator.SetBool("Door3.3Open", true);
+                            StartCoroutine(WaitForPhoneCall(Call303));
                         }
 
 
-                        playerAudio.clip = doorOpenSFX;
-                        playerAudio.Play();
+                        
                         hit.transform.gameObject.GetComponent<DoorInteract>().opened = true;
                     }
-                    else
-                    {
-                        playerAudio.clip = doorLockSFX;
-                        playerAudio.Play();
-                    }
 
+                    hit.transform.gameObject.GetComponent<AudioSource>().Play();
                 }
             }
             
@@ -137,5 +140,11 @@ public class PlayerPickup : MonoBehaviour
             InventoryCanvas.GetComponent<InventoryManager>().AddItem(Code1Data);
             hasCode1 = true;
         }
+    }
+
+    IEnumerator WaitForPhoneCall(SubtitleData_SO phoneCall)
+    {
+        yield return new WaitForSeconds(3f);
+        gameManager.GetComponent<SubtitleManager>().ShowSubtitle(phoneCall);
     }
 }

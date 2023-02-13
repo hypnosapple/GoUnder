@@ -10,6 +10,9 @@ public class ItemPickup : MonoBehaviour
     public GameObject relatedDoor;
     public GameObject relatedWord;
 
+    public AudioSource playerAudio;
+    public AudioClip AfterPickVO;
+
     public void Pickup()
     {
         InventoryCanvas.GetComponent<InventoryManager>().AddItem(itemData);
@@ -20,6 +23,12 @@ public class ItemPickup : MonoBehaviour
             relatedWord.SetActive(true);
 
             relatedDoor.GetComponent<DoorInteract>().wordList.Remove(relatedWord);
+        }
+
+        if (AfterPickVO != null)
+        {
+            playerAudio.clip = AfterPickVO;
+            playerAudio.Play();
         }
 
 

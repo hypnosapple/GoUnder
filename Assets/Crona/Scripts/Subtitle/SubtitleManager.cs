@@ -22,6 +22,7 @@ public class SubtitleManager : MonoBehaviour
     public GameObject inCallPanel;
     public Image inCallImage;
     public TMP_Text inCallName;
+    public AudioClip phoneCallAudio;
 
     public GameObject blackPanel;
     public GameObject subtitlePanel;
@@ -36,6 +37,12 @@ public class SubtitleManager : MonoBehaviour
 
     public SubtitleData_SO GLEnd2;
 
+    public AudioClip afterCall01;
+    public AudioClip afterCall03;
+    public AudioClip phoneRing;
+    public AudioClip phoneHang;
+    
+
 
     void Update()
     {
@@ -45,6 +52,10 @@ public class SubtitleManager : MonoBehaviour
             {
                 callReminder.SetActive(false);
                 toBePicked = false;
+                playerAudio.loop = false;
+                playerAudio.Stop();
+
+                playerAudio.clip = phoneCallAudio;
                 playerAudio.Play();
 
                 if (blackPanel.GetComponent<Image>().color.a == 1)
@@ -74,7 +85,7 @@ public class SubtitleManager : MonoBehaviour
 
         if (subtitleData.AudioFile != null)
         {
-            playerAudio.clip = subtitleData.AudioFile;
+            phoneCallAudio = subtitleData.AudioFile;
             
         }
 
@@ -87,6 +98,10 @@ public class SubtitleManager : MonoBehaviour
 
             callReminder.SetActive(true);
             toBePicked = true;
+
+            playerAudio.clip = phoneRing;
+            playerAudio.loop = true;
+            playerAudio.Play();
         }
         else
         {
@@ -122,6 +137,9 @@ public class SubtitleManager : MonoBehaviour
 
             if (isPhone)
             {
+                playerAudio.clip = phoneHang;
+                playerAudio.Play();
+
                 isSlidingOut = true;
                 TOut = 0f;
                 isPhone = false;
@@ -141,6 +159,16 @@ public class SubtitleManager : MonoBehaviour
             {
                 clipName = "";
                 gameObject.GetComponent<GameManager>().TransitionToUnderworld();
+            }
+            else if (clipName == "3rd_Call01")
+            {
+                clipName = "";
+                StartCoroutine(PlayVOAfterCall01());
+            }
+            else if (clipName == "3rd_Call03")
+            {
+                clipName = "";
+                StartCoroutine(PlayVOAfterCall03());
             }
             else
             {
@@ -188,4 +216,18 @@ public class SubtitleManager : MonoBehaviour
         }
     }
 
+
+    IEnumerator PlayVOAfterCall01()
+    {
+        yield return new WaitForSeconds(2f);
+        playerAudio.clip = afterCall01;
+        playerAudio.Play();
+    }
+
+    IEnumerator PlayVOAfterCall03()
+    {
+        yield return new WaitForSeconds(2f);
+        playerAudio.clip = afterCall03;
+        playerAudio.Play();
+    }
 }

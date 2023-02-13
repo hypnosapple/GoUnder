@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c55190e3b979d47518fd7aabf9a89f92, type: 3}
+  m_Name: 3rd_Call02
+  m_EditorClassIdentifier: 
+  ClipName: 3rd_Call02
+  isPhoneCall: 1
+  callerName: Evelyn
+  callerSprite_136_177: {fileID: 21300000, guid: f3fd3b6a62a8a44adb2e64150ebe3c8a, type: 3}
+  Contents:
+  - Atlas, you sound not okay. Can you please talk to me?
+  - "This thing is knotty\u2026\u2026 No, it is dangerous."
+  - What is dangerous? Another Tsunami is coming?
+  - "There is a high probability based on their report and prediction. But\u2026\u2026
+    I will talk to you later. I will keep you and Lily safe. I promise."
+  VisibleTime:
+  - 5
+  - 5
+  - 2.5
+  - 14
+  AudioFile: {fileID: 8300000, guid: 612e141e2a29d4ed791e8bb67a8012e3, type: 3}

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c55190e3b979d47518fd7aabf9a89f92, type: 3}
+  m_Name: 3rd_Call03
+  m_EditorClassIdentifier: 
+  ClipName: 3rd_Call03
+  isPhoneCall: 1
+  callerName: Evelyn
+  callerSprite_136_177: {fileID: 21300000, guid: f3fd3b6a62a8a44adb2e64150ebe3c8a, type: 3}
+  Contents:
+  - Evelyn. Is that you? Evelyn.
+  - ......
+  - "I just \u2026finished work and am on my way home, but\u2026.huh, something isn\u2019t
+    right. I think those officers are hiding something from us. We are forced to
+    leave after work time, and they are having some sort of secret meeting."
+  - "Huh, I don\u2019t know what they are keeping, but I have bad feelings about
+    this. But anyway, call me when you have time, alright? We might need to move
+    to a safer place. I love you. Sleep tight."
+  VisibleTime:
+  - 5.5
+  - 3
+  - 21
+  - 15
+  AudioFile: {fileID: 8300000, guid: 41329a474877a4b0180e8652ae4c11d7, type: 3}
