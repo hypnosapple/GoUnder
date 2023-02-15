@@ -8,6 +8,7 @@ using Cinemachine;
 public class GameManager : MonoBehaviour
 {
     public bool enableOldCutscenes;
+    public bool enableNewCutscenes;
 
     public GameObject InventoryCanvas;
     public GameObject player;
@@ -98,7 +99,7 @@ public class GameManager : MonoBehaviour
 
             }
         }
-        else
+        else if (enableNewCutscenes)
         {
             whitePanel.SetActive(true);
             blackPanel.SetActive(false);
@@ -108,6 +109,14 @@ public class GameManager : MonoBehaviour
 
             player.GetComponent<CharacterController>().enabled = false;
             StartCoroutine(NewOpening());
+        }
+        else
+        {
+            whitePanel.SetActive(false);
+            blackPanel.SetActive(false);
+            CMStart.SetActive(false);
+            CMStart2.SetActive(false);
+            CMStart3.SetActive(false);
         }
         
         
