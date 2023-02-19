@@ -31,15 +31,24 @@ public class PlayerMovement : MonoBehaviour
     public bool moveDisabled;
     public bool cam6DShakeOn;
 
+    public bool isLocked = false;
+
 
     void Start()
     {
         noise = vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         cam6DShakeOn = false;
+
     }
 
     void Update()
     {
+
+        if (isLocked)
+        {
+            return;
+        }
+
         // Check if grounded
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
@@ -47,6 +56,8 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = -2f;
         }
+
+      
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && !moveDisabled)
         {
