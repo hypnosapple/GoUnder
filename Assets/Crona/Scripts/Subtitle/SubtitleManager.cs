@@ -77,6 +77,7 @@ public class SubtitleManager : MonoBehaviour
 
     public void ShowSubtitle(SubtitleData_SO subtitleData)
     {
+        StopAllCoroutines();
         currentContent = subtitleData.Contents;
         visibleTimeList = subtitleData.VisibleTime;
         clipName = subtitleData.ClipName;
