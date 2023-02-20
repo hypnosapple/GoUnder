@@ -7,6 +7,23 @@ public class DraggableText : MonoBehaviour, IPointerDownHandler, IDragHandler
 {
     private Vector3 offset;
 
+    CheckText checkText;
+
+
+    public void Start()
+    {
+        checkText = FindObjectOfType<CheckText>();
+    }
+
+
+    public void Update()
+    {
+        if(checkText.matches == true)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         offset = transform.position - GetWorldPosition(eventData.position);
@@ -25,6 +42,7 @@ public class DraggableText : MonoBehaviour, IPointerDownHandler, IDragHandler
             return hit.point;
         }
         return transform.position;
+
     }
 }
 
