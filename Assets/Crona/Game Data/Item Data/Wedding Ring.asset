@@ -16,4 +16,4 @@ MonoBehaviour:
   itemName: Wedding Ring
   itemIcon_1100_700: {fileID: 0}
   description: "A wedding ring, with names carved on it, \u201CAtlas & Evelyn 2103-Forever\u201D\r\n"
-  modelPrefab: {fileID: 4356614647416872119, guid: e3f2fb5a92ef24d4a8831ada0eac7827, type: 3}
+  modelPrefab: {fileID: 3288054082606860389, guid: 0a72a9d08010aa74cbda24661074b820, type: 3}

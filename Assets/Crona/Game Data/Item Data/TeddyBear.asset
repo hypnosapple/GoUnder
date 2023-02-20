@@ -16,4 +16,4 @@ MonoBehaviour:
   itemName: Teddy Bear
   itemIcon_1100_700: {fileID: 0}
   description: "Lily\u2019s favorite toy."
-  modelPrefab: {fileID: 8898275735175916459, guid: 8cfb15d3846d3584e934cd1583c396ec, type: 3}
+  modelPrefab: {fileID: 5786591673421647017, guid: 3c330040af5c16a4ea867d690f05a5d1, type: 3}
