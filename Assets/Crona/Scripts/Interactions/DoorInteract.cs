@@ -39,7 +39,12 @@ public class DoorInteract : MonoBehaviour
         {
             doorAnimator.SetBool("OpenDoor", true);
             opened = true;
-            StartCoroutine(WaitForPhoneCall(voiceAfter));
+
+            if (voiceAfter != null)
+            {
+                StartCoroutine(WaitForPhoneCall(voiceAfter));
+            }
+            
         }
         gameObject.GetComponent<AudioSource>().Play();
     }

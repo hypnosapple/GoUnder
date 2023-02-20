@@ -25,6 +25,6 @@ MonoBehaviour:
   VisibleTime:
   - 5
   - 5
-  - 2.5
-  - 14
+  - 3.5
+  - 13
   AudioFile: {fileID: 8300000, guid: 612e141e2a29d4ed791e8bb67a8012e3, type: 3}

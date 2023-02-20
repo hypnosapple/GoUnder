@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c55190e3b979d47518fd7aabf9a89f92, type: 3}
+  m_Name: 2nd_Call04
+  m_EditorClassIdentifier: 
+  ClipName: 2nd_Call04
+  isPhoneCall: 1
+  callerName: Evelyn
+  callerSprite_136_177: {fileID: 21300000, guid: f3fd3b6a62a8a44adb2e64150ebe3c8a, type: 3}
+  Contents:
+  - Atlas! Atlas! Where are you?!
+  - Evelyn, Is that you? Hold on, I am on my way back! Take Lily and go somewhere
+    high above the ground!
+  - "No! Don\u2019t come back, it\u2019s too lat..."
+  VisibleTime:
+  - 2.5
+  - 8
+  - 2.5
+  AudioFile: {fileID: 8300000, guid: 9ba12e8cd7937412a885a8eee5b65c3a, type: 3}
