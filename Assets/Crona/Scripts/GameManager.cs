@@ -133,6 +133,8 @@ public class GameManager : MonoBehaviour
             CMStart.SetActive(false);
             CMStart2.SetActive(false);
             CMStart3.SetActive(false);
+
+            inventoryEnabled = true;
         }
         
         
@@ -456,9 +458,10 @@ public class GameManager : MonoBehaviour
         player.GetComponent<PlayerMovement>().moveDisabled = true;
         inventoryEnabled = false;
 
-        player.transform.position = new Vector3(91, 40.4483452f, -34);
+        
         tunnel3to2.SetActive(false);
         glass.SetActive(true);
+        player.transform.position = new Vector3(91, 40.4483452f, -34);
 
         videoScreen.SetActive(true);
         videoPlayer.Play();
