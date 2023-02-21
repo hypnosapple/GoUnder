@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Cinemachine;
+using UnityEngine.Video;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,8 +27,12 @@ public class GameManager : MonoBehaviour
     public GameObject CMUnderStart1;
     public GameObject CMUnderStart2;
 
+    public GameObject videoScreen;
+    public VideoPlayer videoPlayer;
+
     public GameObject blackPanel;
     public GameObject whitePanel;
+
     private float fadeInT = 0f;
     private bool fadeIn = false;
     private float fadeOutT = 0f;
@@ -67,6 +72,9 @@ public class GameManager : MonoBehaviour
     public GameObject UseableExpandButton;
 
     public bool inventoryEnabled;
+
+    public GameObject tunnel3to2;
+    public GameObject glass;
 
 
     void Start()
@@ -447,5 +455,27 @@ public class GameManager : MonoBehaviour
         //player.GetComponent<CharacterController>().enabled = false;
         player.GetComponent<PlayerMovement>().moveDisabled = true;
         inventoryEnabled = false;
+
+        player.transform.position = new Vector3(91, 40.4483452f, -34);
+        tunnel3to2.SetActive(false);
+        glass.SetActive(true);
+
+        videoScreen.SetActive(true);
+        videoPlayer.Play();
+        StartCoroutine(AfterVideo1());
     }
+
+
+    IEnumerator AfterVideo1()
+    {
+        yield return new WaitForSeconds(29f);
+        videoScreen.SetActive(false);
+        StartFadeIn();
+        yield return new WaitForSeconds(4f);
+
+        player.GetComponent<PlayerMovement>().moveDisabled = false;
+        inventoryEnabled = true;
+        
+    }
+
 }
