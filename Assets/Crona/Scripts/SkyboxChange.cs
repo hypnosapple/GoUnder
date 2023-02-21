@@ -14,6 +14,8 @@ public class SkyboxChange : MonoBehaviour
     public Material nightWater;
 
     public GameObject sea;
+    public GameObject tunnel3to2;
+    public GameObject glass;
 
     void Start()
     {
@@ -35,7 +37,8 @@ public class SkyboxChange : MonoBehaviour
             
             if (!afternoonChanged)
             {
-                
+                tunnel3to2.SetActive(true);
+                glass.SetActive(false);
                 RenderSettings.skybox = afternoonSkybox;
                 sea.GetComponent<MeshRenderer>().material = afternoonWater;
                 afternoonChanged = true;

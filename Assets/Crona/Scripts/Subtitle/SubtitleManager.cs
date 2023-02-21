@@ -230,5 +230,8 @@ public class SubtitleManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         playerAudio.clip = afterCall03;
         playerAudio.Play();
+
+        yield return new WaitForSeconds(6f);
+        GetComponent<GameManager>().PlayVideo1();
     }
 }

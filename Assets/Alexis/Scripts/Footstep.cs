@@ -10,7 +10,7 @@ public class Footstep : MonoBehaviour
 
     private void Update()
     {
-        if (player.GetComponent<CharacterController>().enabled)
+        if (!player.GetComponent<PlayerMovement>().moveDisabled)
         {
             if (Input.GetKey(KeyCode.W)||Input.GetKey(KeyCode.A)|| Input.GetKey(KeyCode.S)|| Input.GetKey(KeyCode.D))
             {
@@ -20,6 +20,10 @@ public class Footstep : MonoBehaviour
             {
                 footstep.enabled = false;
             }
+        }
+        else
+        {
+            footstep.enabled = false;
         }
         
     }

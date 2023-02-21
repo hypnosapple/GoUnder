@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     public NoiseSettings runNoise;
 
     public bool moveDisabled;
+    public bool directionDisabled;
     public bool cam6DShakeOn;
 
 
@@ -48,12 +49,17 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !moveDisabled)
+        if (moveDisabled)
+        {
+            speed = 0f;
+        }
+
+        else if (Input.GetKey(KeyCode.LeftShift))
         {
             speed = 25f;
             noise.m_NoiseProfile = runNoise;
         }
-        else if (Input.GetKeyUp(KeyCode.LeftShift) && !moveDisabled)
+        else
         {
             speed = 15f;
             noise.m_NoiseProfile = walkNoise;
@@ -65,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
         // Change movement direction according to camera direction
-        if (direction.magnitude >= float.Epsilon)
+        if (direction.magnitude >= float.Epsilon && !moveDisabled)
         {
             float playerAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
 
@@ -91,6 +97,9 @@ public class PlayerMovement : MonoBehaviour
         {
             CameraShake(0);
         }
+
+
+        
 
     }
 

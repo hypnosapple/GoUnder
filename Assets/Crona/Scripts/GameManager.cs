@@ -66,6 +66,8 @@ public class GameManager : MonoBehaviour
     public GameObject FileExpandButton;
     public GameObject UseableExpandButton;
 
+    public bool inventoryEnabled;
+
 
     void Start()
     {
@@ -85,7 +87,9 @@ public class GameManager : MonoBehaviour
                 CMStart2.SetActive(true);
                 CMStart3.SetActive(true);
 
-                player.GetComponent<CharacterController>().enabled = false;
+                //player.GetComponent<CharacterController>().enabled = false;
+                player.GetComponent<PlayerMovement>().moveDisabled = true;
+                inventoryEnabled = false;
                 gameObject.GetComponent<SubtitleManager>().ShowSubtitle(firstSub);
             }
             else if (SceneName == "UnderScene")
@@ -93,7 +97,9 @@ public class GameManager : MonoBehaviour
                 for (int i = 0; i < ItemsCollectedFromAbove.Count; i++)
                 {
                     InventoryCanvas.GetComponentInParent<InventoryManager>().AddItemWithoutReminder(ItemsCollectedFromAbove[i]);
-                    player.GetComponent<CharacterController>().enabled = false;
+                    //player.GetComponent<CharacterController>().enabled = false;
+                    player.GetComponent<PlayerMovement>().moveDisabled = true;
+                    inventoryEnabled = false;
                     StartCoroutine(UnderWorldOpening());
                 }
 
@@ -107,7 +113,9 @@ public class GameManager : MonoBehaviour
             CMStart2.SetActive(true);
             CMStart3.SetActive(true);
 
-            player.GetComponent<CharacterController>().enabled = false;
+            //player.GetComponent<CharacterController>().enabled = false;
+            player.GetComponent<PlayerMovement>().moveDisabled = true;
+            inventoryEnabled = false;
             StartCoroutine(NewOpening());
         }
         else
@@ -171,21 +179,33 @@ public class GameManager : MonoBehaviour
 
     public void InventoryVisibility()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) && inventoryEnabled)
         {
             if (InventoryCanvas.activeInHierarchy)
             {
                 if (CommunicationSystem.FocusOnScreen == false && ComputerSystem.FocusOnScreen == false)
                 {
                     Cursor.visible = false;
+                    if (!mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled)
+                    {
+                        mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled = true;
+                    }
+
+                    if (player.GetComponent<PlayerMovement>().moveDisabled)
+                    {
+                        player.GetComponent<PlayerMovement>().moveDisabled = false;
+                    }
+
                     InventoryCanvas.SetActive(false);
                     CrosshairCanvas.SetActive(true);
+
+
                 }
                 else
                 {
                     Cursor.visible = true;
                     InventoryCanvas.SetActive(false);
-                    CrosshairCanvas.SetActive(true);
+                    //CrosshairCanvas.SetActive(true);
                 }
             }
             else
@@ -193,33 +213,20 @@ public class GameManager : MonoBehaviour
                 Cursor.visible = true;
                 InventoryCanvas.SetActive(true);
                 CrosshairCanvas.SetActive(false);
+
+                if (!player.GetComponent<PlayerMovement>().moveDisabled)
+                {
+                    player.GetComponent<PlayerMovement>().moveDisabled = true;
+                }
+
+                if (mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled)
+                {
+                    mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled = false;
+                }
             }
         }
 
-        if (InventoryCanvas.activeInHierarchy)
-        {
-            if (player.GetComponent<PlayerMovement>().enabled)
-            {
-                player.GetComponent<PlayerMovement>().enabled = false;
-            }
-
-            if (mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled)
-            {
-                mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled = false;
-            }
-        }
-        else
-        {
-            if (!mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled)
-            {
-                mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled = true;
-            }
-
-            if (!player.GetComponent<PlayerMovement>().enabled)
-            {
-                player.GetComponent<PlayerMovement>().enabled = true;
-            }
-        }
+        
     }
 
     public void EnableOpeningMove()
@@ -236,7 +243,10 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(5f);
         CMStart3.SetActive(false);
         yield return new WaitForSeconds(3.5f);
-        player.GetComponent<CharacterController>().enabled = true;
+
+        //player.GetComponent<CharacterController>().enabled = true;
+        player.GetComponent<PlayerMovement>().moveDisabled = false;
+        inventoryEnabled = true;
     }
 
 
@@ -393,15 +403,18 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(4f);
         CMUnderStart2.SetActive(false);
         yield return new WaitForSeconds(4f);
-        player.GetComponent<CharacterController>().enabled = true;
+        //player.GetComponent<CharacterController>().enabled = true;
+        player.GetComponent<PlayerMovement>().moveDisabled = false;
+        inventoryEnabled = true;
 
     }
 
     IEnumerator TransitionToUnderworldCoroutine()
     {
         yield return new WaitForSeconds(3f);
-        player.GetComponent<CharacterController>().enabled = false;
+        //player.GetComponent<CharacterController>().enabled = false;
         player.GetComponent<PlayerMovement>().moveDisabled = true;
+        inventoryEnabled = false;
         player.GetComponent<PlayerMovement>().cam6DShakeOn = true;
 
         noise.m_NoiseProfile = screenShakeNoise;
@@ -422,5 +435,17 @@ public class GameManager : MonoBehaviour
         StartFadeInWhite();
         yield return new WaitForSeconds(5f);
         EnableOpeningMove();
+        
+    }
+
+
+    public void PlayVideo1()
+    {
+        blackPanel.SetActive(true);
+        blackPanel.GetComponent<Image>().color = new Color(0, 0, 0, 1);
+
+        //player.GetComponent<CharacterController>().enabled = false;
+        player.GetComponent<PlayerMovement>().moveDisabled = true;
+        inventoryEnabled = false;
     }
 }
