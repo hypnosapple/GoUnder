@@ -11,14 +11,14 @@ public class DoorInteract : MonoBehaviour
     public AudioClip doorLockSFX;
     public AudioClip doorOpenSFX;
 
-    void Start()
+  public void Start()
     {
         unlocked = false;
         opened = false;
         gameObject.GetComponent<AudioSource>().clip = doorLockSFX;
     }
 
-    void Update()
+ public void Update()
     {
         if (wordList.Count == 0 && !unlocked)
         {
