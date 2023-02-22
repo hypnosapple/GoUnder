@@ -10,6 +10,9 @@ public class DrawerInteract : MonoBehaviour
 
     public Animator drawerAnimator;
 
+    public AudioSource drawerOpen;
+    public AudioSource drawerClose;
+
     void Start()
     {
         drawerOpened = false;
@@ -23,6 +26,7 @@ public class DrawerInteract : MonoBehaviour
         if (!drawerOpened)
         {
             drawerAnimator.SetTrigger("OpenDrawer");
+            drawerOpen.Play();
             drawerAnimator.SetBool("Closed", false);
             drawerOpened = true;
             StartCoroutine(DrawerMoving());
@@ -44,6 +48,7 @@ public class DrawerInteract : MonoBehaviour
         if (!drawerOpened)
         {
             drawerAnimator.SetTrigger("Closed");
+            drawerClose.Play();
         }
         
         isMoving = false;
