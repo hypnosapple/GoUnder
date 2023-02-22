@@ -11,9 +11,11 @@ public class CheckText : MonoBehaviour
 
     public CheckText instance;
 
-    DoorInteract doorInteract;
+    public GameObject door;
+
 
     public void Start()
+
     {
         instance = this;
 
@@ -27,9 +29,13 @@ public class CheckText : MonoBehaviour
             matches = true;
             Debug.Log("Word Matches!");
             visualWord.gameObject.SetActive(true);
-            doorInteract = FindObjectOfType<DoorInteract>();
-            doorInteract.unlocked = true;
-            
+            door.GetComponent<DoorInteract>().wordList.RemoveAt(0);
+            door.GetComponent<DoorInteract>().PlayOpenDoor();
+
+            // doorInteract.unlocked = true;
+
+
+
         }
 
         else
