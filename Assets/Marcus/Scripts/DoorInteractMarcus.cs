@@ -37,7 +37,7 @@ public class DoorInteractMarcus : MonoBehaviour
                     if (!cameraLocked)
                     {
                         cameraLocked = true;
-                        playermovement.isLocked = true;
+                        playermovement.islocked = true;
                         GameObject uiMarcus = GameObject.Find("UI - Marcus");
                         Transform doorUI = uiMarcus.transform.Find("Door UI");
 
@@ -50,7 +50,7 @@ public class DoorInteractMarcus : MonoBehaviour
                         Cursor.lockState = CursorLockMode.Locked;
                         Cursor.visible = false;
 
-                        playermovement.isLocked = false;
+                        playermovement.islocked = false;
 
                         GameObject uiMarcus = GameObject.Find("UI - Marcus");
                         Transform doorUI = uiMarcus.transform.Find("Door UI");

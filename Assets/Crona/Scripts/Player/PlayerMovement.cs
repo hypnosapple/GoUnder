@@ -32,17 +32,26 @@ public class PlayerMovement : MonoBehaviour
     public bool directionDisabled;
     public bool cam6DShakeOn;
 
+    public bool islocked;
 
-    void Start()
+
+   public void Start()
     {
         noise = vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         cam6DShakeOn = false;
+
+        islocked = false;
     }
 
-    void Update()
+   public void Update()
     {
         // Check if grounded
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+        if(islocked)
+        {
+            return;
+        }
 
         if (isGrounded && velocity.y < 0)
         {
