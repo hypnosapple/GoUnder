@@ -37,7 +37,7 @@ public class DoorInteract : MonoBehaviour
     {
         if (unlocked)
         {
-            doorAnimator.SetBool("Door3.1Open", true);
+            doorAnimator.SetBool("OpenDoor", true);
             opened = true;
 
             if (voiceAfter != null)
