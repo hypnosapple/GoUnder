@@ -6,13 +6,14 @@ using UnityEngine.EventSystems;
 public class DraggableText : MonoBehaviour, IPointerDownHandler, IDragHandler
 {
     private Vector3 offset;
-
+    private Vector3 originalPos;
     CheckText checkText;
 
 
     public void Start()
     {
         checkText = FindObjectOfType<CheckText>();
+        originalPos = transform.position;
     }
 
 
@@ -32,6 +33,11 @@ public class DraggableText : MonoBehaviour, IPointerDownHandler, IDragHandler
     public void OnDrag(PointerEventData eventData)
     {
         transform.position = GetWorldPosition(eventData.position) + offset;
+    }
+
+    public void OnMouseUp()
+    {
+        transform.position = originalPos;
     }
 
     private Vector3 GetWorldPosition(Vector2 screenPosition)
