@@ -6,39 +6,22 @@ using TMPro;
 
 public class CheckText : MonoBehaviour
 {
-    public string textToMatch;
+    public string nameToMatch;
     public bool matches;
     public GameObject visualWord;
-
-    public CheckText instance;
-
     public GameObject door;
-
-
-    public void Start()
-
-    {
-        instance = this;
-
-    }
 
     public void OnTriggerEnter(Collider other)
     {
-        TextMeshProUGUI otherText = other.GetComponent<TextMeshProUGUI>();
-        if (otherText != null && otherText.text == textToMatch)
+        if (other.gameObject.name == nameToMatch)
         {
             matches = true;
             Debug.Log("Word Matches!");
             visualWord.gameObject.SetActive(true);
             door.GetComponent<DoorInteract>().wordList.Remove(visualWord);
             //door.GetComponent<DoorInteract>().PlayOpenDoor();
-
             // doorInteract.unlocked = true;
-
-
-
         }
-
         else
         {
             Debug.Log("DOES NOT MATCH");
