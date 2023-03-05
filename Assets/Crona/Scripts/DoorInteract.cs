@@ -36,21 +36,22 @@ public class DoorInteract : MonoBehaviour
             unlocked = true;
             gameObject.GetComponent<AudioSource>().clip = doorOpenSFX;
 
-            if (UICanvas != null)
+            if (DoorCam != null)
             {
                 if (UICanvas.activeInHierarchy)
                 {
                     UICanvas.SetActive(false);
                     Cursor.visible = false;
+                    
                     DoorCam.SetActive(false);
 
-                    StartCoroutine(WaitForCamera());
+                    StartCoroutine(WaitCameraOut());
                 }
             }
             
         }
 
-        if (UICanvas != null)
+        if (DoorCam != null)
         {
             if (!unlocked && UICanvas.activeInHierarchy && Input.GetKeyDown(KeyCode.E))
             {
@@ -58,7 +59,7 @@ public class DoorInteract : MonoBehaviour
                 Cursor.visible = false;
                 DoorCam.SetActive(false);
 
-                StartCoroutine(WaitForCamera());
+                StartCoroutine(WaitCameraOut());
             }
         }
 
@@ -78,11 +79,11 @@ public class DoorInteract : MonoBehaviour
             }
             gameObject.GetComponent<AudioSource>().Play();
         }
-        else if (UICanvas != null)
+        else if (DoorCam != null)
         {
             if (!UICanvas.activeInHierarchy)
             {
-                UICanvas.SetActive(true);
+                StartCoroutine(WaitCameraIn());
                 Cursor.visible = true;
                 DoorCam.SetActive(true);
                 gameManager.GetComponent<PlayerInteraction>().interactAllowed = false;
@@ -113,13 +114,19 @@ public class DoorInteract : MonoBehaviour
     }
 
 
-    IEnumerator WaitForCamera()
+    IEnumerator WaitCameraOut()
     {
         yield return new WaitForSeconds(1f);
 
         player.GetComponent<PlayerMovement>().moveDisabled = false;
         crosshairCanvas.SetActive(true);
         gameManager.GetComponent<PlayerInteraction>().interactAllowed = true;
+    }
+
+    IEnumerator WaitCameraIn()
+    {
+        yield return new WaitForSeconds(1f);
+        UICanvas.SetActive(true);
     }
 
 

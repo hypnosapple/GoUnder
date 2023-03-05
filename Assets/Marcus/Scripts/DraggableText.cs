@@ -1,43 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class DraggableText : MonoBehaviour, IPointerDownHandler, IDragHandler
+public class DraggableText : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     private Vector3 offset;
     private Vector3 originalPos;
     public CheckText checkText;
+    private bool used;
 
 
     public void Start()
     {
-        
-        originalPos = transform.position;
+
+        used = false;
+        originalPos = gameObject.GetComponent<RectTransform>().anchoredPosition3D;
     }
 
 
     public void Update()
     {
-        if(checkText.matches == true)
+        if(checkText.matches && !used)
         {
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
+            gameObject.GetComponent<RectTransform>().anchoredPosition3D = originalPos;
+            used = true;
         }
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnBeginDrag(PointerEventData eventData)
     {
+        Debug.Log("dragbegin");
         offset = transform.position - GetWorldPosition(eventData.position);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = GetWorldPosition(eventData.position) + offset;
+        transform.position = offset + GetWorldPosition(eventData.position);
     }
 
-    public void OnMouseUp()
+    public void OnEndDrag(PointerEventData eventData)
     {
-        transform.position = originalPos;
+        gameObject.GetComponent<RectTransform>().anchoredPosition3D = originalPos;
     }
 
     private Vector3 GetWorldPosition(Vector2 screenPosition)
@@ -50,6 +56,8 @@ public class DraggableText : MonoBehaviour, IPointerDownHandler, IDragHandler
         return transform.position;
 
     }
+
+    
 }
 
 
