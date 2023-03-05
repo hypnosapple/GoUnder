@@ -7,12 +7,12 @@ public class DraggableText : MonoBehaviour, IPointerDownHandler, IDragHandler
 {
     private Vector3 offset;
     private Vector3 originalPos;
-    CheckText checkText;
+    public CheckText checkText;
 
 
     public void Start()
     {
-        checkText = FindObjectOfType<CheckText>();
+        
         originalPos = transform.position;
     }
 

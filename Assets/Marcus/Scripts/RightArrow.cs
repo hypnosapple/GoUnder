@@ -12,6 +12,7 @@ public class RightArrow : MonoBehaviour
     {
         if (objectsList.Count == 0) return;
 
+        Debug.Log("cycle");
         objectsList[currentIndex].SetActive(false);
         currentIndex = (currentIndex + 1) % objectsList.Count;
         objectsList[currentIndex].SetActive(true);
