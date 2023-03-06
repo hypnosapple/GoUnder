@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
     public GameObject tunnel3to2;
     public GameObject glass;
 
+    public GameObject cam1;
 
     void Start()
     {
@@ -481,7 +482,10 @@ public class GameManager : MonoBehaviour
         
     }
 
-
+    public void CloseCam1()
+    {
+        cam1.SetActive(false);
+    }
 
 
 }

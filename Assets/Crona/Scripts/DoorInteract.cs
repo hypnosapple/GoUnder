@@ -38,11 +38,7 @@ public class DoorInteract : MonoBehaviour
 
             if (DoorCam != null)
             {
-                
-                
-
                 StartCoroutine(WaitAutoOut());
-                
             }
             
         }
@@ -51,12 +47,15 @@ public class DoorInteract : MonoBehaviour
         {
             if (!unlocked && UICanvas.activeInHierarchy && Input.GetKeyDown(KeyCode.E))
             {
-                Debug.Log("close");
+
                 UICanvas.SetActive(false);
                 Cursor.visible = false;
+                //Debug.Log("close");
                 DoorCam.SetActive(false);
+                gameManager.GetComponent<GameManager>().CloseCam1();
 
                 StartCoroutine(WaitCameraOut());
+                
             }
         }
 
@@ -80,9 +79,11 @@ public class DoorInteract : MonoBehaviour
         {
             if (!UICanvas.activeInHierarchy)
             {
-                StartCoroutine(WaitCameraIn());
                 Cursor.visible = true;
+                //Debug.Log("open");
                 DoorCam.SetActive(true);
+                StartCoroutine(WaitCameraIn());
+                
                 gameManager.GetComponent<PlayerInteraction>().interactAllowed = false;
 
                 if (!player.GetComponent<PlayerMovement>().moveDisabled)
@@ -111,26 +112,6 @@ public class DoorInteract : MonoBehaviour
     }
 
 
-    IEnumerator WaitAutoOut()
-    {
-        yield return new WaitForSeconds(1f);
-
-        if (UICanvas.activeInHierarchy)
-        {
-            UICanvas.SetActive(false);
-            Cursor.visible = false;
-
-            DoorCam.SetActive(false);
-            yield return new WaitForSeconds(1f);
-
-            player.GetComponent<PlayerMovement>().moveDisabled = false;
-            crosshairCanvas.SetActive(true);
-            gameManager.GetComponent<PlayerInteraction>().interactAllowed = true;
-        }
-            
-        
-    }
-
     IEnumerator WaitCameraOut()
     {
         yield return new WaitForSeconds(1f);
@@ -140,6 +121,8 @@ public class DoorInteract : MonoBehaviour
         gameManager.GetComponent<PlayerInteraction>().interactAllowed = true;
     }
 
+
+
     IEnumerator WaitCameraIn()
     {
         yield return new WaitForSeconds(1f);
@@ -147,6 +130,18 @@ public class DoorInteract : MonoBehaviour
     }
 
 
+    IEnumerator WaitAutoOut()
+    {
+        yield return new WaitForSeconds(1f);
+        if (UICanvas.activeInHierarchy)
+        {
+            UICanvas.SetActive(false);
+            Cursor.visible = false;
 
+            DoorCam.SetActive(false);
+
+            StartCoroutine(WaitCameraOut());
+        }
+    }
     
 }
