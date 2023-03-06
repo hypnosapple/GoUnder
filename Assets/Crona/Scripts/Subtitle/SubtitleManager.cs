@@ -106,6 +106,7 @@ public class SubtitleManager : MonoBehaviour
         }
         else
         {
+            playerAudio.clip = phoneCallAudio;
             playerAudio.Play();
             subtitlePanel.SetActive(true);
             StartCoroutine(Display(0));
@@ -233,5 +234,17 @@ public class SubtitleManager : MonoBehaviour
 
         yield return new WaitForSeconds(6f);
         GetComponent<GameManager>().PlayVideo1();
+    }
+
+
+    public void PlayAfterTime(SubtitleData_SO subtitle, float waitTime)
+    {
+        StartCoroutine(PlayVOAfterSeconds(subtitle, waitTime));
+    }
+
+    IEnumerator PlayVOAfterSeconds(SubtitleData_SO subtitle, float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        ShowSubtitle(subtitle);
     }
 }

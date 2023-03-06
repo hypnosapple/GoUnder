@@ -13,6 +13,11 @@ public class ItemPickup : MonoBehaviour
     public AudioSource playerAudio;
     public AudioClip AfterPickVO;
 
+    public SubtitleData_SO secondVO;
+    public float playAfterSeconds;
+
+    public GameObject gameManager;
+
     public void Pickup()
     {
         InventoryCanvas.GetComponent<InventoryManager>().AddItem(itemData);
@@ -29,6 +34,11 @@ public class ItemPickup : MonoBehaviour
         {
             playerAudio.clip = AfterPickVO;
             playerAudio.Play();
+        }
+
+        if (secondVO != null)
+        {
+            gameManager.GetComponent<SubtitleManager>().PlayAfterTime(secondVO, playAfterSeconds);
         }
 
 
