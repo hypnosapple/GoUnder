@@ -15,7 +15,7 @@ MonoBehaviour:
   ClipName: 2nd_Call04
   isPhoneCall: 1
   callerName: Evelyn
-  callerSprite_136_177: {fileID: 21300000, guid: f3fd3b6a62a8a44adb2e64150ebe3c8a, type: 3}
+  callerSprite_136_177: {fileID: 21300000, guid: 09670d1819c8f4bd89c4d1c2ecc1d384, type: 3}
   Contents:
   - Atlas! Atlas! Where are you?!
   - Evelyn, Is that you? Hold on, I am on my way back! Take Lily and go somewhere
