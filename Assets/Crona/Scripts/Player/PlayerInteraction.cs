@@ -46,7 +46,7 @@ public class PlayerInteraction : MonoBehaviour
         if (interactAllowed)
         {
             if (Physics.Raycast(ray, out hit, interactionRange)){
-                Debug.Log(hit.collider.gameObject.layer);
+                //Debug.Log(hit.collider.gameObject.layer);
                 if (hit.collider.gameObject.layer == defaultLayerMask)
                 {
                     if (onTarget.activeInHierarchy)

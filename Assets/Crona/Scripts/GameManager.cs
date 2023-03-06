@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 {
     public bool enableOldCutscenes;
     public bool enableNewCutscenes;
+    public bool startFromSecondFloor;
 
     public GameObject InventoryCanvas;
     public GameObject player;
@@ -84,8 +85,19 @@ public class GameManager : MonoBehaviour
         noise = vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
         // Opening cutscenes
+        if (startFromSecondFloor)
+        {
+            whitePanel.SetActive(false);
+            blackPanel.SetActive(false);
+            CMStart.SetActive(false);
+            CMStart2.SetActive(false);
+            CMStart3.SetActive(false);
 
-        if (enableOldCutscenes)
+            inventoryEnabled = true;
+            player.transform.position = new Vector3(91, 40.4483452f, -34);
+        }
+
+        else if (enableOldCutscenes)
         {
             blackPanel.SetActive(true);
             whitePanel.SetActive(false);
