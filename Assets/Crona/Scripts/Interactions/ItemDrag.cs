@@ -20,7 +20,7 @@ public class ItemDrag : MonoBehaviour
     {
         if (checkText.matches && !used)
         {
-            //Destroy(this.gameObject);
+            Debug.Log("used");
             gameObject.GetComponent<RectTransform>().anchoredPosition3D = originalPos;
             used = true;
         }

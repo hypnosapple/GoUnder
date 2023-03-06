@@ -38,15 +38,11 @@ public class DoorInteract : MonoBehaviour
 
             if (DoorCam != null)
             {
-                if (UICanvas.activeInHierarchy)
-                {
-                    UICanvas.SetActive(false);
-                    Cursor.visible = false;
-                    
-                    DoorCam.SetActive(false);
+                
+                
 
-                    StartCoroutine(WaitCameraOut());
-                }
+                StartCoroutine(WaitAutoOut());
+                
             }
             
         }
@@ -55,6 +51,7 @@ public class DoorInteract : MonoBehaviour
         {
             if (!unlocked && UICanvas.activeInHierarchy && Input.GetKeyDown(KeyCode.E))
             {
+                Debug.Log("close");
                 UICanvas.SetActive(false);
                 Cursor.visible = false;
                 DoorCam.SetActive(false);
@@ -114,6 +111,26 @@ public class DoorInteract : MonoBehaviour
     }
 
 
+    IEnumerator WaitAutoOut()
+    {
+        yield return new WaitForSeconds(1f);
+
+        if (UICanvas.activeInHierarchy)
+        {
+            UICanvas.SetActive(false);
+            Cursor.visible = false;
+
+            DoorCam.SetActive(false);
+            yield return new WaitForSeconds(1f);
+
+            player.GetComponent<PlayerMovement>().moveDisabled = false;
+            crosshairCanvas.SetActive(true);
+            gameManager.GetComponent<PlayerInteraction>().interactAllowed = true;
+        }
+            
+        
+    }
+
     IEnumerator WaitCameraOut()
     {
         yield return new WaitForSeconds(1f);
@@ -131,28 +148,5 @@ public class DoorInteract : MonoBehaviour
 
 
 
-    public List<GameObject> pageList = new List<GameObject>();
-    private int currentIndex = 0;
-
-    public void CycleThroughObjects()
-    {
-        if (pageList.Count == 0) return;
-
-        pageList[currentIndex].SetActive(false);
-        currentIndex = (currentIndex + 1) % pageList.Count;
-        pageList[currentIndex].SetActive(true);
-    }
-
-    public void CycleBackwardsThroughObjects()
-    {
-        if (pageList.Count == 0) return;
-
-        pageList[currentIndex].SetActive(false);
-        currentIndex--;
-        if (currentIndex < 0)
-        {
-            currentIndex = pageList.Count - 1;
-        }
-        pageList[currentIndex].SetActive(true);
-    }
+    
 }
