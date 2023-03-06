@@ -472,7 +472,9 @@ public class GameManager : MonoBehaviour
 
     IEnumerator AfterVideo1()
     {
+        
         yield return new WaitForSeconds(29f);
+        player.transform.position = new Vector3(91, 40.4483452f, -34);
         videoScreen.SetActive(false);
         StartFadeIn();
         yield return new WaitForSeconds(4f);
