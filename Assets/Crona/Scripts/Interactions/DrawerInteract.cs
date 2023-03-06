@@ -35,6 +35,7 @@ public class DrawerInteract : MonoBehaviour
         {
             drawerAnimator.SetTrigger("CloseDrawer");
             drawerOpened = false;
+            drawerClose.Play();
             StartCoroutine(DrawerMoving());
         }
     }
@@ -48,7 +49,7 @@ public class DrawerInteract : MonoBehaviour
         if (!drawerOpened)
         {
             drawerAnimator.SetTrigger("Closed");
-            drawerClose.Play();
+            
         }
         
         isMoving = false;

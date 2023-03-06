@@ -7,6 +7,7 @@ public class PlayerInteraction : MonoBehaviour
     public float pickupRange;
     public float screenRange;
     public float interactionRange;
+    int defaultLayerMask;
     int pickupLayerMask;
     int screen1LayerMask;
     int screen2LayerMask;
@@ -28,12 +29,12 @@ public class PlayerInteraction : MonoBehaviour
 
     void Start()
     {
-        pickupLayerMask = LayerMask.GetMask("Pickup");
-        screen1LayerMask = LayerMask.GetMask("Screen1");
-        screen2LayerMask = LayerMask.GetMask("Screen2");
-        doorLayerMask = LayerMask.GetMask("Door");
-        drawerLayerMask = LayerMask.GetMask("Drawer");
-
+        defaultLayerMask = 0;
+        pickupLayerMask = 8;
+        screen1LayerMask = 9;
+        screen2LayerMask = 10;
+        doorLayerMask = 11;
+        drawerLayerMask = 12;
         interactAllowed = true;
 }
 
@@ -44,48 +45,17 @@ public class PlayerInteraction : MonoBehaviour
 
         if (interactAllowed)
         {
-            if (Physics.Raycast(ray, out hit, pickupRange, pickupLayerMask))
-            {
-                if (!onTarget.activeInHierarchy)
+            if (Physics.Raycast(ray, out hit, interactionRange)){
+                Debug.Log(hit.collider.gameObject.layer);
+                if (hit.collider.gameObject.layer == defaultLayerMask)
                 {
-                    onTarget.SetActive(true);
+                    if (onTarget.activeInHierarchy)
+                    {
+                        onTarget.SetActive(false);
+                    }
                 }
 
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    hit.transform.gameObject.GetComponent<ItemPickup>().Pickup();
-                }
-            }
-
-            else if (Physics.Raycast(ray, out hit, screenRange, screen1LayerMask))
-            {
-                if (!onTarget.activeInHierarchy)
-                {
-                    onTarget.SetActive(true);
-                }
-
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    hit.transform.gameObject.GetComponent<UIInteract>().ToComputer();
-                }
-            }
-
-            else if (Physics.Raycast(ray, out hit, screenRange, screen2LayerMask))
-            {
-                if (!onTarget.activeInHierarchy)
-                {
-                    onTarget.SetActive(true);
-                }
-
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    hit.transform.gameObject.GetComponent<CommunicationInteract>().ToScreen();
-                }
-            }
-
-            else if (Physics.Raycast(ray, out hit, interactionRange, doorLayerMask))
-            {
-                if (!hit.transform.gameObject.GetComponent<DoorInteract>().opened)
+                    if (hit.collider.gameObject.layer == screen1LayerMask)
                 {
                     if (!onTarget.activeInHierarchy)
                     {
@@ -94,16 +64,11 @@ public class PlayerInteraction : MonoBehaviour
 
                     if (Input.GetKeyDown(KeyCode.E))
                     {
-                        hit.transform.gameObject.GetComponent<DoorInteract>().PlayOpenDoor();
-
+                        hit.transform.gameObject.GetComponent<UIInteract>().ToComputer();
                     }
                 }
 
-            }
-
-            else if (Physics.Raycast(ray, out hit, interactionRange, drawerLayerMask))
-            {
-                if (!hit.transform.gameObject.GetComponent<DrawerInteract>().isMoving)
+                else if (hit.collider.gameObject.layer == screen2LayerMask)
                 {
                     if (!onTarget.activeInHierarchy)
                     {
@@ -112,11 +77,63 @@ public class PlayerInteraction : MonoBehaviour
 
                     if (Input.GetKeyDown(KeyCode.E))
                     {
-                        hit.transform.gameObject.GetComponent<DrawerInteract>().MoveDrawer();
+                        hit.transform.gameObject.GetComponent<CommunicationInteract>().ToScreen();
                     }
                 }
 
+                else if (hit.collider.gameObject.layer == doorLayerMask)
+                {
+                    if (!hit.transform.gameObject.GetComponent<DoorInteract>().opened)
+                    {
+                        if (!onTarget.activeInHierarchy)
+                        {
+                            onTarget.SetActive(true);
+                        }
+
+                        if (Input.GetKeyDown(KeyCode.E))
+                        {
+                            hit.transform.gameObject.GetComponent<DoorInteract>().PlayOpenDoor();
+
+                        }
+                    }
+
+                }
+
+                else if (hit.collider.gameObject.layer == drawerLayerMask)
+                {
+
+                    if (!hit.transform.gameObject.GetComponent<DrawerInteract>().isMoving)
+                    {
+                        if (!onTarget.activeInHierarchy)
+                        {
+                            onTarget.SetActive(true);
+                        }
+
+                        if (Input.GetKeyDown(KeyCode.E))
+                        {
+                            hit.transform.gameObject.GetComponent<DrawerInteract>().MoveDrawer();
+                        }
+                    }
+
+                }
+
+                else if (hit.collider.gameObject.layer == pickupLayerMask)
+                {
+                    if (!onTarget.activeInHierarchy)
+                    {
+                        onTarget.SetActive(true);
+                    }
+
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        hit.transform.gameObject.GetComponent<ItemPickup>().Pickup();
+                    }
+                }
             }
+
+            
+
+            
 
             else
             {
