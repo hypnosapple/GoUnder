@@ -21,6 +21,11 @@ public class ItemDrag : MonoBehaviour
         if (checkText.matches && !used)
         {
             Debug.Log("used");
+            gameObject.GetComponentInParent<ItemList>().itemsInThisPage -= 1;
+            if (gameObject.GetComponentInParent<ItemList>().itemsInThisPage == 0 && transform.parent.name != "Page1")
+            {
+                gameObject.GetComponentInParent<PageArrows>().pageList.Remove(transform.parent.gameObject);
+            }
             Destroy(gameObject);
             /*StartCoroutine(SetItemActive());
             gameObject.GetComponent<Image>().enabled = false;
@@ -44,9 +49,10 @@ public class ItemDrag : MonoBehaviour
 
     void OnMouseUp()
     {
-        //gameObject.GetComponent<RectTransform>().anchoredPosition3D = originalPos;
+        
         gameObject.SetActive(false);
         gameObject.SetActive(true);
+        gameObject.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(gameObject.GetComponent<RectTransform>().anchoredPosition3D.x, gameObject.GetComponent<RectTransform>().anchoredPosition3D.y, 0);
     }
 
     Vector3 MouseWorldPosition()

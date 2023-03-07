@@ -6,8 +6,5 @@ public class ItemList : MonoBehaviour
 {
     public int itemsInThisPage;
 
-    private void Awake()
-    {
-        itemsInThisPage = 0;
-    }
+    
 }

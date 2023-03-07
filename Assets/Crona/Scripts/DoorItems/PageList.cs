@@ -12,9 +12,6 @@ public class PageList : MonoBehaviour
 
     public GameObject doorItemPrefab;
 
-    public GameObject itemHolder01;
-    public GameObject itemHolder02;
-    public GameObject itemHolder03;
 
     public void AddItemToDoor(Sprite itemSprite, string itemName, int checkWordNumber)
     {
@@ -27,17 +24,9 @@ public class PageList : MonoBehaviour
                 if (pageList[i].GetComponent<ItemList>().itemsInThisPage == 0 && i != 0)
                 {
                     doorUICanvas.GetComponent<PageArrows>().pageList.Add(pageList[i]);
-                    //newDoorItem.GetComponent<RectTransform>().anchoredPosition3D = itemHolder01.GetComponent<RectTransform>().anchoredPosition3D;
+                    
                 }
-                else if (pageList[i].GetComponent<ItemList>().itemsInThisPage == 1)
-                {
-                    //newDoorItem.GetComponent<RectTransform>().anchoredPosition3D = itemHolder02.GetComponent<RectTransform>().anchoredPosition3D;
-                }
-                else if (pageList[i].GetComponent<ItemList>().itemsInThisPage == 2)
-                {
-                    //newDoorItem.GetComponent<RectTransform>().anchoredPosition3D = itemHolder03.GetComponent<RectTransform>().anchoredPosition3D;
-                }
-
+              
 
                 pageList[i].GetComponent<ItemList>().itemsInThisPage += 1;
 
