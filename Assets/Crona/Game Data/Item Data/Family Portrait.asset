@@ -15,6 +15,8 @@ MonoBehaviour:
   itemType: 2
   itemName: Family Portrait
   itemIcon_1100_700: {fileID: 0}
+  iconInDoor_135_135: {fileID: 21300000, guid: a2bdce21f54a14da2bf3857be4345465, type: 3}
+  relatedCheckWordNumber: 0
   description: A photo portrait of a child and mother with a broken piece of it hiding
     the other parent.
   modelPrefab: {fileID: 199627545563177539, guid: a9b7c53aca465e54b8acdbad7ed1680a, type: 3}

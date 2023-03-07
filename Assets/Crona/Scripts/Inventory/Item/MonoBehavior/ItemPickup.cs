@@ -23,7 +23,7 @@ public class ItemPickup : MonoBehaviour
         InventoryCanvas.GetComponent<InventoryManager>().AddItem(itemData);
         //Debug.Log("pickup");
 
-        if (relatedDoor != null)
+        if (relatedDoor != null && relatedWord != null)
         {
             relatedWord.SetActive(true);
 

@@ -15,6 +15,8 @@ MonoBehaviour:
   itemType: 1
   itemName: Shawn Wang
   itemIcon_1100_700: {fileID: 21300000, guid: 61891e07a2a3c452f8b9d75e6c88d8b7, type: 3}
+  iconInDoor_135_135: {fileID: 0}
+  relatedCheckWordNumber: -1
   description: "MISSING PEOPLE FILE\n\n-INFORMATION\nName: Shawn Wang\nBirth date:
     Feb 04, 2403\nFamily: Esther Liu\nJob: Captain, UMA Department of F  \nCurrent
     Address: \n42 Ecllipse 5 Area, Sunset Island, UMA \nMissing Date: May 10 2425\nMissing

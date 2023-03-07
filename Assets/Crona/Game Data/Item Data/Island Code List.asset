@@ -15,6 +15,8 @@ MonoBehaviour:
   itemType: 1
   itemName: Island Code List
   itemIcon_1100_700: {fileID: 21300000, guid: 43904f8c42434e3419defee9a78f7356, type: 3}
+  iconInDoor_135_135: {fileID: 0}
+  relatedCheckWordNumber: -1
   description: 'Island Code List
 
 

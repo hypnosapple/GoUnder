@@ -15,5 +15,7 @@ MonoBehaviour:
   itemType: 2
   itemName: Wedding Ring
   itemIcon_1100_700: {fileID: 0}
+  iconInDoor_135_135: {fileID: 21300000, guid: da930c3ded1d7454287dfd2881a2c1d6, type: 3}
+  relatedCheckWordNumber: 1
   description: "A wedding ring, with names carved on it, \u201CAtlas & Evelyn 2103-Forever\u201D\r\n"
   modelPrefab: {fileID: 3288054082606860389, guid: 0a72a9d08010aa74cbda24661074b820, type: 3}

@@ -15,5 +15,7 @@ MonoBehaviour:
   itemType: 2
   itemName: Teddy Bear
   itemIcon_1100_700: {fileID: 0}
+  iconInDoor_135_135: {fileID: 21300000, guid: 36390478981c5400a83fd6d460e1a4af, type: 3}
+  relatedCheckWordNumber: 2
   description: "Lily\u2019s favorite toy."
   modelPrefab: {fileID: 5786591673421647017, guid: 3c330040af5c16a4ea867d690f05a5d1, type: 3}

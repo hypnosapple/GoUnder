@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class CheckText : MonoBehaviour
 {
@@ -27,4 +28,6 @@ public class CheckText : MonoBehaviour
             Debug.Log("DOES NOT MATCH");
         }
     }
+
+    
 }

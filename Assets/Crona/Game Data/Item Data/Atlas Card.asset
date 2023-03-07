@@ -15,6 +15,8 @@ MonoBehaviour:
   itemType: 0
   itemName: Atlas Card
   itemIcon_1100_700: {fileID: 21300000, guid: 400eb4f96ecbd024791d42f7db2c8fa5, type: 3}
+  iconInDoor_135_135: {fileID: 0}
+  relatedCheckWordNumber: -1
   description: 'Atlas Driscoll
 
 

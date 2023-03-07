@@ -13,6 +13,10 @@ public class ItemData_SO : ScriptableObject
 
     public Sprite itemIcon_1100_700;
 
+    public Sprite iconInDoor_135_135;
+
+    public int relatedCheckWordNumber = -1;
+
     [TextArea(10, 200)]
     public string description = "";
 

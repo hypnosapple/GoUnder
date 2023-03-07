@@ -15,6 +15,8 @@ MonoBehaviour:
   itemType: 1
   itemName: UMA Tsunami forecast paper
   itemIcon_1100_700: {fileID: 21300000, guid: 9d30987fbdd79dc4192c459d2e05eac1, type: 3}
+  iconInDoor_135_135: {fileID: 0}
+  relatedCheckWordNumber: -1
   description: " A tsunami is predicted to be coming in the year. 95% of previous
     predictions were correct before. This one might not be an exception. \r\n\r\n"
   modelPrefab: {fileID: 0}

@@ -16,6 +16,8 @@ public class InventoryManager : MonoBehaviour
     public GameObject FileContainer;
     public GameObject UseableContainer;
 
+    public GameObject doorItemPages;
+
     public GameObject PopupPanel;
     public Image ReminderInfo;
     public TMP_Text ReminderName;
@@ -80,6 +82,13 @@ public class InventoryManager : MonoBehaviour
                 }
             }
         }
+
+        if (newItemData.iconInDoor_135_135 != null){
+            doorItemPages.GetComponent<PageList>().AddItemToDoor(newItemData.iconInDoor_135_135, newItemData.itemName, newItemData.relatedCheckWordNumber);
+        }
+
+        
+
     }
 
     public void AddItemWithoutReminder(ItemData_SO newItemData)

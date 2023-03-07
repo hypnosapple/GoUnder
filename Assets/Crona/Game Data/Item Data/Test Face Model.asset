@@ -15,5 +15,7 @@ MonoBehaviour:
   itemType: 2
   itemName: Face
   itemIcon_1100_700: {fileID: 0}
+  iconInDoor_135_135: {fileID: 0}
+  relatedCheckWordNumber: -1
   description: 
   modelPrefab: {fileID: -8679921383154817045, guid: 43203972731a7a44d94be20d420895ab, type: 3}

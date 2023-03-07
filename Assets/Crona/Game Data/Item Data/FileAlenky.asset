@@ -15,6 +15,8 @@ MonoBehaviour:
   itemType: 1
   itemName: Alenky Shiro
   itemIcon_1100_700: {fileID: 21300000, guid: b53978052d5a249ed81297a7a342fd70, type: 3}
+  iconInDoor_135_135: {fileID: 0}
+  relatedCheckWordNumber: -1
   description: "MISSING PEOPLE FILE\n\n-INFORMATION\nName: Alenky Shiro\nBirth date:
     April 29, 2401\nFamily: Ringo Shiro\nJob: Commander, UMA Department of Fishing 
     \nCurrent Address: \n2 NorthWest 6 Area, Twilight Marine, UMA \nMissing Date:
