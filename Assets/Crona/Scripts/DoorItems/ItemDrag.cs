@@ -22,14 +22,14 @@ public class ItemDrag : MonoBehaviour
         {
             if (checkText.matches && !used)
             {
-                Debug.Log("used");
+                
                 gameObject.GetComponentInParent<ItemList>().itemsInThisPage -= 1;
                 if (gameObject.GetComponentInParent<ItemList>().itemsInThisPage == 0 && transform.parent.name != "Page1")
                 {
                     gameObject.GetComponentInParent<PageArrows>().ResetToFirstPage();
                     gameObject.GetComponentInParent<PageArrows>().pageList.Remove(transform.parent.gameObject);
                 }
-                Debug.Log("destroy");
+                
                 Destroy(gameObject);
                 /*StartCoroutine(SetItemActive());
                 gameObject.GetComponent<Image>().enabled = false;

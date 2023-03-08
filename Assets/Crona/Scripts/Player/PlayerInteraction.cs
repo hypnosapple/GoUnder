@@ -26,6 +26,8 @@ public class PlayerInteraction : MonoBehaviour
 
     public bool interactAllowed;
 
+    public GameObject crosshairCanvas;
+
 
     void Start()
     {
@@ -43,7 +45,7 @@ public class PlayerInteraction : MonoBehaviour
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
-        if (interactAllowed)
+        if (interactAllowed && crosshairCanvas.activeInHierarchy)
         {
             if (Physics.Raycast(ray, out hit, interactionRange)){
                 //Debug.Log(hit.collider.gameObject.layer);
