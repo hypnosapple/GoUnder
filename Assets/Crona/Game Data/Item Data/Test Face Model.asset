@@ -18,4 +18,4 @@ MonoBehaviour:
   iconInDoor_135_135: {fileID: 0}
   relatedCheckWordNumber: -1
   description: 
-  modelPrefab: {fileID: -8679921383154817045, guid: 43203972731a7a44d94be20d420895ab, type: 3}
+  modelPrefab: {fileID: 1965802726826234267, guid: 54a1e3b1ff0453f49a7f352aabe6c495, type: 3}
