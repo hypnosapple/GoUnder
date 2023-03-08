@@ -15,7 +15,7 @@ MonoBehaviour:
   itemType: 2
   itemName: M1911
   itemIcon_1100_700: {fileID: 0}
-  iconInDoor_135_135: {fileID: 0}
+  iconInDoor_135_135: {fileID: 21300000, guid: 1269298ba8830ad44ba7a496ebfd26ab, type: 3}
   relatedCheckWordNumber: -1
   description: 
-  modelPrefab: {fileID: -8679921383154817045, guid: 74f2ba9983d06e94e9b2d8daa9094628, type: 3}
+  modelPrefab: {fileID: 2736966254262717160, guid: 57db5c9db83be134ebb4962afe804400, type: 3}
