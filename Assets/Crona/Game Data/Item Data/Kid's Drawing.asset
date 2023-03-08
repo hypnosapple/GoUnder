@@ -17,6 +17,8 @@ MonoBehaviour:
   itemIcon_1100_700: {fileID: 0}
   iconInDoor_135_135: {fileID: 21300000, guid: ffaa5306ec399d94dae3e00b39b69399, type: 3}
   relatedCheckWordNumber: -1
-  description: A photo portrait of a child and mother with a broken piece of it hiding
-    the other parent.
+  description: 'A drawing from a kid. Showing a kid standing between his/her parents,
+    and smiling.
+
+'
   modelPrefab: {fileID: 1390496605379648358, guid: e73cf48d086e1864fbe546ddd998fc7b, type: 3}

@@ -17,5 +17,5 @@ MonoBehaviour:
   itemIcon_1100_700: {fileID: 0}
   iconInDoor_135_135: {fileID: 21300000, guid: d05a6657731b2004b98786393a2b303f, type: 3}
   relatedCheckWordNumber: -1
-  description: "A wedding ring, with names carved on it, \u201CAtlas & Evelyn 2103-Forever\u201D\r\n"
+  description: "A beautifully crafted silver necklace. Was kept very carefully\r.\n"
   modelPrefab: {fileID: 937319187968016133, guid: 57a37bfc0f4b0d24e8a9e9ad50bb2d02, type: 3}

@@ -17,5 +17,5 @@ MonoBehaviour:
   itemIcon_1100_700: {fileID: 0}
   iconInDoor_135_135: {fileID: 21300000, guid: 070518c2bb3f97948ba9f8b5c7cd7c9d, type: 3}
   relatedCheckWordNumber: -1
-  description: "A wedding ring, with names carved on it, \u201CAtlas & Evelyn 2103-Forever\u201D\r\n"
+  description: "A small bottle with white pills inside. Label says \u201CHypnotic/Belsomra\u201D"
   modelPrefab: {fileID: 1916806603124299366, guid: 6657a7085f1952f44bf6e5a8e55079f8, type: 3}
