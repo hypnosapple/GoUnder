@@ -29,4 +29,11 @@ public class PageArrows : MonoBehaviour
         }
         pageList[currentIndex].SetActive(true);
     }
+
+    public void ResetToFirstPage()
+    {
+        pageList[currentIndex].SetActive(false);
+        currentIndex = 0;
+        pageList[currentIndex].SetActive(true);
+    }
 }

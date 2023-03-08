@@ -18,21 +18,27 @@ public class ItemDrag : MonoBehaviour
 
     public void Update()
     {
-        if (checkText.matches && !used)
+        if (checkText != null)
         {
-            Debug.Log("used");
-            gameObject.GetComponentInParent<ItemList>().itemsInThisPage -= 1;
-            if (gameObject.GetComponentInParent<ItemList>().itemsInThisPage == 0 && transform.parent.name != "Page1")
+            if (checkText.matches && !used)
             {
-                gameObject.GetComponentInParent<PageArrows>().pageList.Remove(transform.parent.gameObject);
+                Debug.Log("used");
+                gameObject.GetComponentInParent<ItemList>().itemsInThisPage -= 1;
+                if (gameObject.GetComponentInParent<ItemList>().itemsInThisPage == 0 && transform.parent.name != "Page1")
+                {
+                    gameObject.GetComponentInParent<PageArrows>().ResetToFirstPage();
+                    gameObject.GetComponentInParent<PageArrows>().pageList.Remove(transform.parent.gameObject);
+                }
+                Debug.Log("destroy");
+                Destroy(gameObject);
+                /*StartCoroutine(SetItemActive());
+                gameObject.GetComponent<Image>().enabled = false;
+                gameObject.GetComponent<RectTransform>().anchoredPosition3D = originalPos;
+                used = true;
+                */
             }
-            Destroy(gameObject);
-            /*StartCoroutine(SetItemActive());
-            gameObject.GetComponent<Image>().enabled = false;
-            gameObject.GetComponent<RectTransform>().anchoredPosition3D = originalPos;
-            used = true;
-            */
         }
+        
     }
 
     void OnMouseDown()
