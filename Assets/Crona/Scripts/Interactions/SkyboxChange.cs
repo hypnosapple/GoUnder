@@ -44,6 +44,18 @@ public class SkyboxChange : MonoBehaviour
                 afternoonChanged = true;
             }
         }
+
+        else if (other.gameObject.tag == "ToNight")
+        {
+
+            if (!nightChanged)
+            {
+                
+                RenderSettings.skybox = nightSkybox;
+                sea.GetComponent<MeshRenderer>().material = nightWater;
+                nightChanged = true;
+            }
+        }
     }
 
     
