@@ -474,7 +474,7 @@ public class GameManager : MonoBehaviour
         
         tunnel3to2.SetActive(false);
         glass.SetActive(true);
-        player.transform.position = new Vector3(91, 40.4483452f, -34);
+        player.transform.position = new Vector3(26, 40.4483452f, -34);
 
         videoScreen.SetActive(true);
         videoPlayer.Play();
@@ -486,7 +486,7 @@ public class GameManager : MonoBehaviour
     {
         
         yield return new WaitForSeconds(29f);
-        player.transform.position = new Vector3(91, 40.4483452f, -34);
+        player.transform.position = new Vector3(26, 40.4483452f, -34);
         videoScreen.SetActive(false);
         StartFadeIn();
         yield return new WaitForSeconds(4f);
