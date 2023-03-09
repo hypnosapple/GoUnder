@@ -8,11 +8,11 @@ public class ItemDrag : MonoBehaviour
     Vector3 offset;
     private Vector3 originalPos;
     public CheckText checkText;
-    private bool used;
+    private bool selected;
 
     public void Awake()
     {
-        used = false;
+        selected = false;
         originalPos = gameObject.GetComponent<RectTransform>().anchoredPosition3D;
     }
 
@@ -20,7 +20,7 @@ public class ItemDrag : MonoBehaviour
     {
         if (checkText != null)
         {
-            if (checkText.matches && !used)
+            if (checkText.matches)
             {
                 
                 gameObject.GetComponentInParent<ItemList>().itemsInThisPage -= 1;
@@ -48,17 +48,21 @@ public class ItemDrag : MonoBehaviour
 
     void OnMouseDrag()
     {
+        if (!selected)
+        {
+            transform.position = MouseWorldPosition() + offset;
+        }
         
-        transform.position = MouseWorldPosition() + offset;
         
     }
 
     void OnMouseUp()
     {
-        
-        gameObject.SetActive(false);
-        gameObject.SetActive(true);
-        gameObject.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(gameObject.GetComponent<RectTransform>().anchoredPosition3D.x, gameObject.GetComponent<RectTransform>().anchoredPosition3D.y, 0);
+        resetItemPosition();
+        if (selected)
+        {
+            selected = false;
+        }
     }
 
     Vector3 MouseWorldPosition()
@@ -72,5 +76,13 @@ public class ItemDrag : MonoBehaviour
     {
         yield return new WaitForSeconds(0.99f);
         gameObject.GetComponent<Image>().enabled = true;
+    }
+
+    public void resetItemPosition()
+    {
+        selected = true;
+        gameObject.SetActive(false);
+        gameObject.SetActive(true);
+        gameObject.GetComponent<RectTransform>().anchoredPosition3D = new Vector3(gameObject.GetComponent<RectTransform>().anchoredPosition3D.x, gameObject.GetComponent<RectTransform>().anchoredPosition3D.y, 0);
     }
 }

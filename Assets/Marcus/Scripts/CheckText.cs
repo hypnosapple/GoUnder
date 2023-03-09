@@ -26,6 +26,8 @@ public class CheckText : MonoBehaviour
         else
         {
             Debug.Log("DOES NOT MATCH");
+            
+            other.gameObject.GetComponent<ItemDrag>().resetItemPosition();
         }
     }
 
