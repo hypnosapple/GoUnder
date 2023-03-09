@@ -12,6 +12,8 @@ public class CheckText : MonoBehaviour
     public GameObject visualWord;
     public GameObject door;
 
+    public AudioSource wrongChoiceAlert;
+
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == nameToMatch)
@@ -28,6 +30,7 @@ public class CheckText : MonoBehaviour
             Debug.Log("DOES NOT MATCH");
             
             other.gameObject.GetComponent<ItemDrag>().resetItemPosition();
+            wrongChoiceAlert.Play();
         }
     }
 

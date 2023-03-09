@@ -17,6 +17,8 @@ public class SkyboxChange : MonoBehaviour
     public GameObject tunnel3to2;
     public GameObject glass;
 
+    public AudioSource tunnelTone;
+
     void Start()
     {
         afternoonChanged = false;
@@ -24,11 +26,7 @@ public class SkyboxChange : MonoBehaviour
 
     }
 
-    
-    void Update()
-    {
-        
-    }
+   
 
     private void OnTriggerEnter(Collider other)
     {
@@ -38,6 +36,7 @@ public class SkyboxChange : MonoBehaviour
             if (!afternoonChanged)
             {
                 tunnel3to2.SetActive(true);
+                tunnelTone.Play();
                 glass.SetActive(false);
                 RenderSettings.skybox = afternoonSkybox;
                 sea.GetComponent<MeshRenderer>().material = afternoonWater;

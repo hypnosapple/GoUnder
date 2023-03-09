@@ -77,6 +77,9 @@ public class GameManager : MonoBehaviour
     public GameObject tunnel3to2;
     public GameObject glass;
 
+    public AudioSource tunnelTone;
+    public AudioSource ambience;
+
     public GameObject cam1;
 
     void Start()
@@ -467,6 +470,9 @@ public class GameManager : MonoBehaviour
         blackPanel.SetActive(true);
         blackPanel.GetComponent<Image>().color = new Color(0, 0, 0, 1);
 
+        tunnelTone.Stop();
+        ambience.Stop();
+
         //player.GetComponent<CharacterController>().enabled = false;
         player.GetComponent<PlayerMovement>().moveDisabled = true;
         inventoryEnabled = false;
@@ -489,6 +495,7 @@ public class GameManager : MonoBehaviour
         player.transform.position = new Vector3(26, 40.4483452f, -34);
         videoScreen.SetActive(false);
         StartFadeIn();
+        ambience.Play();
         yield return new WaitForSeconds(4f);
 
         player.GetComponent<PlayerMovement>().moveDisabled = false;
