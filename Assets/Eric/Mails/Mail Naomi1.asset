@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e4fe45af87b2439fa007964c962a5b7, type: 3}
   m_Name: Mail Naomi1
   m_EditorClassIdentifier: 
-  PersonName: Naomi
+  PersonName: Alenky White
   EmailTitle: 'Evacutation Notice '
-  EmailAddress: alenkywhite@uma.com
+  EmailAddress: alenkywhite@uma.org
   EmailContent: "To all UMA officers,\n\nThis is an urgent message regarding the
     incoming tsunami. Based on the latest forecast, we expect the tsunami to hit
     our area within the next hour. As such, a officers are ordered to immediately
@@ -26,4 +26,4 @@ MonoBehaviour:
     that you remain calm and stay vigilant. \n\nThank you for your cooperation.\n\nSincerely,\nAlenky
     White\nUMA Lead Commander "
   IconColor: {r: 1, g: 1, b: 1, a: 1}
-  IconSprite: {fileID: 0}
+  IconSprite: {fileID: 2800000, guid: 74ac6b5e21cd6044aa67005b186f1207, type: 3}

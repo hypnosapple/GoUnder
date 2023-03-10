@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 90e5f2718875947449981508fb3bf5b7
+guid: aebeff4b1286ac345bb176ae0eae83a4
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: M_ChairNDesks
-    second: {fileID: 2100000, guid: 985acae57bbcb1046902d97c578b2e50, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -39,7 +34,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 100
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
