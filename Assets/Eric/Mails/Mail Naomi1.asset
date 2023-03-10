@@ -13,12 +13,17 @@ MonoBehaviour:
   m_Name: Mail Naomi1
   m_EditorClassIdentifier: 
   PersonName: Naomi
-  EmailTitle: People Missing
-  EmailAddress: naomiC4071@uma.com
-  EmailContent: "Good morning Atlas, \r\n\r\nRemember the person called TED PARKER
-    that we were investigating for the last two months? We want you to have a try
-    on the Information System and get detailed information about TED PARKER. The
-    system should be on your computer. Have a try, and contact me at anytime if you
-    have any questions. \n\r\nGood luck,\r\nNoami Clark \r\n"
+  EmailTitle: 'Evacutation Notice '
+  EmailAddress: alenkywhite@uma.com
+  EmailContent: "To all UMA officers,\n\nThis is an urgent message regarding the
+    incoming tsunami. Based on the latest forecast, we expect the tsunami to hit
+    our area within the next hour. As such, a officers are ordered to immediately
+    seek shelter in designated safe zones until further notice.\n\nIt is imperative
+    that all officers follow this order for their own safety. We cannot stress enough
+    the importance of taking this threat seriously and acting accordingly. \n\nPlease
+    be advised that the UMA command center will continue to monitor the situation
+    closely and provide updates as they become available. In the meantime, we ask
+    that you remain calm and stay vigilant. \n\nThank you for your cooperation.\n\nSincerely,\nAlenky
+    White\nUMA Lead Commander "
   IconColor: {r: 1, g: 1, b: 1, a: 1}
   IconSprite: {fileID: 0}
