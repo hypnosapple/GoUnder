@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
             CMStart3.SetActive(false);
 
             inventoryEnabled = true;
-            player.transform.position = new Vector3(91, 40.4483452f, -34);
+            player.transform.position = new Vector3(26, 40.4483452f, -34);
         }
 
         else if (enableOldCutscenes)
