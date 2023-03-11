@@ -18,4 +18,4 @@ MonoBehaviour:
   iconInDoor_135_135: {fileID: 21300000, guid: a2bdce21f54a14da2bf3857be4345465, type: 3}
   relatedCheckWordNumber: 0
   description: "A photo portrait of a family. You cannot see their faces. \n"
-  modelPrefab: {fileID: 2253440972759958147, guid: e30c245f6df15ce4e8f5c69898cb36f7, type: 3}
+  modelPrefab: {fileID: 8291008589917180423, guid: 338478c623573184d824d9b5ee0d2b01, type: 3}
