@@ -18,4 +18,4 @@ MonoBehaviour:
   iconInDoor_135_135: {fileID: 21300000, guid: 4418378a45be62a4a8c9e4e5a74359c2, type: 3}
   relatedCheckWordNumber: -1
   description: "A company manual guide for employees. Cover says \u201CUMA\u201D"
-  modelPrefab: {fileID: 1294816533044494990, guid: b60f89a0c0e425d489e6961f16f5520b, type: 3}
+  modelPrefab: {fileID: 5027305681176196013, guid: cd5935ca6d45f8b458b42adff665c3b1, type: 3}
