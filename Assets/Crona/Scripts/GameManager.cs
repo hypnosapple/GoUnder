@@ -82,6 +82,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject cam1;
 
+    public bool pauseMenuEnabled = true;
+
     void Start()
     {
         SceneName = SceneManager.GetActiveScene().name;
@@ -114,6 +116,7 @@ public class GameManager : MonoBehaviour
                 //player.GetComponent<CharacterController>().enabled = false;
                 player.GetComponent<PlayerMovement>().moveDisabled = true;
                 inventoryEnabled = false;
+                pauseMenuEnabled = false;
                 gameObject.GetComponent<SubtitleManager>().ShowSubtitle(firstSub);
             }
             else if (SceneName == "UnderScene")
@@ -140,6 +143,8 @@ public class GameManager : MonoBehaviour
             //player.GetComponent<CharacterController>().enabled = false;
             player.GetComponent<PlayerMovement>().moveDisabled = true;
             inventoryEnabled = false;
+            pauseMenuEnabled = false;
+            CrosshairCanvas.SetActive(false);
             StartCoroutine(NewOpening());
         }
         else
@@ -212,6 +217,7 @@ public class GameManager : MonoBehaviour
                 if (CommunicationSystem.FocusOnScreen == false && ComputerSystem.FocusOnScreen == false)
                 {
                     Cursor.visible = false;
+                    pauseMenuEnabled = true;
                     if (!mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled)
                     {
                         mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled = true;
@@ -237,6 +243,7 @@ public class GameManager : MonoBehaviour
             else
             {
                 Cursor.visible = true;
+                pauseMenuEnabled = false;
                 InventoryCanvas.SetActive(true);
                 CrosshairCanvas.SetActive(false);
 
@@ -273,6 +280,8 @@ public class GameManager : MonoBehaviour
         //player.GetComponent<CharacterController>().enabled = true;
         player.GetComponent<PlayerMovement>().moveDisabled = false;
         inventoryEnabled = true;
+        pauseMenuEnabled = true;
+        CrosshairCanvas.SetActive(true);
     }
 
 
@@ -476,11 +485,13 @@ public class GameManager : MonoBehaviour
         //player.GetComponent<CharacterController>().enabled = false;
         player.GetComponent<PlayerMovement>().moveDisabled = true;
         inventoryEnabled = false;
+        pauseMenuEnabled = false;
 
         
-        tunnel3to2.SetActive(false);
+        
         glass.SetActive(true);
         player.transform.position = new Vector3(26, 40.4483452f, -34);
+        tunnel3to2.SetActive(false);
 
         videoScreen.SetActive(true);
         videoPlayer.Play();
@@ -500,7 +511,8 @@ public class GameManager : MonoBehaviour
 
         player.GetComponent<PlayerMovement>().moveDisabled = false;
         inventoryEnabled = true;
-        
+        pauseMenuEnabled = true;
+
     }
 
     public void CloseCam1()

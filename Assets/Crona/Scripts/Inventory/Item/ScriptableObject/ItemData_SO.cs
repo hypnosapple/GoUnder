@@ -15,6 +15,8 @@ public class ItemData_SO : ScriptableObject
 
     public Sprite iconInDoor_135_135;
 
+    public Sprite filePreviewSprite_1920_1080;
+
     public int relatedCheckWordNumber = -1;
 
     [TextArea(10, 200)]

@@ -26,13 +26,54 @@ public class InventoryManager : MonoBehaviour
     private float t = 1f;
     private float posT = 1f;
 
+    public GameObject itemPanel;
+    public GameObject filePanel;
+    public Image fileImage;
+    public Transform itemPrefab;
 
+    public GameObject crosshairCanvas;
+    public GameObject player;
+    public GameManager gameManager;
+    public GameObject mainCam;
+
+    public bool pauseMenuEnabled = true;
     
 
     void Update()
     {
         ReminderSlide();
-        
+
+        if (itemPanel.activeInHierarchy && Input.GetKey(KeyCode.Escape))
+        {
+            itemPanel.SetActive(false);
+            if (itemPrefab != null)
+            {
+                Destroy(itemPrefab.gameObject);
+                itemPrefab = null;
+                itemPanel.GetComponent<ItemViewer>().itemModel = null;
+            }
+
+            crosshairCanvas.SetActive(true);
+            gameManager.inventoryEnabled = true;
+            player.GetComponent<PlayerMovement>().moveDisabled = false;
+            mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled = true;
+            Cursor.visible = false;
+            StartCoroutine(WaitForPauseMenu());
+        }
+
+        if (filePanel.activeInHierarchy && Input.GetKey(KeyCode.Escape))
+        {
+            filePanel.SetActive(false);
+            fileImage = null;
+
+            crosshairCanvas.SetActive(true);
+            gameManager.inventoryEnabled = true;
+            player.GetComponent<PlayerMovement>().moveDisabled = false;
+            mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled = true;
+            Cursor.visible = false;
+            StartCoroutine(WaitForPauseMenu());
+        }
+
     }
 
     public void AddItem(ItemData_SO newItemData)
@@ -63,6 +104,10 @@ public class InventoryManager : MonoBehaviour
                     FileContainer.GetComponent<FileContainerUI>().AddItem(newItemData);
 
                     ShowReminder(newItemData.name, "File Added");
+                    if (newItemData.filePreviewSprite_1920_1080 != null){
+                        StartCoroutine(ShowFilePreview(newItemData.filePreviewSprite_1920_1080));
+                    }
+                    
                     break;
                 }
             }
@@ -78,6 +123,7 @@ public class InventoryManager : MonoBehaviour
                     UseableContainer.GetComponent<UseableContainerUI>().AddItem(newItemData);
 
                     ShowReminder(newItemData.name, "Item Added");
+                    StartCoroutine(ShowItemPreview(newItemData.modelPrefab));
                     break;
                 }
             }
@@ -225,8 +271,53 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    
+
+    IEnumerator ShowItemPreview(Transform modelPrefab)
+    {
+        yield return new WaitForSeconds(1f);
+        itemPanel.SetActive(true);
+        crosshairCanvas.SetActive(false);
+        gameManager.inventoryEnabled = false;
+        player.GetComponent<PlayerMovement>().moveDisabled = true;
+        mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled = false;
+        Cursor.visible = true;
+        pauseMenuEnabled = false;
+
+        if (itemPrefab != null)
+        {
+            Destroy(itemPrefab.gameObject);
+            itemPanel.GetComponent<ItemViewer>().itemModel = null;
+        }
+        itemPrefab = Instantiate(modelPrefab, new Vector3(1000, 1000, 1000), Quaternion.identity);
+        itemPanel.GetComponent<ItemViewer>().itemModel = itemPrefab;
+    }
+
+
+    IEnumerator ShowFilePreview(Sprite fileSprite)
+    {
+        yield return new WaitForSeconds(1f);
+        filePanel.SetActive(true);
+        crosshairCanvas.SetActive(false);
+        gameManager.inventoryEnabled = false;
+        player.GetComponent<PlayerMovement>().moveDisabled = true;
+        mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled = false;
+        Cursor.visible = true;
+        pauseMenuEnabled = false;
+
+        fileImage.sprite = fileSprite;
+    }
+
+
+    IEnumerator WaitForPauseMenu()
+    {
+        yield return new WaitForSeconds(1f);
+        pauseMenuEnabled = true;
+    }
+
 }
+
+
+
 
 
 
