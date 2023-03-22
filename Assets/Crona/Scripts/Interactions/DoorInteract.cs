@@ -23,7 +23,7 @@ public class DoorInteract : MonoBehaviour
 
     void Start()
     {
-        unlocked = false;
+        //unlocked = false;
         opened = false;
         gameObject.GetComponent<AudioSource>().clip = doorLockSFX;
         doorAnimator = gameObject.GetComponent<Animator>();

@@ -13,6 +13,7 @@ public class PlayerInteraction : MonoBehaviour
     int screen2LayerMask;
     int doorLayerMask;
     int drawerLayerMask;
+    int closetDoorLayerMask;
 
     public GameObject onTarget;
     public GameManager gameManager;
@@ -37,6 +38,8 @@ public class PlayerInteraction : MonoBehaviour
         screen2LayerMask = 10;
         doorLayerMask = 11;
         drawerLayerMask = 12;
+        closetDoorLayerMask = 14;
+        
         interactAllowed = true;
 }
 
@@ -131,6 +134,26 @@ public class PlayerInteraction : MonoBehaviour
                         hit.transform.gameObject.GetComponent<ItemPickup>().Pickup();
                     }
                 }
+
+                else if (hit.collider.gameObject.layer == closetDoorLayerMask)
+                {
+                    if (!hit.transform.gameObject.GetComponent<ClosetInteract>().isMoving)
+                    {
+                        if (!onTarget.activeInHierarchy)
+                        {
+                            onTarget.SetActive(true);
+                        }
+
+                        if (Input.GetKeyDown(KeyCode.E))
+                        {
+                            hit.transform.gameObject.GetComponent<ClosetInteract>().openClosetDoor();
+                        }
+                    }
+                        
+                }
+
+                
+
             }
 
             

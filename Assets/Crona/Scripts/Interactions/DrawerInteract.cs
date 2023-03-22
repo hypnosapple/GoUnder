@@ -48,7 +48,7 @@ public class DrawerInteract : MonoBehaviour
 
         if (!drawerOpened)
         {
-            drawerAnimator.SetTrigger("Closed");
+            drawerAnimator.SetBool("Closed", true);
             
         }
         
