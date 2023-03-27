@@ -8,19 +8,31 @@ using UnityEngine.Video;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
+    [Header("Cutscene Controll")]
     public bool enableOldCutscenes;
     public bool enableNewCutscenes;
     public bool startFromSecondFloor;
 
-    public GameObject InventoryCanvas;
+    [Header("Player")]
     public GameObject player;
+
+    [Header("Canvas")]
+    public GameObject InventoryCanvas;
+    
     public GameObject CrosshairCanvas;
+
+    [Header("Systems")]
     public CommunicationInteract CommunicationSystem;
     public UIInteract ComputerSystem;
 
+    [Header("Subtitle Data")]
     public SubtitleData_SO firstSub;
-    
+
+    [Header("Camera")]
     public Camera mainCam;
+    [SerializeField] private CinemachineVirtualCamera vCam;
     public GameObject CMStart;
     public GameObject CMStart2;
     public GameObject CMStart3;
@@ -28,9 +40,11 @@ public class GameManager : MonoBehaviour
     public GameObject CMUnderStart1;
     public GameObject CMUnderStart2;
 
+    [Header("Video")]
     public GameObject videoScreen;
     public VideoPlayer videoPlayer;
 
+    [Header("Fade in/out Panel")]
     public GameObject blackPanel;
     public GameObject whitePanel;
 
@@ -46,6 +60,8 @@ public class GameManager : MonoBehaviour
 
     public string SceneName;
 
+
+    [Header("Underworld Level")]
     public List<ItemData_SO> ItemsCollectedFromAbove;
 
     private float blackT = 0f;
@@ -54,16 +70,21 @@ public class GameManager : MonoBehaviour
     private bool GroundLevelFadedOut = false;
 
 
-    [SerializeField] private CinemachineVirtualCamera vCam;
+    [Header("Camera Noise")]
     private CinemachineBasicMultiChannelPerlin noise;
-
+    
     public NoiseSettings screenShakeNoise;
 
+    [Header("Audio")]
     public AudioSource playerAudio;
+    public AudioSource tunnelTone;
+    public AudioSource ambience;
     public AudioClip GroundEndPanic;
     public AudioClip UnderworldWake;
     public AudioClip OpeningTinnitus;
 
+    [Header("Inventory System")]
+    public bool inventoryEnabled;
     public GameObject AtlasItemList;
     public GameObject FileItemList;
     public GameObject UseableItemList;
@@ -72,20 +93,20 @@ public class GameManager : MonoBehaviour
     public GameObject FileExpandButton;
     public GameObject UseableExpandButton;
 
-    public bool inventoryEnabled;
-
+    
+    [Header("Level 3 to 2")]
     public GameObject tunnel3to2;
     public GameObject glass;
-
-    public AudioSource tunnelTone;
-    public AudioSource ambience;
-
     public GameObject cam1;
 
+    [Header("Pause Menu")]
     public bool pauseMenuEnabled = true;
+
 
     void Start()
     {
+        Instance = this;
+
         SceneName = SceneManager.GetActiveScene().name;
         noise = vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
@@ -520,5 +541,15 @@ public class GameManager : MonoBehaviour
         cam1.SetActive(false);
     }
 
+    public void LockPlayerCam()
+    {
+        vCam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = 0;
+        vCam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = 0;
+    }
 
+    public void UnlockPlayerCam()
+    {
+        vCam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = 300;
+        vCam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = 300;
+    }
 }

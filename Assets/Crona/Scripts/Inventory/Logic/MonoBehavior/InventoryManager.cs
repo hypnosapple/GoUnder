@@ -6,6 +6,8 @@ using TMPro;
 
 public class InventoryManager : MonoBehaviour
 {
+    public static InventoryManager Instance;
+
     [Header("Inventory Data")]
 
     public List<InventoryItem> AtlasItems = new List<InventoryItem>();
@@ -37,7 +39,12 @@ public class InventoryManager : MonoBehaviour
     public GameObject mainCam;
 
     public bool pauseMenuEnabled = true;
-    
+
+
+    private void Start()
+    {
+        Instance = this;
+    }
 
     void Update()
     {

@@ -21,6 +21,8 @@ public class DoorInteract : MonoBehaviour
 
     public SubtitleData_SO voiceAfter;
 
+    
+
     void Start()
     {
         //unlocked = false;
@@ -87,7 +89,8 @@ public class DoorInteract : MonoBehaviour
                 //Debug.Log("open");
                 DoorCam.SetActive(true);
                 StartCoroutine(WaitCameraIn());
-                
+
+                GameManager.Instance.LockPlayerCam();
                 gameManager.GetComponent<PlayerInteraction>().interactAllowed = false;
 
                 if (!player.GetComponent<PlayerMovement>().moveDisabled)
@@ -122,6 +125,7 @@ public class DoorInteract : MonoBehaviour
 
         player.GetComponent<PlayerMovement>().moveDisabled = false;
         crosshairCanvas.SetActive(true);
+        GameManager.Instance.UnlockPlayerCam();
         gameManager.GetComponent<PlayerInteraction>().interactAllowed = true;
     }
 

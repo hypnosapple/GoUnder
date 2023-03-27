@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    public static PlayerInteraction Instance;
+
+    [Header("Range")]
     public float pickupRange;
     public float screenRange;
     public float interactionRange;
+
     int defaultLayerMask;
     int pickupLayerMask;
     int screen1LayerMask;
@@ -32,6 +36,8 @@ public class PlayerInteraction : MonoBehaviour
 
     void Start()
     {
+        Instance = this;
+
         defaultLayerMask = 0;
         pickupLayerMask = 8;
         screen1LayerMask = 9;
