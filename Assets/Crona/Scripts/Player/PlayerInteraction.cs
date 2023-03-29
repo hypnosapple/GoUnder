@@ -18,6 +18,7 @@ public class PlayerInteraction : MonoBehaviour
     int doorLayerMask;
     int drawerLayerMask;
     int closetDoorLayerMask;
+    int sinkLayerMask;
 
     public GameObject onTarget;
     public GameManager gameManager;
@@ -45,6 +46,7 @@ public class PlayerInteraction : MonoBehaviour
         doorLayerMask = 11;
         drawerLayerMask = 12;
         closetDoorLayerMask = 14;
+        sinkLayerMask = 15;
         
         interactAllowed = true;
 }
@@ -56,7 +58,7 @@ public class PlayerInteraction : MonoBehaviour
 
         if (interactAllowed && crosshairCanvas.activeInHierarchy)
         {
-            if (Physics.Raycast(ray, out hit, interactionRange)){
+            if (Physics.Raycast(ray, out hit, interactionRange)) {
                 //Debug.Log(hit.collider.gameObject.layer);
                 if (hit.collider.gameObject.layer == defaultLayerMask)
                 {
@@ -66,7 +68,7 @@ public class PlayerInteraction : MonoBehaviour
                     }
                 }
 
-                    if (hit.collider.gameObject.layer == screen1LayerMask)
+                if (hit.collider.gameObject.layer == screen1LayerMask)
                 {
                     if (!onTarget.activeInHierarchy)
                     {
@@ -155,7 +157,23 @@ public class PlayerInteraction : MonoBehaviour
                             hit.transform.gameObject.GetComponent<ClosetInteract>().openClosetDoor();
                         }
                     }
-                        
+
+                }
+
+
+                else if (hit.collider.gameObject.layer == sinkLayerMask)
+                {
+                    if (!onTarget.activeInHierarchy)
+                    {
+                        onTarget.SetActive(true);
+                    }
+
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        hit.collider.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+
+                    }
+
                 }
 
                 

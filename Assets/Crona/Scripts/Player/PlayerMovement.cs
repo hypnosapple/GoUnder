@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     public bool moveDisabled;
     public bool directionDisabled;
     public bool cam6DShakeOn;
+    public float raycastLength = 10f;
 
     public bool islocked;
 
@@ -111,6 +112,7 @@ public class PlayerMovement : MonoBehaviour
         
 
     }
+
 
     public void CameraShake(float amplitude)
     {
