@@ -170,7 +170,14 @@ public class PlayerInteraction : MonoBehaviour
 
                     if (Input.GetKeyDown(KeyCode.E))
                     {
-                        hit.collider.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                        if (!hit.transform.GetChild(0).gameObject.activeInHierarchy)
+                        {
+                            hit.transform.GetChild(0).gameObject.SetActive(true);
+                        }
+                        else
+                        {
+                            hit.transform.GetChild(0).gameObject.SetActive(false);
+                        }
 
                     }
 
