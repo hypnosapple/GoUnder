@@ -137,6 +137,9 @@ GameObject:
   - component: {fileID: 22699628}
   - component: {fileID: 22699627}
   - component: {fileID: 22699631}
+  - component: {fileID: 22699632}
+  - component: {fileID: 22699633}
+  - component: {fileID: 22699634}
   m_Layer: 5
   m_Name: NewGame
   m_TagString: Untagged
@@ -156,13 +159,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 808535208}
-  m_Father: {fileID: 1272025166}
-  m_RootOrder: 0
+  m_Father: {fileID: 1079014675}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -632.6592, y: 272.27786}
-  m_SizeDelta: {x: 87.68164, y: -58.36377}
+  m_SizeDelta: {x: -1530.3184, y: -924.3638}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &22699627
 MonoBehaviour:
@@ -222,9 +225,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 22699632}
         m_TargetAssemblyTypeName: ImageSlideAway, Assembly-CSharp
-        m_MethodName: StartMoving
+        m_MethodName: MoveButtons
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -285,6 +288,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundImage: {fileID: 808535206}
+--- !u!114 &22699632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22699625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b782b4aed3f3143b28cbccc0210e1eef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
+  moveDistance: 1000
+  buttons:
+  - {fileID: 22699628}
+  - {fileID: 2050970009}
+  - {fileID: 898084864}
+  - {fileID: 2110436709}
+--- !u!114 &22699633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22699625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dea7319c7a1f147b6a5eb9e923118287, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 22699628}
+  moveDistance: 10000
+  moveSpeed: 0.1
+--- !u!114 &22699634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22699625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db4c6ecadd756466eb0c7b0d3f3037e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 22699628}
+  fadeTime: 6
+  fadeImage: {fileID: 1079014676}
 --- !u!1 &37429451
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,6 +805,8 @@ MonoBehaviour:
   fadeDuration: 0.3
   imageComponent: {fileID: 416561959}
   DB: {fileID: 61152618}
+  midBlack: {fileID: 268417986}
+  aroundBlack: {fileID: 37429451}
 --- !u!1 &670303997
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,7 +898,7 @@ Transform:
   m_GameObject: {fileID: 670303997}
   m_LocalRotation: {x: -0.043619405, y: 0, z: 0, w: 0.9990483}
   m_LocalPosition: {x: -30.510107, y: -10, z: 0}
-  m_LocalScale: {x: 1000, y: 1, z: 1000}
+  m_LocalScale: {x: 1000, y: 1, z: 5000}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -1439,7 +1493,7 @@ RectTransform:
   - {fileID: 37429452}
   - {fileID: 61152617}
   - {fileID: 416561958}
-  - {fileID: 1272025166}
+  - {fileID: 22699626}
   - {fileID: 2050970008}
   - {fileID: 898084863}
   - {fileID: 2110436708}
@@ -1471,7 +1525,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1508,8 +1562,8 @@ MonoBehaviour:
   - {fileID: 2110436707}
   - {fileID: 359638678}
   slideInDistance: 1200
-  slideInSpeed: 2000
-  moveSpeed: 2000
+  slideInSpeed: 5000
+  moveSpeed: 5000
 --- !u!114 &1079014679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1537,15 +1591,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b782b4aed3f3143b28cbccc0210e1eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveButton: {fileID: 22699628}
-  objectsToMove:
-  - {fileID: 1272025165}
-  - {fileID: 2050970007}
-  - {fileID: 898084862}
-  - {fileID: 2110436707}
-  - {fileID: 359638678}
-  moveDistance: 50
-  moveSpeed: 10
+  moveSpeed: 2
+  moveDistance: 2
+  buttons: []
 --- !u!1 &1237546489
 GameObject:
   m_ObjectHideFlags: 0
@@ -1687,42 +1735,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1272025165
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1272025166}
-  m_Layer: 5
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1272025166
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1272025165}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 22699626}
-  m_Father: {fileID: 1079014675}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.000030517578}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1482868952
 GameObject:
   m_ObjectHideFlags: 0
@@ -2287,7 +2299,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2110436710}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1079014679}
+        m_TargetAssemblyTypeName: ButtonControl, Assembly-CSharp
+        m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2110436710
 MonoBehaviour:
   m_ObjectHideFlags: 0
