@@ -1,56 +1,38 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ImageSlideAway : MonoBehaviour
 {
-    public float speed = 100f;              // The speed of the image movement
-    public float distance = 1000f;          // The distance the image should move
-    public float delay = 1f;                // The delay before the images start moving
+    public Button moveButton;
+    public GameObject[] objectsToMove;
+    public float moveDistance = 50.0f;
+    public float moveSpeed = 10.0f;
 
-    public GameObject[] objectsToMove;      // The objects to move
+    private Vector3[] originalPositions;
 
-    private Vector3[] originalPositions;    // The original positions of the objects
-    private bool isMoving;                  // Whether the objects are currently moving
-
-    public float cameraSpeed = 1.0f;
-
-    void Start()
+    private void Start()
     {
-        // Record the original positions of the objects
+        // store the original positions of the objects
         originalPositions = new Vector3[objectsToMove.Length];
         for (int i = 0; i < objectsToMove.Length; i++)
         {
             originalPositions[i] = objectsToMove[i].transform.localPosition;
         }
 
-        isMoving = false;
+        // register event listener for button click event
+        moveButton.onClick.AddListener(MoveObjectsLeftOnClick);
     }
 
-    void Update()
+    private void MoveObjectsLeftOnClick()
     {
-        // Move each object away from the screen
-        if (isMoving)
+        // move each object towards the left by the specified distance
+        for (int i = 0; i < objectsToMove.Length; i++)
         {
-            for (int i = 0; i < objectsToMove.Length; i++)
-            {
-                Vector3 targetPosition = originalPositions[i] - Vector3.right * distance;
-                objectsToMove[i].transform.localPosition = Vector3.MoveTowards(objectsToMove[i].transform.localPosition, targetPosition, Time.deltaTime * speed);
-            }
+            // calculate the target position to move the object towards
+            Vector3 targetPosition = originalPositions[i] - Vector3.right * moveDistance;
+
+            // move the object towards the target position using a smooth motion
+            objectsToMove[i].transform.localPosition = Vector3.MoveTowards(objectsToMove[i].transform.localPosition, targetPosition, moveSpeed * Time.deltaTime);
         }
     }
-
-    public void StartMoving()
-    {
-        // Wait for the delay before starting the movement
-        if (!isMoving)
-        {
-            isMoving = true;
-            Invoke("StopMoving", delay);
-        }
-    }
-
-    void StopMoving()
-    {
-        isMoving = false;
-    }
-
 }
