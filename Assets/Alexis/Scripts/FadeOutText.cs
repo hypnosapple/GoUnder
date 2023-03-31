@@ -10,6 +10,8 @@ public class FadeOutText : MonoBehaviour
     public Image DB;
     private bool shouldFadeOut = false; // Whether or not the image should start fading out
     private float fadeTimer = 0.0f;  // Timer for the fade-out effect
+    public GameObject midBlack;
+    public GameObject aroundBlack;
 
     void Start()
     {
@@ -22,6 +24,8 @@ public class FadeOutText : MonoBehaviour
         if (Input.anyKeyDown)
         {
             shouldFadeOut = true;
+            midBlack.SetActive(false);
+            aroundBlack.SetActive(false);
         }
 
         // Gradually decrease the alpha value of the image if the user has pressed any key

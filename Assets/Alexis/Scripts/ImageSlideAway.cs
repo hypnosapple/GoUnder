@@ -3,36 +3,52 @@ using UnityEngine.UI;
 
 public class ImageSlideAway : MonoBehaviour
 {
-    public Button moveButton;
-    public GameObject[] objectsToMove;
-    public float moveDistance = 50.0f;
-    public float moveSpeed = 10.0f;
+    public float moveSpeed = 2f;
+    public float moveDistance = 2f;
 
-    private Vector3[] originalPositions;
+    private Vector2[] initialPositions;
+    private Vector2[] targetPositions;
+    private bool isMoving = false;
 
-    private void Start()
+    public Button[] buttons;
+
+    void Start()
     {
-        // store the original positions of the objects
-        originalPositions = new Vector3[objectsToMove.Length];
-        for (int i = 0; i < objectsToMove.Length; i++)
+        initialPositions = new Vector2[buttons.Length];
+        targetPositions = new Vector2[buttons.Length];
+        for (int i = 0; i < buttons.Length; i++)
         {
-            originalPositions[i] = objectsToMove[i].transform.localPosition;
+            initialPositions[i] = buttons[i].GetComponent<RectTransform>().anchoredPosition;
+            targetPositions[i] = initialPositions[i] + new Vector2(-moveDistance, 0f);
         }
-
-        // register event listener for button click event
-        moveButton.onClick.AddListener(MoveObjectsLeftOnClick);
     }
 
-    private void MoveObjectsLeftOnClick()
+    void Update()
     {
-        // move each object towards the left by the specified distance
-        for (int i = 0; i < objectsToMove.Length; i++)
+        if (isMoving)
         {
-            // calculate the target position to move the object towards
-            Vector3 targetPosition = originalPositions[i] - Vector3.right * moveDistance;
+            float t = moveSpeed * Time.deltaTime;
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                buttons[i].GetComponent<RectTransform>().anchoredPosition = Vector2.Lerp(buttons[i].GetComponent<RectTransform>().anchoredPosition, targetPositions[i], t);
+                if (Vector2.Distance(buttons[i].GetComponent<RectTransform>().anchoredPosition, targetPositions[i]) < 0.01f)
+                {
+                    buttons[i].GetComponent<RectTransform>().anchoredPosition = targetPositions[i];
+                }
+            }
+            if (Vector2.Distance(buttons[0].GetComponent<RectTransform>().anchoredPosition, targetPositions[0]) < 0.01f)
+            {
+                isMoving = false;
+            }
+        }
+    }
 
-            // move the object towards the target position using a smooth motion
-            objectsToMove[i].transform.localPosition = Vector3.MoveTowards(objectsToMove[i].transform.localPosition, targetPosition, moveSpeed * Time.deltaTime);
+    public void MoveButtons()
+    {
+        isMoving = true;
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            targetPositions[i] = initialPositions[i] + new Vector2(-moveDistance, 0f);
         }
     }
 }
