@@ -20,8 +20,8 @@ public class PlayerInteraction : MonoBehaviour
     int closetDoorLayerMask;
     int sinkLayerMask;
 
+    [Header("UI")]
     public GameObject onTarget;
-    public GameManager gameManager;
 
     [SerializeField] private Camera cam;
 

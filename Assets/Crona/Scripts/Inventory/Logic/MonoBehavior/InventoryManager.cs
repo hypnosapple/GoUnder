@@ -14,12 +14,20 @@ public class InventoryManager : MonoBehaviour
     public List<InventoryItem> FileItems = new List<InventoryItem>();
     public List<InventoryItem> UseableItems = new List<InventoryItem>();
 
+    [Header("Inventory UI")]
     public GameObject AtlasContainer;
     public GameObject FileContainer;
     public GameObject UseableContainer;
 
+    public GameObject itemPanel;
+    public GameObject filePanel;
+    public Image fileImage;
+    public Transform itemPrefab;
+
+    [Header("Door UI")]
     public GameObject doorItemPages;
 
+    [Header("Reminder UI")]
     public GameObject PopupPanel;
     public Image ReminderInfo;
     public TMP_Text ReminderName;
@@ -28,16 +36,11 @@ public class InventoryManager : MonoBehaviour
     private float t = 1f;
     private float posT = 1f;
 
-    public GameObject itemPanel;
-    public GameObject filePanel;
-    public Image fileImage;
-    public Transform itemPrefab;
-
+    [Header("Player Info")]
     public GameObject crosshairCanvas;
-    public GameObject player;
-    public GameManager gameManager;
     public GameObject mainCam;
 
+    [Header("Pause Menu")]
     public bool pauseMenuEnabled = true;
 
 
@@ -61,8 +64,8 @@ public class InventoryManager : MonoBehaviour
             }
 
             crosshairCanvas.SetActive(true);
-            gameManager.inventoryEnabled = true;
-            player.GetComponent<PlayerMovement>().moveDisabled = false;
+            GameManager.Instance.inventoryEnabled = true;
+            PlayerMovement.Instance.moveDisabled = false;
             mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled = true;
             Cursor.visible = false;
             StartCoroutine(WaitForPauseMenu());
@@ -74,8 +77,8 @@ public class InventoryManager : MonoBehaviour
             fileImage = null;
 
             crosshairCanvas.SetActive(true);
-            gameManager.inventoryEnabled = true;
-            player.GetComponent<PlayerMovement>().moveDisabled = false;
+            GameManager.Instance.inventoryEnabled = true;
+            PlayerMovement.Instance.moveDisabled = false;
             mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled = true;
             Cursor.visible = false;
             StartCoroutine(WaitForPauseMenu());
@@ -284,8 +287,8 @@ public class InventoryManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         itemPanel.SetActive(true);
         crosshairCanvas.SetActive(false);
-        gameManager.inventoryEnabled = false;
-        player.GetComponent<PlayerMovement>().moveDisabled = true;
+        GameManager.Instance.inventoryEnabled = false;
+        PlayerMovement.Instance.moveDisabled = true;
         mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled = false;
         Cursor.visible = true;
         pauseMenuEnabled = false;
@@ -305,8 +308,8 @@ public class InventoryManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         filePanel.SetActive(true);
         crosshairCanvas.SetActive(false);
-        gameManager.inventoryEnabled = false;
-        player.GetComponent<PlayerMovement>().moveDisabled = true;
+        GameManager.Instance.inventoryEnabled = false;
+        PlayerMovement.Instance.moveDisabled = true;
         mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled = false;
         Cursor.visible = true;
         pauseMenuEnabled = false;

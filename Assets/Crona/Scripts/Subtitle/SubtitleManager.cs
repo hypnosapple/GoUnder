@@ -7,10 +7,14 @@ using TMPro;
 
 public class SubtitleManager : MonoBehaviour
 {
+    public static SubtitleManager Instance;
+
+    [Header("Manager Current Info")]
     public List<string> currentContent;
     public List<float> visibleTimeList;
     public int amount;
 
+    [Header("Audio and UI")]
     public Text subtitleText;
     public AudioSource playerAudio;
     public string clipName = "";
@@ -41,8 +45,12 @@ public class SubtitleManager : MonoBehaviour
     public AudioClip afterCall03;
     public AudioClip phoneRing;
     public AudioClip phoneHang;
-    
 
+
+    private void Start()
+    {
+        Instance = this;
+    }
 
     void Update()
     {

@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
     public AudioSource playerAudio;
     public AudioSource tunnelTone;
     public AudioSource ambience;
+    public AudioSource BGM;
     public AudioClip GroundEndPanic;
     public AudioClip UnderworldWake;
     public AudioClip OpeningTinnitus;
@@ -135,7 +136,7 @@ public class GameManager : MonoBehaviour
                 CMStart3.SetActive(true);
 
                 //player.GetComponent<CharacterController>().enabled = false;
-                player.GetComponent<PlayerMovement>().moveDisabled = true;
+                PlayerMovement.Instance.moveDisabled = true;
                 inventoryEnabled = false;
                 pauseMenuEnabled = false;
                 gameObject.GetComponent<SubtitleManager>().ShowSubtitle(firstSub);
@@ -146,7 +147,7 @@ public class GameManager : MonoBehaviour
                 {
                     InventoryCanvas.GetComponentInParent<InventoryManager>().AddItemWithoutReminder(ItemsCollectedFromAbove[i]);
                     //player.GetComponent<CharacterController>().enabled = false;
-                    player.GetComponent<PlayerMovement>().moveDisabled = true;
+                    PlayerMovement.Instance.moveDisabled = true;
                     inventoryEnabled = false;
                     StartCoroutine(UnderWorldOpening());
                 }
@@ -162,7 +163,7 @@ public class GameManager : MonoBehaviour
             CMStart3.SetActive(true);
 
             //player.GetComponent<CharacterController>().enabled = false;
-            player.GetComponent<PlayerMovement>().moveDisabled = true;
+            PlayerMovement.Instance.moveDisabled = true;
             inventoryEnabled = false;
             pauseMenuEnabled = false;
             CrosshairCanvas.SetActive(false);
@@ -244,9 +245,9 @@ public class GameManager : MonoBehaviour
                         mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled = true;
                     }
 
-                    if (player.GetComponent<PlayerMovement>().moveDisabled)
+                    if (PlayerMovement.Instance.moveDisabled)
                     {
-                        player.GetComponent<PlayerMovement>().moveDisabled = false;
+                        PlayerMovement.Instance.moveDisabled = false;
                     }
 
                     InventoryCanvas.SetActive(false);
@@ -268,9 +269,9 @@ public class GameManager : MonoBehaviour
                 InventoryCanvas.SetActive(true);
                 CrosshairCanvas.SetActive(false);
 
-                if (!player.GetComponent<PlayerMovement>().moveDisabled)
+                if (!PlayerMovement.Instance.moveDisabled)
                 {
-                    player.GetComponent<PlayerMovement>().moveDisabled = true;
+                    PlayerMovement.Instance.moveDisabled = true;
                 }
 
                 if (mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled)
@@ -299,7 +300,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(3.5f);
 
         //player.GetComponent<CharacterController>().enabled = true;
-        player.GetComponent<PlayerMovement>().moveDisabled = false;
+        PlayerMovement.Instance.moveDisabled = false;
         inventoryEnabled = true;
         pauseMenuEnabled = true;
         CrosshairCanvas.SetActive(true);
@@ -460,7 +461,7 @@ public class GameManager : MonoBehaviour
         CMUnderStart2.SetActive(false);
         yield return new WaitForSeconds(4f);
         //player.GetComponent<CharacterController>().enabled = true;
-        player.GetComponent<PlayerMovement>().moveDisabled = false;
+        PlayerMovement.Instance.moveDisabled = false;
         inventoryEnabled = true;
 
     }
@@ -469,9 +470,9 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         //player.GetComponent<CharacterController>().enabled = false;
-        player.GetComponent<PlayerMovement>().moveDisabled = true;
+        PlayerMovement.Instance.moveDisabled = true;
         inventoryEnabled = false;
-        player.GetComponent<PlayerMovement>().cam6DShakeOn = true;
+        PlayerMovement.Instance.cam6DShakeOn = true;
 
         noise.m_NoiseProfile = screenShakeNoise;
         noise.m_AmplitudeGain = 6f;
@@ -502,9 +503,10 @@ public class GameManager : MonoBehaviour
 
         tunnelTone.Stop();
         ambience.Stop();
+        BGM.Stop();
 
         //player.GetComponent<CharacterController>().enabled = false;
-        player.GetComponent<PlayerMovement>().moveDisabled = true;
+        PlayerMovement.Instance.moveDisabled = true;
         inventoryEnabled = false;
         pauseMenuEnabled = false;
 
@@ -528,9 +530,10 @@ public class GameManager : MonoBehaviour
         videoScreen.SetActive(false);
         StartFadeIn();
         ambience.Play();
+        BGM.Play();
         yield return new WaitForSeconds(4f);
 
-        player.GetComponent<PlayerMovement>().moveDisabled = false;
+        PlayerMovement.Instance.moveDisabled = false;
         inventoryEnabled = true;
         pauseMenuEnabled = true;
 

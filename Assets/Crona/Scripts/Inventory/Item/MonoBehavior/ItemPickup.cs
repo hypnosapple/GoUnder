@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
 {
+    [Header("Data")]
+    
     public ItemData_SO itemData;
-    public GameObject InventoryCanvas;
-
     public GameObject relatedDoor;
     public GameObject relatedWord;
 
+    [Header("Audio")]
     public AudioSource playerAudio;
     public AudioClip AfterPickVO;
 
+    [Header("Subtitle Data")]
     public SubtitleData_SO secondVO;
     public float playAfterSeconds;
 
-    public GameObject gameManager;
 
     public void Pickup()
     {
-        InventoryCanvas.GetComponent<InventoryManager>().AddItem(itemData);
+        InventoryManager.Instance.AddItem(itemData);
         //Debug.Log("pickup");
 
         if (relatedDoor != null && relatedWord != null)
@@ -38,7 +39,7 @@ public class ItemPickup : MonoBehaviour
 
         if (secondVO != null)
         {
-            gameManager.GetComponent<SubtitleManager>().PlayAfterTime(secondVO, playAfterSeconds);
+            SubtitleManager.Instance.PlayAfterTime(secondVO, playAfterSeconds);
         }
 
 

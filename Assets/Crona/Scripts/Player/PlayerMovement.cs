@@ -5,10 +5,13 @@ using Cinemachine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // References to character controller and camera transform
+    public static PlayerMovement Instance;
+
+    [Header("Player Info")]
     public CharacterController myController;
     public Transform cam;
 
+    [Header("Physics")]
     // Jump and walk speed
     public float speed;
 
@@ -25,9 +28,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera vCam;
     private CinemachineBasicMultiChannelPerlin noise;
 
+    [Header("Camera Noise")]
     public NoiseSettings walkNoise;
     public NoiseSettings runNoise;
 
+    [Header("Move check")]
     public bool moveDisabled;
     public bool directionDisabled;
     public bool cam6DShakeOn;
@@ -38,6 +43,8 @@ public class PlayerMovement : MonoBehaviour
 
    public void Start()
     {
+        Instance = this;
+
         noise = vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         cam6DShakeOn = false;
 

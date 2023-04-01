@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class DoorInteract : MonoBehaviour
 {
+    [Header("Data")]
     public List<GameObject> wordList;
     public bool unlocked;
     public bool opened;
 
+    [Header("Player and UI")]
     public GameObject UICanvas;
     public GameObject DoorCam;
-    public GameObject player;
     public GameObject crosshairCanvas;
 
+    [Header("Audio")]
     public AudioClip doorLockSFX;
     public AudioClip doorOpenSFX;
 
-    public GameObject gameManager;
+    [Header("Animation")]
     private Animator doorAnimator;
 
+    [Header("Subtitle")]
     public SubtitleData_SO voiceAfter;
 
     
@@ -56,7 +59,7 @@ public class DoorInteract : MonoBehaviour
                     Cursor.visible = false;
                     //Debug.Log("close");
                     DoorCam.SetActive(false);
-                    gameManager.GetComponent<GameManager>().CloseCam1();
+                    GameManager.Instance.CloseCam1();
 
                     StartCoroutine(WaitCameraOut());
                 }
@@ -91,11 +94,11 @@ public class DoorInteract : MonoBehaviour
                 StartCoroutine(WaitCameraIn());
 
                 GameManager.Instance.LockPlayerCam();
-                gameManager.GetComponent<PlayerInteraction>().interactAllowed = false;
+                PlayerInteraction.Instance.interactAllowed = false;
 
-                if (!player.GetComponent<PlayerMovement>().moveDisabled)
+                if (!PlayerMovement.Instance.moveDisabled)
                 {
-                    player.GetComponent<PlayerMovement>().moveDisabled = true;
+                   PlayerMovement.Instance.moveDisabled = true;
                 }
 
                 if (crosshairCanvas.activeInHierarchy)
@@ -115,7 +118,7 @@ public class DoorInteract : MonoBehaviour
     IEnumerator WaitForPhoneCall(SubtitleData_SO phoneCall)
     {
         yield return new WaitForSeconds(3f);
-        gameManager.GetComponent<SubtitleManager>().ShowSubtitle(phoneCall);
+        SubtitleManager.Instance.ShowSubtitle(phoneCall);
     }
 
 
@@ -123,10 +126,10 @@ public class DoorInteract : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        player.GetComponent<PlayerMovement>().moveDisabled = false;
+        PlayerMovement.Instance.moveDisabled = false;
         crosshairCanvas.SetActive(true);
         GameManager.Instance.UnlockPlayerCam();
-        gameManager.GetComponent<PlayerInteraction>().interactAllowed = true;
+        PlayerInteraction.Instance.interactAllowed = true;
     }
 
 
