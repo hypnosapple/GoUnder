@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: UniversalRenderPipelineAsset_Renderer
   m_EditorClassIdentifier: 
   m_RendererFeatures:
-  - {fileID: 6241877907735237107}
-  m_RendererFeatureMap: f3d1eadde29a9f56
+  - {fileID: 2604592807995259638}
+  m_RendererFeatureMap: f63a18f15b5f2524
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
   shaders:
@@ -43,7 +43,7 @@ MonoBehaviour:
   m_ShadowTransparentReceive: 1
   m_RenderingMode: 0
   m_AccurateGbufferNormals: 0
---- !u!114 &6241877907735237107
+--- !u!114 &2604592807995259638
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -53,12 +53,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad2fbd55d5f8941bea619d6f02889b8c, type: 3}
-  m_Name: Blit0
+  m_Name: Blit1
   m_EditorClassIdentifier: 
-  m_Active: 0
+  m_Active: 1
   settings:
-    Event: 600
-    blitMaterial: {fileID: 0}
+    Event: 500
+    blitMaterial: {fileID: 2100000, guid: 47ed7c896621a4f4080dc5372d124a31, type: 2}
     blitMaterialPassIndex: 0
     setInverseViewMatrix: 0
     requireDepthNormals: 0
