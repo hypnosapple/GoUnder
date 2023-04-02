@@ -53,36 +53,7 @@ public class InventoryManager : MonoBehaviour
     {
         ReminderSlide();
 
-        if (itemPanel.activeInHierarchy && Input.GetKey(KeyCode.Escape))
-        {
-            itemPanel.SetActive(false);
-            if (itemPrefab != null)
-            {
-                Destroy(itemPrefab.gameObject);
-                itemPrefab = null;
-                itemPanel.GetComponent<ItemViewer>().itemModel = null;
-            }
-
-            crosshairCanvas.SetActive(true);
-            GameManager.Instance.inventoryEnabled = true;
-            PlayerMovement.Instance.moveDisabled = false;
-            mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled = true;
-            Cursor.visible = false;
-            StartCoroutine(WaitForPauseMenu());
-        }
-
-        if (filePanel.activeInHierarchy && Input.GetKey(KeyCode.Escape))
-        {
-            filePanel.SetActive(false);
-            fileImage = null;
-
-            crosshairCanvas.SetActive(true);
-            GameManager.Instance.inventoryEnabled = true;
-            PlayerMovement.Instance.moveDisabled = false;
-            mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled = true;
-            Cursor.visible = false;
-            StartCoroutine(WaitForPauseMenu());
-        }
+        ExitPreviewPanel();
 
     }
 
@@ -281,6 +252,40 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    private void ExitPreviewPanel()
+    {
+        if (itemPanel.activeInHierarchy && Input.GetKey(KeyCode.Escape))
+        {
+            itemPanel.SetActive(false);
+            if (itemPrefab != null)
+            {
+                Destroy(itemPrefab.gameObject);
+                itemPrefab = null;
+                itemPanel.GetComponent<ItemViewer>().itemModel = null;
+            }
+
+            crosshairCanvas.SetActive(true);
+            GameManager.Instance.inventoryEnabled = true;
+            PlayerMovement.Instance.moveDisabled = false;
+            mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled = true;
+            Cursor.visible = false;
+            StartCoroutine(WaitForPauseMenu());
+        }
+
+        if (filePanel.activeInHierarchy && Input.GetKey(KeyCode.Escape))
+        {
+            filePanel.SetActive(false);
+            fileImage = null;
+
+            crosshairCanvas.SetActive(true);
+            GameManager.Instance.inventoryEnabled = true;
+            PlayerMovement.Instance.moveDisabled = false;
+            mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled = true;
+            Cursor.visible = false;
+            StartCoroutine(WaitForPauseMenu());
+        }
+    }
+
 
     IEnumerator ShowItemPreview(Transform modelPrefab)
     {
@@ -305,7 +310,7 @@ public class InventoryManager : MonoBehaviour
 
     IEnumerator ShowFilePreview(Sprite fileSprite)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         filePanel.SetActive(true);
         crosshairCanvas.SetActive(false);
         GameManager.Instance.inventoryEnabled = false;
