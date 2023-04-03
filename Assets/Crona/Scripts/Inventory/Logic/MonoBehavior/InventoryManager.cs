@@ -289,14 +289,16 @@ public class InventoryManager : MonoBehaviour
 
     IEnumerator ShowItemPreview(Transform modelPrefab)
     {
-        yield return new WaitForSeconds(1f);
-        itemPanel.SetActive(true);
-        crosshairCanvas.SetActive(false);
+        pauseMenuEnabled = false;
         GameManager.Instance.inventoryEnabled = false;
         PlayerMovement.Instance.moveDisabled = true;
         mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled = false;
+        yield return new WaitForSeconds(0.5f);
+        itemPanel.SetActive(true);
+        crosshairCanvas.SetActive(false);
+        
         Cursor.visible = true;
-        pauseMenuEnabled = false;
+        
 
         if (itemPrefab != null)
         {
@@ -310,14 +312,15 @@ public class InventoryManager : MonoBehaviour
 
     IEnumerator ShowFilePreview(Sprite fileSprite)
     {
-        yield return new WaitForSeconds(0.5f);
-        filePanel.SetActive(true);
-        crosshairCanvas.SetActive(false);
+        pauseMenuEnabled = false;
         GameManager.Instance.inventoryEnabled = false;
         PlayerMovement.Instance.moveDisabled = true;
         mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled = false;
+        yield return new WaitForSeconds(0.5f);
+        filePanel.SetActive(true);
+        crosshairCanvas.SetActive(false);
+        
         Cursor.visible = true;
-        pauseMenuEnabled = false;
 
         fileImage.sprite = fileSprite;
     }

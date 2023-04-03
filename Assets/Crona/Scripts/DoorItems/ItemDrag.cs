@@ -10,8 +10,11 @@ public class ItemDrag : MonoBehaviour
     public CheckText checkText;
     private bool selected;
 
+    public AudioSource wrongChoiceAlert;
+
     public void Awake()
     {
+        wrongChoiceAlert = GameManager.Instance.wrongChoiceAlert;
         selected = false;
         originalPos = gameObject.GetComponent<RectTransform>().anchoredPosition3D;
     }
@@ -58,11 +61,32 @@ public class ItemDrag : MonoBehaviour
 
     void OnMouseUp()
     {
-        resetItemPosition();
-        if (selected)
+        if (checkText != null)
         {
-            selected = false;
+            if (checkText.rightWordIn)
+            {
+                checkText.RightWord();
+            }
+            else
+            {
+                wrongChoiceAlert.Play();
+                resetItemPosition();
+                if (selected)
+                {
+                    selected = false;
+                }
+            }
         }
+        else
+        {
+            wrongChoiceAlert.Play();
+            resetItemPosition();
+            if (selected)
+            {
+                selected = false;
+            }
+        }
+        
     }
 
     Vector3 MouseWorldPosition()

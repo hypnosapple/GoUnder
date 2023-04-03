@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviour
     public AudioClip GroundEndPanic;
     public AudioClip UnderworldWake;
     public AudioClip OpeningTinnitus;
+    public AudioSource wrongChoiceAlert;
 
     [Header("Inventory System")]
     public bool inventoryEnabled;

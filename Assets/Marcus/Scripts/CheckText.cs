@@ -12,27 +12,37 @@ public class CheckText : MonoBehaviour
     public GameObject visualWord;
     public GameObject door;
 
-    public AudioSource wrongChoiceAlert;
+    public bool rightWordIn;
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == nameToMatch)
+        if (other.gameObject.name == nameToMatch && other.gameObject.GetComponent<ItemDrag>() != null)
         {
-            matches = true;
-            Debug.Log("Word Matches!");
-            visualWord.gameObject.SetActive(true);
-            door.GetComponent<DoorInteract>().wordList.Remove(visualWord);
-            //door.GetComponent<DoorInteract>().PlayOpenDoor();
-            // doorInteract.unlocked = true;
+            rightWordIn = true;
         }
-        else
-        {
-            Debug.Log("DOES NOT MATCH");
-            
-            other.gameObject.GetComponent<ItemDrag>().resetItemPosition();
-            wrongChoiceAlert.Play();
-        }
+        
     }
 
-    
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.name == nameToMatch && other.gameObject.GetComponent<ItemDrag>() != null)
+        {
+            rightWordIn = false;
+        }
+        
+    }
+
+    public void RightWord()
+    {
+        matches = true;
+        Debug.Log("Word Matches!");
+        visualWord.gameObject.SetActive(true);
+        door.GetComponent<DoorInteract>().wordList.Remove(visualWord);
+        //door.GetComponent<DoorInteract>().PlayOpenDoor();
+        // doorInteract.unlocked = true;
+    }
+
+   
+
+
 }
