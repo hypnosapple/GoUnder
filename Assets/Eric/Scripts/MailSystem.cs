@@ -57,12 +57,12 @@ public class MailSystem : MonoBehaviour
         //set the right part of the mail
         GameObject tempMailContent = Instantiate(PrefabEmailRight, RightColumnParent.transform);
         //set the info
-        tempMailContent.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text = newMail.EmailTitle; ;
-        tempMailContent.transform.GetChild(0).GetChild(0).GetChild(1).GetChild(0).GetComponent<RawImage>().color = newMail.IconColor;
-        tempMailContent.transform.GetChild(0).GetChild(0).GetChild(1).GetChild(0).GetComponent<RawImage>().texture = newMail.IconSprite;
-        tempMailContent.transform.GetChild(0).GetChild(0).GetChild(1).GetChild(1).GetChild(0).GetComponent<Text>().text = newMail.PersonName; ;
-        tempMailContent.transform.GetChild(0).GetChild(0).GetChild(1).GetChild(1).GetChild(1).GetComponent<Text>().text = newMail.EmailAddress;
-        tempMailContent.transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Text>().text = newMail.EmailContent;
+        tempMailContent.transform.GetChild(2).GetComponent<Text>().text = newMail.EmailTitle; ;
+        tempMailContent.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<RawImage>().color = newMail.IconColor;
+        tempMailContent.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<RawImage>().texture = newMail.IconSprite;
+        tempMailContent.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(1).GetChild(0).GetComponent<Text>().text = newMail.PersonName; ;
+        tempMailContent.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(1).GetChild(1).GetComponent<Text>().text = newMail.EmailAddress;
+        tempMailContent.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Text>().text = newMail.EmailContent;
         //plus the length of the scroll
         //float tempHeight = tempMailContent.transform.GetChild(0).GetChild(0).GetChild(4).GetComponent<RectTransform>().rect.height + 95;
         //tempMailContent.transform.GetChild(0).GetChild(0).GetComponent<RectTransform>().sizeDelta = new Vector2(355, tempHeight);
