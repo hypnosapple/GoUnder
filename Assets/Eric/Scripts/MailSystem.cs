@@ -22,10 +22,11 @@ public class MailSystem : MonoBehaviour
             AddAnotherMailAtTheEnd(InBoxMails[i]);
         }
         Invoke("SetupTheFormate", 0.01f);
-        this.transform.parent.gameObject.SetActive(false);
+        
     }
     private void Start()
     {
+        //this.transform.parent.gameObject.SetActive(false);
     }
 
 

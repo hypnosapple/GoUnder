@@ -7,17 +7,20 @@ public class EnableFunction : MonoBehaviour
 {
 
     public GameObject[] ThingsToStayClosed;
+    public GameObject[] ButtonsToStayClosed;
     public GameObject ObjectToOpen;
     public RawImage Sent, Inbox, Draft;
-    public Color Red;
+    public Color Blue;
     public GameObject TheOtherIcon;
     
     public void EnableFunctionMulti()
     {
         ObjectToOpen.SetActive(true);
+        transform.GetChild(0).gameObject.SetActive(true);
         for (int i = 0; i < ThingsToStayClosed.Length; i++)
         {
             ThingsToStayClosed[i].SetActive(false);
+            ButtonsToStayClosed[i].transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 
@@ -26,14 +29,14 @@ public class EnableFunction : MonoBehaviour
         Sent.color = Color.white;
         Draft.color = Color.white;
         Inbox.color = Color.white;
-        this.GetComponent<RawImage>().color = Red;
+        this.GetComponent<RawImage>().color = Blue;
     }
 
     public void TurnMeRed(bool temp)
     {
         if (temp)
         {
-            this.GetComponent<RawImage>().color = Red;
+            this.GetComponent<RawImage>().color = Blue;
             TheOtherIcon.GetComponent<RawImage>().color = Color.white;
         }
         else
