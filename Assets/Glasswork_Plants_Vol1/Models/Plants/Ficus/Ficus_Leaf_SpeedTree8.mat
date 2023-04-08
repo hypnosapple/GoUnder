@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Ficus_Leaf_SpeedTree8
-  m_Shader: {fileID: 14002, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 99134b1f0c27d54469a840832a28fadf, type: 3}
   m_ShaderKeywords: EFFECT_BUMP EFFECT_EXTRA_TEX _BLENDMODE_ALPHA _BLENDMODE_PRESERVE_SPECULAR_LIGHTING
     _ENABLE_FOG_ON_TRANSPARENT _MASKMAP _MATERIAL_FEATURE_TRANSMISSION _NORMALMAP
     _NORMALMAP_TANGENT_SPACE _SURFACE_TYPE_TRANSPARENT _WINDQUALITY_NONE
@@ -293,8 +293,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DiffusionProfileAsset: {r: -8.11041e-40, g: -1.6855695e-36, b: -58751.914,
-        a: -0.00000973174}
+    - _DiffusionProfileAsset: {r: -8.11041e-40, g: -1.6855695e-36, b: -58751.914, a: -0.00000973174}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
@@ -309,6 +308,7 @@ Material:
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!114 &1419886594461340041
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -322,3 +322,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 0
+--- !u!114 &4852600406459543768
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 4

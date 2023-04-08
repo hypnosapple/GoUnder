@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8215277497578557795
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 4
 --- !u!21 &2100000
 Material:
   serializedVersion: 6
@@ -8,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Plumeria_Flower_SpeedTree8
-  m_Shader: {fileID: 14002, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 99134b1f0c27d54469a840832a28fadf, type: 3}
   m_ShaderKeywords: EFFECT_BUMP EFFECT_EXTRA_TEX _BLENDMODE_ALPHA _BLENDMODE_PRESERVE_SPECULAR_LIGHTING
     _DOUBLESIDED_ON _ENABLE_FOG_ON_TRANSPARENT _NORMALMAP _NORMALMAP_TANGENT_SPACE
     _SURFACE_TYPE_TRANSPARENT _WINDQUALITY_NONE
@@ -308,6 +321,7 @@ Material:
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!114 &4338458815566125574
 MonoBehaviour:
   m_ObjectHideFlags: 11

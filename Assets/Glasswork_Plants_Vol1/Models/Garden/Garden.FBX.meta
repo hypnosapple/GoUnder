@@ -1,42 +1,110 @@
 fileFormatVersion: 2
 guid: 087788d61a4d93a4ba9aee27820e9754
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: floor_1
-    100002: floor_2
-    100004: //RootNode
-    100006: light_wall
-    100008: pot_outside
-    100010: wall
-    100012: woods_wall
-    400000: floor_1
-    400002: floor_2
-    400004: //RootNode
-    400006: light_wall
-    400008: pot_outside
-    400010: wall
-    400012: woods_wall
-    2100000: Surfaces
-    2100002: Elements
-    2300000: floor_1
-    2300002: floor_2
-    2300004: light_wall
-    2300006: pot_outside
-    2300008: wall
-    2300010: woods_wall
-    3300000: floor_1
-    3300002: floor_2
-    3300004: light_wall
-    3300006: pot_outside
-    3300008: wall
-    3300010: woods_wall
-    4300000: floor_1
-    4300002: wall
-    4300004: pot_outside
-    4300006: floor_2
-    4300008: woods_wall
-    4300010: light_wall
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: floor_1
+  - first:
+      1: 100002
+    second: floor_2
+  - first:
+      1: 100004
+    second: //RootNode
+  - first:
+      1: 100006
+    second: light_wall
+  - first:
+      1: 100008
+    second: pot_outside
+  - first:
+      1: 100010
+    second: wall
+  - first:
+      1: 100012
+    second: woods_wall
+  - first:
+      4: 400000
+    second: floor_1
+  - first:
+      4: 400002
+    second: floor_2
+  - first:
+      4: 400004
+    second: //RootNode
+  - first:
+      4: 400006
+    second: light_wall
+  - first:
+      4: 400008
+    second: pot_outside
+  - first:
+      4: 400010
+    second: wall
+  - first:
+      4: 400012
+    second: woods_wall
+  - first:
+      21: 2100000
+    second: Surfaces
+  - first:
+      21: 2100002
+    second: Elements
+  - first:
+      23: 2300000
+    second: floor_1
+  - first:
+      23: 2300002
+    second: floor_2
+  - first:
+      23: 2300004
+    second: light_wall
+  - first:
+      23: 2300006
+    second: pot_outside
+  - first:
+      23: 2300008
+    second: wall
+  - first:
+      23: 2300010
+    second: woods_wall
+  - first:
+      33: 3300000
+    second: floor_1
+  - first:
+      33: 3300002
+    second: floor_2
+  - first:
+      33: 3300004
+    second: light_wall
+  - first:
+      33: 3300006
+    second: pot_outside
+  - first:
+      33: 3300008
+    second: wall
+  - first:
+      33: 3300010
+    second: woods_wall
+  - first:
+      43: 4300000
+    second: floor_1
+  - first:
+      43: 4300002
+    second: wall
+  - first:
+      43: 4300004
+    second: pot_outside
+  - first:
+      43: 4300006
+    second: floor_2
+  - first:
+      43: 4300008
+    second: woods_wall
+  - first:
+      43: 4300010
+    second: light_wall
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -49,7 +117,7 @@ ModelImporter:
       name: Surfaces
     second: {fileID: 2100000, guid: 4d00784d8fb47ae46bb9cb2c172eea47, type: 2}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -76,32 +144,39 @@ ModelImporter:
     extraUserProperties:
     - '#BAKERY{"meshName":["woods_wall","pot_outside","wall","light_wall","floor_1","floor_2"],"padding":[6,8,3,34,2,5],"unwrapper":[0,0,0,0,0,0]}'
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 0
+    meshCompression: 1
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 1
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -110,10 +185,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 0
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -123,13 +198,17 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 0
   humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

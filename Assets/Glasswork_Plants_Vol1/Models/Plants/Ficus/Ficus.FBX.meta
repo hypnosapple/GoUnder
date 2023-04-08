@@ -1,21 +1,47 @@
 fileFormatVersion: 2
 guid: c6b3272f84c695e4195b9e652e7d5e05
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: //RootNode
-    100002: Ficus_Leaf
-    100004: Ficus_Steam
-    400000: //RootNode
-    400002: Ficus_Leaf
-    400004: Ficus_Steam
-    2100000: No Name
-    2300000: Ficus_Leaf
-    2300002: Ficus_Steam
-    3300000: Ficus_Leaf
-    3300002: Ficus_Steam
-    4300000: Ficus_Leaf
-    4300002: Ficus_Steam
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: //RootNode
+  - first:
+      1: 100002
+    second: Ficus_Leaf
+  - first:
+      1: 100004
+    second: Ficus_Steam
+  - first:
+      4: 400000
+    second: //RootNode
+  - first:
+      4: 400002
+    second: Ficus_Leaf
+  - first:
+      4: 400004
+    second: Ficus_Steam
+  - first:
+      21: 2100000
+    second: No Name
+  - first:
+      23: 2300000
+    second: Ficus_Leaf
+  - first:
+      23: 2300002
+    second: Ficus_Steam
+  - first:
+      33: 3300000
+    second: Ficus_Leaf
+  - first:
+      33: 3300002
+    second: Ficus_Steam
+  - first:
+      43: 4300000
+    second: Ficus_Leaf
+  - first:
+      43: 4300002
+    second: Ficus_Steam
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -28,7 +54,7 @@ ModelImporter:
       name: Ficus_Steam
     second: {fileID: 2100000, guid: 56ebf3a6040c3b04fb1a120787f9d755, type: 2}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -59,28 +85,35 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 0
+    meshCompression: 1
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 1
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 5
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -89,10 +122,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 0
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -102,13 +135,17 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 0
   humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
