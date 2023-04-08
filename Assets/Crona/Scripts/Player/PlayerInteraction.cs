@@ -22,6 +22,7 @@ public class PlayerInteraction : MonoBehaviour
 
     [Header("UI")]
     public GameObject onTarget;
+    public GameObject targetDisabled;
 
     [SerializeField] private Camera cam;
 
@@ -58,15 +59,14 @@ public class PlayerInteraction : MonoBehaviour
 
         if (interactAllowed && crosshairCanvas.activeInHierarchy)
         {
+            if (targetDisabled.activeInHierarchy)
+            {
+                targetDisabled.SetActive(false);
+            }
+
             if (Physics.Raycast(ray, out hit, interactionRange)) {
                 //Debug.Log(hit.collider.gameObject.layer);
-                if (hit.collider.gameObject.layer == defaultLayerMask)
-                {
-                    if (onTarget.activeInHierarchy)
-                    {
-                        onTarget.SetActive(false);
-                    }
-                }
+                
 
                 if (hit.collider.gameObject.layer == screen1LayerMask)
                 {
@@ -183,13 +183,15 @@ public class PlayerInteraction : MonoBehaviour
 
                 }
 
-                
+                else
+                {
+                    if (onTarget.activeInHierarchy)
+                    {
+                        onTarget.SetActive(false);
+                    }
+                }
 
-            }
-
-            
-
-            
+            } 
 
             else
             {
@@ -199,6 +201,41 @@ public class PlayerInteraction : MonoBehaviour
                 }
             }
         }
+        else if (!interactAllowed && crosshairCanvas.activeInHierarchy)
+        {
+            if (onTarget.activeInHierarchy)
+            {
+                onTarget.SetActive(false);
+            }
+
+            if (Physics.Raycast(ray, out hit, interactionRange))
+            {
+                if (hit.collider.gameObject.layer == pickupLayerMask || hit.collider.gameObject.layer == screen1LayerMask || hit.collider.gameObject.layer == screen2LayerMask || hit.collider.gameObject.layer == doorLayerMask || hit.collider.gameObject.layer == drawerLayerMask || hit.collider.gameObject.layer == closetDoorLayerMask || hit.collider.gameObject.layer == sinkLayerMask)
+                {
+                    if (!targetDisabled.activeInHierarchy)
+                    {
+                        targetDisabled.SetActive(true);
+                    }
+                }
+
+                else
+                {
+                    if (targetDisabled.activeInHierarchy)
+                    {
+                        targetDisabled.SetActive(false);
+                    }
+                }
+            }
+
+            else
+            {
+                if (targetDisabled.activeInHierarchy)
+                {
+                    targetDisabled.SetActive(false);
+                }
+            }
+        }
+
         else
         {
             if (onTarget.activeInHierarchy)

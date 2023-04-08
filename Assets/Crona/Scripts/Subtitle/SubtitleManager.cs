@@ -91,6 +91,7 @@ public class SubtitleManager : MonoBehaviour
         clipName = subtitleData.ClipName;
         amount = currentContent.Count;
         isPhone = subtitleData.isPhoneCall;
+        PlayerInteraction.Instance.interactAllowed = false;
 
         if (subtitleData.AudioFile != null)
         {
@@ -142,7 +143,7 @@ public class SubtitleManager : MonoBehaviour
             currentContent = null;
             visibleTimeList = null;
             amount = 0;
-
+            PlayerInteraction.Instance.interactAllowed = true;
             
 
             if (isPhone)
