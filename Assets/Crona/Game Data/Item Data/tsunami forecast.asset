@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: tsunami forecast
   m_EditorClassIdentifier: 
   itemType: 1
-  itemName: 'Tsunami Forecast '
+  itemName: Tsunami Forecast
   itemIcon_1100_700: {fileID: 21300000, guid: be036e12792f73047913ff6319ba3f3d, type: 3}
-  iconInDoor_135_135: {fileID: 0}
-  relatedCheckWordNumber: -1
+  iconInDoor_135_135: {fileID: 21300000, guid: 36390478981c5400a83fd6d460e1a4af, type: 3}
+  filePreviewSprite_1920_1080: {fileID: 0}
+  relatedCheckWordNumber: 3
   description: " A tsunami is predicted to be coming in the year. 95% of previous
     predictions were correct before. This one might not be an exception. \r\n\r\n"
   modelPrefab: {fileID: 0}

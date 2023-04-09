@@ -54,10 +54,10 @@ public class DoorInteract : MonoBehaviour
             {
                 if (UICanvas.activeInHierarchy && Input.GetKeyDown(KeyCode.E) && DoorCam.activeInHierarchy)
                 {
-                    Debug.Log("closedoor");
+
                     UICanvas.SetActive(false);
                     Cursor.visible = false;
-                    //Debug.Log("close");
+
                     DoorCam.SetActive(false);
                     GameManager.Instance.CloseCam1();
 

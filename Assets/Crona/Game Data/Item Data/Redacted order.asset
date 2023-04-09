@@ -15,8 +15,9 @@ MonoBehaviour:
   itemType: 1
   itemName: Redacted order
   itemIcon_1100_700: {fileID: 21300000, guid: 912187b2eb4969d46b41d0030457d4ed, type: 3}
-  iconInDoor_135_135: {fileID: 0}
-  relatedCheckWordNumber: -1
+  iconInDoor_135_135: {fileID: 21300000, guid: 36390478981c5400a83fd6d460e1a4af, type: 3}
+  filePreviewSprite_1920_1080: {fileID: 0}
+  relatedCheckWordNumber: 5
   description: "There are names of the officers who will receive this document. There
     is no Atlas. \r\n"
   modelPrefab: {fileID: 0}

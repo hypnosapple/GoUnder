@@ -35,6 +35,8 @@ public class ItemPickup : MonoBehaviour
         {
             playerAudio.clip = AfterPickVO;
             playerAudio.Play();
+            SubtitleManager.Instance.audioPlaying = true;
+            PlayerInteraction.Instance.interactAllowed = false;
         }
 
         if (secondVO != null)

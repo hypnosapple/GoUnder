@@ -46,6 +46,8 @@ public class SubtitleManager : MonoBehaviour
     public AudioClip phoneRing;
     public AudioClip phoneHang;
 
+    public bool audioPlaying;
+
 
     private void Start()
     {
@@ -75,6 +77,15 @@ public class SubtitleManager : MonoBehaviour
                 TIn = 0f;
                 subtitlePanel.SetActive(true);
                 StartCoroutine(Display(0));
+            }
+        }
+
+        if (audioPlaying)
+        {
+            if (!playerAudio.isPlaying)
+            {
+                audioPlaying = false;
+                PlayerInteraction.Instance.interactAllowed = true;
             }
         }
         //Debug.Log(inCallPanel.GetComponent<RectTransform>().position);
@@ -233,6 +244,9 @@ public class SubtitleManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         playerAudio.clip = afterCall01;
         playerAudio.Play();
+
+        audioPlaying = true;
+        PlayerInteraction.Instance.interactAllowed = false;
     }
 
     IEnumerator PlayVOAfterCall03()
@@ -240,6 +254,8 @@ public class SubtitleManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         playerAudio.clip = afterCall03;
         playerAudio.Play();
+        audioPlaying = true;
+        PlayerInteraction.Instance.interactAllowed = false;
 
         yield return new WaitForSeconds(6f);
         GetComponent<GameManager>().PlayVideo1();

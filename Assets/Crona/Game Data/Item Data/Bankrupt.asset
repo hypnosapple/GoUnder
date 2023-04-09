@@ -15,8 +15,9 @@ MonoBehaviour:
   itemType: 1
   itemName: UMA bankrupt sheet
   itemIcon_1100_700: {fileID: 21300000, guid: a26e03a3bd6cb6b4c9019e7f314c52fe, type: 3}
-  iconInDoor_135_135: {fileID: 0}
-  relatedCheckWordNumber: -1
+  iconInDoor_135_135: {fileID: 21300000, guid: 36390478981c5400a83fd6d460e1a4af, type: 3}
+  filePreviewSprite_1920_1080: {fileID: 0}
+  relatedCheckWordNumber: 4
   description: "Needed funds: \r\n\r\n2 billions of dollars from Company A. \r\n4,000,000
     dollars from Company B.\r\n6,000,000 dollars from Company C.\r\n3,000,000 dollars
     from Company D.\r\n\r\nReceived funds:\r\n\r\n2.1 billions of dollars from Company

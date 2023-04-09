@@ -172,7 +172,7 @@ public class InventoryManager : MonoBehaviour
         ReminderName.text = title;
         ReminderType.text = type;
 
-        timer = 540;
+        timer = 420;
         t = 0f;
         posT = 0f;
         

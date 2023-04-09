@@ -35,7 +35,7 @@ public class CheckText : MonoBehaviour
     public void RightWord()
     {
         matches = true;
-        Debug.Log("Word Matches!");
+
         visualWord.gameObject.SetActive(true);
         door.GetComponent<DoorInteract>().wordList.Remove(visualWord);
         //door.GetComponent<DoorInteract>().PlayOpenDoor();
