@@ -16,7 +16,11 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: da5a8f1b650ca4d82ba3c1e0d63c69bb
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: e60c1e4a4394fd946859dbaceb0da41b
+    m_Address: Assets/SofasAndDecoration_Vol_1/Materials/M_Book_001.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: cd1f807ee5e5049128b1324019cce2e3, type: 2}
   m_SchemaSet:
