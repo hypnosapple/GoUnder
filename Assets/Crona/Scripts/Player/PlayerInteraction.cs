@@ -19,6 +19,7 @@ public class PlayerInteraction : MonoBehaviour
     int drawerLayerMask;
     int closetDoorLayerMask;
     int sinkLayerMask;
+    int TVLayerMask;
 
     [Header("UI")]
     public GameObject onTarget;
@@ -48,6 +49,7 @@ public class PlayerInteraction : MonoBehaviour
         drawerLayerMask = 12;
         closetDoorLayerMask = 14;
         sinkLayerMask = 15;
+        TVLayerMask = 16;
         
         interactAllowed = true;
 }
@@ -183,6 +185,19 @@ public class PlayerInteraction : MonoBehaviour
 
                 }
 
+                else if (hit.collider.gameObject.layer == TVLayerMask)
+                {
+                    if (!onTarget.activeInHierarchy)
+                    {
+                        onTarget.SetActive(true);
+                    }
+
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        hit.transform.gameObject.GetComponent<TVInteract>().SwitchTV();
+                    }
+                }
+
                 else
                 {
                     if (onTarget.activeInHierarchy)
@@ -210,7 +225,7 @@ public class PlayerInteraction : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, interactionRange))
             {
-                if (hit.collider.gameObject.layer == pickupLayerMask || hit.collider.gameObject.layer == screen1LayerMask || hit.collider.gameObject.layer == screen2LayerMask || hit.collider.gameObject.layer == doorLayerMask || hit.collider.gameObject.layer == drawerLayerMask || hit.collider.gameObject.layer == closetDoorLayerMask || hit.collider.gameObject.layer == sinkLayerMask)
+                if (hit.collider.gameObject.layer == pickupLayerMask || hit.collider.gameObject.layer == screen1LayerMask || hit.collider.gameObject.layer == screen2LayerMask || hit.collider.gameObject.layer == doorLayerMask || hit.collider.gameObject.layer == drawerLayerMask || hit.collider.gameObject.layer == closetDoorLayerMask || hit.collider.gameObject.layer == sinkLayerMask || hit.collider.gameObject.layer == TVLayerMask)
                 {
                     if (!targetDisabled.activeInHierarchy)
                     {
