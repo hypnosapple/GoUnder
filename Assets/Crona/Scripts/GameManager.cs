@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Cinemachine;
 using UnityEngine.Video;
+using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour
 {
@@ -104,6 +105,10 @@ public class GameManager : MonoBehaviour
     [Header("Pause Menu")]
     public bool pauseMenuEnabled = true;
 
+    [Header("Renderer Data")]
+    public ForwardRendererData forwardRendererData;
+    List<ScriptableRendererFeature> features;
+
 
     void Start()
     {
@@ -111,6 +116,8 @@ public class GameManager : MonoBehaviour
 
         SceneName = SceneManager.GetActiveScene().name;
         noise = vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+
+        features = forwardRendererData.rendererFeatures;
 
         // Opening cutscenes
         if (startFromSecondFloor)
@@ -448,6 +455,19 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    public void ControlRendererFeature(int i, bool active)
+    {
+        if (active)
+        {
+            features[i].SetActive(true);
+        }
+        else
+        {
+            features[i].SetActive(false);
+        }
+    }
+
 
     IEnumerator UnderWorldOpening()
     {

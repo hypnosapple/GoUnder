@@ -47,6 +47,7 @@ public class SkyboxChange : MonoBehaviour
                 RenderSettings.skybox = afternoonSkybox;
                 sea.GetComponent<MeshRenderer>().material = afternoonWater;
                 afternoonChanged = true;
+                GameManager.Instance.ControlRendererFeature(0, true);
             }
         }
 

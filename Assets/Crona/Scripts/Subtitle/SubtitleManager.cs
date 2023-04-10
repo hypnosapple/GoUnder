@@ -68,6 +68,8 @@ public class SubtitleManager : MonoBehaviour
                 playerAudio.clip = phoneCallAudio;
                 playerAudio.Play();
 
+                
+
                 if (blackPanel.GetComponent<Image>().color.a == 1)
                 {
                     GetComponent<GameManager>().StartFadeIn();
@@ -162,6 +164,8 @@ public class SubtitleManager : MonoBehaviour
                 playerAudio.clip = phoneHang;
                 playerAudio.Play();
 
+                GameManager.Instance.ControlRendererFeature(1, false);
+
                 isSlidingOut = true;
                 TOut = 0f;
                 isPhone = false;
@@ -216,6 +220,7 @@ public class SubtitleManager : MonoBehaviour
             }
             else
             {
+                GameManager.Instance.ControlRendererFeature(1, true);
                 isSlidingIn = false;
             }
         }
@@ -258,6 +263,7 @@ public class SubtitleManager : MonoBehaviour
         PlayerInteraction.Instance.interactAllowed = false;
 
         yield return new WaitForSeconds(6f);
+        GameManager.Instance.ControlRendererFeature(0, false);
         GetComponent<GameManager>().PlayVideo1();
     }
 
