@@ -97,7 +97,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 1
-    - _NormalStrength: 5.1
+    - _NormalStrength: 4.9
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
