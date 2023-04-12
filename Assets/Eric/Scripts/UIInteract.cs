@@ -46,6 +46,7 @@ public class UIInteract : MonoBehaviour
     {
         if (FocusOnScreen && Input.GetKey(KeyCode.Escape))
         {
+            ComputerScreen.GetComponent<GraphicRaycaster>().enabled = false;
             //Alexis added
             pauseMenuEnable = false;
             EnablePauseMenu();
@@ -132,6 +133,7 @@ public class UIInteract : MonoBehaviour
         IsInPos = 2;
         ComputerScreen.SetActive(true);
         ExitCanvas.SetActive(true);
+        ComputerScreen.GetComponent<GraphicRaycaster>().enabled = true;
         //StartCoroutine(StartComputer());
     }
 

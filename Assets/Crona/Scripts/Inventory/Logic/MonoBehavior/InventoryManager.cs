@@ -299,7 +299,7 @@ public class InventoryManager : MonoBehaviour
         Cursor.visible = true;
         
 
-        if (itemPrefab.gameObject != null)
+        if (itemPrefab != null)
         {
             Destroy(itemPrefab.gameObject);
             itemPanel.GetComponent<ItemViewer>().itemModel = null;

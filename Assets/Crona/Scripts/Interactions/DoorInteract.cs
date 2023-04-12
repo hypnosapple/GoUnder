@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DoorInteract : MonoBehaviour
 {
@@ -57,8 +58,9 @@ public class DoorInteract : MonoBehaviour
             {
                 if (UICanvas.activeInHierarchy && Input.GetKeyDown(KeyCode.E) && DoorCam.activeInHierarchy)
                 {
-
+                    UICanvas.GetComponent<GraphicRaycaster>().enabled = false;
                     UICanvas.SetActive(false);
+                    
                     Cursor.visible = false;
 
                     DoorCam.SetActive(false);
@@ -154,7 +156,9 @@ public class DoorInteract : MonoBehaviour
     IEnumerator WaitCameraIn()
     {
         yield return new WaitForSeconds(1f);
+
         UICanvas.SetActive(true);
+        UICanvas.GetComponent<GraphicRaycaster>().enabled = true;
     }
 
 
@@ -163,6 +167,7 @@ public class DoorInteract : MonoBehaviour
         yield return new WaitForSeconds(1f);
         if (UICanvas.activeInHierarchy)
         {
+            UICanvas.GetComponent<GraphicRaycaster>().enabled = false;
             UICanvas.SetActive(false);
             Cursor.visible = false;
 
