@@ -36,12 +36,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _FullscreenIntensity: 0.3
-    - _VignetteIntensity: 0.85
-    - _VignetteRadiusPower: 7
+    - _FullscreenIntensity: 0.4
+    - _VignetteIntensity: 1
+    - _VignetteRadiusPower: 6
     - _VoronoiPower: 2
-    - _VoronoiScale: 5
+    - _VoronoiScale: 6
     - _VoronoiSpeed: 1.5
     m_Colors:
-    - _Color: {r: 0, g: 0.008774017, b: 0.24705882, a: 1}
+    - _Color: {r: 0, g: 0.014076122, b: 0.4433962, a: 1}
   m_BuildTextureStacks: []
