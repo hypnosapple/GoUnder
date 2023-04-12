@@ -43,7 +43,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Video")]
     public GameObject videoScreen;
-    public VideoPlayer videoPlayer;
+    public VideoPlayer cutsceneVideoPlayer;
+    public VideoPlayer TV1VideoPlayer;
 
     [Header("Fade in/out Panel")]
     public GameObject blackPanel;
@@ -84,6 +85,8 @@ public class GameManager : MonoBehaviour
     public AudioClip GroundEndPanic;
     public AudioClip UnderworldWake;
     public AudioClip OpeningTinnitus;
+    public AudioClip AfterOpening1;
+    public AudioClip AfterOpening2;
     public AudioSource wrongChoiceAlert;
 
     [Header("Inventory System")]
@@ -301,12 +304,17 @@ public class GameManager : MonoBehaviour
     IEnumerator SwitchOpeningCam()
     {
         CMStart.SetActive(false);
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(3f);
+        playerAudio.clip = AfterOpening1;
+        playerAudio.Play();
+        yield return new WaitForSeconds(3f);
         CMStart2.SetActive(false);
         yield return new WaitForSeconds(5f);
         CMStart3.SetActive(false);
+        playerAudio.clip = AfterOpening2;
+        playerAudio.Play();
         yield return new WaitForSeconds(3.5f);
-
+        
         //player.GetComponent<CharacterController>().enabled = true;
         PlayerMovement.Instance.moveDisabled = false;
         inventoryEnabled = true;
@@ -509,9 +517,11 @@ public class GameManager : MonoBehaviour
     {
         playerAudio.clip = OpeningTinnitus;
         playerAudio.Play();
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(10f);
         StartFadeInWhite();
+        TV1VideoPlayer.Play();
         yield return new WaitForSeconds(5f);
+        
         EnableOpeningMove();
         
     }
@@ -538,7 +548,7 @@ public class GameManager : MonoBehaviour
         tunnel3to2.SetActive(false);
 
         videoScreen.SetActive(true);
-        videoPlayer.Play();
+        cutsceneVideoPlayer.Play();
         StartCoroutine(AfterVideo1());
     }
 

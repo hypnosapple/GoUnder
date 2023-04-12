@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Physics")]
     // Jump and walk speed
-    public float speed;
+    private float speed;
 
     // Simulate gravity
     private Vector3 velocity;
@@ -73,12 +73,12 @@ public class PlayerMovement : MonoBehaviour
 
         else if (Input.GetKey(KeyCode.LeftShift))
         {
-            speed = 25f;
+            speed = 27f;
             noise.m_NoiseProfile = runNoise;
         }
         else
         {
-            speed = 15f;
+            speed = 18f;
             noise.m_NoiseProfile = walkNoise;
         }
 

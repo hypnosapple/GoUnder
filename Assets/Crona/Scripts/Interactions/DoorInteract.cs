@@ -15,8 +15,11 @@ public class DoorInteract : MonoBehaviour
     public GameObject crosshairCanvas;
 
     [Header("Audio")]
+    public AudioSource playerAudio;
     public AudioClip doorLockSFX;
     public AudioClip doorOpenSFX;
+    public AudioClip voiceAfterInteract;
+    private bool voicePlayed = false;
 
     [Header("Animation")]
     private Animator doorAnimator;
@@ -91,6 +94,8 @@ public class DoorInteract : MonoBehaviour
                 Cursor.visible = true;
                 //Debug.Log("open");
                 DoorCam.SetActive(true);
+                GameManager.Instance.pauseMenuEnabled = false;
+                GameManager.Instance.inventoryEnabled = false;
                 StartCoroutine(WaitCameraIn());
 
                 GameManager.Instance.LockPlayerCam();
@@ -130,6 +135,18 @@ public class DoorInteract : MonoBehaviour
         crosshairCanvas.SetActive(true);
         GameManager.Instance.UnlockPlayerCam();
         PlayerInteraction.Instance.interactAllowed = true;
+        GameManager.Instance.pauseMenuEnabled = true;
+        GameManager.Instance.inventoryEnabled = true;
+
+        if (!voicePlayed)
+        {
+            if (voiceAfterInteract != null)
+            {
+                playerAudio.clip = voiceAfterInteract;
+                playerAudio.Play();
+                voicePlayed = true;
+            }
+        }
     }
 
 

@@ -257,12 +257,11 @@ public class InventoryManager : MonoBehaviour
         if (itemPanel.activeInHierarchy && Input.GetKey(KeyCode.Escape))
         {
             itemPanel.SetActive(false);
-            if (itemPrefab != null)
-            {
+            
                 Destroy(itemPrefab.gameObject);
                 itemPrefab = null;
                 itemPanel.GetComponent<ItemViewer>().itemModel = null;
-            }
+            
 
             crosshairCanvas.SetActive(true);
             GameManager.Instance.inventoryEnabled = true;
@@ -300,11 +299,13 @@ public class InventoryManager : MonoBehaviour
         Cursor.visible = true;
         
 
-        if (itemPrefab != null)
+        if (itemPrefab.gameObject != null)
         {
             Destroy(itemPrefab.gameObject);
             itemPanel.GetComponent<ItemViewer>().itemModel = null;
         }
+            
+        
         itemPrefab = Instantiate(modelPrefab, new Vector3(1000, 1000, 1000), Quaternion.identity);
         itemPanel.GetComponent<ItemViewer>().itemModel = itemPrefab;
     }
