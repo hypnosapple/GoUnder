@@ -17,14 +17,16 @@ MonoBehaviour:
   callerName: Evelyn
   callerSprite_136_177: {fileID: 21300000, guid: 09670d1819c8f4bd89c4d1c2ecc1d384, type: 3}
   Contents:
-  - Atlas, you sound not okay. Can you please talk to me?
-  - "This thing is knotty\u2026\u2026 No, it is dangerous."
-  - What is dangerous? Another Tsunami is coming?
-  - "There is a high probability based on their report and prediction. But\u2026\u2026
-    I will talk to you later. I will keep you and Lily safe. I promise."
+  - "Atlas, you sound different today. Please tell me you\u2019re taking care of
+    yourself?"
+  - "Honey, I\u2019ve been trying to. But something dangerous is coming, I can feel
+    it..."
+  - What is it? Another tsunami is coming?
+  - It's even worse... It's something that we have no idea how destructive it could
+    be. I promise I will keep you and Lily safe.
   VisibleTime:
   - 5
-  - 5
-  - 3.5
-  - 13
+  - 6.5
+  - 2.5
+  - 9
   AudioFile: {fileID: 8300000, guid: fafd5879b61ce4975a2dac7784c1a4ef, type: 3}

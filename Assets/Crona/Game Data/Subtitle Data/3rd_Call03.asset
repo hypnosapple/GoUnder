@@ -17,17 +17,17 @@ MonoBehaviour:
   callerName: Evelyn
   callerSprite_136_177: {fileID: 21300000, guid: 09670d1819c8f4bd89c4d1c2ecc1d384, type: 3}
   Contents:
-  - Evelyn. Is that you? Evelyn.
+  - Evelyn? Is that you, Evelyn?
   - ......
-  - "I just \u2026finished work and am on my way home, but\u2026.huh, something isn\u2019t
-    right. I think those officers are hiding something from us. We are forced to
-    leave after work time, and they are having some sort of secret meeting."
-  - "Huh, I don\u2019t know what they are keeping, but I have bad feelings about
-    this. But anyway, call me when you have time, alright? We might need to move
-    to a safer place. I love you. Sleep tight."
+  - "I\u2019ve just finished work and I\u2019m on my way back home, but something
+    doesn\u2019t feel right. I think they\u2019re hiding something from us. The higher
+    ups forced us to leave for some...  \u2018important meeting\u2019?"
+  - "But I have no idea of what they\u2019re planning, I have a bad feeling about
+    this. Please call me back as soon as possible, alright? We might need to move
+    to a safer place. I love you."
   VisibleTime:
-  - 5.5
   - 3
-  - 21
-  - 15
+  - 2
+  - 11
+  - 11
   AudioFile: {fileID: 8300000, guid: 62a39bc9fa675483a9e32f7e39d7c94b, type: 3}

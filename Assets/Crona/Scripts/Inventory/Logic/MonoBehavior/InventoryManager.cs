@@ -23,6 +23,7 @@ public class InventoryManager : MonoBehaviour
     public GameObject filePanel;
     public Image fileImage;
     public Transform itemPrefab;
+    public GameObject previewModel;
 
     [Header("Door UI")]
     public GameObject doorItemPages;
@@ -257,11 +258,11 @@ public class InventoryManager : MonoBehaviour
         if (itemPanel.activeInHierarchy && Input.GetKey(KeyCode.Escape))
         {
             itemPanel.SetActive(false);
-            
-                Destroy(itemPrefab.gameObject);
-                itemPrefab = null;
-                itemPanel.GetComponent<ItemViewer>().itemModel = null;
-            
+            itemPrefab.gameObject.transform.parent = previewModel.transform;
+            Destroy(itemPrefab.gameObject);
+            itemPrefab = null;
+            itemPanel.GetComponent<ItemViewer>().itemModel = null;
+           
 
             crosshairCanvas.SetActive(true);
             GameManager.Instance.inventoryEnabled = true;
@@ -299,14 +300,17 @@ public class InventoryManager : MonoBehaviour
         Cursor.visible = true;
         
 
-        if (itemPrefab != null)
+        if (previewModel.transform.childCount > 0)
         {
-            Destroy(itemPrefab.gameObject);
+            Destroy(previewModel.transform.GetChild(0).gameObject);
             itemPanel.GetComponent<ItemViewer>().itemModel = null;
+            itemPrefab = null;
         }
+        
             
         
         itemPrefab = Instantiate(modelPrefab, new Vector3(1000, 1000, 1000), Quaternion.identity);
+        itemPrefab.gameObject.transform.parent = previewModel.transform;
         itemPanel.GetComponent<ItemViewer>().itemModel = itemPrefab;
     }
 

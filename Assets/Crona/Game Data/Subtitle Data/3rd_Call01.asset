@@ -18,12 +18,12 @@ MonoBehaviour:
   callerSprite_136_177: {fileID: 21300000, guid: 09670d1819c8f4bd89c4d1c2ecc1d384, type: 3}
   Contents:
   - "Atlas\u2026\u2026are you there?"
-  - "Yes, I am. I\u2019m just too tired, sorry babe. I had three meetings today."
+  - "Hey honey, I\u2019m here. I\u2019ve been quite deep into my work recently."
   - Are you coming home tonight?
-  - "No\u2026\u2026I don't think so. The work is heavy, and we have to finish it."
+  - No... The work is heavy, and we have to finish it, lives are at stake...
   VisibleTime:
-  - 4
-  - 11
   - 2
-  - 9
+  - 4.5
+  - 1.2
+  - 7
   AudioFile: {fileID: 8300000, guid: 28b03d3f9ccd442e29cc4f9e0bd085c9, type: 3}

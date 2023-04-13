@@ -520,8 +520,11 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(10f);
         StartFadeInWhite();
         TV1VideoPlayer.Play();
-        yield return new WaitForSeconds(5f);
-        
+        yield return new WaitForSeconds(2f);
+        ambience.Play();
+        BGM.Play();
+        yield return new WaitForSeconds(3f);
+
         EnableOpeningMove();
         
     }

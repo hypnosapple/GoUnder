@@ -130,6 +130,7 @@ public class SubtitleManager : MonoBehaviour
         {
             playerAudio.clip = phoneCallAudio;
             playerAudio.Play();
+            GameManager.Instance.ControlRendererFeature(1, true);
             subtitlePanel.SetActive(true);
             StartCoroutine(Display(0));
         }
@@ -164,11 +165,15 @@ public class SubtitleManager : MonoBehaviour
                 playerAudio.clip = phoneHang;
                 playerAudio.Play();
 
-                GameManager.Instance.ControlRendererFeature(1, false);
+                
 
                 isSlidingOut = true;
                 TOut = 0f;
                 isPhone = false;
+            }
+            else
+            {
+                GameManager.Instance.ControlRendererFeature(1, false);
             }
 
             if (clipName == "Opening")
@@ -220,7 +225,10 @@ public class SubtitleManager : MonoBehaviour
             }
             else
             {
+                inCallPanel.GetComponent<RectTransform>().position = new Vector3(263.5f, 540, 0);
                 GameManager.Instance.ControlRendererFeature(1, true);
+                GameManager.Instance.pauseMenuEnabled = false;
+                GameManager.Instance.inventoryEnabled = false;
                 isSlidingIn = false;
             }
         }
@@ -238,7 +246,11 @@ public class SubtitleManager : MonoBehaviour
             }
             else
             {
+                inCallPanel.GetComponent<RectTransform>().position = new Vector3(0, 540, 0);
                 isSlidingOut = false;
+                GameManager.Instance.ControlRendererFeature(1, false);
+                GameManager.Instance.pauseMenuEnabled = true;
+                GameManager.Instance.inventoryEnabled = true;
             }
         }
     }

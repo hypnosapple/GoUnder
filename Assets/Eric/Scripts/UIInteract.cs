@@ -61,7 +61,6 @@ public class UIInteract : MonoBehaviour
         if(FocusOnScreen && Input.GetKey(KeyCode.Mouse0))
         {
             communicationSystem.enabled = false;
-            Debug.Log("clicked");
             UIClick.enabled = true;
         }
         else
@@ -129,7 +128,6 @@ public class UIInteract : MonoBehaviour
         Transformee.position = targetPosition;
         Transformee.rotation = targetRotation;
         //targetTransform.gameObject.SetActive(false);
-        Debug.Log("I am locked");
         IsInPos = 2;
         ComputerScreen.SetActive(true);
         ExitCanvas.SetActive(true);
@@ -187,7 +185,6 @@ public class UIInteract : MonoBehaviour
         Transformee.position = targetPosition;
         Transformee.rotation = targetRotation;
         //targetTransform.gameObject.SetActive(false);
-        Debug.Log("I am free");
         IsInPos = 0;
         //UseECanvas.SetActive(true);
         MainCam.enabled = true;
