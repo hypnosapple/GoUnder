@@ -71,6 +71,8 @@ public class PauseMenu : MonoBehaviour
         btnMainMenu.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+        Cursor.visible = true;
+        Debug.Log("Cursor is " + Cursor.visible);
     }
 
     public void openSettingsControl()
@@ -181,6 +183,8 @@ public class PauseMenu : MonoBehaviour
         btnDisplay.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        Cursor.visible = false;
+        Debug.Log("Cursor is " + Cursor.visible);
     }
 
     public void openViewControl()
