@@ -112,6 +112,9 @@ public class GameManager : MonoBehaviour
     public ForwardRendererData forwardRendererData;
     List<ScriptableRendererFeature> features;
 
+    [Header("Fullscren Materials")]
+    public Material Edge1;
+    public Material Edge2;
 
     void Start()
     {
@@ -174,6 +177,7 @@ public class GameManager : MonoBehaviour
             CMStart3.SetActive(true);
 
             //player.GetComponent<CharacterController>().enabled = false;
+            LockPlayerCam();
             PlayerMovement.Instance.moveDisabled = true;
             inventoryEnabled = false;
             pauseMenuEnabled = false;
@@ -304,18 +308,18 @@ public class GameManager : MonoBehaviour
     IEnumerator SwitchOpeningCam()
     {
         CMStart.SetActive(false);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         playerAudio.clip = AfterOpening1;
         playerAudio.Play();
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         CMStart2.SetActive(false);
         yield return new WaitForSeconds(5f);
         CMStart3.SetActive(false);
         playerAudio.clip = AfterOpening2;
         playerAudio.Play();
         yield return new WaitForSeconds(3.5f);
-        
-        //player.GetComponent<CharacterController>().enabled = true;
+
+        UnlockPlayerCam();
         PlayerMovement.Instance.moveDisabled = false;
         inventoryEnabled = true;
         pauseMenuEnabled = true;
