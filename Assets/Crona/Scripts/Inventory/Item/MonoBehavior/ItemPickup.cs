@@ -25,8 +25,6 @@ public class ItemPickup : MonoBehaviour
     {
         InventoryManager.Instance.AddItem(itemData);
 
-        //Alexis added
-        inventoryManager.SaveInventory();
         //Debug.Log("pickup");
 
         if (relatedDoor != null && relatedWord != null)

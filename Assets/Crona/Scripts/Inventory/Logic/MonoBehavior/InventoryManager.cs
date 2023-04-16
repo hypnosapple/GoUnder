@@ -48,10 +48,15 @@ public class InventoryManager : MonoBehaviour
     public bool pauseMenuEnabled = true;
 
 
-    private void Start()
+    private void OnEnable()
     {
         Instance = this;
         LoadInventory();
+    }
+
+    private void OnDisable()
+    {
+        SaveInventory();
     }
 
     void Update()
@@ -60,66 +65,6 @@ public class InventoryManager : MonoBehaviour
 
         ExitPreviewPanel();
 
-    }
-
-    public void SaveInventory()
-    {
-        BinaryFormatter bf = new BinaryFormatter();
-        MemoryStream ms = new MemoryStream();
-
-        List<ItemData_SO> atlasData = new List<ItemData_SO>();
-        List<ItemData_SO> fileData = new List<ItemData_SO>();
-        List<ItemData_SO> useableData = new List<ItemData_SO>();
-
-        foreach (InventoryItem item in AtlasItems)
-        {
-            atlasData.Add(item.itemData);
-        }
-        foreach (InventoryItem item in FileItems)
-        {
-            fileData.Add(item.itemData);
-        }
-        foreach (InventoryItem item in UseableItems)
-        {
-            useableData.Add(item.itemData);
-        }
-
-        bf.Serialize(ms, (object)new Tuple<List<ItemData_SO>, List<ItemData_SO>, List<ItemData_SO>>(atlasData, fileData, useableData));
-        string serializedInventory = Convert.ToBase64String(ms.ToArray());
-
-        PlayerPrefs.SetString("PlayerInventory", serializedInventory);
-        PlayerPrefs.Save();
-    }
-
-
-    public void LoadInventory()
-    {
-        if (PlayerPrefs.HasKey("PlayerInventory"))
-        {
-            string serializedInventory = PlayerPrefs.GetString("PlayerInventory");
-            byte[] byteArray = Convert.FromBase64String(serializedInventory);
-            MemoryStream ms = new MemoryStream(byteArray);
-
-            BinaryFormatter bf = new BinaryFormatter();
-            Tuple<List<ItemData_SO>, List<ItemData_SO>, List<ItemData_SO>> loadedData = (Tuple<List<ItemData_SO>, List<ItemData_SO>, List<ItemData_SO>>)bf.Deserialize(ms);
-
-            AtlasItems.Clear();
-            FileItems.Clear();
-            UseableItems.Clear();
-
-            foreach (ItemData_SO data in loadedData.Item1)
-            {
-                AddItemWithoutReminder(data);
-            }
-            foreach (ItemData_SO data in loadedData.Item2)
-            {
-                AddItemWithoutReminder(data);
-            }
-            foreach (ItemData_SO data in loadedData.Item3)
-            {
-                AddItemWithoutReminder(data);
-            }
-        }
     }
 
 
@@ -180,9 +125,6 @@ public class InventoryManager : MonoBehaviour
             doorItemPages.GetComponent<PageList>().AddItemToDoor(newItemData.iconInDoor_135_135, newItemData.itemName, newItemData.relatedCheckWordNumber);
         }
 
-        SaveInventory();
-
-
 
     }
 
@@ -225,16 +167,84 @@ public class InventoryManager : MonoBehaviour
 
         if (newItemData.itemType == ItemType.Useable)
         {
+            Debug.Log("withoutReminder: " + newItemData);
             for (int i = 0; i < UseableItems.Count; i++)
             {
                 if (UseableItems[i].itemData == null)
                 {
                     UseableItems[i].itemData = newItemData;
+                    Debug.Log(UseableItems[i].itemData);
                     UseableContainer.GetComponent<UseableContainerUI>().AddItem(newItemData);
 
                     
                     break;
                 }
+            }
+        }
+    }
+
+    private void SaveInventory()
+    {
+        for (int i = 0; i < AtlasItems.Count; i++)
+        {
+            SaveItem("AtlasItem_" + i, AtlasItems[i]);
+        }
+
+        for (int i = 0; i < FileItems.Count; i++)
+        {
+            SaveItem("FileItem_" + i, FileItems[i]);
+        }
+
+        for (int i = 0; i < UseableItems.Count; i++)
+        {
+            SaveItem("UseableItem_" + i, UseableItems[i]);
+        }
+        PlayerPrefs.Save();
+    }
+
+    private void SaveItem(string key, InventoryItem item)
+    {
+        if (item != null && item.itemData != null)
+        {
+            PlayerPrefs.SetString(key, item.itemData.itemName);
+        }
+        else
+        {
+            PlayerPrefs.DeleteKey(key);
+        }
+    }
+
+
+    private void LoadInventory()
+    {
+        for (int i = 0; i < AtlasItems.Count; i++)
+        {
+            string itemName = PlayerPrefs.GetString("AtlasItem_" + i, "");
+            if (!string.IsNullOrEmpty(itemName))
+            {
+                ItemData_SO itemData = Resources.Load<ItemData_SO>("Items/" + itemName);
+                AddItemWithoutReminder(itemData);
+            }
+        }
+
+        for (int i = 0; i < FileItems.Count; i++)
+        {
+            string itemName = PlayerPrefs.GetString("FileItem_" + i, "");
+            if (!string.IsNullOrEmpty(itemName))
+            {
+                ItemData_SO itemData = Resources.Load<ItemData_SO>("Items/" + itemName);
+                AddItemWithoutReminder(itemData);
+            }
+        }
+
+        for (int i = 0; i < UseableItems.Count; i++)
+        {
+            string itemName = PlayerPrefs.GetString("UseableItem_" + i, "");
+            if (!string.IsNullOrEmpty(itemName))
+            {
+                ItemData_SO itemData = Resources.Load<ItemData_SO>("Item Data/" + itemName);
+                Debug.Log(itemData);
+                AddItemWithoutReminder(itemData);
             }
         }
     }
@@ -379,8 +389,6 @@ public class InventoryManager : MonoBehaviour
             itemPrefab = null;
         }
         
-            
-        
         itemPrefab = Instantiate(modelPrefab, new Vector3(1000, 1000, 1000), Quaternion.identity);
         itemPrefab.gameObject.transform.parent = previewModel.transform;
         itemPanel.GetComponent<ItemViewer>().itemModel = itemPrefab;
@@ -410,9 +418,6 @@ public class InventoryManager : MonoBehaviour
     }
 
 }
-
-
-
 
 
 
