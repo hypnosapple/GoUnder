@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
+[Serializable]
 public enum ItemType { Atlas, File, Useable}
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item Data")]
 

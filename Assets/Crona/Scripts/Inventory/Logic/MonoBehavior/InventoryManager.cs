@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -48,6 +51,7 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         Instance = this;
+        LoadInventory();
     }
 
     void Update()
@@ -57,6 +61,67 @@ public class InventoryManager : MonoBehaviour
         ExitPreviewPanel();
 
     }
+
+    public void SaveInventory()
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        MemoryStream ms = new MemoryStream();
+
+        List<ItemData_SO> atlasData = new List<ItemData_SO>();
+        List<ItemData_SO> fileData = new List<ItemData_SO>();
+        List<ItemData_SO> useableData = new List<ItemData_SO>();
+
+        foreach (InventoryItem item in AtlasItems)
+        {
+            atlasData.Add(item.itemData);
+        }
+        foreach (InventoryItem item in FileItems)
+        {
+            fileData.Add(item.itemData);
+        }
+        foreach (InventoryItem item in UseableItems)
+        {
+            useableData.Add(item.itemData);
+        }
+
+        bf.Serialize(ms, (object)new Tuple<List<ItemData_SO>, List<ItemData_SO>, List<ItemData_SO>>(atlasData, fileData, useableData));
+        string serializedInventory = Convert.ToBase64String(ms.ToArray());
+
+        PlayerPrefs.SetString("PlayerInventory", serializedInventory);
+        PlayerPrefs.Save();
+    }
+
+
+    public void LoadInventory()
+    {
+        if (PlayerPrefs.HasKey("PlayerInventory"))
+        {
+            string serializedInventory = PlayerPrefs.GetString("PlayerInventory");
+            byte[] byteArray = Convert.FromBase64String(serializedInventory);
+            MemoryStream ms = new MemoryStream(byteArray);
+
+            BinaryFormatter bf = new BinaryFormatter();
+            Tuple<List<ItemData_SO>, List<ItemData_SO>, List<ItemData_SO>> loadedData = (Tuple<List<ItemData_SO>, List<ItemData_SO>, List<ItemData_SO>>)bf.Deserialize(ms);
+
+            AtlasItems.Clear();
+            FileItems.Clear();
+            UseableItems.Clear();
+
+            foreach (ItemData_SO data in loadedData.Item1)
+            {
+                AddItemWithoutReminder(data);
+            }
+            foreach (ItemData_SO data in loadedData.Item2)
+            {
+                AddItemWithoutReminder(data);
+            }
+            foreach (ItemData_SO data in loadedData.Item3)
+            {
+                AddItemWithoutReminder(data);
+            }
+        }
+    }
+
 
     public void AddItem(ItemData_SO newItemData)
     {
@@ -115,12 +180,19 @@ public class InventoryManager : MonoBehaviour
             doorItemPages.GetComponent<PageList>().AddItemToDoor(newItemData.iconInDoor_135_135, newItemData.itemName, newItemData.relatedCheckWordNumber);
         }
 
-        
+        SaveInventory();
+
+
 
     }
 
     public void AddItemWithoutReminder(ItemData_SO newItemData)
     {
+        if (newItemData == null)
+        {
+            return;
+        }
+
         if (newItemData.itemType == ItemType.Atlas)
         {
             for (int i = 0; i < AtlasItems.Count; i++)
