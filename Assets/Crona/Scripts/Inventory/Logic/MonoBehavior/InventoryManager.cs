@@ -143,8 +143,11 @@ public class InventoryManager : MonoBehaviour
                 {
                     AtlasItems[i].itemData = newItemData;
                     AtlasContainer.GetComponent<AtlasContainerUI>().AddItem(newItemData);
+                    if (newItemData.iconInDoor_135_135 != null)
+                    {
+                        doorItemPages.GetComponent<PageList>().AddItemToDoor(newItemData.iconInDoor_135_135, newItemData.itemName, newItemData.relatedCheckWordNumber);
+                    }
 
-                    
                     break;
                 }
             }
@@ -158,8 +161,11 @@ public class InventoryManager : MonoBehaviour
                 {
                     FileItems[i].itemData = newItemData;
                     FileContainer.GetComponent<FileContainerUI>().AddItem(newItemData);
+                    if (newItemData.iconInDoor_135_135 != null)
+                    {
+                        doorItemPages.GetComponent<PageList>().AddItemToDoor(newItemData.iconInDoor_135_135, newItemData.itemName, newItemData.relatedCheckWordNumber);
+                    }
 
-                    
                     break;
                 }
             }
@@ -173,8 +179,11 @@ public class InventoryManager : MonoBehaviour
                 {
                     UseableItems[i].itemData = newItemData;
                     UseableContainer.GetComponent<UseableContainerUI>().AddItem(newItemData);
+                    if (newItemData.iconInDoor_135_135 != null)
+                    {
+                        doorItemPages.GetComponent<PageList>().AddItemToDoor(newItemData.iconInDoor_135_135, newItemData.itemName, newItemData.relatedCheckWordNumber);
+                    }
 
-                    
                     break;
                 }
             }
