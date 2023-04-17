@@ -18,9 +18,6 @@ public class ItemPickup : MonoBehaviour
     public SubtitleData_SO secondVO;
     public float playAfterSeconds;
 
-    //Alexis added
-    public InventoryManager inventoryManager;
-
     public void Pickup()
     {
         InventoryManager.Instance.AddItem(itemData);

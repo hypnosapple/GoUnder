@@ -2066,6 +2066,7 @@ GameObject:
   - component: {fileID: 2050970009}
   - component: {fileID: 2050970012}
   - component: {fileID: 2050970013}
+  - component: {fileID: 2050970014}
   m_Layer: 5
   m_Name: Continue
   m_TagString: Untagged
@@ -2202,6 +2203,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundImage: {fileID: 1237546491}
+--- !u!114 &2050970014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050970007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc532268e99b443aa5b9aaf3fb5934c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 2050970009}
+  fadeTime: 10
+  fadeImage: {fileID: 1079014676}
 --- !u!1 &2110436707
 GameObject:
   m_ObjectHideFlags: 0

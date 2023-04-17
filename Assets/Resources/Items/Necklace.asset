@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca2c350add0de446fbe4ee3bd2f91b5a, type: 3}
+  m_Name: Necklace
+  m_EditorClassIdentifier: 
+  itemType: 2
+  itemName: Necklace
+  itemIcon_1100_700: {fileID: 0}
+  iconInDoor_135_135: {fileID: 21300000, guid: d05a6657731b2004b98786393a2b303f, type: 3}
+  relatedCheckWordNumber: -1
+  description: "A beautifully crafted silver necklace. Was kept very carefully\r.\n"
+  modelPrefab: {fileID: 937319187968016133, guid: 57a37bfc0f4b0d24e8a9e9ad50bb2d02, type: 3}

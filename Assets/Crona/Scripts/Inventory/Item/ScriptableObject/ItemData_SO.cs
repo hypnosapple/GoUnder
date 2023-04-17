@@ -25,5 +25,9 @@ public class ItemData_SO : ScriptableObject
 
     public Transform modelPrefab;
 
-    
+    public static ItemData_SO LoadItemDataByName(string itemName)
+    {
+        return Resources.Load<ItemData_SO>("Items/" + itemName);
+    }
+
 }

@@ -32,6 +32,7 @@ public class ScreenFade : MonoBehaviour
         }
         if (fadeImage.color == targetColor)
         {
+            PlayerPrefs.DeleteAll();
             SceneManager.LoadScene(0); // Load the first scene
         }
     }

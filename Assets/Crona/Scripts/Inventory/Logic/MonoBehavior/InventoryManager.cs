@@ -167,13 +167,11 @@ public class InventoryManager : MonoBehaviour
 
         if (newItemData.itemType == ItemType.Useable)
         {
-            Debug.Log("withoutReminder: " + newItemData);
             for (int i = 0; i < UseableItems.Count; i++)
             {
                 if (UseableItems[i].itemData == null)
                 {
                     UseableItems[i].itemData = newItemData;
-                    Debug.Log(UseableItems[i].itemData);
                     UseableContainer.GetComponent<UseableContainerUI>().AddItem(newItemData);
 
                     
@@ -222,7 +220,7 @@ public class InventoryManager : MonoBehaviour
             string itemName = PlayerPrefs.GetString("AtlasItem_" + i, "");
             if (!string.IsNullOrEmpty(itemName))
             {
-                ItemData_SO itemData = Resources.Load<ItemData_SO>("Items/" + itemName);
+                ItemData_SO itemData = ItemData_SO.LoadItemDataByName(itemName);
                 AddItemWithoutReminder(itemData);
             }
         }
@@ -232,7 +230,7 @@ public class InventoryManager : MonoBehaviour
             string itemName = PlayerPrefs.GetString("FileItem_" + i, "");
             if (!string.IsNullOrEmpty(itemName))
             {
-                ItemData_SO itemData = Resources.Load<ItemData_SO>("Items/" + itemName);
+                ItemData_SO itemData = ItemData_SO.LoadItemDataByName(itemName);
                 AddItemWithoutReminder(itemData);
             }
         }
@@ -242,8 +240,8 @@ public class InventoryManager : MonoBehaviour
             string itemName = PlayerPrefs.GetString("UseableItem_" + i, "");
             if (!string.IsNullOrEmpty(itemName))
             {
-                ItemData_SO itemData = Resources.Load<ItemData_SO>("Item Data/" + itemName);
-                Debug.Log(itemData);
+                ItemData_SO itemData = ItemData_SO.LoadItemDataByName(itemName);
+
                 AddItemWithoutReminder(itemData);
             }
         }
@@ -378,7 +376,8 @@ public class InventoryManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         itemPanel.SetActive(true);
         crosshairCanvas.SetActive(false);
-        
+
+
         Cursor.visible = true;
         
 
@@ -404,7 +403,8 @@ public class InventoryManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         filePanel.SetActive(true);
         crosshairCanvas.SetActive(false);
-        
+
+
         Cursor.visible = true;
 
         fileImage.sprite = fileSprite;
