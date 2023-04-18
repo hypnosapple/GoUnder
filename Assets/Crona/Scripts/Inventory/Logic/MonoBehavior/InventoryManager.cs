@@ -150,7 +150,6 @@ public class InventoryManager : MonoBehaviour
                     {
                         doorItemPages.GetComponent<PageList>().AddItemToDoor(newItemData.iconInDoor_135_135, newItemData.itemName, newItemData.relatedCheckWordNumber);
                     }
-
                     break;
                 }
             }
@@ -186,20 +185,21 @@ public class InventoryManager : MonoBehaviour
                     {
                         doorItemPages.GetComponent<PageList>().AddItemToDoor(newItemData.iconInDoor_135_135, newItemData.itemName, newItemData.relatedCheckWordNumber);
                     }
-                    ItemPickup[] obj = GameObject.FindObjectsOfType<ItemPickup>();
-                    foreach (ItemPickup comp in obj)
-                    {
-                        if (comp.gameObject.name == newItemData.itemName)
-                        {
-                            Debug.Log(comp.gameObject);
-                            Destroy(comp.gameObject);
-                        }
-
-                    }
                     break;
                 }
             }
         }
+        ItemPickup[] obj = GameObject.FindObjectsOfType<ItemPickup>();
+        foreach (ItemPickup comp in obj)
+        {
+            if (comp.gameObject.name == newItemData.itemName)
+            {
+                Debug.Log(comp.gameObject);
+                Destroy(comp.gameObject);
+            }
+
+        }
+        obj = null;
     }
 
     private void SaveInventory()
