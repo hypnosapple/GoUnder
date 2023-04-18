@@ -505,7 +505,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6240742674516275668
 Transform:
   m_ObjectHideFlags: 0
@@ -630,7 +630,6 @@ MonoBehaviour:
   AfterPickVO: {fileID: 0}
   secondVO: {fileID: 0}
   playAfterSeconds: 0
-  inventoryManager: {fileID: 0}
 --- !u!1 &1575671539949096403
 GameObject:
   m_ObjectHideFlags: 0

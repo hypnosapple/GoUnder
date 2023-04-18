@@ -44,7 +44,11 @@ public class ItemPickup : MonoBehaviour
             SubtitleManager.Instance.PlayAfterTime(secondVO, playAfterSeconds);
         }
 
+        DestroyPickup(gameObject);
+    }
 
-        Destroy(gameObject);
+    public void DestroyPickup(GameObject GO)
+    {
+        Destroy(GO);
     }
 }

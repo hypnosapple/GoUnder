@@ -47,10 +47,14 @@ public class InventoryManager : MonoBehaviour
     [Header("Pause Menu")]
     public bool pauseMenuEnabled = true;
 
+    //Alexis added
+    [Header("Item Pickup")]
+    private List<GameObject> itemPickup;
 
     private void OnEnable()
     {
         Instance = this;
+        itemPickup = new List<GameObject>();
         LoadInventory();
     }
 
@@ -115,7 +119,6 @@ public class InventoryManager : MonoBehaviour
                     UseableContainer.GetComponent<UseableContainerUI>().AddItem(newItemData);
 
                     ShowReminder(newItemData.name, "Item Added");
-                    StartCoroutine(ShowItemPreview(newItemData.modelPrefab));
                     break;
                 }
             }
@@ -183,7 +186,16 @@ public class InventoryManager : MonoBehaviour
                     {
                         doorItemPages.GetComponent<PageList>().AddItemToDoor(newItemData.iconInDoor_135_135, newItemData.itemName, newItemData.relatedCheckWordNumber);
                     }
+                    ItemPickup[] obj = GameObject.FindObjectsOfType<ItemPickup>();
+                    foreach (ItemPickup comp in obj)
+                    {
+                        if (comp.gameObject.name == newItemData.itemName)
+                        {
+                            Debug.Log(comp.gameObject);
+                            Destroy(comp.gameObject);
+                        }
 
+                    }
                     break;
                 }
             }
@@ -250,7 +262,6 @@ public class InventoryManager : MonoBehaviour
             if (!string.IsNullOrEmpty(itemName))
             {
                 ItemData_SO itemData = ItemData_SO.LoadItemDataByName(itemName);
-
                 AddItemWithoutReminder(itemData);
             }
         }
