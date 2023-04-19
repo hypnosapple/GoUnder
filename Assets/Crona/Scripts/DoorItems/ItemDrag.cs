@@ -65,12 +65,16 @@ public class ItemDrag : MonoBehaviour
         {
             if (checkText.rightWordIn)
             {
+                Tinylytics.AnalyticsManager.LogCustomMetric("Door " + GameManager.Instance.currentRoomIndex + " Wrong Item Choice Number", GameManager.Instance.itemDraggedWrong.ToString());
                 checkText.RightWord();
+                
+                GameManager.Instance.itemDraggedWrong = 0;
             }
             else
             {
                 wrongChoiceAlert.Play();
                 resetItemPosition();
+                GameManager.Instance.itemDraggedWrong += 1;
                 if (selected)
                 {
                     selected = false;
@@ -81,6 +85,7 @@ public class ItemDrag : MonoBehaviour
         {
             wrongChoiceAlert.Play();
             resetItemPosition();
+            GameManager.Instance.itemDraggedWrong += 1;
             if (selected)
             {
                 selected = false;

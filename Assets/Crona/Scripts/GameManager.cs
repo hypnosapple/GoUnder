@@ -116,6 +116,10 @@ public class GameManager : MonoBehaviour
     public Material Edge1;
     public Material Edge2;
 
+    [Header("Door Metrics")]
+    public int itemDraggedWrong;
+    public int currentRoomIndex = 1;
+
     void Start()
     {
         Instance = this;

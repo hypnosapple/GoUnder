@@ -38,6 +38,7 @@ public class CheckText : MonoBehaviour
 
         visualWord.gameObject.SetActive(true);
         door.GetComponent<DoorInteract>().wordList.Remove(visualWord);
+        GameManager.Instance.currentRoomIndex += 1;
         //door.GetComponent<DoorInteract>().PlayOpenDoor();
         // doorInteract.unlocked = true;
     }

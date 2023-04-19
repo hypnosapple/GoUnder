@@ -30,6 +30,7 @@ public class DoorInteract : MonoBehaviour
 
     
 
+
     void Start()
     {
         //unlocked = false;

@@ -150,6 +150,8 @@ public class InventoryManager : MonoBehaviour
                     UseableContainer.GetComponent<UseableContainerUI>().AddItem(newItemData);
 
                     ShowReminder(newItemData.name, "Item Added");
+                    StartCoroutine(ShowItemPreview(newItemData.modelPrefab));
+
                     break;
                 }
             }
