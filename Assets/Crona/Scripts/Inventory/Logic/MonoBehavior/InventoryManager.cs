@@ -51,16 +51,47 @@ public class InventoryManager : MonoBehaviour
     [Header("Item Pickup")]
     private List<GameObject> itemPickup;
 
+    [Header("Editor Control")]
+    public bool isInEditor;
+
+    private void Awake()
+    {
+        if (isInEditor)
+        {
+            for (int i = 0; i < AtlasItems.Count; i++)
+            {
+                PlayerPrefs.DeleteKey("AtlasItem_" + i);
+            }
+
+            for (int i = 0; i < FileItems.Count; i++)
+            {
+                PlayerPrefs.DeleteKey("FileItem_" + i);
+            }
+
+            for (int i = 0; i < UseableItems.Count; i++)
+            {
+                PlayerPrefs.DeleteKey("UseableItem_" + i);
+            }
+        }
+    }
+
     private void OnEnable()
     {
         Instance = this;
         itemPickup = new List<GameObject>();
-        LoadInventory();
+        if (!isInEditor)
+        {
+            LoadInventory();
+        }
     }
 
     private void OnDisable()
     {
-        SaveInventory();
+        if (!isInEditor)
+        {
+            SaveInventory();
+        }
+        
     }
 
     void Update()
