@@ -54,6 +54,9 @@ public class InventoryManager : MonoBehaviour
     [Header("Editor Control")]
     public bool isInEditor;
 
+    [Header("Inventory Metrics")]
+    public int itemCollected;
+
     private void Awake()
     {
         if (isInEditor)
@@ -105,7 +108,7 @@ public class InventoryManager : MonoBehaviour
 
     public void AddItem(ItemData_SO newItemData)
     {
-        
+        itemCollected += 1;
         if (newItemData.itemType == ItemType.Atlas)
         {
             for (int i = 0; i < AtlasItems.Count; i++)
@@ -170,6 +173,7 @@ public class InventoryManager : MonoBehaviour
         {
             return;
         }
+        itemCollected += 1;
 
         if (newItemData.itemType == ItemType.Atlas)
         {

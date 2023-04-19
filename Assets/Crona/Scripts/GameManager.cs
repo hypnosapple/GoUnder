@@ -120,6 +120,9 @@ public class GameManager : MonoBehaviour
     public int itemDraggedWrong;
     public int currentRoomIndex = 1;
 
+    [Header("Inventory Metrics")]
+    public int inventoryOpened;
+
     void Start()
     {
         Instance = this;
@@ -283,6 +286,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
+                inventoryOpened += 1;
                 Cursor.visible = true;
                 pauseMenuEnabled = false;
                 InventoryCanvas.SetActive(true);
@@ -568,6 +572,7 @@ public class GameManager : MonoBehaviour
     {
         
         yield return new WaitForSeconds(29f);
+        Tinylytics.AnalyticsManager.LogThirdFloorPlaytime();
         player.transform.position = new Vector3(26, 40.4483452f, -34);
         videoScreen.SetActive(false);
         StartFadeIn();
@@ -596,5 +601,12 @@ public class GameManager : MonoBehaviour
     {
         vCam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = 300;
         vCam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = 300;
+    }
+
+    private void OnApplicationQuit()
+    {
+        Tinylytics.AnalyticsManager.LogCustomMetric("Total Collected Items", InventoryManager.Instance.itemCollected.ToString());
+        Tinylytics.AnalyticsManager.LogSessionPlaytime();
+        Tinylytics.AnalyticsManager.LogCustomMetric("Inventory Opened Times", inventoryOpened.ToString());
     }
 }

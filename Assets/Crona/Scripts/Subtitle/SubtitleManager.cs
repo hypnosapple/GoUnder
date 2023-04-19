@@ -201,6 +201,12 @@ public class SubtitleManager : MonoBehaviour
                 clipName = "";
                 StartCoroutine(PlayVOAfterCall03());
             }
+            else if (clipName == "2nd_Call04")
+            {
+                clipName = "";
+                Tinylytics.AnalyticsManager.LogSecondFloorPlaytime();
+                Tinylytics.AnalyticsManager.LogCustomMetric("Total Collected Items", InventoryManager.Instance.itemCollected.ToString());
+            }
             else
             {
                 clipName = "";
