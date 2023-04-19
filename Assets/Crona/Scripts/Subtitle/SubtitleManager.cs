@@ -205,7 +205,7 @@ public class SubtitleManager : MonoBehaviour
             {
                 clipName = "";
                 Tinylytics.AnalyticsManager.LogSecondFloorPlaytime();
-                Tinylytics.AnalyticsManager.LogCustomMetric("Total Collected Items", InventoryManager.Instance.itemCollected.ToString());
+                
             }
             else
             {
