@@ -605,8 +605,12 @@ public class GameManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        Tinylytics.AnalyticsManager.LogCustomMetric("Total Collected Items", InventoryManager.Instance.itemCollected.ToString());
-        Tinylytics.AnalyticsManager.LogSessionPlaytime();
-        Tinylytics.AnalyticsManager.LogCustomMetric("Inventory Opened Times", inventoryOpened.ToString());
+        if (InventoryManager.Instance.itemCollected > 1)
+        {
+            Tinylytics.AnalyticsManager.LogCustomMetric("Total Collected Items", InventoryManager.Instance.itemCollected.ToString());
+            Tinylytics.AnalyticsManager.LogSessionPlaytime();
+            Tinylytics.AnalyticsManager.LogCustomMetric("Inventory Opened Times", inventoryOpened.ToString());
+        }
+        
     }
 }
