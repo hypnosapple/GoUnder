@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using Cinemachine;
 using UnityEngine.Video;
 using UnityEngine.Rendering.Universal;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
     [Header("Fade in/out Panel")]
     public GameObject blackPanel;
     public GameObject whitePanel;
+    public GameObject controlsPanel;
 
     private float fadeInT = 0f;
     private bool fadeIn = false;
@@ -325,13 +327,17 @@ public class GameManager : MonoBehaviour
         CMStart3.SetActive(false);
         playerAudio.clip = AfterOpening2;
         playerAudio.Play();
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(3f);
 
         UnlockPlayerCam();
         PlayerMovement.Instance.moveDisabled = false;
         inventoryEnabled = true;
         pauseMenuEnabled = true;
         CrosshairCanvas.SetActive(true);
+
+        controlsPanel.GetComponent<Image>().DOFade(1f, 1.5f);
+        yield return new WaitForSeconds(10f);
+        controlsPanel.GetComponent<Image>().DOFade(0f, 1.5f);
     }
 
 
