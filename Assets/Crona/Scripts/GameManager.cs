@@ -52,15 +52,6 @@ public class GameManager : MonoBehaviour
     public GameObject whitePanel;
     public GameObject controlsPanel;
 
-    private float fadeInT = 0f;
-    private bool fadeIn = false;
-    private float fadeOutT = 0f;
-    private bool fadeOut = false;
-
-    private float WfadeInT = 0f;
-    private bool WfadeIn = false;
-    private float WfadeOutT = 0f;
-    private bool WfadeOut = false;
 
     public string SceneName;
 
@@ -216,8 +207,6 @@ public class GameManager : MonoBehaviour
         InventoryVisibility();
         TransitionToUnderworldInProgress();
 
-        BlackFadeProcess();
-        WhiteFadeProcess();
 
         CheckButtonAvailablity();
     }
@@ -345,9 +334,10 @@ public class GameManager : MonoBehaviour
     {
         if (blackPanel.GetComponent<Image>().color.a == 1)
         {
-            fadeInT = 0f;
+            //fadeInT = 0f;
 
-            fadeIn = true;
+            //fadeIn = true;
+            blackPanel.GetComponent<Image>().DOFade(0f, 3.3f);
         }
     }
 
@@ -357,9 +347,10 @@ public class GameManager : MonoBehaviour
     {
         if (blackPanel.GetComponent<Image>().color.a == 0)
         {
-            fadeOutT = 0f;
+            //fadeOutT = 0f;
 
-            fadeOut = true;
+            //fadeOut = true;
+            blackPanel.GetComponent<Image>().DOFade(1f, 3.3f);
         }
     }
 
@@ -368,9 +359,10 @@ public class GameManager : MonoBehaviour
     {
         if (whitePanel.GetComponent<Image>().color.a == 1)
         {
-            WfadeInT = 0f;
+            //WfadeInT = 0f;
 
-            WfadeIn = true;
+            //WfadeIn = true;
+            whitePanel.GetComponent<Image>().DOFade(0f, 3.3f);
         }
     }
 
@@ -379,79 +371,18 @@ public class GameManager : MonoBehaviour
     {
         if (whitePanel.GetComponent<Image>().color.a == 0)
         {
-            WfadeOutT = 0f;
+            //WfadeOutT = 0f;
 
-            WfadeOut = true;
+            //WfadeOut = true;
+            whitePanel.GetComponent<Image>().DOFade(1f, 3.3f);
         }
     }
 
 
-    public void BlackFadeProcess()
-    {
-        if (fadeIn)
-        {
-            if (fadeInT < 1f)
-            {
-                fadeInT += 0.3f * Time.deltaTime;
-                blackPanel.GetComponent<Image>().color = Color.Lerp(new Color(blackPanel.GetComponent<Image>().color.r, blackPanel.GetComponent<Image>().color.g, blackPanel.GetComponent<Image>().color.b, 1f), new Color(blackPanel.GetComponent<Image>().color.r, blackPanel.GetComponent<Image>().color.g, blackPanel.GetComponent<Image>().color.b, 0f), fadeInT);
-
-            }
-            else
-            {
-                fadeIn = false;
-            }
-        }
+    
 
 
-        if (fadeOut)
-        {
-            if (fadeOutT < 1f)
-            {
-                fadeOutT += 0.3f * Time.deltaTime;
-                blackPanel.GetComponent<Image>().color = Color.Lerp(new Color(blackPanel.GetComponent<Image>().color.r, blackPanel.GetComponent<Image>().color.g, blackPanel.GetComponent<Image>().color.b, 0f), new Color(blackPanel.GetComponent<Image>().color.r, blackPanel.GetComponent<Image>().color.g, blackPanel.GetComponent<Image>().color.b, 1f), fadeOutT);
-
-            }
-            else
-            {
-                fadeOut = false;
-
-            }
-        }
-    }
-
-
-    public void WhiteFadeProcess()
-    {
-        if (WfadeIn)
-        {
-            if (WfadeInT < 1f)
-            {
-                WfadeInT += 0.3f * Time.deltaTime;
-                whitePanel.GetComponent<Image>().color = Color.Lerp(new Color(whitePanel.GetComponent<Image>().color.r, whitePanel.GetComponent<Image>().color.g, whitePanel.GetComponent<Image>().color.b, 1f), new Color(whitePanel.GetComponent<Image>().color.r, whitePanel.GetComponent<Image>().color.g, whitePanel.GetComponent<Image>().color.b, 0f), WfadeInT);
-
-            }
-            else
-            {
-                WfadeIn = false;
-            }
-        }
-
-
-        if (WfadeOut)
-        {
-            if (WfadeOutT < 1f)
-            {
-                WfadeOutT += 0.3f * Time.deltaTime;
-                whitePanel.GetComponent<Image>().color = Color.Lerp(new Color(whitePanel.GetComponent<Image>().color.r, whitePanel.GetComponent<Image>().color.g, whitePanel.GetComponent<Image>().color.b, 0f), new Color(whitePanel.GetComponent<Image>().color.r, whitePanel.GetComponent<Image>().color.g, whitePanel.GetComponent<Image>().color.b, 1f), WfadeOutT);
-
-            }
-            else
-            {
-                WfadeOut = false;
-
-            }
-        }
-    }
+    
 
 
     public void TransitionToUnderworld()
