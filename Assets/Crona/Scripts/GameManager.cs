@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
         noise = vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
         features = forwardRendererData.rendererFeatures;
-
+        
         // Opening cutscenes
         if (startFromSecondFloor)
         {
@@ -168,7 +168,7 @@ public class GameManager : MonoBehaviour
 
             }
         }
-        else if (enableNewCutscenes)
+        else if (enableNewCutscenes && SceneName == "MainSceneF3")
         {
             whitePanel.SetActive(true);
             blackPanel.SetActive(false);
@@ -184,7 +184,7 @@ public class GameManager : MonoBehaviour
             CrosshairCanvas.SetActive(false);
             StartCoroutine(NewOpening());
         }
-        else
+        else if (SceneName == "MainSceneF3")
         {
             whitePanel.SetActive(false);
             blackPanel.SetActive(false);
@@ -193,6 +193,10 @@ public class GameManager : MonoBehaviour
             CMStart3.SetActive(false);
 
             inventoryEnabled = true;
+        }
+        else if (SceneName == "MainSceneF2")
+        {
+            StartCoroutine(SceneF2Opening());
         }
         
         
@@ -508,20 +512,12 @@ public class GameManager : MonoBehaviour
     IEnumerator AfterVideo1()
     {
         
-        yield return new WaitForSeconds(27f);
+        yield return new WaitForSeconds(28f);
         Tinylytics.AnalyticsManager.LogThirdFloorPlaytime();
         //player.transform.position = new Vector3(26, 40.4483452f, -34);
         StartCoroutine(LoadSceneF2());
 
-        videoScreen.SetActive(false);
-        StartFadeIn();
-        ambience.Play();
-        BGM.Play();
-        yield return new WaitForSeconds(4f);
-
-        PlayerMovement.Instance.moveDisabled = false;
-        inventoryEnabled = true;
-        pauseMenuEnabled = true;
+        
 
     }
 
@@ -535,6 +531,21 @@ public class GameManager : MonoBehaviour
         {
             yield return null;
         }
+
+        
+    }
+
+    IEnumerator SceneF2Opening()
+    {
+        videoScreen.SetActive(false);
+        StartFadeIn();
+        ambience.Play();
+        BGM.Play();
+        yield return new WaitForSeconds(4f);
+
+        PlayerMovement.Instance.moveDisabled = false;
+        inventoryEnabled = true;
+        pauseMenuEnabled = true;
     }
 
     public void CloseCam1()
