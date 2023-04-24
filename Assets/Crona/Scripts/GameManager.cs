@@ -508,9 +508,11 @@ public class GameManager : MonoBehaviour
     IEnumerator AfterVideo1()
     {
         
-        yield return new WaitForSeconds(29f);
+        yield return new WaitForSeconds(27f);
         Tinylytics.AnalyticsManager.LogThirdFloorPlaytime();
-        player.transform.position = new Vector3(26, 40.4483452f, -34);
+        //player.transform.position = new Vector3(26, 40.4483452f, -34);
+        StartCoroutine(LoadSceneF2());
+
         videoScreen.SetActive(false);
         StartFadeIn();
         ambience.Play();
@@ -521,6 +523,18 @@ public class GameManager : MonoBehaviour
         inventoryEnabled = true;
         pauseMenuEnabled = true;
 
+    }
+
+    IEnumerator LoadSceneF2()
+    {
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("MainSceneF2");
+
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
     }
 
     public void CloseCam1()
