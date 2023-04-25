@@ -13,7 +13,7 @@ public class MusicSound : MonoBehaviour
     private int firstPlayInt;
     private float backgroundFloat;
     private float soundEffectsFloat;
-    public AudioSource backgroundAudio;
+    public AudioSource[] backgroundAudio;
     public AudioSource[] soundEffectsAudio;
 
     void Start()
@@ -29,7 +29,10 @@ public class MusicSound : MonoBehaviour
             PlayerPrefs.SetInt(FirstPlay, -1);
             slider_music.value = backgroundFloat;
             slider_sound.value = soundEffectsFloat;
-            backgroundAudio.volume = slider_music.value;
+            for(int j = 0; j < backgroundAudio.Length; j++)
+            {
+                backgroundAudio[j].volume = slider_music.value;
+            }
             for (int i = 0; i < soundEffectsAudio.Length; i++)
             {
                 soundEffectsAudio[i].volume = slider_sound.value;
@@ -41,7 +44,10 @@ public class MusicSound : MonoBehaviour
             slider_music.value = backgroundFloat;
             soundEffectsFloat = PlayerPrefs.GetFloat(SoundEffectsPref);
             slider_sound.value = soundEffectsFloat;
-            backgroundAudio.volume = slider_music.value;
+            for (int j = 0; j < backgroundAudio.Length; j++)
+            {
+                backgroundAudio[j].volume = slider_music.value;
+            }
             for (int i = 0; i < soundEffectsAudio.Length; i++)
             {
                 soundEffectsAudio[i].volume = slider_sound.value;
@@ -65,7 +71,10 @@ public class MusicSound : MonoBehaviour
 
     public void UpdateSound()
     {
-        backgroundAudio.volume = slider_music.value;
+        for (int j = 0; j < backgroundAudio.Length; j++)
+        {
+            backgroundAudio[j].volume = slider_music.value;
+        }
         for (int i = 0; i < soundEffectsAudio.Length; i++)
         {
             soundEffectsAudio[i].volume = slider_sound.value;
