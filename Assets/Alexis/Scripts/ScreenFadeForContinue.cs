@@ -32,7 +32,14 @@ public class ScreenFadeForContinue : MonoBehaviour
         }
         if (fadeImage.color == targetColor)
         {
-            SceneManager.LoadScene(0); // Load the first scene
+            if (PlayerPrefs.HasKey("isInFloor2"))
+            {
+                SceneManager.LoadScene(2);
+            }
+            else
+            {
+                SceneManager.LoadScene(0);
+            }
         }
     }
 
