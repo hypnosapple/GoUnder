@@ -51,7 +51,8 @@ public class GameManager : MonoBehaviour
     public GameObject blackPanel;
     public GameObject whitePanel;
     public GameObject controlsPanel;
-
+    public GameObject upperBlack;
+    public GameObject lowerBlack;
 
     public string SceneName;
 
@@ -175,7 +176,8 @@ public class GameManager : MonoBehaviour
             CMStart.SetActive(true);
             CMStart2.SetActive(true);
             CMStart3.SetActive(true);
-
+            upperBlack.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, -80f);
+            lowerBlack.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, 80f);
             //player.GetComponent<CharacterController>().enabled = false;
             LockPlayerCam();
             PlayerMovement.Instance.moveDisabled = true;
@@ -321,7 +323,8 @@ public class GameManager : MonoBehaviour
         playerAudio.clip = AfterOpening2;
         playerAudio.Play();
         yield return new WaitForSeconds(3f);
-
+        BlackBar(false);
+        yield return new WaitForSeconds(1f);
         UnlockPlayerCam();
         PlayerMovement.Instance.moveDisabled = false;
         inventoryEnabled = true;
@@ -504,6 +507,8 @@ public class GameManager : MonoBehaviour
         tunnel3to2.SetActive(false);
 
         videoScreen.SetActive(true);
+        upperBlack.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, -80f);
+        lowerBlack.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, 80f);
         cutsceneVideoPlayer.Play();
         StartCoroutine(AfterVideo1());
     }
@@ -537,12 +542,21 @@ public class GameManager : MonoBehaviour
 
     IEnumerator SceneF2Opening()
     {
+        LockPlayerCam();
+        PlayerMovement.Instance.moveDisabled = true;
+        inventoryEnabled = false;
+        pauseMenuEnabled = false;
+
         videoScreen.SetActive(false);
         StartFadeIn();
         ambience.Play();
         BGM.Play();
         yield return new WaitForSeconds(4f);
 
+        BlackBar(false);
+        yield return new WaitForSeconds(1f);
+        UnlockPlayerCam();
+        
         PlayerMovement.Instance.moveDisabled = false;
         inventoryEnabled = true;
         pauseMenuEnabled = true;
@@ -574,5 +588,19 @@ public class GameManager : MonoBehaviour
             Tinylytics.AnalyticsManager.LogCustomMetric("Inventory Opened Times", inventoryOpened.ToString());
         }
         
+    }
+
+    public void BlackBar(bool active)
+    {
+        if (active)
+        {
+            upperBlack.GetComponent<RectTransform>().DOAnchorPosY(-80f, 1f);
+            lowerBlack.GetComponent<RectTransform>().DOAnchorPosY(80f, 1f);
+        }
+        else
+        {
+            upperBlack.GetComponent<RectTransform>().DOAnchorPosY(80f, 1f);
+            lowerBlack.GetComponent<RectTransform>().DOAnchorPosY(-80f, 1f);
+        }
     }
 }
