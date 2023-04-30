@@ -281,7 +281,7 @@ public class SubtitleManager : MonoBehaviour
         audioPlaying = true;
         PlayerInteraction.Instance.interactAllowed = false;
 
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3f);
         Call03Ended = true;
     }
 

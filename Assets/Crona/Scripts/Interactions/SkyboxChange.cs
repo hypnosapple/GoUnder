@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class SkyboxChange : MonoBehaviour
 {
@@ -22,7 +23,9 @@ public class SkyboxChange : MonoBehaviour
     public GameObject tunnel3to2;
     public List<GameObject> blockedObjects;
     public GameObject blockCollider;
+    public GameObject tunnelBlock;
     public GameObject tunnelDoor;
+    public GameObject tunnelTV;
 
     public AudioSource tunnelTone;
 
@@ -45,6 +48,7 @@ public class SkyboxChange : MonoBehaviour
             if (!afternoonChanged)
             {
                 tunnel3to2.SetActive(true);
+                tunnelTV.GetComponent<VideoPlayer>().Play();
                 blockCollider.SetActive(true);
                 //tunnelTone.Play();
                 foreach (GameObject blockedObject in blockedObjects){
@@ -64,6 +68,7 @@ public class SkyboxChange : MonoBehaviour
             {
                 tunnelTone.Play();
                 GameManager.Instance.ControlRendererFeature(0, true);
+                tunnelBlock.SetActive(true);
                 tunnelDoor.GetComponent<TunnelDoor>().CloseDoor();
                 inTunnel = true;
             }

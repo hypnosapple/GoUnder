@@ -9,6 +9,7 @@ public class Footstep : MonoBehaviour
     public AudioSource runstep;
     public GameObject player;
 
+
     private void Update()
     {
         if (!player.GetComponent<PlayerMovement>().moveDisabled)
