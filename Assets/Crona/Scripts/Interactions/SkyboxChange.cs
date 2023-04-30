@@ -8,6 +8,7 @@ public class SkyboxChange : MonoBehaviour
 
     private bool afternoonChanged;
     private bool nightChanged;
+    private bool inTunnel;
 
     [Header("Materials")]
     public Material afternoonSkybox;
@@ -19,7 +20,9 @@ public class SkyboxChange : MonoBehaviour
     [Header("Object References")]
     public GameObject sea;
     public GameObject tunnel3to2;
-    public GameObject glass;
+    public List<GameObject> blockedObjects;
+    public GameObject blockCollider;
+    public GameObject tunnelDoor;
 
     public AudioSource tunnelTone;
 
@@ -42,14 +45,30 @@ public class SkyboxChange : MonoBehaviour
             if (!afternoonChanged)
             {
                 tunnel3to2.SetActive(true);
-                tunnelTone.Play();
-                glass.SetActive(false);
-                RenderSettings.skybox = afternoonSkybox;
-                sea.GetComponent<MeshRenderer>().material = afternoonWater;
+                blockCollider.SetActive(true);
+                //tunnelTone.Play();
+                foreach (GameObject blockedObject in blockedObjects){
+                    blockedObject.SetActive(false);
+                }
+                sea.SetActive(false);
+                //RenderSettings.skybox = afternoonSkybox;
+                //sea.GetComponent<MeshRenderer>().material = afternoonWater;
                 afternoonChanged = true;
-                GameManager.Instance.ControlRendererFeature(0, true);
+                
             }
         }
+
+        else if (other.gameObject.tag == "EnterTunnel")
+        {
+            if (!inTunnel)
+            {
+                tunnelTone.Play();
+                GameManager.Instance.ControlRendererFeature(0, true);
+                tunnelDoor.GetComponent<TunnelDoor>().CloseDoor();
+                inTunnel = true;
+            }
+        }
+                
 
         else if (other.gameObject.tag == "ToNight")
         {
@@ -57,8 +76,8 @@ public class SkyboxChange : MonoBehaviour
             if (!nightChanged)
             {
                 
-                RenderSettings.skybox = nightSkybox;
-                sea.GetComponent<MeshRenderer>().material = nightWater;
+                //RenderSettings.skybox = nightSkybox;
+                //sea.GetComponent<MeshRenderer>().material = nightWater;
                 nightChanged = true;
             }
         }

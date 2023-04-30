@@ -47,6 +47,7 @@ public class SubtitleManager : MonoBehaviour
     public AudioClip phoneHang;
 
     public bool audioPlaying;
+    public bool Call03Ended;
 
 
     private void Start()
@@ -280,9 +281,8 @@ public class SubtitleManager : MonoBehaviour
         audioPlaying = true;
         PlayerInteraction.Instance.interactAllowed = false;
 
-        yield return new WaitForSeconds(6f);
-        GameManager.Instance.ControlRendererFeature(0, false);
-        GetComponent<GameManager>().PlayVideo1();
+        yield return new WaitForSeconds(4f);
+        Call03Ended = true;
     }
 
 

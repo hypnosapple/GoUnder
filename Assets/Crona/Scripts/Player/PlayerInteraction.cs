@@ -16,10 +16,12 @@ public class PlayerInteraction : MonoBehaviour
     int screen1LayerMask;
     int screen2LayerMask;
     int doorLayerMask;
+    int tunnelDoorLayerMask;
     int drawerLayerMask;
     int closetDoorLayerMask;
     int sinkLayerMask;
     int TVLayerMask;
+    int tunnelTVLayerMask;
 
     [Header("UI")]
     public GameObject onTarget;
@@ -50,6 +52,8 @@ public class PlayerInteraction : MonoBehaviour
         closetDoorLayerMask = 14;
         sinkLayerMask = 15;
         TVLayerMask = 16;
+        tunnelDoorLayerMask = 18;
+        tunnelTVLayerMask = 19;
         
         interactAllowed = true;
 }
@@ -108,6 +112,24 @@ public class PlayerInteraction : MonoBehaviour
                         if (Input.GetKeyDown(KeyCode.E))
                         {
                             hit.transform.gameObject.GetComponent<DoorInteract>().PlayOpenDoor();
+
+                        }
+                    }
+
+                }
+
+                else if (hit.collider.gameObject.layer == tunnelDoorLayerMask)
+                {
+                    if (!hit.transform.gameObject.GetComponent<TunnelDoor>().opened)
+                    {
+                        if (!onTarget.activeInHierarchy)
+                        {
+                            onTarget.SetActive(true);
+                        }
+
+                        if (Input.GetKeyDown(KeyCode.E))
+                        {
+                            hit.transform.gameObject.GetComponent<TunnelDoor>().PlayOpenDoor();
 
                         }
                     }
@@ -196,6 +218,24 @@ public class PlayerInteraction : MonoBehaviour
                     {
                         hit.transform.gameObject.GetComponent<TVInteract>().SwitchTV();
                     }
+                }
+
+                else if (hit.collider.gameObject.layer == tunnelTVLayerMask)
+                {
+                    if (SubtitleManager.Instance.Call03Ended)
+                    {
+                        if (!onTarget.activeInHierarchy)
+                        {
+                            onTarget.SetActive(true);
+                        }
+
+                        if (Input.GetKeyDown(KeyCode.E))
+                        {
+                            GameManager.Instance.ControlRendererFeature(0, false);
+                            GetComponent<GameManager>().PlayVideo1();
+                        }
+                    }
+                    
                 }
 
                 else
