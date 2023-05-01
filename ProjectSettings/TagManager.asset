@@ -9,6 +9,7 @@ TagManager:
   - ToNight
   - Sink
   - EnterTunnel
+  - CloseTunnelDoor
   layers:
   - Default
   - TransparentFX

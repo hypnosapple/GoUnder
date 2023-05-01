@@ -10,6 +10,7 @@ public class SkyboxChange : MonoBehaviour
     private bool afternoonChanged;
     private bool nightChanged;
     private bool inTunnel;
+    private bool closeTunnelDoor;
 
     [Header("Materials")]
     public Material afternoonSkybox;
@@ -59,6 +60,16 @@ public class SkyboxChange : MonoBehaviour
                 //sea.GetComponent<MeshRenderer>().material = afternoonWater;
                 afternoonChanged = true;
                 
+            }
+        }
+
+        else if (other.gameObject.tag == "CloseTunnelDoor")
+        {
+            if (!closeTunnelDoor)
+            {
+                
+                tunnelDoor.GetComponent<TunnelDoor>().CloseDoor();
+                closeTunnelDoor = true;
             }
         }
 
