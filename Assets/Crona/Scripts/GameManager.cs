@@ -200,9 +200,12 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(SceneF2Opening());
         }
-        
-        
-        
+
+        else if (SceneName == "MainSceneF1")
+        {
+            StartCoroutine(SceneF1Opening());
+        }
+
         //EnableMove();
         //StartFadeIn();
     }
@@ -546,6 +549,7 @@ public class GameManager : MonoBehaviour
         PlayerMovement.Instance.moveDisabled = true;
         inventoryEnabled = false;
         pauseMenuEnabled = false;
+        CrosshairCanvas.SetActive(false);
 
         videoScreen.SetActive(false);
         StartFadeIn();
@@ -556,7 +560,32 @@ public class GameManager : MonoBehaviour
         BlackBar(false);
         yield return new WaitForSeconds(1f);
         UnlockPlayerCam();
-        
+
+        CrosshairCanvas.SetActive(true);
+        PlayerMovement.Instance.moveDisabled = false;
+        inventoryEnabled = true;
+        pauseMenuEnabled = true;
+    }
+
+    IEnumerator SceneF1Opening()
+    {
+        LockPlayerCam();
+        PlayerMovement.Instance.moveDisabled = true;
+        inventoryEnabled = false;
+        pauseMenuEnabled = false;
+        CrosshairCanvas.SetActive(false);
+
+        videoScreen.SetActive(false);
+        StartFadeIn();
+        ambience.Play();
+        BGM.Play();
+        yield return new WaitForSeconds(4f);
+
+        BlackBar(false);
+        yield return new WaitForSeconds(1f);
+        UnlockPlayerCam();
+
+        CrosshairCanvas.SetActive(true);
         PlayerMovement.Instance.moveDisabled = false;
         inventoryEnabled = true;
         pauseMenuEnabled = true;
