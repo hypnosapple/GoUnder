@@ -162,6 +162,7 @@ public class LightFlickering : MonoBehaviour
         float time;
         addedCustomMat = false;
 
+        
         // check if randomizer is checked and randomize flickerings if so
         if (randomizeFlickerings) {
             float rnd = Random.Range(minRandomizeTime, maxRandomizeTime);
@@ -203,34 +204,74 @@ public class LightFlickering : MonoBehaviour
             setTime = time;
         }
 
-        
-        yield return new WaitForSeconds(time);
-        
+        if (index % 2 == 0)
+        {
+            yield return new WaitForSeconds(time);
 
-        if (fadeEffect) {
-            lastUsedColor = lightSource.color;
-            fadeInColor = true;
-            OpenLightProperties(true);
-        } 
-        else { 
-            lightSource.enabled = true; 
-            OpenLightProperties();
+
+            if (fadeEffect)
+            {
+                lastUsedColor = lightSource.color;
+                fadeInColor = true;
+                OpenLightProperties(true);
+            }
+            else
+            {
+                lightSource.enabled = true;
+                OpenLightProperties();
+            }
         }
+        else
+        {
+            StartCoroutine(FlickerTimer());
+        }
+        
     }
 
     // close the light and stop audio
     IEnumerator FlickerTimer()
     {
-        yield return new WaitForSeconds(setTime);
-        
-        if (!fadeEffect) {
-            lightSource.enabled = false;
-            CloseLightProperties();
-        } 
-        else {
-            lastUsedColor = lightSource.color;
-            fadeOutColor = true;
+        if (index % 2 == 1)
+        {
+            yield return new WaitForSeconds(setTime);
+
+            if (!fadeEffect)
+            {
+                lightSource.enabled = false;
+                CloseLightProperties();
+            }
+            else
+            {
+                lastUsedColor = lightSource.color;
+                fadeOutColor = true;
+            }
         }
+        else
+        {
+            if ((index + 1) < arrayLength)
+            {
+                index++;
+                StartCoroutine(OpenLight());
+            }
+            else
+            {
+                if (randomizeFlickerings)
+                {
+                    index++;
+                    StartCoroutine(OpenLight());
+                }
+                else
+                {
+                    if (loop)
+                    {
+                        index = 0;
+                        StartCoroutine(OpenLight());
+                    }
+                }
+            }
+            StartCoroutine(OpenLight());
+        }
+
     }
 
     void OpenLightProperties(bool dontCall = false)
@@ -254,7 +295,7 @@ public class LightFlickering : MonoBehaviour
         }
 
         // play light audio
-        PlayAudio();
+        StopAudio();
         lightSource.enabled = true;
 
         if (!dontCall) {
@@ -264,7 +305,7 @@ public class LightFlickering : MonoBehaviour
 
     void CloseLightProperties()
     {
-        StopAudio();
+        PlayAudio();
 
 
         if (changeMaterial && bulbObject != null && newMaterial != null) {
