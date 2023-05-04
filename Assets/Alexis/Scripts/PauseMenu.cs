@@ -9,7 +9,7 @@ public class PauseMenu : MonoBehaviour
     public bool GameIsPaused = false;
 
     public UIInteract inventorySystem;
-    public CommunicationInteract communicationSystem;
+    //public CommunicationInteract communicationSystem;
     public InventoryManager inventoryManager;
     public GameManager gameManager;
 
@@ -44,7 +44,7 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (communicationSystem.pauseMenuEnable && inventorySystem.pauseMenuEnable && gameManager.pauseMenuEnabled && inventoryManager.pauseMenuEnabled && Input.GetKeyDown(KeyCode.Escape))
+        if (gameManager.pauseMenuEnabled && inventoryManager.pauseMenuEnabled && Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameIsPaused)
             {

@@ -300,12 +300,15 @@ public class PlayerInteraction : MonoBehaviour
         }
         
 
-
-        if (!hasCode1 && Code1Page.activeInHierarchy)
+        if (Code1Page != null)
         {
-            InventoryCanvas.GetComponent<InventoryManager>().AddItem(Code1Data);
-            hasCode1 = true;
+            if (!hasCode1 && Code1Page.activeInHierarchy)
+            {
+                InventoryCanvas.GetComponent<InventoryManager>().AddItem(Code1Data);
+                hasCode1 = true;
+            }
         }
+        
     }
 
 
