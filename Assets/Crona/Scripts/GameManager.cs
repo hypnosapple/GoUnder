@@ -545,6 +545,10 @@ public class GameManager : MonoBehaviour
 
     IEnumerator SceneF2Opening()
     {
+        blackPanel.SetActive(true);
+        upperBlack.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, -80f);
+        lowerBlack.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, 80f);
+
         LockPlayerCam();
         PlayerMovement.Instance.moveDisabled = true;
         inventoryEnabled = false;
@@ -569,6 +573,10 @@ public class GameManager : MonoBehaviour
 
     IEnumerator SceneF1Opening()
     {
+        blackPanel.SetActive(true);
+        upperBlack.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, -80f);
+        lowerBlack.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, 80f);
+
         LockPlayerCam();
         PlayerMovement.Instance.moveDisabled = true;
         inventoryEnabled = false;
@@ -623,13 +631,13 @@ public class GameManager : MonoBehaviour
     {
         if (active)
         {
-            upperBlack.GetComponent<RectTransform>().DOAnchorPosY(-80f, 1f);
-            lowerBlack.GetComponent<RectTransform>().DOAnchorPosY(80f, 1f);
+            upperBlack.GetComponent<RectTransform>().DOAnchorPosY(-80f, 0.8f);
+            lowerBlack.GetComponent<RectTransform>().DOAnchorPosY(80f, 0.8f);
         }
         else
         {
-            upperBlack.GetComponent<RectTransform>().DOAnchorPosY(80f, 1f);
-            lowerBlack.GetComponent<RectTransform>().DOAnchorPosY(-80f, 1f);
+            upperBlack.GetComponent<RectTransform>().DOAnchorPosY(80f, 0.8f);
+            lowerBlack.GetComponent<RectTransform>().DOAnchorPosY(-80f, 0.8f);
         }
     }
 }
