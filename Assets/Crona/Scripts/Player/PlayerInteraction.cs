@@ -17,6 +17,7 @@ public class PlayerInteraction : MonoBehaviour
     int screen2LayerMask;
     int doorLayerMask;
     int tunnelDoorLayerMask;
+    int finalDoorLayerMask;
     int drawerLayerMask;
     int closetDoorLayerMask;
     int sinkLayerMask;
@@ -56,6 +57,7 @@ public class PlayerInteraction : MonoBehaviour
         tunnelDoorLayerMask = 18;
         tunnelTVLayerMask = 19;
         tunnelTV2LayerMask = 21;
+        finalDoorLayerMask = 22;
 
         interactAllowed = true;
 }
@@ -132,6 +134,24 @@ public class PlayerInteraction : MonoBehaviour
                         if (Input.GetKeyDown(KeyCode.E))
                         {
                             hit.transform.gameObject.GetComponent<TunnelDoor>().PlayOpenDoor();
+
+                        }
+                    }
+
+                }
+
+                else if (hit.collider.gameObject.layer == finalDoorLayerMask)
+                {
+                    if (!hit.transform.gameObject.GetComponent<FinalDoor>().opened)
+                    {
+                        if (!onTarget.activeInHierarchy)
+                        {
+                            onTarget.SetActive(true);
+                        }
+
+                        if (Input.GetKeyDown(KeyCode.E))
+                        {
+                            hit.transform.gameObject.GetComponent<FinalDoor>().PlayOpenDoor();
 
                         }
                     }

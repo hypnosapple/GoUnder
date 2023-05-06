@@ -45,6 +45,10 @@ public class GameManager : MonoBehaviour
     [Header("Video")]
     public GameObject videoScreen;
     public VideoPlayer cutsceneVideoPlayer;
+    public GameObject openingVideoScreen;
+    public VideoPlayer openingVideoPlayer;
+    public GameObject endVideoScreen;
+    public VideoPlayer endVideoPlayer;
     public VideoPlayer TV1VideoPlayer;
 
     [Header("Fade in/out Panel")]
@@ -64,7 +68,7 @@ public class GameManager : MonoBehaviour
     public bool GroundLevelEnd;
     public GameObject blackCube;
     private bool GroundLevelFadedOut = false;
-
+    public GameObject firstFloorRoom;
 
     [Header("Camera Noise")]
     private CinemachineBasicMultiChannelPerlin noise;
@@ -171,8 +175,7 @@ public class GameManager : MonoBehaviour
         }
         else if (enableNewCutscenes && SceneName == "MainSceneF3")
         {
-            whitePanel.SetActive(true);
-            blackPanel.SetActive(false);
+            
             CMStart.SetActive(true);
             CMStart2.SetActive(true);
             CMStart3.SetActive(true);
@@ -474,6 +477,19 @@ public class GameManager : MonoBehaviour
 
     IEnumerator NewOpening()
     {
+        whitePanel.SetActive(false);
+        blackPanel.SetActive(true);
+        openingVideoScreen.SetActive(true);
+        openingVideoPlayer.Play();
+        yield return new WaitForSeconds(50f);
+
+        whitePanel.GetComponent<Image>().color = new Color(255, 255, 255, 0);
+        whitePanel.SetActive(true);
+        openingVideoScreen.SetActive(false);
+        StartFadeOutWhite();
+        yield return new WaitForSeconds(4f);
+        blackPanel.SetActive(false);
+
         playerAudio.clip = OpeningTinnitus;
         playerAudio.Play();
         yield return new WaitForSeconds(10f);
@@ -692,5 +708,34 @@ public class GameManager : MonoBehaviour
             upperBlack.GetComponent<RectTransform>().DOAnchorPosY(80f, 0.8f);
             lowerBlack.GetComponent<RectTransform>().DOAnchorPosY(-80f, 0.8f);
         }
+    }
+
+    public void End()
+    {
+        StartCoroutine(WaitForEnd());
+    }
+
+    IEnumerator WaitForEnd()
+    {
+        yield return new WaitForSeconds(5f);
+        LockPlayerCam();
+        PlayerMovement.Instance.moveDisabled = true;
+        inventoryEnabled = false;
+        pauseMenuEnabled = false;
+        CrosshairCanvas.SetActive(false);
+
+        whitePanel.GetComponent<Image>().color = new Color(255, 255, 255, 0);
+        whitePanel.SetActive(true);
+        StartFadeOutWhite();
+        yield return new WaitForSeconds(7f);
+
+        BGM.Stop();
+        firstFloorRoom.SetActive(false);
+        endVideoScreen.SetActive(true);
+        whitePanel.SetActive(false);
+        
+        upperBlack.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, -80f);
+        lowerBlack.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, 80f);
+        endVideoPlayer.Play();
     }
 }
