@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
+using UnityEngine.UI;
 
 public class ButtonControl : MonoBehaviour
 {
-    public float speed = 100f;              // The speed of the image movement
-    public float distance = 1000f;          // The distance the image should move
-    public float delay = 1f;                // The delay before the images start moving
-
-    private Vector3[] originalPositions;    // The original positions of the images
-    private bool isMoving;                  // Whether the images are currently moving
+    public AudioSource buttonAudioSource;
+    public VideoPlayer videoPlayer;
+    public RawImage rawImage;
 
     private void Start()
     {
-
+        videoPlayer.Stop();
+        videoPlayer.loopPointReached += OnVideoFinished;
     }
     // Start is called before the first frame update
     public void NewGame()
@@ -30,11 +30,35 @@ public class ButtonControl : MonoBehaviour
 
     public void Credits()
     {
+        buttonAudioSource.Play();
+        rawImage.texture = null;
+        InitializeVideoPlayer();
+        PlayVideo();
+    }
 
+    public void InitializeVideoPlayer()
+    {
+        videoPlayer.Prepare();
+    }
+
+    public void PlayVideo()
+    {
+        if (!videoPlayer.isPlaying)
+        {
+            rawImage.enabled = true;
+            rawImage.texture = videoPlayer.targetTexture;
+            videoPlayer.Play();
+        }
     }
 
     public void Exit()
     {
+        buttonAudioSource.Play();
         Application.Quit();
+    }
+
+    private void OnVideoFinished(VideoPlayer vp)
+    {
+        SceneManager.LoadScene(1);
     }
 }

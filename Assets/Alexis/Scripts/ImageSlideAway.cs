@@ -11,6 +11,7 @@ public class ImageSlideAway : MonoBehaviour
     private bool isMoving = false;
 
     public Button[] buttons;
+    public GameObject leftBlack;
 
     void Start()
     {
@@ -21,6 +22,7 @@ public class ImageSlideAway : MonoBehaviour
             initialPositions[i] = buttons[i].GetComponent<RectTransform>().anchoredPosition;
             targetPositions[i] = initialPositions[i] + new Vector2(-moveDistance, 0f);
         }
+
     }
 
     void Update()
@@ -36,6 +38,8 @@ public class ImageSlideAway : MonoBehaviour
                     buttons[i].GetComponent<RectTransform>().anchoredPosition = targetPositions[i];
                 }
             }
+            RectTransform leftBLackRectTransform = leftBlack.GetComponent<RectTransform>();
+            leftBLackRectTransform.anchoredPosition = Vector2.Lerp(leftBLackRectTransform.anchoredPosition, targetPositions[0], t);
             if (Vector2.Distance(buttons[0].GetComponent<RectTransform>().anchoredPosition, targetPositions[0]) < 0.01f)
             {
                 isMoving = false;
