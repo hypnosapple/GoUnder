@@ -48,6 +48,7 @@ public class SubtitleManager : MonoBehaviour
 
     public bool audioPlaying;
     public bool Call03Ended;
+    public bool Call04Ended;
 
 
     private void Start()
@@ -205,8 +206,8 @@ public class SubtitleManager : MonoBehaviour
             else if (clipName == "2nd_Call04")
             {
                 clipName = "";
-                Tinylytics.AnalyticsManager.LogSecondFloorPlaytime();
-                
+                //Tinylytics.AnalyticsManager.LogSecondFloorPlaytime();
+                Call04Ended = true;
             }
             else
             {

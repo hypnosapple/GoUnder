@@ -22,6 +22,7 @@ public class PlayerInteraction : MonoBehaviour
     int sinkLayerMask;
     int TVLayerMask;
     int tunnelTVLayerMask;
+    int tunnelTV2LayerMask;
 
     [Header("UI")]
     public GameObject onTarget;
@@ -54,7 +55,8 @@ public class PlayerInteraction : MonoBehaviour
         TVLayerMask = 16;
         tunnelDoorLayerMask = 18;
         tunnelTVLayerMask = 19;
-        
+        tunnelTV2LayerMask = 21;
+
         interactAllowed = true;
 }
 
@@ -236,6 +238,24 @@ public class PlayerInteraction : MonoBehaviour
                         }
                     }
                     
+                }
+
+                else if (hit.collider.gameObject.layer == tunnelTV2LayerMask)
+                {
+                    if (SubtitleManager.Instance.Call04Ended)
+                    {
+                        if (!onTarget.activeInHierarchy)
+                        {
+                            onTarget.SetActive(true);
+                        }
+
+                        if (Input.GetKeyDown(KeyCode.E))
+                        {
+                            //GameManager.Instance.ControlRendererFeature(0, false);
+                            GetComponent<GameManager>().PlayVideo2();
+                        }
+                    }
+
                 }
 
                 else

@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [Header("Cutscene Controll")]
+    [Header("Cutscene Control")]
     public bool enableOldCutscenes;
     public bool enableNewCutscenes;
     public bool startFromSecondFloor;
@@ -110,9 +110,9 @@ public class GameManager : MonoBehaviour
     public Material Edge1;
     public Material Edge2;
 
-    [Header("Door Metrics")]
-    public int itemDraggedWrong;
-    public int currentRoomIndex = 1;
+    //[Header("Door Metrics")]
+    //public int itemDraggedWrong;
+    //public int currentRoomIndex = 1;
 
     [Header("Inventory Metrics")]
     public int inventoryOpened;
@@ -505,9 +505,9 @@ public class GameManager : MonoBehaviour
 
         
         
-        glass.SetActive(true);
-        player.transform.position = new Vector3(26, 40.4483452f, -34);
-        tunnel3to2.SetActive(false);
+        //glass.SetActive(true);
+        //player.transform.position = new Vector3(26, 40.4483452f, -34);
+        //tunnel3to2.SetActive(false);
 
         videoScreen.SetActive(true);
         upperBlack.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, -80f);
@@ -541,6 +541,60 @@ public class GameManager : MonoBehaviour
         }
 
         
+    }
+
+    public void PlayVideo2()
+    {
+        blackPanel.SetActive(true);
+        blackPanel.GetComponent<Image>().color = new Color(0, 0, 0, 1);
+
+        tunnelTone.Stop();
+        ambience.Stop();
+        BGM.Stop();
+
+        //player.GetComponent<CharacterController>().enabled = false;
+        PlayerMovement.Instance.moveDisabled = true;
+        inventoryEnabled = false;
+        pauseMenuEnabled = false;
+
+
+
+        //glass.SetActive(true);
+        //player.transform.position = new Vector3(26, 40.4483452f, -34);
+        //tunnel3to2.SetActive(false);
+
+        videoScreen.SetActive(true);
+        upperBlack.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, -80f);
+        lowerBlack.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, 80f);
+        cutsceneVideoPlayer.Play();
+        StartCoroutine(AfterVideo2());
+    }
+
+
+    IEnumerator AfterVideo2()
+    {
+
+        yield return new WaitForSeconds(20f);
+        
+        //player.transform.position = new Vector3(26, 40.4483452f, -34);
+        StartCoroutine(LoadSceneF1());
+
+
+
+    }
+
+    IEnumerator LoadSceneF1()
+    {
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("MainSceneF1");
+
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+
     }
 
     IEnumerator SceneF2Opening()
@@ -595,7 +649,6 @@ public class GameManager : MonoBehaviour
 
         CrosshairCanvas.SetActive(true);
         PlayerMovement.Instance.moveDisabled = false;
-        inventoryEnabled = true;
         pauseMenuEnabled = true;
     }
 
