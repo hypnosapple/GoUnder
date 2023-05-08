@@ -14,14 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   itemName: Bankrupt
-  itemIcon_1100_700: {fileID: 21300000, guid: a26e03a3bd6cb6b4c9019e7f314c52fe, type: 3}
-  iconInDoor_135_135: {fileID: 21300000, guid: 7554808a8510744408fc97c64ce7c63e, type: 3}
-  filePreviewSprite_1920_1080: {fileID: 0}
+  itemIcon_1100_700: {fileID: 21300000, guid: aac879f78517d4248ab9e694b949781b, type: 3}
+  iconInDoor_135_135: {fileID: 21300000, guid: 3f01c82bb52923a4c9d971984e255764, type: 3}
+  filePreviewSprite_1920_1080: {fileID: 21300000, guid: d0c86ca950d574d4f8bbe6107e1cf860, type: 3}
   relatedCheckWordNumber: 4
-  description: "Needed funds: \r\n\r\n2 billions of dollars from Company A. \r\n4,000,000
-    dollars from Company B.\r\n6,000,000 dollars from Company C.\r\n3,000,000 dollars
-    from Company D.\r\n\r\nReceived funds:\r\n\r\n2.1 billions of dollars from Company
-    A.\r\n5,100,000 dollars from Company B.\r\n6,000,000 dollars from Company C.\r\n3,000,000
-    from Company D. \r\n\r\nFunds spent on projects:\r\n\r\n2,000,000 on Project
-    A\r\n800,000 on Project B\r\n350,000 on Project C\r\n"
+  description: "United Marinetime Administration\r\r\nFOR IMMEDIATE RELEASE\n\r\r07/15/2425\n\n\r\rUnited
+    Marinetime Administration: Announces Bankruptcy Filing\r\r\nAnchorlight Bay -
+    It is with deep regret that we announce that United Marinetime\rAdministration
+    has filed for bankruptcy protection under Chapter 11 of the United \rStates Bankruptcy
+    Code. This difficult decision has been taken after careful \rconsideration and
+    thorough analysis of our financial situation, amidst \rongoing challenges and
+    a challenging market environment.\rThe past years have seen a significant decline
+    in revenue and increased \rfinancial pressures, primarily driven by [list specific
+    reasons for the \rbankruptcy, such as market downturn, technological disruption,
+    or operational \rchallenges. Despite our best efforts to implement cost-saving
+    measures, \rstreamline operations, and secure additional financing, we have been
+    unable \rto overcome the growing financial burden on our business.\r\n\n\rFor
+    any inquiries or further information, please contact:\r\r\n\nAlenky White\r\nCommander\rUnited
+    Marintime Administration\r\nalenkywhite@uma.org\r\r\r"
   modelPrefab: {fileID: 0}
