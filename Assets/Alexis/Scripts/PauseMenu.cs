@@ -44,7 +44,7 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (gameManager.pauseMenuEnabled && inventoryManager.pauseMenuEnabled && Input.GetKeyDown(KeyCode.Escape))
+        if (gameManager.pauseMenuEnabled && inventoryManager.pauseMenuEnabled && inventorySystem.pauseMenuEnable && Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameIsPaused)
             {

@@ -261,7 +261,16 @@ public class GameManager : MonoBehaviour
         {
             if (InventoryCanvas.activeInHierarchy)
             {
-                if (CommunicationSystem.FocusOnScreen == false && ComputerSystem.FocusOnScreen == false)
+                if (/*CommunicationSystem.FocusOnScreen == false &&*/ComputerSystem != null && ComputerSystem.FocusOnScreen == true)
+                {
+                    Cursor.visible = true;
+                    InventoryCanvas.SetActive(false);
+                    //CrosshairCanvas.SetActive(true);
+                    
+
+
+                }
+                else
                 {
                     Cursor.visible = false;
                     pauseMenuEnabled = true;
@@ -277,19 +286,11 @@ public class GameManager : MonoBehaviour
 
                     InventoryCanvas.SetActive(false);
                     CrosshairCanvas.SetActive(true);
-
-
-                }
-                else
-                {
-                    Cursor.visible = true;
-                    InventoryCanvas.SetActive(false);
-                    //CrosshairCanvas.SetActive(true);
                 }
             }
             else
             {
-                inventoryOpened += 1;
+                //inventoryOpened += 1;
                 Cursor.visible = true;
                 pauseMenuEnabled = false;
                 InventoryCanvas.SetActive(true);
