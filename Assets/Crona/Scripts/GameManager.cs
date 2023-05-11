@@ -191,6 +191,7 @@ public class GameManager : MonoBehaviour
         }
         else if (SceneName == "MainSceneF3")
         {
+            
             whitePanel.SetActive(false);
             blackPanel.SetActive(false);
             CMStart.SetActive(false);
@@ -320,12 +321,12 @@ public class GameManager : MonoBehaviour
     IEnumerator SwitchOpeningCam()
     {
         CMStart.SetActive(false);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         playerAudio.clip = AfterOpening1;
         playerAudio.Play();
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(4.5f);
         CMStart2.SetActive(false);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(4.5f);
         CMStart3.SetActive(false);
         playerAudio.clip = AfterOpening2;
         playerAudio.Play();
@@ -686,7 +687,7 @@ public class GameManager : MonoBehaviour
         vCam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = 300;
     }
 
-    private void OnApplicationQuit()
+    /*private void OnApplicationQuit()
     {
         if (InventoryManager.Instance.itemCollected > 1)
         {
@@ -696,6 +697,7 @@ public class GameManager : MonoBehaviour
         }
         
     }
+    */
 
     public void BlackBar(bool active)
     {

@@ -54,8 +54,8 @@ public class InventoryManager : MonoBehaviour
     [Header("Editor Control")]
     public bool isInEditor;
 
-    [Header("Inventory Metrics")]
-    public int itemCollected;
+    //[Header("Inventory Metrics")]
+    //public int itemCollected;
 
     private void Awake()
     {
@@ -108,7 +108,7 @@ public class InventoryManager : MonoBehaviour
 
     public void AddItem(ItemData_SO newItemData)
     {
-        itemCollected += 1;
+        //itemCollected += 1;
         if (newItemData.itemType == ItemType.Atlas)
         {
             for (int i = 0; i < AtlasItems.Count; i++)
@@ -173,7 +173,7 @@ public class InventoryManager : MonoBehaviour
         {
             return;
         }
-        itemCollected += 1;
+        //itemCollected += 1;
 
         if (newItemData.itemType == ItemType.Atlas)
         {
@@ -396,6 +396,7 @@ public class InventoryManager : MonoBehaviour
         {
             itemPanel.SetActive(false);
             itemPrefab.gameObject.transform.parent = previewModel.transform;
+            itemPrefab.gameObject.transform.position = new Vector3(10000, 10000, 10000);
             Destroy(itemPrefab.gameObject);
             itemPrefab = null;
             itemPanel.GetComponent<ItemViewer>().itemModel = null;

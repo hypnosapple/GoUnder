@@ -40,6 +40,9 @@ public class PlayerInteraction : MonoBehaviour
 
     public GameObject crosshairCanvas;
 
+    [Header("Audio")]
+    public AudioSource pickupSFX;
+
 
     void Start()
     {
@@ -186,6 +189,7 @@ public class PlayerInteraction : MonoBehaviour
                     if (Input.GetKeyDown(KeyCode.E))
                     {
                         hit.transform.gameObject.GetComponent<ItemPickup>().Pickup();
+                        pickupSFX.Play();
                     }
                 }
 
