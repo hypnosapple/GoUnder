@@ -561,6 +561,16 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void StartSecondFloorEnding()
+    {
+        StartCoroutine(SecondFloorEnding());
+    }
+
+    IEnumerator SecondFloorEnding()
+    {
+        yield return new WaitForSeconds(1f);
+    }
+
     public void PlayVideo2()
     {
         blackPanel.SetActive(true);

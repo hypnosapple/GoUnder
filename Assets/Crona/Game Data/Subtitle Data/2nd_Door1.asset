@@ -22,6 +22,6 @@ MonoBehaviour:
 
     Hold on...'
   VisibleTime:
-  - 4
-  - 2.5
-  AudioFile: {fileID: 8300000, guid: bc5eed0c9eb574b10952d1d2240115bb, type: 3}
+  - 3.2
+  - 2
+  AudioFile: {fileID: 8300000, guid: e71b927bd00444c87a8b4936bca5030f, type: 3}

@@ -17,7 +17,8 @@ MonoBehaviour:
   callerName: 
   callerSprite_136_177: {fileID: 0}
   Contents:
-  - "They\u2019ve lost the trust of the people...\nThey\u2019re not doing their business... "
+  - "They\u2019re not doing their business... \nThey\u2019ve lost the trust of the
+    people..."
   VisibleTime:
   - 5
-  AudioFile: {fileID: 8300000, guid: b4bf381c48c524af78401abf852fc186, type: 3}
+  AudioFile: {fileID: 8300000, guid: 59330c75a1a6846dc8f533e2bc50b84c, type: 3}

@@ -17,12 +17,11 @@ MonoBehaviour:
   callerName: Evelyn
   callerSprite_136_177: {fileID: 21300000, guid: 09670d1819c8f4bd89c4d1c2ecc1d384, type: 3}
   Contents:
-  - Atlas! Atlas! Where are you?!
-  - Evelyn, Is that you? Hold on, I am on my way back! Take Lily and go somewhere
-    high above the ground!
+  - Atlas! Where are you?!
+  - Evelyn, hold on, I am on my way back! Take Lily and go somewhere high above ground!
   - "No! Don\u2019t come back, it\u2019s too lat..."
   VisibleTime:
-  - 2.5
-  - 8
-  - 2.5
-  AudioFile: {fileID: 8300000, guid: 9ba12e8cd7937412a885a8eee5b65c3a, type: 3}
+  - 1.8
+  - 6.2
+  - 3
+  AudioFile: {fileID: 8300000, guid: ac1e4f5e025e245de80a35e64a2ae6b8, type: 3}
