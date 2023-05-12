@@ -1,0 +1,151 @@
+fileFormatVersion: 2
+guid: 65a5c89f1fbe17b478166e4763443d2f
+labels:
+- switch
+- night
+- day
+- led
+- luxury
+- contemporary
+- photoreal
+- low-poly
+- realistic
+- modern
+- real
+- architecture
+- interior
+- high-end
+- home
+- lamp
+- detail
+- light
+- spot
+- props
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: light_panel_01
+    100004: light_spot_A
+    100006: light_spot_B
+    100008: light_spot_C
+    100010: light_spot_D
+    100012: light_spot_E
+    100014: light_spot_G
+    100016: light_spot_table_02
+    100018: light_switch_01
+    100020: light_switches
+    100022: table_lamp_3
+    100024: table_lamp_A
+    400000: //RootNode
+    400002: light_panel_01
+    400004: light_spot_A
+    400006: light_spot_B
+    400008: light_spot_C
+    400010: light_spot_D
+    400012: light_spot_E
+    400014: light_spot_G
+    400016: light_spot_table_02
+    400018: light_switch_01
+    400020: light_switches
+    400022: table_lamp_3
+    400024: table_lamp_A
+    2300000: light_panel_01
+    2300002: light_spot_A
+    2300004: light_spot_B
+    2300006: light_spot_C
+    2300008: light_spot_D
+    2300010: light_spot_E
+    2300012: light_spot_G
+    2300014: light_spot_table_02
+    2300016: light_switch_01
+    2300018: light_switches
+    2300020: table_lamp_3
+    2300022: table_lamp_A
+    3300000: light_panel_01
+    3300002: light_spot_A
+    3300004: light_spot_B
+    3300006: light_spot_C
+    3300008: light_spot_D
+    3300010: light_spot_E
+    3300012: light_spot_G
+    3300014: light_spot_table_02
+    3300016: light_switch_01
+    3300018: light_switches
+    3300020: table_lamp_3
+    3300022: table_lamp_A
+    4300000: light_panel_01
+    4300002: light_spot_table_02
+    4300004: light_spot_E
+    4300006: light_spot_A
+    4300008: light_spot_B
+    4300010: light_spot_C
+    4300012: light_spot_G
+    4300014: table_lamp_3
+    4300016: table_lamp_A
+    4300018: light_spot_D
+    4300020: light_switch_01
+    4300022: light_switches
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 2
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
