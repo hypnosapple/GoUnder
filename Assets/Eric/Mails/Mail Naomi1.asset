@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e4fe45af87b2439fa007964c962a5b7, type: 3}
   m_Name: Mail Naomi1
   m_EditorClassIdentifier: 
-  PersonName: Alenky White
+  PersonName: Asahi
   EmailTitle: 'Evacutation Notice '
-  EmailAddress: alenkywhite@uma.org
-  EmailContent: "To all UMA officers,\n\nThis is an urgent message regarding the
+  EmailAddress: Asahi@uma.mwb
+  EmailContent: "To all UMA officers,\n\n\tThis is an urgent message regarding the
     incoming tsunami. Based on the latest forecast, we expect the tsunami to hit
     our area within the next hour. As such, a officers are ordered to immediately
-    seek shelter in designated safe zones until further notice.\n\nIt is imperative
+    seek shelter in designated safe zones until further notice.\n\n\tIt is imperative
     that all officers follow this order for their own safety. We cannot stress enough
-    the importance of taking this threat seriously and acting accordingly. \n\nPlease
+    the importance of taking this threat seriously and acting accordingly. \n\n\tPlease
     be advised that the UMA command center will continue to monitor the situation
     closely and provide updates as they become available. In the meantime, we ask
-    that you remain calm and stay vigilant. \n\nThank you for your cooperation.\n\nSincerely,\nAlenky
-    White\nUMA Lead Commander "
+    that you remain calm and stay vigilant. \n\n\tThank you for your cooperation.\n\n\tSincerely,\n\tAsahi\n\tUMA
+    Lead Commander "
   IconColor: {r: 1, g: 1, b: 1, a: 1}
-  IconSprite: {fileID: 2800000, guid: 74ac6b5e21cd6044aa67005b186f1207, type: 3}
+  IconSprite: {fileID: 2800000, guid: f175bf9360310426ea6664c5ff0734e0, type: 3}

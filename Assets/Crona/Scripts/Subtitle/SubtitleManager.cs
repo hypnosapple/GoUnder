@@ -208,6 +208,7 @@ public class SubtitleManager : MonoBehaviour
                 clipName = "";
                 //Tinylytics.AnalyticsManager.LogSecondFloorPlaytime();
                 Call04Ended = true;
+                GameManager.Instance.StartSecondFloorEnding();
             }
             else
             {

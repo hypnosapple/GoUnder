@@ -11,6 +11,8 @@ public class SkyboxChange : MonoBehaviour
     private bool nightChanged;
     private bool inTunnel;
     private bool closeTunnelDoor;
+    private bool wallChanged;
+    private bool corridorClosed;
 
     [Header("Materials")]
     public Material afternoonSkybox;
@@ -27,6 +29,10 @@ public class SkyboxChange : MonoBehaviour
     public GameObject tunnelBlock;
     public GameObject tunnelDoor;
     public GameObject tunnelTV;
+    public GameObject changeWallTrigger;
+    public GameObject oldWall;
+    public GameObject newWall;
+    public GameObject corridorBlock;
 
     public AudioSource tunnelTone;
 
@@ -95,6 +101,30 @@ public class SkyboxChange : MonoBehaviour
                 //RenderSettings.skybox = nightSkybox;
                 //sea.GetComponent<MeshRenderer>().material = nightWater;
                 nightChanged = true;
+            }
+        }
+
+        else if (other.gameObject.tag == "WallTrigger")
+        {
+
+            if (!wallChanged)
+            {
+
+                oldWall.SetActive(false);
+                newWall.SetActive(true);
+                wallChanged = true;
+            }
+        }
+
+        else if (other.gameObject.tag == "CorridorTrigger")
+        {
+
+            if (!corridorClosed)
+            {
+
+                corridorBlock.SetActive(true);
+                
+                corridorClosed = true;
             }
         }
     }

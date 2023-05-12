@@ -23,7 +23,7 @@ MonoBehaviour:
   - "Forcing so many people to suddenly leave their homes costs a lot of money, money
     that we don\u2019t have..."
   VisibleTime:
-  - 6
+  - 5
+  - 5
   - 7
-  - 7
-  AudioFile: {fileID: 8300000, guid: 8ebd39641635045cb8fa69a5b6c1fe36, type: 3}
+  AudioFile: {fileID: 8300000, guid: b7c5745a39e39484a9c8252f5da36e53, type: 3}

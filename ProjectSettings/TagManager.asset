@@ -10,6 +10,8 @@ TagManager:
   - Sink
   - EnterTunnel
   - CloseTunnelDoor
+  - WallTrigger
+  - CorridorTrigger
   layers:
   - Default
   - TransparentFX
