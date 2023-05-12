@@ -12,6 +12,7 @@ public class SkyboxChange : MonoBehaviour
     private bool inTunnel;
     private bool closeTunnelDoor;
     private bool wallChanged;
+    private bool corridorClosed;
 
     [Header("Materials")]
     public Material afternoonSkybox;
@@ -31,6 +32,7 @@ public class SkyboxChange : MonoBehaviour
     public GameObject changeWallTrigger;
     public GameObject oldWall;
     public GameObject newWall;
+    public GameObject corridorBlock;
 
     public AudioSource tunnelTone;
 
@@ -111,6 +113,18 @@ public class SkyboxChange : MonoBehaviour
                 oldWall.SetActive(false);
                 newWall.SetActive(true);
                 wallChanged = true;
+            }
+        }
+
+        else if (other.gameObject.tag == "CorridorTrigger")
+        {
+
+            if (!corridorClosed)
+            {
+
+                corridorBlock.SetActive(true);
+                
+                corridorClosed = true;
             }
         }
     }

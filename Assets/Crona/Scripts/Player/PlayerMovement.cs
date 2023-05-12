@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     public float raycastLength = 10f;
 
     public bool islocked;
+    public bool inFirstFloor;
 
 
    public void Start()
@@ -71,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
             speed = 0f;
         }
 
-        else if (Input.GetKey(KeyCode.LeftShift))
+        else if (Input.GetKey(KeyCode.LeftShift) && !inFirstFloor)
         {
             speed = 27f;
             noise.m_NoiseProfile = runNoise;
