@@ -123,6 +123,7 @@ public class SkyboxChange : MonoBehaviour
             {
 
                 corridorBlock.SetActive(true);
+                GameManager.Instance.loc1.SetActive(true);
                 
                 corridorClosed = true;
             }
