@@ -9,6 +9,7 @@ public class ItemPickup : MonoBehaviour
     public ItemData_SO itemData;
     public GameObject relatedDoor;
     public GameObject relatedWord;
+    public bool isLast;
 
     [Header("Audio")]
     public AudioSource playerAudio;
@@ -42,6 +43,11 @@ public class ItemPickup : MonoBehaviour
         if (secondVO != null)
         {
             SubtitleManager.Instance.PlayAfterTime(secondVO, playAfterSeconds);
+        }
+
+        if (isLast)
+        {
+            GameManager.Instance.showLastDoor();
         }
 
         DestroyPickup(gameObject);
