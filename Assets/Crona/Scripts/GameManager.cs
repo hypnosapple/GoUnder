@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
     public GameObject endVideoScreen;
     public VideoPlayer endVideoPlayer;
     public VideoPlayer TV1VideoPlayer;
+    public VideoPlayer Lv1Projector;
 
     [Header("Fade in/out Panel")]
     public GameObject blackPanel;
@@ -88,6 +89,9 @@ public class GameManager : MonoBehaviour
     public AudioClip AfterOpening2;
     public AudioSource wrongChoiceAlert;
     public AudioSource tsunamiSFX;
+    public AudioSource tape;
+    public AudioSource heartbeat;
+
 
     [Header("Inventory System")]
     public bool inventoryEnabled;
@@ -122,6 +126,14 @@ public class GameManager : MonoBehaviour
 
     [Header("Inventory Metrics")]
     public int inventoryOpened;
+
+    [Header("First Floor")]
+    public GameObject loc1;
+    public GameObject loc2;
+    public GameObject loc3;
+    public GameObject endBlock;
+    public GameObject collider1;
+    public GameObject collider2;
 
     void Start()
     {
@@ -753,7 +765,9 @@ public class GameManager : MonoBehaviour
 
     IEnumerator WaitForEnd()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
+        heartbeat.Play();
+        yield return new WaitForSeconds(7f);
         LockPlayerCam();
         PlayerMovement.Instance.moveDisabled = true;
         inventoryEnabled = false;
@@ -766,12 +780,50 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(7f);
 
         BGM.Stop();
+        heartbeat.Stop();
         firstFloorRoom.SetActive(false);
         endVideoScreen.SetActive(true);
+        blackPanel.SetActive(true);
         whitePanel.SetActive(false);
         
         upperBlack.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, -80f);
         lowerBlack.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, 80f);
         endVideoPlayer.Play();
+    }
+
+
+    public void startTape()
+    {
+        StartCoroutine(ListenTape());
+    }
+
+    IEnumerator ListenTape()
+    {
+        yield return new WaitForSeconds(1f);
+        tape.Play();
+        yield return new WaitForSeconds(25f);
+        loc1.SetActive(false);
+        loc2.SetActive(true);
+    }
+
+    public void startProjector()
+    {
+        StartCoroutine(SeeProjector());
+    }
+
+    IEnumerator SeeProjector()
+    {
+        yield return new WaitForSeconds(1f);
+        Lv1Projector.Play();
+        yield return new WaitForSeconds(20f);
+        loc2.SetActive(false);
+        loc3.SetActive(true);
+    }
+
+    public void showLastDoor()
+    {
+        endBlock.SetActive(false);
+        collider1.SetActive(false);
+        collider2.SetActive(false);
     }
 }

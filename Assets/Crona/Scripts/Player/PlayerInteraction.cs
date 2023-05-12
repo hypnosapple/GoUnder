@@ -24,6 +24,8 @@ public class PlayerInteraction : MonoBehaviour
     int TVLayerMask;
     int tunnelTVLayerMask;
     int tunnelTV2LayerMask;
+    int tapeLayerMask;
+    int projectorLayerMask;
 
     [Header("UI")]
     public GameObject onTarget;
@@ -43,6 +45,9 @@ public class PlayerInteraction : MonoBehaviour
     [Header("Audio")]
     public AudioSource pickupSFX;
 
+    private bool tapeChecked;
+    private bool projectorChecked;
+
 
     void Start()
     {
@@ -61,6 +66,8 @@ public class PlayerInteraction : MonoBehaviour
         tunnelTVLayerMask = 19;
         tunnelTV2LayerMask = 21;
         finalDoorLayerMask = 22;
+        tapeLayerMask = 23;
+        projectorLayerMask = 24;
 
         interactAllowed = true;
 }
@@ -277,6 +284,46 @@ public class PlayerInteraction : MonoBehaviour
                         {
                             //GameManager.Instance.ControlRendererFeature(0, false);
                             GetComponent<GameManager>().PlayVideo2();
+                        }
+                    }
+
+                }
+
+                else if (hit.collider.gameObject.layer == tapeLayerMask)
+                {
+                    if (!tapeChecked)
+                    {
+                        if (!onTarget.activeInHierarchy)
+                        {
+                            onTarget.SetActive(true);
+                        }
+
+                        if (Input.GetKeyDown(KeyCode.E))
+                        {
+                            
+                            GetComponent<GameManager>().startTape();
+                            tapeChecked = true;
+                            onTarget.SetActive(false);
+                        }
+                    }
+
+                }
+
+                else if (hit.collider.gameObject.layer == projectorLayerMask)
+                {
+                    if (!projectorChecked)
+                    {
+                        if (!onTarget.activeInHierarchy)
+                        {
+                            onTarget.SetActive(true);
+                        }
+
+                        if (Input.GetKeyDown(KeyCode.E))
+                        {
+
+                            GetComponent<GameManager>().startProjector();
+                            projectorChecked = true;
+                            onTarget.SetActive(false);
                         }
                     }
 
