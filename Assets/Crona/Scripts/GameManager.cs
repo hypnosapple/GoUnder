@@ -134,6 +134,10 @@ public class GameManager : MonoBehaviour
     public GameObject endBlock;
     public GameObject collider1;
     public GameObject collider2;
+    public GameObject collider11;
+    public GameObject collider12;
+    public GameObject collider21;
+    public GameObject collider22;
 
     void Start()
     {
@@ -784,7 +788,6 @@ public class GameManager : MonoBehaviour
         firstFloorRoom.SetActive(false);
         endVideoScreen.SetActive(true);
         blackPanel.SetActive(true);
-        whitePanel.SetActive(false);
         
         upperBlack.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, -80f);
         lowerBlack.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, 80f);
@@ -825,5 +828,17 @@ public class GameManager : MonoBehaviour
         endBlock.SetActive(false);
         collider1.SetActive(false);
         collider2.SetActive(false);
+    }
+
+    public void blockFirstLoc()
+    {
+        collider11.SetActive(true);
+        collider12.SetActive(true);
+    }
+
+    public void blockSecondLoc()
+    {
+        collider21.SetActive(true);
+        collider22.SetActive(true);
     }
 }

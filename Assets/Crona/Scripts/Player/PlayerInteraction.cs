@@ -44,6 +44,7 @@ public class PlayerInteraction : MonoBehaviour
 
     [Header("Audio")]
     public AudioSource pickupSFX;
+    public AudioSource firstFloorClick;
 
     private bool tapeChecked;
     private bool projectorChecked;
@@ -300,10 +301,11 @@ public class PlayerInteraction : MonoBehaviour
 
                         if (Input.GetKeyDown(KeyCode.E))
                         {
-                            
+                            firstFloorClick.Play();
                             GetComponent<GameManager>().startTape();
                             tapeChecked = true;
                             onTarget.SetActive(false);
+                            GameManager.Instance.blockFirstLoc();
                         }
                     }
 
@@ -320,10 +322,11 @@ public class PlayerInteraction : MonoBehaviour
 
                         if (Input.GetKeyDown(KeyCode.E))
                         {
-
+                            firstFloorClick.Play();
                             GetComponent<GameManager>().startProjector();
                             projectorChecked = true;
                             onTarget.SetActive(false);
+                            GameManager.Instance.blockSecondLoc();
                         }
                     }
 
