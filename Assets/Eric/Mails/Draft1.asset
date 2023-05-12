@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e4fe45af87b2439fa007964c962a5b7, type: 3}
+  m_Name: Draft1
+  m_EditorClassIdentifier: 
+  PersonName: Atlas Driscoll
+  EmailTitle: Urgent Request
+  EmailAddress: atlasdriscoll@uma.mwb
+  EmailContent: "Dear UMA,\n\n\tI am writing to express my deep concern about the
+    decision to conceal the true prediction time for the upcoming tsunami. As you
+    know, this decision could have grave consequences for the people living in the
+    affected area, and I believe that it is our moral obligation to provide them
+    with accurate and timely information.\n\n\tI understand that the company is facing
+    financial difficulties and that evacuating people from the area could be expensive.
+    However, I strongly believe that putting people's lives at risk to save money
+    is not an acceptable solution.\n\n\tWe have a responsibility to prioritize human
+    safety over profit margins, and I urge you to reconsider your decision to withhold
+    the true prediction time. By doing so, we can help to ensure that people in the
+    affected area have enough time to evacuate safely, and that we are doing our
+    part to protect their lives and well-being.\n\n\tI am aware that this decision
+    may have financial implications for the company, but I believe that doing the
+    right thing is always more important than saving money. We must not lose sight
+    of our ethical responsibilities as a company, and we must take action to protect
+    the lives of those who could be affected by this tsunami.\n\n\tI urge you to
+    reconsider your decision, and to take the necessary steps to ensure that the
+    true prediction time is made available to the public as soon as possible.\n\n\tThank
+    you for your attention to this matter.\n\nSincerely,\n\nAtlas Driscoll"
+  IconColor: {r: 1, g: 1, b: 1, a: 1}
+  IconSprite: {fileID: 2800000, guid: 3f7362f4388e54eb9a98e7db1fcf6a88, type: 3}

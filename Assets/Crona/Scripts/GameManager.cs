@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public bool enableNewCutscenes;
     public bool startFromSecondFloor;
 
+
     [Header("Player")]
     public GameObject player;
 
@@ -86,6 +87,7 @@ public class GameManager : MonoBehaviour
     public AudioClip AfterOpening1;
     public AudioClip AfterOpening2;
     public AudioSource wrongChoiceAlert;
+    public AudioSource tsunamiSFX;
 
     [Header("Inventory System")]
     public bool inventoryEnabled;
@@ -568,13 +570,34 @@ public class GameManager : MonoBehaviour
 
     IEnumerator SecondFloorEnding()
     {
+        yield return new WaitForSeconds(3f);
+        BlackBar(true);
         yield return new WaitForSeconds(1f);
+        PlayerMovement.Instance.moveDisabled = true;
+        inventoryEnabled = false;
+        pauseMenuEnabled = false;
+        Cursor.visible = false;
+        CrosshairCanvas.SetActive(false);
+
+        PlayerMovement.Instance.cam6DShakeOn = true;
+
+        noise.m_NoiseProfile = screenShakeNoise;
+        noise.m_AmplitudeGain = 6f;
+        noise.m_FrequencyGain = 2.5f;
+        tsunamiSFX.Play();
+
+        yield return new WaitForSeconds(7f);
+        tsunamiSFX.Stop();
+        blackPanel.SetActive(true);
+        blackPanel.GetComponent<Image>().color = new Color(0, 0, 0, 1);
+        yield return new WaitForSeconds(1f);
+        PlayVideo2();
     }
 
     public void PlayVideo2()
     {
-        blackPanel.SetActive(true);
-        blackPanel.GetComponent<Image>().color = new Color(0, 0, 0, 1);
+        //blackPanel.SetActive(true);
+        //blackPanel.GetComponent<Image>().color = new Color(0, 0, 0, 1);
 
         tunnelTone.Stop();
         ambience.Stop();
