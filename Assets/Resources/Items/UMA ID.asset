@@ -15,7 +15,7 @@ MonoBehaviour:
   itemType: 2
   itemName: UMA ID
   itemIcon_1100_700: {fileID: 0}
-  iconInDoor_135_135: {fileID: 21300000, guid: 4418378a45be62a4a8c9e4e5a74359c2, type: 3}
+  iconInDoor_135_135: {fileID: 21300000, guid: a7595b459a746ee4487d170f9dc258ce, type: 3}
   filePreviewSprite_1920_1080: {fileID: 0}
   relatedCheckWordNumber: -1
   description: 'An ID Card from UMA. Belongs to a manager.

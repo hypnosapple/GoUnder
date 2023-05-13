@@ -413,7 +413,7 @@ public class InventoryManager : MonoBehaviour
         if (filePanel.activeInHierarchy && Input.GetKey(KeyCode.Escape))
         {
             filePanel.SetActive(false);
-            fileImage = null;
+            fileImage.sprite = null;
 
             crosshairCanvas.SetActive(true);
             GameManager.Instance.inventoryEnabled = true;
