@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 
 public class ScreenFade : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class ScreenFade : MonoBehaviour
 
     public AudioSource[] audioSources;
     public AudioSource buttonAudioSource;
+
+    private bool loaded = false;
 
     void Start()
     {
@@ -38,11 +41,26 @@ public class ScreenFade : MonoBehaviour
             }
 
         }
-        if (fadeImage.color == targetColor)
+        if (fadeImage.color == targetColor && !loaded)
         {
             PlayerPrefs.DeleteAll();
-            SceneManager.LoadScene(0); // Load the first scene
+            loaded = true;
+            StartCoroutine(LoadSceneF3()); // Load the first scene
         }
+    }
+
+    IEnumerator LoadSceneF3()
+    {
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("MainSceneF3");
+
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+
     }
 
     void OnClick()
