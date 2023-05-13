@@ -33,6 +33,8 @@ public class SkyboxChange : MonoBehaviour
     public GameObject oldWall;
     public GameObject newWall;
     public GameObject corridorBlock;
+    public VideoPlayer F2TV;
+    public SubtitleData_SO lastPhoneCall;
 
     public AudioSource tunnelTone;
 
@@ -113,8 +115,12 @@ public class SkyboxChange : MonoBehaviour
                 oldWall.SetActive(false);
                 newWall.SetActive(true);
                 wallChanged = true;
+                F2TV.Play();
+                StartCoroutine(WaitForPhoneCall(lastPhoneCall));
             }
         }
+
+        
 
         else if (other.gameObject.tag == "CorridorTrigger")
         {
@@ -130,5 +136,10 @@ public class SkyboxChange : MonoBehaviour
         }
     }
 
-    
+    IEnumerator WaitForPhoneCall(SubtitleData_SO phoneCall)
+    {
+        yield return new WaitForSeconds(3f);
+        SubtitleManager.Instance.ShowSubtitle(phoneCall);
+    }
+
 }

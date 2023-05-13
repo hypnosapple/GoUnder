@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
     public VideoPlayer endVideoPlayer;
     public VideoPlayer TV1VideoPlayer;
     public VideoPlayer Lv1Projector;
+    public VideoPlayer F2TV;
 
     [Header("Fade in/out Panel")]
     public GameObject blackPanel;
@@ -588,22 +589,29 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         BlackBar(true);
-        yield return new WaitForSeconds(1f);
+
+        LockPlayerCam();
         PlayerMovement.Instance.moveDisabled = true;
         inventoryEnabled = false;
         pauseMenuEnabled = false;
         Cursor.visible = false;
         CrosshairCanvas.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        
+        tsunamiSFX.Play();
 
+        yield return new WaitForSeconds(3f);
         PlayerMovement.Instance.cam6DShakeOn = true;
 
         noise.m_NoiseProfile = screenShakeNoise;
         noise.m_AmplitudeGain = 6f;
         noise.m_FrequencyGain = 2.5f;
-        tsunamiSFX.Play();
 
-        yield return new WaitForSeconds(7f);
+        
+
+        yield return new WaitForSeconds(4f);
         tsunamiSFX.Stop();
+        F2TV.Stop();
         blackPanel.SetActive(true);
         blackPanel.GetComponent<Image>().color = new Color(0, 0, 0, 1);
         yield return new WaitForSeconds(1f);
