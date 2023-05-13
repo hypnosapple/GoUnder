@@ -649,7 +649,7 @@ public class GameManager : MonoBehaviour
     IEnumerator AfterVideo2()
     {
 
-        yield return new WaitForSeconds(24f);
+        yield return new WaitForSeconds(26f);
         
         //player.transform.position = new Vector3(26, 40.4483452f, -34);
         StartCoroutine(LoadSceneF1());
