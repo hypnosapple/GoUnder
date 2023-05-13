@@ -15,8 +15,8 @@ MonoBehaviour:
   itemType: 1
   itemName: 2F Letter
   itemIcon_1100_700: {fileID: 21300000, guid: 85b8384caf4531240a273e25c2190599, type: 3}
-  iconInDoor_135_135: {fileID: 0}
-  filePreviewSprite_1920_1080: {fileID: 0}
+  iconInDoor_135_135: {fileID: 21300000, guid: 1dd662ddc4ffc7048838ca6e7acf4646, type: 3}
+  filePreviewSprite_1920_1080: {fileID: 21300000, guid: 77256d1decb28f843a68392bdb659358, type: 3}
   relatedCheckWordNumber: -1
   description: 'A letter with an unknown sender.  '
   modelPrefab: {fileID: 0}
