@@ -56289,6 +56289,8 @@ MonoBehaviour:
   oldWall: {fileID: 0}
   newWall: {fileID: 0}
   corridorBlock: {fileID: 996990749}
+  F2TV: {fileID: 0}
+  lastPhoneCall: {fileID: 0}
   tunnelTone: {fileID: 60059510}
 --- !u!1 &1905661492
 GameObject:
@@ -60022,6 +60024,7 @@ MonoBehaviour:
   endVideoPlayer: {fileID: 1706692678}
   TV1VideoPlayer: {fileID: 0}
   Lv1Projector: {fileID: 1195311790}
+  F2TV: {fileID: 0}
   blackPanel: {fileID: 1031741103}
   whitePanel: {fileID: 122684097}
   controlsPanel: {fileID: 229511664}

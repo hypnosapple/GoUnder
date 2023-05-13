@@ -83,7 +83,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         GameIsPaused = true;
         Cursor.visible = true;
-        Debug.Log("Cursor is " + Cursor.visible);
+        //Debug.Log("Cursor is " + Cursor.visible);
     }
 
     public void openSettingsControl()
@@ -152,7 +152,7 @@ public class PauseMenu : MonoBehaviour
 
     public void openMainMenu()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
     public void GoBackToPause()

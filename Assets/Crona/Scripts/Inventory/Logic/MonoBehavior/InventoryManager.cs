@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -398,12 +399,14 @@ public class InventoryManager : MonoBehaviour
             itemPrefab.gameObject.transform.parent = previewModel.transform;
             itemPrefab.gameObject.transform.position = new Vector3(10000, 10000, 10000);
             Destroy(itemPrefab.gameObject);
-            itemPrefab = null;
+            //itemPrefab = null;
             itemPanel.GetComponent<ItemViewer>().itemModel = null;
            
 
             crosshairCanvas.SetActive(true);
+
             GameManager.Instance.inventoryEnabled = true;
+
             PlayerMovement.Instance.moveDisabled = false;
             mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled = true;
             Cursor.visible = false;
@@ -416,7 +419,11 @@ public class InventoryManager : MonoBehaviour
             fileImage.sprite = null;
 
             crosshairCanvas.SetActive(true);
-            GameManager.Instance.inventoryEnabled = true;
+            if (SceneManager.GetActiveScene().buildIndex != 3)
+            {
+                GameManager.Instance.inventoryEnabled = true;
+            }
+            
             PlayerMovement.Instance.moveDisabled = false;
             mainCam.GetComponent<Cinemachine.CinemachineBrain>().enabled = true;
             Cursor.visible = false;
@@ -437,7 +444,11 @@ public class InventoryManager : MonoBehaviour
 
 
         Cursor.visible = true;
-        
+
+        if (itemPrefab != null)
+        {
+            Destroy(itemPrefab.gameObject);
+        }
 
         if (previewModel.transform.childCount > 0)
         {
