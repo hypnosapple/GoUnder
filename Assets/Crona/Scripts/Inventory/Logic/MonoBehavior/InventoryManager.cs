@@ -457,7 +457,7 @@ public class InventoryManager : MonoBehaviour
             itemPrefab = null;
         }
         
-        itemPrefab = Instantiate(modelPrefab, new Vector3(1000, 1000, 1000), Quaternion.identity);
+        itemPrefab = Instantiate(modelPrefab, new Vector3(1000, 2000, 1000), Quaternion.identity);
         itemPrefab.gameObject.transform.parent = previewModel.transform;
         itemPanel.GetComponent<ItemViewer>().itemModel = itemPrefab;
     }

@@ -103,11 +103,13 @@ public class DoorInteract : MonoBehaviour
 
                 GameManager.Instance.LockPlayerCam();
                 PlayerInteraction.Instance.interactAllowed = false;
+                
 
                 if (!PlayerMovement.Instance.moveDisabled)
                 {
                    PlayerMovement.Instance.moveDisabled = true;
                 }
+                PlayerMovement.Instance.myController.enabled = false;
 
                 if (crosshairCanvas.activeInHierarchy)
                 {
@@ -133,8 +135,9 @@ public class DoorInteract : MonoBehaviour
     IEnumerator WaitCameraOut()
     {
         yield return new WaitForSeconds(1f);
-
+        PlayerMovement.Instance.myController.enabled = true;
         PlayerMovement.Instance.moveDisabled = false;
+        
         crosshairCanvas.SetActive(true);
         GameManager.Instance.UnlockPlayerCam();
         PlayerInteraction.Instance.interactAllowed = true;

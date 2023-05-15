@@ -100,7 +100,12 @@ public class PlayerMovement : MonoBehaviour
 
         // Keep track of gravity
         velocity.y += gravity * Time.deltaTime;
-        myController.Move(velocity * Time.deltaTime);
+
+        if (!moveDisabled)
+        {
+            myController.Move(velocity * Time.deltaTime);
+        }
+        
 
         // Camera shake while walking
         if ((horizontal != 0 || vertical != 0) && !moveDisabled && !cam6DShakeOn)
