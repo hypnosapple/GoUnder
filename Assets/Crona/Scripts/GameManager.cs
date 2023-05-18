@@ -672,6 +672,8 @@ public class GameManager : MonoBehaviour
 
     }
 
+
+
     IEnumerator SceneF2Opening()
     {
         blackPanel.SetActive(true);
@@ -795,11 +797,28 @@ public class GameManager : MonoBehaviour
         heartbeat.Stop();
         firstFloorRoom.SetActive(false);
         endVideoScreen.SetActive(true);
-        blackPanel.SetActive(true);
+        //blackPanel.SetActive(true);
         
         upperBlack.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, -80f);
         lowerBlack.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, 80f);
         endVideoPlayer.Play();
+
+        yield return new WaitForSeconds(55f);
+        StartCoroutine(LoadMainScene());
+    }
+
+    IEnumerator LoadMainScene()
+    {
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Menu Scene");
+
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+
     }
 
 
