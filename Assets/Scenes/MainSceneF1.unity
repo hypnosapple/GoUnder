@@ -35177,7 +35177,7 @@ MonoBehaviour:
   crosshairCanvas: {fileID: 1900657886}
   mainCam: {fileID: 963194225}
   pauseMenuEnabled: 1
-  isInEditor: 0
+  isInEditor: 1
 --- !u!114 &1112675371
 MonoBehaviour:
   m_ObjectHideFlags: 0
