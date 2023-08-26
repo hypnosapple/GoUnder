@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: BadEndProduction
   productName: Deep Blue Requiem
-  defaultCursor: {fileID: 2800000, guid: a02b8d6b0711f4b0c8afd8e0b874fa73, type: 3}
+  defaultCursor: {fileID: 2800000, guid: 75399019911358c42b81012dc0f8e11f, type: 3}
   cursorHotspot: {x: 16, y: 16}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
