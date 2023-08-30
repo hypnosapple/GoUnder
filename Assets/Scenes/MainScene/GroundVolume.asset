@@ -173,7 +173,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: -0.07178965}
+    m_Value: {x: 1, y: 0.97585696, z: 0.9906928, w: -0.07178965}
   midtones:
     m_OverrideState: 1
     m_Value: {x: 1, y: 1, z: 1, w: -0.087240994}
@@ -267,7 +267,7 @@ MonoBehaviour:
     m_Value: 0.15
   contrast:
     m_OverrideState: 1
-    m_Value: 30
+    m_Value: -5
     min: -100
     max: 100
   colorFilter:

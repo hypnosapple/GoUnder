@@ -12,18 +12,18 @@ public class MouseLook : MonoBehaviour
     private static readonly string xAxis = "xAxis";
     private static readonly string yAxis = "yAxis";
     private int firstPlayInt;
-    private float xAxisFloat;
-    private float yAxisFloat;
+    private float xAxisFloat = 500f;
+    private float yAxisFloat = 500f;
     public CinemachineVirtualCamera cinemachineVirtualCamera;
 
-    void Update()
+    void Start()
     {
         firstPlayInt = PlayerPrefs.GetInt(FirstPlay);
 
         if (firstPlayInt == 0)
         {
-            xAxisFloat = 300f;
-            yAxisFloat = 300f;
+            xAxisFloat = 500f;
+            yAxisFloat = 500f;
             PlayerPrefs.SetFloat(xAxis, xAxisFloat);
             PlayerPrefs.SetFloat(yAxis, yAxisFloat);
             PlayerPrefs.SetInt(FirstPlay, -1);

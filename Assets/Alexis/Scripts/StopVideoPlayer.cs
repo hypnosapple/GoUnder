@@ -14,7 +14,7 @@ public class StopVideoPlayer : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 videoPlayer.Stop();
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene("Menu Scene");
             }
         }
     }
